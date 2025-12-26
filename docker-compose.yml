@@ -1,0 +1,89 @@
+version: '3.8'
+
+# =============================================================================
+# MongoDB Replica Set for Distributed e-Library System
+# =============================================================================
+# Architecture:
+#   - mongo1 (port 27017): PRIMARY - Central Hub
+#   - mongo2 (port 27018): SECONDARY - Branch Node 1
+#   - mongo3 (port 27019): SECONDARY - Branch Node 2
+#
+# Usage:
+#   1. Start:     docker-compose up -d
+#   2. Init RS:   docker exec -it mongo1 mongo --eval "rs.initiate({...})"
+#   3. Status:    docker exec -it mongo1 mongo --eval "rs.status()"
+#   4. Stop:      docker-compose down
+#   5. Clean:     docker-compose down -v (removes data)
+# =============================================================================
+
+services:
+  # Primary Node - Central Hub (Nhasach)
+  mongo1:
+    image: mongo:4.4
+    container_name: mongo1
+    hostname: mongo1
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_DATABASE=Nhasach
+    volumes:
+      - mongo1_data:/data/db
+      - ./mongo-init/init-rs.js:/docker-entrypoint-initdb.d/init-rs.js:ro
+    networks:
+      mongo-net:
+        aliases:
+          - mongo1
+    command: ["mongod", "--replSet", "rs0", "--bind_ip_all"]
+    restart: unless-stopped
+
+  # Secondary Node 1 - Branch (NhasachHaNoi, NhasachDaNang)
+  mongo2:
+    image: mongo:4.4
+    container_name: mongo2
+    hostname: mongo2
+    ports:
+      - "27018:27017"
+    environment:
+      - MONGO_INITDB_DATABASE=NhasachHaNoi
+    volumes:
+      - mongo2_data:/data/db
+    networks:
+      mongo-net:
+        aliases:
+          - mongo2
+    command: ["mongod", "--replSet", "rs0", "--bind_ip_all"]
+    restart: unless-stopped
+    depends_on:
+      - mongo1
+
+  # Secondary Node 2 - Branch (NhasachHoChiMinh)
+  mongo3:
+    image: mongo:4.4
+    container_name: mongo3
+    hostname: mongo3
+    ports:
+      - "27019:27017"
+    environment:
+      - MONGO_INITDB_DATABASE=NhasachHoChiMinh
+    volumes:
+      - mongo3_data:/data/db
+    networks:
+      mongo-net:
+        aliases:
+          - mongo3
+    command: ["mongod", "--replSet", "rs0", "--bind_ip_all"]
+    restart: unless-stopped
+    depends_on:
+      - mongo1
+
+networks:
+  mongo-net:
+    driver: bridge
+
+volumes:
+  mongo1_data:
+    name: elibrary_mongo1_data
+  mongo2_data:
+    name: elibrary_mongo2_data
+  mongo3_data:
+    name: elibrary_mongo3_data
