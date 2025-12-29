@@ -1,0 +1,153 @@
+[{
+  "_id": {
+    "$oid": "694fa99967b76c2b6d0564f5"
+  },
+  "username": "adminHCM",
+  "display_name": "adminHCM",
+  "password": "$2y$10$NjEWVvv4v.metHRuWNRl3uUR3vwvR8EvieOHBRXoQ/uFm7ej/Ph8C",
+  "role": "admin",
+  "balance": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:40:41.496Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694fab0567b76c2b6d0564f8"
+  },
+  "username": "thang",
+  "display_name": "thang",
+  "password": "$2y$10$6SHYWOE0.M4PiIMlXyuo7Oo9LHLEdhVSy7qAwnpFJ8/as1qelC9Oi",
+  "role": "customer",
+  "balance": 167000,
+  "branch_id": "Hồ Chí Minh",
+  "created_at": {
+    "$date": "1999-12-31T17:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694fab3467b76c2b6d0564f9"
+  },
+  "username": "dungtq",
+  "display_name": "dungtq",
+  "password": "$2y$10$4ajpSsMCbgYUI0gZLv0cH.3AhrhuV1ayiWVxEyn83jEPMDGhanwQS",
+  "role": "customer",
+  "balance": 182000,
+  "branch_id": "Hồ Chí Minh",
+  "created_at": {
+    "$date": "1999-12-31T17:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694fab4167b76c2b6d0564fa"
+  },
+  "username": "duyenvm",
+  "display_name": "duyenvm",
+  "password": "$2y$10$B/uyQvx9BUOsEHtPv/mLfeDOVZcK3xPiiBF99P0RlpVehpQIWaJmO",
+  "role": "customer",
+  "balance": 168000,
+  "branch_id": "Hồ Chí Minh",
+  "created_at": {
+    "$date": "1999-12-31T17:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694fab4a67b76c2b6d0564fb"
+  },
+  "username": "hungdv",
+  "display_name": "hungdv",
+  "password": "$2y$10$BCrpGCUpMqRi1ltshU4lS..ElHixChUPpDoarzwAiti9UCF5suiZ.",
+  "role": "customer",
+  "balance": 194000,
+  "branch_id": "Hồ Chí Minh",
+  "created_at": {
+    "$date": "1999-12-31T17:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694fab5467b76c2b6d0564fc"
+  },
+  "username": "yennt",
+  "display_name": "yennt",
+  "password": "$2y$10$0d/C3KdZKiwwVFh7RpdHvO8YTqtRVa.FWf3mzMKyY9aUxXny4YTTC",
+  "role": "customer",
+  "balance": 196000,
+  "branch_id": "Hồ Chí Minh",
+  "created_at": {
+    "$date": "1999-12-31T17:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694fab5d67b76c2b6d0564fd"
+  },
+  "username": "khoala",
+  "display_name": "khoala",
+  "password": "$2y$10$xxBjJ7cSDX2DOAsrpKjI/OHk4SlA/KEffX16NN3JilBakVV0NQAaC",
+  "role": "customer",
+  "balance": 179000,
+  "branch_id": "Hồ Chí Minh",
+  "created_at": {
+    "$date": "1999-12-31T17:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694fab6667b76c2b6d0564fe"
+  },
+  "username": "trangtp",
+  "display_name": "trangtp",
+  "password": "$2y$10$UZdfx/j8/CfRknKPQGRdbe5n1lbk.xhBnjNSsygOSiIjTkD/vSHxC",
+  "role": "customer",
+  "balance": 191000,
+  "branch_id": "Hồ Chí Minh",
+  "created_at": {
+    "$date": "1999-12-31T17:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694fab7467b76c2b6d0564ff"
+  },
+  "username": "taitm",
+  "display_name": "taitm",
+  "password": "$2y$10$oJ0mJ4l2LrC3KSpzO84eiulXrJjPyQy5LlHKnNvEpvABUrmg9ZqBS",
+  "role": "customer",
+  "balance": 193000,
+  "branch_id": "Hồ Chí Minh",
+  "created_at": {
+    "$date": "1999-12-31T17:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694fab7e67b76c2b6d056500"
+  },
+  "username": "vynt",
+  "display_name": "vynt",
+  "password": "$2y$10$ovJIxhSM80UngJCSDoopj.BCo1myMkUDPiqqtU5vbbfTxU3i/gvCG",
+  "role": "customer",
+  "balance": 191000,
+  "branch_id": "Hồ Chí Minh",
+  "created_at": {
+    "$date": "1999-12-31T17:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694fab8567b76c2b6d056501"
+  },
+  "username": "huynq",
+  "display_name": "huynq",
+  "password": "$2y$10$RgY/LIDm8RJAd8MMOYH5PeImvI1i.dMVZd7yfRRcHfXVJ0Ur9vWVO",
+  "role": "customer",
+  "balance": 200000,
+  "branch_id": "Hồ Chí Minh",
+  "created_at": {
+    "$date": "1999-12-31T17:00:00.000Z"
+  }
+}]

@@ -1,0 +1,184 @@
+[{
+  "_id": {
+    "$oid": "694ff8ce2e25f8c3fb0012e4"
+  },
+  "user_id": {
+    "$oid": "694fd2ff749704794c09dbaf"
+  },
+  "items": [],
+  "updated_at": {
+    "$date": "2025-12-27T15:29:19.044Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ff9082e25f8c3fb0012e6"
+  },
+  "user_id": {
+    "$oid": "694fd288749704794c09dba4"
+  },
+  "items": [
+    {
+      "book_id": {
+        "$oid": "694faa08d4871065baed1eaf"
+      },
+      "bookCode": "00194",
+      "bookName": "Chuyến phiêu lưu của bé số 44",
+      "pricePerDay": 2000,
+      "quantity": 1
+    },
+    {
+      "book_id": {
+        "$oid": "694faa08d4871065baed1ef3"
+      },
+      "bookCode": "394",
+      "bookName": "Chú thỏ thông minh và bạn bè",
+      "pricePerDay": 3000,
+      "quantity": 1
+    },
+    {
+      "book_id": {
+        "$oid": "694faa08d4871065baed1ef5"
+      },
+      "bookCode": "400",
+      "bookName": "Ngôi sao bé nhỏ",
+      "pricePerDay": 3000,
+      "quantity": 1
+    }
+  ],
+  "updated_at": {
+    "$date": "2025-12-27T15:27:02.213Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ff92c2e25f8c3fb0012e8"
+  },
+  "user_id": {
+    "$oid": "694fd29a749704794c09dba6"
+  },
+  "items": [],
+  "updated_at": {
+    "$date": "2025-12-27T15:27:21.364Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ff9792e25f8c3fb0012ea"
+  },
+  "user_id": {
+    "$oid": "694fd2be749704794c09dba9"
+  },
+  "items": [
+    {
+      "book_id": {
+        "$oid": "694faa08d4871065baed1eec"
+      },
+      "bookCode": "373",
+      "bookName": "Bí mật ngôi sao nhỏ",
+      "pricePerDay": 3000,
+      "quantity": 1
+    },
+    {
+      "book_id": {
+        "$oid": "694faa08d4871065baed1eed"
+      },
+      "bookCode": "376",
+      "bookName": "Vương quốc phép thuật",
+      "pricePerDay": 3000,
+      "quantity": 1
+    },
+    {
+      "book_id": {
+        "$oid": "694faa08d4871065baed1eee"
+      },
+      "bookCode": "379",
+      "bookName": "Những người bạn trong rừng thần tiên",
+      "pricePerDay": 3000,
+      "quantity": 1
+    }
+  ],
+  "updated_at": {
+    "$date": "2025-12-27T15:27:45.404Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ff9a62e25f8c3fb0012ec"
+  },
+  "user_id": {
+    "$oid": "694fd2cb749704794c09dbaa"
+  },
+  "items": [],
+  "updated_at": {
+    "$date": "2025-12-27T15:22:28.407Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ff9c72e25f8c3fb0012ee"
+  },
+  "user_id": {
+    "$oid": "694fd2da749704794c09dbab"
+  },
+  "items": [],
+  "updated_at": {
+    "$date": "2025-12-27T15:28:02.150Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ff9f22e25f8c3fb0012f0"
+  },
+  "user_id": {
+    "$oid": "694fd2e5749704794c09dbac"
+  },
+  "items": [
+    {
+      "book_id": {
+        "$oid": "694faa08d4871065baed1eec"
+      },
+      "bookCode": "373",
+      "bookName": "Bí mật ngôi sao nhỏ",
+      "pricePerDay": 3000,
+      "quantity": 1
+    }
+  ],
+  "updated_at": {
+    "$date": "2025-12-27T15:23:43.949Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ffa122e25f8c3fb0012f2"
+  },
+  "user_id": {
+    "$oid": "694fd2ee749704794c09dbad"
+  },
+  "items": [
+    {
+      "book_id": {
+        "$oid": "694faa08d4871065baed1e77"
+      },
+      "bookCode": "00028",
+      "bookName": "Sinh học người",
+      "pricePerDay": 2000,
+      "quantity": 1
+    }
+  ],
+  "updated_at": {
+    "$date": "2025-12-27T15:24:22.789Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ffa3f2e25f8c3fb0012f4"
+  },
+  "user_id": {
+    "$oid": "694fd2f6749704794c09dbae"
+  },
+  "items": [],
+  "updated_at": {
+    "$date": "2025-12-27T15:26:35.877Z"
+  }
+}]

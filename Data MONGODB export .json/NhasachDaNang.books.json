@@ -1,0 +1,2459 @@
+[{
+  "_id": {
+    "$oid": "694faa08d4871065baed1e77"
+  },
+  "bookCode": "00028",
+  "bookGroup": "Khoa học",
+  "bookName": "Sinh học người",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.423Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:28:54.252Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1e78"
+  },
+  "bookCode": "00029",
+  "bookGroup": "Khoa học",
+  "bookName": "Miễn dịch học",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.435Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:28:54.253Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1e79"
+  },
+  "bookCode": "00030",
+  "bookGroup": "Khoa học",
+  "bookName": "Giải phẫu học",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.436Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:25:55.178Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1e7a"
+  },
+  "bookCode": "00031",
+  "bookGroup": "Khoa học",
+  "bookName": "Địa chất học",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.438Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:25:55.178Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1e7b"
+  },
+  "bookCode": "00032",
+  "bookGroup": "Khoa học",
+  "bookName": "Khí tượng học",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.439Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.440Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1e7c"
+  },
+  "bookCode": "00033",
+  "bookGroup": "Khoa học",
+  "bookName": "Hải dương học",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.440Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:28:54.253Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1e7d"
+  },
+  "bookCode": "00051",
+  "bookGroup": "Công nghệ",
+  "bookName": "Ứng dụng trí tuệ nhân tạo trong giáo dục",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.441Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.442Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1e7e"
+  },
+  "bookCode": "00052",
+  "bookGroup": "Công nghệ",
+  "bookName": "Phân tích dữ liệu lớn trong hệ thống thông tin",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.443Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:28:43.424Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1e7f"
+  },
+  "bookCode": "00053",
+  "bookGroup": "Công nghệ",
+  "bookName": "Mô hình học máy cho dự đoán hành vi người dùng",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.444Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:25:53.098Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1e80"
+  },
+  "bookCode": "00054",
+  "bookGroup": "Công nghệ",
+  "bookName": "Thiết kế hệ thống e-Learning thông minh",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.445Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:28:43.423Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1e81"
+  },
+  "bookCode": "00055",
+  "bookGroup": "Công nghệ",
+  "bookName": "Xử lý ảnh số trong nhận dạng khuôn mặt",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.447Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:25:53.096Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1e82"
+  },
+  "bookCode": "00056",
+  "bookGroup": "Công nghệ",
+  "bookName": "Phát triển phần mềm hướng dịch vụ",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.448Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:28:43.422Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1e83"
+  },
+  "bookCode": "00057",
+  "bookGroup": "Công nghệ",
+  "bookName": "Ứng dụng Blockchain trong quản lý dữ liệu",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.449Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.448Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1e84"
+  },
+  "bookCode": "00058",
+  "bookGroup": "Công nghệ",
+  "bookName": "Khai phá dữ liệu và tri thức",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.450Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.449Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1e85"
+  },
+  "bookCode": "00059",
+  "bookGroup": "Công nghệ",
+  "bookName": "Hệ thống gợi ý dựa trên hành vi",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.452Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.449Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1e86"
+  },
+  "bookCode": "00060",
+  "bookGroup": "Công nghệ",
+  "bookName": "Mạng nơ-ron nhân tạo và ứng dụng",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.453Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:25:53.099Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1e87"
+  },
+  "bookCode": "00061",
+  "bookGroup": "Công nghệ",
+  "bookName": "Nghiên cứu thị giác máy tính",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.454Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:28:43.424Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1e88"
+  },
+  "bookCode": "00062",
+  "bookGroup": "Công nghệ",
+  "bookName": "Thuật toán tối ưu trong trí tuệ nhân tạo",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.456Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.452Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1e89"
+  },
+  "bookCode": "00063",
+  "bookGroup": "Công nghệ",
+  "bookName": "Hệ thống quản lý cơ sở dữ liệu phân tán",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.457Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.452Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1e8a"
+  },
+  "bookCode": "00064",
+  "bookGroup": "Công nghệ",
+  "bookName": "Phân tích và thiết kế hệ thống thông tin",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.458Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:25:50.910Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1e8b"
+  },
+  "bookCode": "00065",
+  "bookGroup": "Công nghệ",
+  "bookName": "Ứng dụng IoT trong thành phố thông minh",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.460Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.453Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1e8c"
+  },
+  "bookCode": "00066",
+  "bookGroup": "Công nghệ",
+  "bookName": "Mô hình bảo mật trong điện toán đám mây",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.461Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.454Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1e8d"
+  },
+  "bookCode": "00067",
+  "bookGroup": "Công nghệ",
+  "bookName": "Công nghệ nhận dạng giọng nói",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.462Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.455Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1e8e"
+  },
+  "bookCode": "00113",
+  "bookGroup": "Trinh thám",
+  "bookName": "Vụ án bí ẩn số 13",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.464Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.456Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1e8f"
+  },
+  "bookCode": "00114",
+  "bookGroup": "Trinh thám",
+  "bookName": "Vụ án bí ẩn số 14",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.465Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.457Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1e90"
+  },
+  "bookCode": "00115",
+  "bookGroup": "Trinh thám",
+  "bookName": "Vụ án bí ẩn số 15",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.466Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.458Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1e91"
+  },
+  "bookCode": "00116",
+  "bookGroup": "Trinh thám",
+  "bookName": "Vụ án bí ẩn số 16",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.467Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.458Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1e92"
+  },
+  "bookCode": "00117",
+  "bookGroup": "Trinh thám",
+  "bookName": "Vụ án bí ẩn số 17",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.469Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:28:50.481Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1e93"
+  },
+  "bookCode": "00118",
+  "bookGroup": "Trinh thám",
+  "bookName": "Vụ án bí ẩn số 18",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.470Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.460Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1e94"
+  },
+  "bookCode": "00119",
+  "bookGroup": "Trinh thám",
+  "bookName": "Vụ án bí ẩn số 19",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.471Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.460Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1e95"
+  },
+  "bookCode": "00120",
+  "bookGroup": "Trinh thám",
+  "bookName": "Vụ án bí ẩn số 20",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.472Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:28:50.482Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1e96"
+  },
+  "bookCode": "00121",
+  "bookGroup": "Trinh thám",
+  "bookName": "Vụ án bí ẩn số 21",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.473Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:28:50.481Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1e97"
+  },
+  "bookCode": "00122",
+  "bookGroup": "Trinh thám",
+  "bookName": "Vụ án bí ẩn số 22",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.475Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.463Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1e98"
+  },
+  "bookCode": "00123",
+  "bookGroup": "Trinh thám",
+  "bookName": "Vụ án bí ẩn số 23",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.477Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:28:55.567Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1e99"
+  },
+  "bookCode": "00124",
+  "bookGroup": "Trinh thám",
+  "bookName": "Vụ án bí ẩn số 24",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.478Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:28:55.566Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1e9a"
+  },
+  "bookCode": "00125",
+  "bookGroup": "Trinh thám",
+  "bookName": "Vụ án bí ẩn số 25",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.479Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:28:41.838Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1e9b"
+  },
+  "bookCode": "00126",
+  "bookGroup": "Trinh thám",
+  "bookName": "Vụ án bí ẩn số 26",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.481Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:28:55.564Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1e9c"
+  },
+  "bookCode": "00132",
+  "bookGroup": "Trinh thám",
+  "bookName": "Vụ án bí ẩn số 32",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.482Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 2000,
+  "quantity": 49,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:29:19.043Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1e9d"
+  },
+  "bookCode": "00133",
+  "bookGroup": "Trinh thám",
+  "bookName": "Vụ án bí ẩn số 33",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.483Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.470Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1e9e"
+  },
+  "bookCode": "00134",
+  "bookGroup": "Trinh thám",
+  "bookName": "Vụ án bí ẩn số 34",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.484Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.471Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1e9f"
+  },
+  "bookCode": "00135",
+  "bookGroup": "Trinh thám",
+  "bookName": "Vụ án bí ẩn số 35",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.485Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.472Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1ea0"
+  },
+  "bookCode": "00136",
+  "bookGroup": "Trinh thám",
+  "bookName": "Vụ án bí ẩn số 36",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.487Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 2000,
+  "quantity": 49,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:29:19.042Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1ea1"
+  },
+  "bookCode": "00152",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Chuyến phiêu lưu của bé số 2",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.488Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.473Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1ea2"
+  },
+  "bookCode": "00153",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Chuyến phiêu lưu của bé số 3",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.489Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.474Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1ea3"
+  },
+  "bookCode": "00154",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Chuyến phiêu lưu của bé số 4",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.491Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.476Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1ea4"
+  },
+  "bookCode": "00155",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Chuyến phiêu lưu của bé số 5",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.492Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.476Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1ea5"
+  },
+  "bookCode": "00156",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Chuyến phiêu lưu của bé số 6",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.493Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.477Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1ea6"
+  },
+  "bookCode": "00157",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Chuyến phiêu lưu của bé số 7",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.495Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:25:53.633Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1ea7"
+  },
+  "bookCode": "00171",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Chuyến phiêu lưu của bé số 21",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.497Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.479Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1ea8"
+  },
+  "bookCode": "00172",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Chuyến phiêu lưu của bé số 22",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.498Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 2000,
+  "quantity": 49,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:29:19.043Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1ea9"
+  },
+  "bookCode": "00173",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Chuyến phiêu lưu của bé số 23",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.499Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:25:53.633Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1eaa"
+  },
+  "bookCode": "00174",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Chuyến phiêu lưu của bé số 24",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.501Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.483Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1eab"
+  },
+  "bookCode": "00175",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Chuyến phiêu lưu của bé số 25",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.503Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.483Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1eac"
+  },
+  "bookCode": "00176",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Chuyến phiêu lưu của bé số 26",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.504Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:25:53.631Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1ead"
+  },
+  "bookCode": "00192",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Chuyến phiêu lưu của bé số 42",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.505Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.485Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1eae"
+  },
+  "bookCode": "00193",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Chuyến phiêu lưu của bé số 43",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.506Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.487Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1eaf"
+  },
+  "bookCode": "00194",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Chuyến phiêu lưu của bé số 44",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.508Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.487Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1eb0"
+  },
+  "bookCode": "00195",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Chuyến phiêu lưu của bé số 45",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.509Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:25:54.719Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1eb1"
+  },
+  "bookCode": "00196",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Chuyến phiêu lưu của bé số 46",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.511Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.489Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1eb2"
+  },
+  "bookCode": "00209",
+  "bookGroup": "Tiểu thuyết",
+  "bookName": "Hẹn gặp ở bình minh",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.512Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:25:54.718Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1eb3"
+  },
+  "bookCode": "00210",
+  "bookGroup": "Tiểu thuyết",
+  "bookName": "Chuyến tàu hoài niệm",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.514Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:25:55.636Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1eb4"
+  },
+  "bookCode": "00211",
+  "bookGroup": "Tiểu thuyết",
+  "bookName": "Tháng năm rực rỡ",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.515Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.492Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1eb5"
+  },
+  "bookCode": "00212",
+  "bookGroup": "Tiểu thuyết",
+  "bookName": "Dòng thời gian lạc lối",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.516Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:25:54.716Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1eb6"
+  },
+  "bookCode": "00213",
+  "bookGroup": "Tiểu thuyết",
+  "bookName": "Khi hoa nở muộn",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.518Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.494Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1eb7"
+  },
+  "bookCode": "00214",
+  "bookGroup": "Tiểu thuyết",
+  "bookName": "Trở về miền thương nhớ",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.519Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.495Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1eb8"
+  },
+  "bookCode": "00219",
+  "bookGroup": "Tiểu thuyết",
+  "bookName": "Bầu trời sau cơn mưa",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.521Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.496Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1eb9"
+  },
+  "bookCode": "00220",
+  "bookGroup": "Tiểu thuyết",
+  "bookName": "Chạm vào ký ức",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.522Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:25:54.719Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1eba"
+  },
+  "bookCode": "00221",
+  "bookGroup": "Tiểu thuyết",
+  "bookName": "Những con phố xa lạ",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.523Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:25:52.487Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1ebb"
+  },
+  "bookCode": "00222",
+  "bookGroup": "Tiểu thuyết",
+  "bookName": "Hương mùa cũ",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.525Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.499Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1ebc"
+  },
+  "bookCode": "00223",
+  "bookGroup": "Tiểu thuyết",
+  "bookName": "Một thời để nhớ",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.527Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:25:51.866Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1ebd"
+  },
+  "bookCode": "00235",
+  "bookGroup": "Tiểu thuyết",
+  "bookName": "Nơi thời gian dừng lại",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.528Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:25:51.864Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1ebe"
+  },
+  "bookCode": "00236",
+  "bookGroup": "Tiểu thuyết",
+  "bookName": "Chút nắng cuối ngày",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.530Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.502Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1ebf"
+  },
+  "bookCode": "00237",
+  "bookGroup": "Tiểu thuyết",
+  "bookName": "Về phía bình yên",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.531Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:25:52.485Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1ec0"
+  },
+  "bookCode": "00238",
+  "bookGroup": "Tiểu thuyết",
+  "bookName": "Mùa gió chướng",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.533Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.504Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1ec1"
+  },
+  "bookCode": "00239",
+  "bookGroup": "Tiểu thuyết",
+  "bookName": "Dấu chân trên cát",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.534Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.505Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1ec2"
+  },
+  "bookCode": "00251",
+  "bookGroup": "Khoa học",
+  "bookName": "Giải tích hàm một biến",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.535Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.506Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1ec3"
+  },
+  "bookCode": "00252",
+  "bookGroup": "Khoa học",
+  "bookName": "Topo đại cương",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.537Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.507Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1ec4"
+  },
+  "bookCode": "00257",
+  "bookGroup": "Khoa học",
+  "bookName": "Đại số đại cương",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.538Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.509Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1ec5"
+  },
+  "bookCode": "00258",
+  "bookGroup": "Khoa học",
+  "bookName": "Toán cho khoa học máy tính",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.539Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.509Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1ec6"
+  },
+  "bookCode": "00259",
+  "bookGroup": "Khoa học",
+  "bookName": "Đại số trừu tượng",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.540Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.510Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1ec7"
+  },
+  "bookCode": "00260",
+  "bookGroup": "Khoa học",
+  "bookName": "Mô hình toán học",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.541Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.511Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1ec8"
+  },
+  "bookCode": "00261",
+  "bookGroup": "Khoa học",
+  "bookName": "Toán rời rạc",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.543Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:25:52.486Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1ec9"
+  },
+  "bookCode": "00273",
+  "bookGroup": "Khoa học",
+  "bookName": "Phân tích số",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.544Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.514Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1eca"
+  },
+  "bookCode": "00274",
+  "bookGroup": "Khoa học",
+  "bookName": "Đại số máy tính",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.545Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.515Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1ecb"
+  },
+  "bookCode": "00275",
+  "bookGroup": "Khoa học",
+  "bookName": "Tối ưu hóa toán học",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.547Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.516Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1ecc"
+  },
+  "bookCode": "00276",
+  "bookGroup": "Khoa học",
+  "bookName": "Toán rời rạc ứng dụng",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.548Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.517Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1ecd"
+  },
+  "bookCode": "00277",
+  "bookGroup": "Khoa học",
+  "bookName": "Toán học ứng dụng",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.550Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.518Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1ece"
+  },
+  "bookCode": "00291",
+  "bookGroup": "Khoa học",
+  "bookName": "Hình học giải tích",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.551Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:25:54.171Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1ecf"
+  },
+  "bookCode": "00292",
+  "bookGroup": "Khoa học",
+  "bookName": "Phân tích Fourier",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.552Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:25:54.170Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1ed0"
+  },
+  "bookCode": "00293",
+  "bookGroup": "Khoa học",
+  "bookName": "Hình học vi phân",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.554Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.521Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1ed1"
+  },
+  "bookCode": "00294",
+  "bookGroup": "Khoa học",
+  "bookName": "Biến đổi Laplace",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.555Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:25:54.168Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1ed2"
+  },
+  "bookCode": "00295",
+  "bookGroup": "Khoa học",
+  "bookName": "Hình học không gian",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.556Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.523Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1ed3"
+  },
+  "bookCode": "301",
+  "bookGroup": "Khoa học",
+  "bookName": "Vũ trụ kỳ bí và các hành tinh xa xôi",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.558Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 5000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.524Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1ed4"
+  },
+  "bookCode": "304",
+  "bookGroup": "Khoa học",
+  "bookName": "Những bí ẩn của vật lý lượng tử",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.559Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 5000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.525Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1ed5"
+  },
+  "bookCode": "307",
+  "bookGroup": "Khoa học",
+  "bookName": "Năng lượng tái tạo: Giải pháp cho tương lai",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.560Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 5000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.526Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1ed6"
+  },
+  "bookCode": "310",
+  "bookGroup": "Khoa học",
+  "bookName": "Sinh học biển: Bí ẩn dưới đại dương",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.562Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 5000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.527Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1ed7"
+  },
+  "bookCode": "313",
+  "bookGroup": "Khoa học",
+  "bookName": "Công nghệ sinh học trong nông nghiệp",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.563Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 4000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.528Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1ed8"
+  },
+  "bookCode": "316",
+  "bookGroup": "Khoa học",
+  "bookName": "Vật lý lượng tử dễ hiểu",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.564Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 4000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.529Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1ed9"
+  },
+  "bookCode": "319",
+  "bookGroup": "Khoa học",
+  "bookName": "Khám phá năng lượng tái tạo",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.565Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 4000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.530Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1eda"
+  },
+  "bookCode": "322",
+  "bookGroup": "Khoa học",
+  "bookName": "Sinh học phân tử hiện đại",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.566Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 4000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.532Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1edb"
+  },
+  "bookCode": "324",
+  "bookGroup": "Khoa học",
+  "bookName": "Hệ thống năng lượng thông minh",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.567Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 4000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.533Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1edc"
+  },
+  "bookCode": "326",
+  "bookGroup": "Khoa học",
+  "bookName": "Công nghệ trí tuệ nhân tạo trong y học",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.568Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 4000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.534Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1edd"
+  },
+  "bookCode": "329",
+  "bookGroup": "Khoa học",
+  "bookName": "Robot và tự động hóa",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.570Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 4000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.535Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1ede"
+  },
+  "bookCode": "332",
+  "bookGroup": "Khoa học",
+  "bookName": "Khoa học vật lý ứng dụng",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.571Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 4000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.536Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1edf"
+  },
+  "bookCode": "335",
+  "bookGroup": "Khoa học",
+  "bookName": "Sinh học tế bào và gen",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.571Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 4000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.537Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1ee0"
+  },
+  "bookCode": "338",
+  "bookGroup": "Khoa học",
+  "bookName": "Hóa sinh và ứng dụng y học",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.573Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 4000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.538Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1ee1"
+  },
+  "bookCode": "341",
+  "bookGroup": "Khoa học",
+  "bookName": "Công nghệ robot học",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.575Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 4000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.540Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1ee2"
+  },
+  "bookCode": "344",
+  "bookGroup": "Khoa học",
+  "bookName": "Sinh học thần kinh ứng dụng",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.576Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 4000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.540Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1ee3"
+  },
+  "bookCode": "347",
+  "bookGroup": "Khoa học",
+  "bookName": "Vật lý hạt nhân hiện đại",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.577Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 4000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.541Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1ee4"
+  },
+  "bookCode": "350",
+  "bookGroup": "Khoa học",
+  "bookName": "Hóa học vật liệu mới",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.577Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 4000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.542Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1ee5"
+  },
+  "bookCode": "352",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Những cuộc phiêu lưu của Tom",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.580Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.543Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1ee6"
+  },
+  "bookCode": "355",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Bí mật khu vườn cổ",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.581Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.544Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1ee7"
+  },
+  "bookCode": "358",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Những chú khủng long nhỏ",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.582Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.545Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1ee8"
+  },
+  "bookCode": "361",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Chú chim biết hát",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.584Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.546Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1ee9"
+  },
+  "bookCode": "364",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Chuyến đi tới vùng đất bí ẩn",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.585Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.547Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1eea"
+  },
+  "bookCode": "367",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Câu chuyện kỳ diệu dưới ánh trăng",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.586Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.548Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1eeb"
+  },
+  "bookCode": "370",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Chú mèo dũng cảm",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.588Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.549Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1eec"
+  },
+  "bookCode": "373",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Bí mật ngôi sao nhỏ",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.589Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:28:52.058Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1eed"
+  },
+  "bookCode": "376",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Vương quốc phép thuật",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.590Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:28:52.057Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1eee"
+  },
+  "bookCode": "379",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Những người bạn trong rừng thần tiên",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.591Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:28:50.479Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1eef"
+  },
+  "bookCode": "382",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Vườn cổ tích diệu kỳ",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.593Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.552Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1ef0"
+  },
+  "bookCode": "385",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Chú mèo con kỳ diệu",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.594Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.553Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1ef1"
+  },
+  "bookCode": "388",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Chú chim xanh thông minh",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.595Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:56.555Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1ef2"
+  },
+  "bookCode": "391",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Chuyến phiêu lưu của chú nhím nhỏ",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.596Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:28:50.481Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1ef3"
+  },
+  "bookCode": "394",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Chú thỏ thông minh và bạn bè",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.597Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:28:52.057Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1ef4"
+  },
+  "bookCode": "397",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Vương quốc thần tiên bí ẩn",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.599Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:28:52.056Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa08d4871065baed1ef5"
+  },
+  "bookCode": "400",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Ngôi sao bé nhỏ",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:32.600Z"
+  },
+  "location": "Đà Nẵng",
+  "pricePerDay": 3000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:28:52.054Z"
+  },
+  "synced": false
+}]

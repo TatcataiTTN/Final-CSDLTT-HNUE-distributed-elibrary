@@ -1,0 +1,3032 @@
+[{
+  "_id": {
+    "$oid": "694fd5aa48b6f0b5630da305"
+  },
+  "user_id": {
+    "$oid": "694e6adada45830e1800b49a"
+  },
+  "username": "luuanhtu",
+  "total_per_day": 10000,
+  "total_amount": 10000,
+  "total_quantity": 3,
+  "items": [
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e65"
+      },
+      "bookCode": "348",
+      "bookName": "Khoa học dữ liệu nâng cao",
+      "pricePerDay": 4000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 4000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e61"
+      },
+      "bookCode": "336",
+      "bookName": "Vật lý thiên văn",
+      "pricePerDay": 4000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 4000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1dde"
+      },
+      "bookCode": "00010",
+      "bookName": "Cấu trúc vật chất",
+      "pricePerDay": 2000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 2000
+    }
+  ],
+  "status": "returned",
+  "branch_id": "HN",
+  "synced": false,
+  "created_at": {
+    "$date": "2025-12-27T12:48:42.016Z"
+  },
+  "confirmed_at": {
+    "$date": "2025-12-27T12:50:49.485Z"
+  },
+  "confirmed_by": "adminHN",
+  "returned_at": {
+    "$date": "2025-12-27T13:00:37.954Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694fd69348b6f0b5630da307"
+  },
+  "user_id": {
+    "$oid": "694ec76e371d11a332069884"
+  },
+  "username": "tuannghia",
+  "total_per_day": 18000,
+  "total_amount": 36000,
+  "total_quantity": 6,
+  "items": [
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e76"
+      },
+      "bookCode": "399",
+      "bookName": "Chú khỉ tinh nghịch",
+      "pricePerDay": 3000,
+      "quantity": 3,
+      "rent_days": 3,
+      "subTotal": 27000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e75"
+      },
+      "bookCode": "396",
+      "bookName": "Chú gấu trúc dũng cảm",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e74"
+      },
+      "bookCode": "393",
+      "bookName": "Những chú vịt phiêu lưu",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e73"
+      },
+      "bookCode": "390",
+      "bookName": "Chú cừu tinh nghịch",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    }
+  ],
+  "status": "returned",
+  "branch_id": "HN",
+  "synced": false,
+  "created_at": {
+    "$date": "2025-12-27T12:52:35.796Z"
+  },
+  "confirmed_at": {
+    "$date": "2025-12-27T13:00:19.677Z"
+  },
+  "confirmed_by": "adminHN",
+  "returned_at": {
+    "$date": "2025-12-27T13:00:36.328Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694fd74148b6f0b5630da309"
+  },
+  "user_id": {
+    "$oid": "694fce9831f0f2802b0b8ab6"
+  },
+  "username": "ducpm",
+  "total_per_day": 28000,
+  "total_amount": 28000,
+  "total_quantity": 9,
+  "items": [
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1e21"
+      },
+      "bookCode": "00146",
+      "bookName": "Vụ án bí ẩn số 46",
+      "pricePerDay": 2000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 2000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e74"
+      },
+      "bookCode": "393",
+      "bookName": "Những chú vịt phiêu lưu",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e72"
+      },
+      "bookCode": "387",
+      "bookName": "Ngôi làng dưới biển",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e71"
+      },
+      "bookCode": "384",
+      "bookName": "Những chú gà con dũng cảm",
+      "pricePerDay": 3000,
+      "quantity": 3,
+      "rent_days": 1,
+      "subTotal": 9000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e6f"
+      },
+      "bookCode": "378",
+      "bookName": "Chuyến phiêu lưu đến vùng đất xa xôi",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e6d"
+      },
+      "bookCode": "372",
+      "bookName": "Chú ếch phiêu lưu ký",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1e0f"
+      },
+      "bookCode": "00099",
+      "bookName": "Khai phá dữ liệu web",
+      "pricePerDay": 5000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 5000
+    }
+  ],
+  "status": "returned",
+  "branch_id": "HN",
+  "synced": false,
+  "created_at": {
+    "$date": "2025-12-27T12:55:29.044Z"
+  },
+  "confirmed_at": {
+    "$date": "2025-12-27T13:00:17.874Z"
+  },
+  "confirmed_by": "adminHN",
+  "returned_at": {
+    "$date": "2025-12-27T13:00:34.649Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694fd7d948b6f0b5630da30b"
+  },
+  "user_id": {
+    "$oid": "694fad8a67b76c2b6d05650f"
+  },
+  "username": "annv",
+  "total_per_day": 8000,
+  "total_amount": 8000,
+  "total_quantity": 4,
+  "items": [
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1e21"
+      },
+      "bookCode": "00146",
+      "bookName": "Vụ án bí ẩn số 46",
+      "pricePerDay": 2000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 2000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1e1f"
+      },
+      "bookCode": "00144",
+      "bookName": "Vụ án bí ẩn số 44",
+      "pricePerDay": 2000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 2000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1e1e"
+      },
+      "bookCode": "00143",
+      "bookName": "Vụ án bí ẩn số 43",
+      "pricePerDay": 2000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 2000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1e1c"
+      },
+      "bookCode": "00141",
+      "bookName": "Vụ án bí ẩn số 41",
+      "pricePerDay": 2000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 2000
+    }
+  ],
+  "status": "returned",
+  "branch_id": "HN",
+  "synced": false,
+  "created_at": {
+    "$date": "2025-12-27T12:58:01.329Z"
+  },
+  "confirmed_at": {
+    "$date": "2025-12-27T13:00:16.310Z"
+  },
+  "confirmed_by": "adminHN",
+  "returned_at": {
+    "$date": "2025-12-27T13:00:32.874Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694fd88e48b6f0b5630da30c"
+  },
+  "user_id": {
+    "$oid": "694e6adada45830e1800b49a"
+  },
+  "username": "luuanhtu",
+  "total_per_day": 21000,
+  "total_amount": 21000,
+  "total_quantity": 7,
+  "items": [
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e76"
+      },
+      "bookCode": "399",
+      "bookName": "Chú khỉ tinh nghịch",
+      "pricePerDay": 3000,
+      "quantity": 3,
+      "rent_days": 1,
+      "subTotal": 9000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e75"
+      },
+      "bookCode": "396",
+      "bookName": "Chú gấu trúc dũng cảm",
+      "pricePerDay": 3000,
+      "quantity": 2,
+      "rent_days": 1,
+      "subTotal": 6000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e74"
+      },
+      "bookCode": "393",
+      "bookName": "Những chú vịt phiêu lưu",
+      "pricePerDay": 3000,
+      "quantity": 2,
+      "rent_days": 1,
+      "subTotal": 6000
+    }
+  ],
+  "status": "returned",
+  "branch_id": "HN",
+  "synced": false,
+  "created_at": {
+    "$date": "2025-12-27T13:01:02.925Z"
+  },
+  "confirmed_at": {
+    "$date": "2025-12-27T13:10:21.905Z"
+  },
+  "confirmed_by": "adminHN",
+  "returned_at": {
+    "$date": "2025-12-27T13:10:39.396Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694fd8bf48b6f0b5630da30d"
+  },
+  "user_id": {
+    "$oid": "694ec76e371d11a332069884"
+  },
+  "username": "tuannghia",
+  "total_per_day": 23000,
+  "total_amount": 23000,
+  "total_quantity": 8,
+  "items": [
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1e21"
+      },
+      "bookCode": "00146",
+      "bookName": "Vụ án bí ẩn số 46",
+      "pricePerDay": 2000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 2000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e75"
+      },
+      "bookCode": "396",
+      "bookName": "Chú gấu trúc dũng cảm",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e74"
+      },
+      "bookCode": "393",
+      "bookName": "Những chú vịt phiêu lưu",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e73"
+      },
+      "bookCode": "390",
+      "bookName": "Chú cừu tinh nghịch",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e72"
+      },
+      "bookCode": "387",
+      "bookName": "Ngôi làng dưới biển",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e76"
+      },
+      "bookCode": "399",
+      "bookName": "Chú khỉ tinh nghịch",
+      "pricePerDay": 3000,
+      "quantity": 3,
+      "rent_days": 1,
+      "subTotal": 9000
+    }
+  ],
+  "status": "returned",
+  "branch_id": "HN",
+  "synced": false,
+  "created_at": {
+    "$date": "2025-12-27T13:01:51.638Z"
+  },
+  "confirmed_at": {
+    "$date": "2025-12-27T13:10:21.905Z"
+  },
+  "confirmed_by": "adminHN",
+  "returned_at": {
+    "$date": "2025-12-27T13:10:38.133Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694fd8dc48b6f0b5630da30e"
+  },
+  "user_id": {
+    "$oid": "694fad8a67b76c2b6d05650f"
+  },
+  "username": "annv",
+  "total_per_day": 21000,
+  "total_amount": 21000,
+  "total_quantity": 7,
+  "items": [
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e76"
+      },
+      "bookCode": "399",
+      "bookName": "Chú khỉ tinh nghịch",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e75"
+      },
+      "bookCode": "396",
+      "bookName": "Chú gấu trúc dũng cảm",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e74"
+      },
+      "bookCode": "393",
+      "bookName": "Những chú vịt phiêu lưu",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e73"
+      },
+      "bookCode": "390",
+      "bookName": "Chú cừu tinh nghịch",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e72"
+      },
+      "bookCode": "387",
+      "bookName": "Ngôi làng dưới biển",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e71"
+      },
+      "bookCode": "384",
+      "bookName": "Những chú gà con dũng cảm",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e70"
+      },
+      "bookCode": "381",
+      "bookName": "Chú cáo và những người bạn",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    }
+  ],
+  "status": "returned",
+  "branch_id": "HN",
+  "synced": false,
+  "created_at": {
+    "$date": "2025-12-27T13:02:20.788Z"
+  },
+  "confirmed_at": {
+    "$date": "2025-12-27T13:10:21.905Z"
+  },
+  "confirmed_by": "adminHN",
+  "returned_at": {
+    "$date": "2025-12-27T13:10:36.722Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694fd90448b6f0b5630da30f"
+  },
+  "user_id": {
+    "$oid": "694fce9831f0f2802b0b8ab6"
+  },
+  "username": "ducpm",
+  "total_per_day": 13000,
+  "total_amount": 13000,
+  "total_quantity": 5,
+  "items": [
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e6d"
+      },
+      "bookCode": "372",
+      "bookName": "Chú ếch phiêu lưu ký",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e6e"
+      },
+      "bookCode": "375",
+      "bookName": "Chú hươu biết bay",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e70"
+      },
+      "bookCode": "381",
+      "bookName": "Chú cáo và những người bạn",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1dd5"
+      },
+      "bookCode": "00001",
+      "bookName": "Vật lý lượng tử nhập môn",
+      "pricePerDay": 2000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 2000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1dd6"
+      },
+      "bookCode": "00002",
+      "bookName": "Cơ học cổ điển và hiện đại",
+      "pricePerDay": 2000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 2000
+    }
+  ],
+  "status": "returned",
+  "branch_id": "HN",
+  "synced": false,
+  "created_at": {
+    "$date": "2025-12-27T13:03:00.699Z"
+  },
+  "confirmed_at": {
+    "$date": "2025-12-27T13:10:21.905Z"
+  },
+  "confirmed_by": "adminHN",
+  "returned_at": {
+    "$date": "2025-12-27T13:10:33.056Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694fd9da48b6f0b5630da312"
+  },
+  "user_id": {
+    "$oid": "694fd94f48b6f0b5630da310"
+  },
+  "username": "maidtt",
+  "total_per_day": 14000,
+  "total_amount": 14000,
+  "total_quantity": 5,
+  "items": [
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e36"
+      },
+      "bookCode": "00201",
+      "bookName": "Dưới bầu trời Paris",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1e2c"
+      },
+      "bookCode": "00181",
+      "bookName": "Chuyến phiêu lưu của bé số 31",
+      "pricePerDay": 2000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 2000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1e04"
+      },
+      "bookCode": "00076",
+      "bookName": "Công nghệ học máy trong phân tích ảnh",
+      "pricePerDay": 5000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 5000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1dfa"
+      },
+      "bookCode": "00049",
+      "bookName": "Công nghệ sinh học ứng dụng",
+      "pricePerDay": 2000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 2000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1df0"
+      },
+      "bookCode": "00039",
+      "bookName": "Thủy văn học",
+      "pricePerDay": 2000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 2000
+    }
+  ],
+  "status": "returned",
+  "branch_id": "HN",
+  "synced": false,
+  "created_at": {
+    "$date": "2025-12-27T13:06:34.026Z"
+  },
+  "confirmed_at": {
+    "$date": "2025-12-27T13:10:20.098Z"
+  },
+  "confirmed_by": "adminHN",
+  "returned_at": {
+    "$date": "2025-12-27T13:10:35.108Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694fda7948b6f0b5630da315"
+  },
+  "user_id": {
+    "$oid": "694fda2148b6f0b5630da313"
+  },
+  "username": "huynqc",
+  "total_per_day": 22000,
+  "total_amount": 22000,
+  "total_quantity": 7,
+  "items": [
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e6b"
+      },
+      "bookCode": "366",
+      "bookName": "Chú gấu biết hát",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e6a"
+      },
+      "bookCode": "363",
+      "bookName": "Những người bạn rừng xanh",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e68"
+      },
+      "bookCode": "357",
+      "bookName": "Cuộc phiêu lưu trên vũ trụ",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e66"
+      },
+      "bookCode": "351",
+      "bookName": "Chuyện cổ tích rừng xanh",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e65"
+      },
+      "bookCode": "348",
+      "bookName": "Khoa học dữ liệu nâng cao",
+      "pricePerDay": 4000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 4000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e63"
+      },
+      "bookCode": "342",
+      "bookName": "Khoa học dữ liệu sinh học",
+      "pricePerDay": 4000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 4000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1dd5"
+      },
+      "bookCode": "00001",
+      "bookName": "Vật lý lượng tử nhập môn",
+      "pricePerDay": 2000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 2000
+    }
+  ],
+  "status": "returned",
+  "branch_id": "HN",
+  "synced": false,
+  "created_at": {
+    "$date": "2025-12-27T13:09:13.804Z"
+  },
+  "confirmed_at": {
+    "$date": "2025-12-27T13:10:17.931Z"
+  },
+  "confirmed_by": "adminHN",
+  "returned_at": {
+    "$date": "2025-12-27T13:10:27.640Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694feec748b6f0b5630da31a"
+  },
+  "user_id": {
+    "$oid": "694e6adada45830e1800b49a"
+  },
+  "username": "luuanhtu",
+  "total_per_day": 15000,
+  "total_amount": 15000,
+  "total_quantity": 5,
+  "items": [
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e76"
+      },
+      "bookCode": "399",
+      "bookName": "Chú khỉ tinh nghịch",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e75"
+      },
+      "bookCode": "396",
+      "bookName": "Chú gấu trúc dũng cảm",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e74"
+      },
+      "bookCode": "393",
+      "bookName": "Những chú vịt phiêu lưu",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e73"
+      },
+      "bookCode": "390",
+      "bookName": "Chú cừu tinh nghịch",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e6d"
+      },
+      "bookCode": "372",
+      "bookName": "Chú ếch phiêu lưu ký",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    }
+  ],
+  "status": "returned",
+  "branch_id": "HN",
+  "synced": false,
+  "created_at": {
+    "$date": "2025-12-27T14:35:51.873Z"
+  },
+  "confirmed_at": {
+    "$date": "2025-12-27T14:56:46.602Z"
+  },
+  "confirmed_by": "adminHN",
+  "returned_at": {
+    "$date": "2025-12-27T14:57:04.200Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694fef2448b6f0b5630da31b"
+  },
+  "user_id": {
+    "$oid": "694ec76e371d11a332069884"
+  },
+  "username": "tuannghia",
+  "total_per_day": 12000,
+  "total_amount": 12000,
+  "total_quantity": 3,
+  "items": [
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e65"
+      },
+      "bookCode": "348",
+      "bookName": "Khoa học dữ liệu nâng cao",
+      "pricePerDay": 4000,
+      "quantity": 2,
+      "rent_days": 1,
+      "subTotal": 8000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e61"
+      },
+      "bookCode": "336",
+      "bookName": "Vật lý thiên văn",
+      "pricePerDay": 4000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 4000
+    }
+  ],
+  "status": "returned",
+  "branch_id": "HN",
+  "synced": false,
+  "created_at": {
+    "$date": "2025-12-27T14:37:24.586Z"
+  },
+  "confirmed_at": {
+    "$date": "2025-12-27T14:56:46.602Z"
+  },
+  "confirmed_by": "adminHN",
+  "returned_at": {
+    "$date": "2025-12-27T14:57:02.495Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694fef6b48b6f0b5630da31c"
+  },
+  "user_id": {
+    "$oid": "694fad8a67b76c2b6d05650f"
+  },
+  "username": "annv",
+  "total_per_day": 5000,
+  "total_amount": 5000,
+  "total_quantity": 2,
+  "items": [
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e6e"
+      },
+      "bookCode": "375",
+      "bookName": "Chú hươu biết bay",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1dd6"
+      },
+      "bookCode": "00002",
+      "bookName": "Cơ học cổ điển và hiện đại",
+      "pricePerDay": 2000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 2000
+    }
+  ],
+  "status": "returned",
+  "branch_id": "HN",
+  "synced": false,
+  "created_at": {
+    "$date": "2025-12-27T14:38:35.123Z"
+  },
+  "confirmed_at": {
+    "$date": "2025-12-27T14:56:46.602Z"
+  },
+  "confirmed_by": "adminHN",
+  "returned_at": {
+    "$date": "2025-12-27T14:57:23.647Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ff01c48b6f0b5630da31d"
+  },
+  "user_id": {
+    "$oid": "694fce9831f0f2802b0b8ab6"
+  },
+  "username": "ducpm",
+  "total_per_day": 6000,
+  "total_amount": 6000,
+  "total_quantity": 3,
+  "items": [
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1e19"
+      },
+      "bookCode": "00138",
+      "bookName": "Vụ án bí ẩn số 38",
+      "pricePerDay": 2000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 2000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1e11"
+      },
+      "bookCode": "00101",
+      "bookName": "Vụ án bí ẩn số 1",
+      "pricePerDay": 2000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 2000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1e14"
+      },
+      "bookCode": "00104",
+      "bookName": "Vụ án bí ẩn số 4",
+      "pricePerDay": 2000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 2000
+    }
+  ],
+  "status": "returned",
+  "branch_id": "HN",
+  "synced": false,
+  "created_at": {
+    "$date": "2025-12-27T14:41:32.811Z"
+  },
+  "confirmed_at": {
+    "$date": "2025-12-27T14:56:46.602Z"
+  },
+  "confirmed_by": "adminHN",
+  "returned_at": {
+    "$date": "2025-12-27T14:57:22.457Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ff12448b6f0b5630da324"
+  },
+  "user_id": {
+    "$oid": "694fd94f48b6f0b5630da310"
+  },
+  "username": "maidtt",
+  "total_per_day": 15000,
+  "total_amount": 15000,
+  "total_quantity": 5,
+  "items": [
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e76"
+      },
+      "bookCode": "399",
+      "bookName": "Chú khỉ tinh nghịch",
+      "pricePerDay": 3000,
+      "quantity": 3,
+      "rent_days": 1,
+      "subTotal": 9000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e75"
+      },
+      "bookCode": "396",
+      "bookName": "Chú gấu trúc dũng cảm",
+      "pricePerDay": 3000,
+      "quantity": 2,
+      "rent_days": 1,
+      "subTotal": 6000
+    }
+  ],
+  "status": "returned",
+  "branch_id": "HN",
+  "synced": false,
+  "created_at": {
+    "$date": "2025-12-27T14:45:56.842Z"
+  },
+  "confirmed_at": {
+    "$date": "2025-12-27T14:56:46.602Z"
+  },
+  "confirmed_by": "adminHN",
+  "returned_at": {
+    "$date": "2025-12-27T14:57:21.118Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ff13348b6f0b5630da325"
+  },
+  "user_id": {
+    "$oid": "694fda2148b6f0b5630da313"
+  },
+  "username": "huynqc",
+  "total_per_day": 6000,
+  "total_amount": 6000,
+  "total_quantity": 3,
+  "items": [
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1e20"
+      },
+      "bookCode": "00145",
+      "bookName": "Vụ án bí ẩn số 45",
+      "pricePerDay": 2000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 2000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1e1c"
+      },
+      "bookCode": "00141",
+      "bookName": "Vụ án bí ẩn số 41",
+      "pricePerDay": 2000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 2000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1e19"
+      },
+      "bookCode": "00138",
+      "bookName": "Vụ án bí ẩn số 38",
+      "pricePerDay": 2000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 2000
+    }
+  ],
+  "status": "returned",
+  "branch_id": "HN",
+  "synced": false,
+  "created_at": {
+    "$date": "2025-12-27T14:46:11.203Z"
+  },
+  "confirmed_at": {
+    "$date": "2025-12-27T14:56:46.602Z"
+  },
+  "confirmed_by": "adminHN",
+  "returned_at": {
+    "$date": "2025-12-27T14:57:19.422Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ff2cb48b6f0b5630da327"
+  },
+  "user_id": {
+    "$oid": "694ff0e548b6f0b5630da31e"
+  },
+  "username": "cuonglh",
+  "total_per_day": 6000,
+  "total_amount": 6000,
+  "total_quantity": 3,
+  "items": [
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1dd6"
+      },
+      "bookCode": "00002",
+      "bookName": "Cơ học cổ điển và hiện đại",
+      "pricePerDay": 2000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 2000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1dd5"
+      },
+      "bookCode": "00001",
+      "bookName": "Vật lý lượng tử nhập môn",
+      "pricePerDay": 2000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 2000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1dd7"
+      },
+      "bookCode": "00003",
+      "bookName": "Điện từ học ứng dụng",
+      "pricePerDay": 2000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 2000
+    }
+  ],
+  "status": "returned",
+  "branch_id": "HN",
+  "synced": false,
+  "created_at": {
+    "$date": "2025-12-27T14:52:59.718Z"
+  },
+  "confirmed_at": {
+    "$date": "2025-12-27T14:56:46.602Z"
+  },
+  "confirmed_by": "adminHN",
+  "returned_at": {
+    "$date": "2025-12-27T14:57:18.061Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ff2fc48b6f0b5630da329"
+  },
+  "user_id": {
+    "$oid": "694ff0f948b6f0b5630da320"
+  },
+  "username": "emvt",
+  "total_per_day": 6000,
+  "total_amount": 6000,
+  "total_quantity": 3,
+  "items": [
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1dfa"
+      },
+      "bookCode": "00049",
+      "bookName": "Công nghệ sinh học ứng dụng",
+      "pricePerDay": 2000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 2000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1df8"
+      },
+      "bookCode": "00047",
+      "bookName": "Vật liệu thông minh",
+      "pricePerDay": 2000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 2000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1df5"
+      },
+      "bookCode": "00044",
+      "bookName": "Internet vạn vật (IoT)",
+      "pricePerDay": 2000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 2000
+    }
+  ],
+  "status": "returned",
+  "branch_id": "HN",
+  "synced": false,
+  "created_at": {
+    "$date": "2025-12-27T14:53:48.668Z"
+  },
+  "confirmed_at": {
+    "$date": "2025-12-27T14:56:46.602Z"
+  },
+  "confirmed_by": "adminHN",
+  "returned_at": {
+    "$date": "2025-12-27T14:57:16.713Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ff32e48b6f0b5630da32b"
+  },
+  "user_id": {
+    "$oid": "694ff10148b6f0b5630da321"
+  },
+  "username": "huynq",
+  "total_per_day": 25000,
+  "total_amount": 65000,
+  "total_quantity": 5,
+  "items": [
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1e04"
+      },
+      "bookCode": "00076",
+      "bookName": "Công nghệ học máy trong phân tích ảnh",
+      "pricePerDay": 5000,
+      "quantity": 2,
+      "rent_days": 5,
+      "subTotal": 50000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1e01"
+      },
+      "bookCode": "00073",
+      "bookName": "Mô hình dự báo bằng học sâu",
+      "pricePerDay": 5000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 5000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1dff"
+      },
+      "bookCode": "00071",
+      "bookName": "Trí tuệ nhân tạo trong chẩn đoán y khoa",
+      "pricePerDay": 5000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 5000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1e07"
+      },
+      "bookCode": "00079",
+      "bookName": "Khóa luận về an toàn thông tin",
+      "pricePerDay": 5000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 5000
+    }
+  ],
+  "status": "returned",
+  "branch_id": "HN",
+  "synced": false,
+  "created_at": {
+    "$date": "2025-12-27T14:54:38.635Z"
+  },
+  "confirmed_at": {
+    "$date": "2025-12-27T14:56:46.602Z"
+  },
+  "confirmed_by": "adminHN",
+  "returned_at": {
+    "$date": "2025-12-27T14:57:15.528Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ff35648b6f0b5630da32d"
+  },
+  "user_id": {
+    "$oid": "694ff10948b6f0b5630da322"
+  },
+  "username": "hatt",
+  "total_per_day": 11000,
+  "total_amount": 11000,
+  "total_quantity": 4,
+  "items": [
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e41"
+      },
+      "bookCode": "00242",
+      "bookName": "Dưới bóng chiều tà",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e36"
+      },
+      "bookCode": "00201",
+      "bookName": "Dưới bầu trời Paris",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1e21"
+      },
+      "bookCode": "00146",
+      "bookName": "Vụ án bí ẩn số 46",
+      "pricePerDay": 2000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 2000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e46"
+      },
+      "bookCode": "00263",
+      "bookName": "Lý thuyết đồ thị",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    }
+  ],
+  "status": "returned",
+  "branch_id": "HN",
+  "synced": false,
+  "created_at": {
+    "$date": "2025-12-27T14:55:18.211Z"
+  },
+  "confirmed_at": {
+    "$date": "2025-12-27T14:56:46.602Z"
+  },
+  "confirmed_by": "adminHN",
+  "returned_at": {
+    "$date": "2025-12-27T14:57:14.030Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ff36f48b6f0b5630da32f"
+  },
+  "user_id": {
+    "$oid": "694ff11348b6f0b5630da323"
+  },
+  "username": "longbd",
+  "total_per_day": 12000,
+  "total_amount": 12000,
+  "total_quantity": 4,
+  "items": [
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e53"
+      },
+      "bookCode": "00298",
+      "bookName": "Lý thuyết tối ưu nâng cao",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e51"
+      },
+      "bookCode": "00296",
+      "bookName": "Toán học trong vật lý",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e74"
+      },
+      "bookCode": "393",
+      "bookName": "Những chú vịt phiêu lưu",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e50"
+      },
+      "bookCode": "00283",
+      "bookName": "Lý thuyết tập hợp",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    }
+  ],
+  "status": "returned",
+  "branch_id": "HN",
+  "synced": false,
+  "created_at": {
+    "$date": "2025-12-27T14:55:43.586Z"
+  },
+  "confirmed_at": {
+    "$date": "2025-12-27T14:56:46.602Z"
+  },
+  "confirmed_by": "adminHN",
+  "returned_at": {
+    "$date": "2025-12-27T14:57:12.688Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ff39748b6f0b5630da331"
+  },
+  "user_id": {
+    "$oid": "694ff0ee48b6f0b5630da31f"
+  },
+  "username": "binhtt",
+  "total_per_day": 2000,
+  "total_amount": 2000,
+  "total_quantity": 1,
+  "items": [
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1dd6"
+      },
+      "bookCode": "00002",
+      "bookName": "Cơ học cổ điển và hiện đại",
+      "pricePerDay": 2000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 2000
+    }
+  ],
+  "status": "returned",
+  "branch_id": "HN",
+  "synced": false,
+  "created_at": {
+    "$date": "2025-12-27T14:56:23.888Z"
+  },
+  "confirmed_at": {
+    "$date": "2025-12-27T14:56:46.602Z"
+  },
+  "confirmed_by": "adminHN",
+  "returned_at": {
+    "$date": "2025-12-27T14:57:11.127Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ff47048b6f0b5630da332"
+  },
+  "user_id": {
+    "$oid": "694e6adada45830e1800b49a"
+  },
+  "username": "luuanhtu",
+  "total_per_day": 22000,
+  "total_amount": 22000,
+  "total_quantity": 9,
+  "items": [
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1e2d"
+      },
+      "bookCode": "00182",
+      "bookName": "Chuyến phiêu lưu của bé số 32",
+      "pricePerDay": 2000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 2000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e35"
+      },
+      "bookCode": "00200",
+      "bookName": "Chuyến phiêu lưu của bé số 50",
+      "pricePerDay": 2000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 2000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1e2b"
+      },
+      "bookCode": "00180",
+      "bookName": "Chuyến phiêu lưu của bé số 30",
+      "pricePerDay": 2000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 2000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1e21"
+      },
+      "bookCode": "00146",
+      "bookName": "Vụ án bí ẩn số 46",
+      "pricePerDay": 2000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 2000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1e17"
+      },
+      "bookCode": "00107",
+      "bookName": "Vụ án bí ẩn số 7",
+      "pricePerDay": 2000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 2000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e76"
+      },
+      "bookCode": "399",
+      "bookName": "Chú khỉ tinh nghịch",
+      "pricePerDay": 3000,
+      "quantity": 4,
+      "rent_days": 1,
+      "subTotal": 12000
+    }
+  ],
+  "status": "returned",
+  "branch_id": "HN",
+  "synced": false,
+  "created_at": {
+    "$date": "2025-12-27T15:00:00.953Z"
+  },
+  "confirmed_at": {
+    "$date": "2025-12-27T15:05:30.529Z"
+  },
+  "confirmed_by": "adminHN",
+  "returned_at": {
+    "$date": "2025-12-27T15:05:44.611Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ff48648b6f0b5630da333"
+  },
+  "user_id": {
+    "$oid": "694ec76e371d11a332069884"
+  },
+  "username": "tuannghia",
+  "total_per_day": 7000,
+  "total_amount": 7000,
+  "total_quantity": 2,
+  "items": [
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1e18"
+      },
+      "bookCode": "00137",
+      "bookName": "Vụ án bí ẩn số 37",
+      "pricePerDay": 2000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 2000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1e04"
+      },
+      "bookCode": "00076",
+      "bookName": "Công nghệ học máy trong phân tích ảnh",
+      "pricePerDay": 5000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 5000
+    }
+  ],
+  "status": "returned",
+  "branch_id": "HN",
+  "synced": false,
+  "created_at": {
+    "$date": "2025-12-27T15:00:22.633Z"
+  },
+  "confirmed_at": {
+    "$date": "2025-12-27T15:05:30.529Z"
+  },
+  "confirmed_by": "adminHN",
+  "returned_at": {
+    "$date": "2025-12-27T15:05:43.606Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ff49a48b6f0b5630da334"
+  },
+  "user_id": {
+    "$oid": "694fad8a67b76c2b6d05650f"
+  },
+  "username": "annv",
+  "total_per_day": 9000,
+  "total_amount": 9000,
+  "total_quantity": 3,
+  "items": [
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e76"
+      },
+      "bookCode": "399",
+      "bookName": "Chú khỉ tinh nghịch",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e75"
+      },
+      "bookCode": "396",
+      "bookName": "Chú gấu trúc dũng cảm",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e74"
+      },
+      "bookCode": "393",
+      "bookName": "Những chú vịt phiêu lưu",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    }
+  ],
+  "status": "returned",
+  "branch_id": "HN",
+  "synced": false,
+  "created_at": {
+    "$date": "2025-12-27T15:00:42.682Z"
+  },
+  "confirmed_at": {
+    "$date": "2025-12-27T15:05:30.529Z"
+  },
+  "confirmed_by": "adminHN",
+  "returned_at": {
+    "$date": "2025-12-27T15:05:43.164Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ff4ab48b6f0b5630da335"
+  },
+  "user_id": {
+    "$oid": "694fd94f48b6f0b5630da310"
+  },
+  "username": "maidtt",
+  "total_per_day": 2000,
+  "total_amount": 2000,
+  "total_quantity": 1,
+  "items": [
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1dd6"
+      },
+      "bookCode": "00002",
+      "bookName": "Cơ học cổ điển và hiện đại",
+      "pricePerDay": 2000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 2000
+    }
+  ],
+  "status": "returned",
+  "branch_id": "HN",
+  "synced": false,
+  "created_at": {
+    "$date": "2025-12-27T15:00:59.816Z"
+  },
+  "confirmed_at": {
+    "$date": "2025-12-27T15:05:30.529Z"
+  },
+  "confirmed_by": "adminHN",
+  "returned_at": {
+    "$date": "2025-12-27T15:05:42.449Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ff4c148b6f0b5630da336"
+  },
+  "user_id": {
+    "$oid": "694fda2148b6f0b5630da313"
+  },
+  "username": "huynqc",
+  "total_per_day": 9000,
+  "total_amount": 9000,
+  "total_quantity": 3,
+  "items": [
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e6f"
+      },
+      "bookCode": "378",
+      "bookName": "Chuyến phiêu lưu đến vùng đất xa xôi",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e6d"
+      },
+      "bookCode": "372",
+      "bookName": "Chú ếch phiêu lưu ký",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e6c"
+      },
+      "bookCode": "369",
+      "bookName": "Những bông hoa biết nói",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    }
+  ],
+  "status": "returned",
+  "branch_id": "HN",
+  "synced": false,
+  "created_at": {
+    "$date": "2025-12-27T15:01:21.114Z"
+  },
+  "confirmed_at": {
+    "$date": "2025-12-27T15:05:30.529Z"
+  },
+  "confirmed_by": "adminHN",
+  "returned_at": {
+    "$date": "2025-12-27T15:05:41.742Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ff4d248b6f0b5630da337"
+  },
+  "user_id": {
+    "$oid": "694fce9831f0f2802b0b8ab6"
+  },
+  "username": "ducpm",
+  "total_per_day": 9000,
+  "total_amount": 9000,
+  "total_quantity": 3,
+  "items": [
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e6e"
+      },
+      "bookCode": "375",
+      "bookName": "Chú hươu biết bay",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e71"
+      },
+      "bookCode": "384",
+      "bookName": "Những chú gà con dũng cảm",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e72"
+      },
+      "bookCode": "387",
+      "bookName": "Ngôi làng dưới biển",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    }
+  ],
+  "status": "returned",
+  "branch_id": "HN",
+  "synced": false,
+  "created_at": {
+    "$date": "2025-12-27T15:01:38.116Z"
+  },
+  "confirmed_at": {
+    "$date": "2025-12-27T15:05:30.529Z"
+  },
+  "confirmed_by": "adminHN",
+  "returned_at": {
+    "$date": "2025-12-27T15:05:41.377Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ff4ec48b6f0b5630da338"
+  },
+  "user_id": {
+    "$oid": "694ff0e548b6f0b5630da31e"
+  },
+  "username": "cuonglh",
+  "total_per_day": 9000,
+  "total_amount": 9000,
+  "total_quantity": 3,
+  "items": [
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e4b"
+      },
+      "bookCode": "00278",
+      "bookName": "Phương trình đạo hàm riêng",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e4c"
+      },
+      "bookCode": "00279",
+      "bookName": "Toán tài chính",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e4a"
+      },
+      "bookCode": "00267",
+      "bookName": "Thống kê toán học",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    }
+  ],
+  "status": "returned",
+  "branch_id": "HN",
+  "synced": false,
+  "created_at": {
+    "$date": "2025-12-27T15:02:04.631Z"
+  },
+  "confirmed_at": {
+    "$date": "2025-12-27T15:05:30.529Z"
+  },
+  "confirmed_by": "adminHN",
+  "returned_at": {
+    "$date": "2025-12-27T15:05:41.001Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ff50d48b6f0b5630da339"
+  },
+  "user_id": {
+    "$oid": "694ff0ee48b6f0b5630da31f"
+  },
+  "username": "binhtt",
+  "total_per_day": 30000,
+  "total_amount": 30000,
+  "total_quantity": 10,
+  "items": [
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e6f"
+      },
+      "bookCode": "378",
+      "bookName": "Chuyến phiêu lưu đến vùng đất xa xôi",
+      "pricePerDay": 3000,
+      "quantity": 10,
+      "rent_days": 1,
+      "subTotal": 30000
+    }
+  ],
+  "status": "returned",
+  "branch_id": "HN",
+  "synced": false,
+  "created_at": {
+    "$date": "2025-12-27T15:02:37.267Z"
+  },
+  "confirmed_at": {
+    "$date": "2025-12-27T15:05:30.529Z"
+  },
+  "confirmed_by": "adminHN",
+  "returned_at": {
+    "$date": "2025-12-27T15:05:40.764Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ff54048b6f0b5630da33a"
+  },
+  "user_id": {
+    "$oid": "694ff0f948b6f0b5630da320"
+  },
+  "username": "emvt",
+  "total_per_day": 9000,
+  "total_amount": 9000,
+  "total_quantity": 3,
+  "items": [
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e42"
+      },
+      "bookCode": "00243",
+      "bookName": "Con đường không tên",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e3f"
+      },
+      "bookCode": "00240",
+      "bookName": "Một đời thương nhớ",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e3d"
+      },
+      "bookCode": "00228",
+      "bookName": "Dòng sông tuổi thơ",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    }
+  ],
+  "status": "returned",
+  "branch_id": "HN",
+  "synced": false,
+  "created_at": {
+    "$date": "2025-12-27T15:03:28.538Z"
+  },
+  "confirmed_at": {
+    "$date": "2025-12-27T15:05:30.529Z"
+  },
+  "confirmed_by": "adminHN",
+  "returned_at": {
+    "$date": "2025-12-27T15:05:40.393Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ff55f48b6f0b5630da33b"
+  },
+  "user_id": {
+    "$oid": "694ff10148b6f0b5630da321"
+  },
+  "username": "huynq",
+  "total_per_day": 12000,
+  "total_amount": 12000,
+  "total_quantity": 3,
+  "items": [
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1e02"
+      },
+      "bookCode": "00074",
+      "bookName": "Phát triển hệ thống nhúng",
+      "pricePerDay": 5000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 5000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1e01"
+      },
+      "bookCode": "00073",
+      "bookName": "Mô hình dự báo bằng học sâu",
+      "pricePerDay": 5000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 5000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1dec"
+      },
+      "bookCode": "00035",
+      "bookName": "Biến đổi khí hậu",
+      "pricePerDay": 2000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 2000
+    }
+  ],
+  "status": "returned",
+  "branch_id": "HN",
+  "synced": false,
+  "created_at": {
+    "$date": "2025-12-27T15:03:59.305Z"
+  },
+  "confirmed_at": {
+    "$date": "2025-12-27T15:05:30.529Z"
+  },
+  "confirmed_by": "adminHN",
+  "returned_at": {
+    "$date": "2025-12-27T15:05:39.889Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ff57948b6f0b5630da33c"
+  },
+  "user_id": {
+    "$oid": "694ff10948b6f0b5630da322"
+  },
+  "username": "hatt",
+  "total_per_day": 7000,
+  "total_amount": 17000,
+  "total_quantity": 3,
+  "items": [
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e36"
+      },
+      "bookCode": "00201",
+      "bookName": "Dưới bầu trời Paris",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1e28"
+      },
+      "bookCode": "00177",
+      "bookName": "Chuyến phiêu lưu của bé số 27",
+      "pricePerDay": 2000,
+      "quantity": 1,
+      "rent_days": 6,
+      "subTotal": 12000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1e13"
+      },
+      "bookCode": "00103",
+      "bookName": "Vụ án bí ẩn số 3",
+      "pricePerDay": 2000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 2000
+    }
+  ],
+  "status": "returned",
+  "branch_id": "HN",
+  "synced": false,
+  "created_at": {
+    "$date": "2025-12-27T15:04:25.923Z"
+  },
+  "confirmed_at": {
+    "$date": "2025-12-27T15:05:30.529Z"
+  },
+  "confirmed_by": "adminHN",
+  "returned_at": {
+    "$date": "2025-12-27T15:05:39.252Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ff5a848b6f0b5630da33d"
+  },
+  "user_id": {
+    "$oid": "694ff11348b6f0b5630da323"
+  },
+  "username": "longbd",
+  "total_per_day": 16000,
+  "total_amount": 32000,
+  "total_quantity": 8,
+  "items": [
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1dd6"
+      },
+      "bookCode": "00002",
+      "bookName": "Cơ học cổ điển và hiện đại",
+      "pricePerDay": 2000,
+      "quantity": 1,
+      "rent_days": 2,
+      "subTotal": 4000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1de6"
+      },
+      "bookCode": "00018",
+      "bookName": "Hóa học polymer",
+      "pricePerDay": 2000,
+      "quantity": 2,
+      "rent_days": 2,
+      "subTotal": 8000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1dda"
+      },
+      "bookCode": "00006",
+      "bookName": "Vũ trụ và các thiên hà",
+      "pricePerDay": 2000,
+      "quantity": 2,
+      "rent_days": 2,
+      "subTotal": 8000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1de2"
+      },
+      "bookCode": "00014",
+      "bookName": "Hóa học phân tích",
+      "pricePerDay": 2000,
+      "quantity": 1,
+      "rent_days": 2,
+      "subTotal": 4000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1de1"
+      },
+      "bookCode": "00013",
+      "bookName": "Hóa vô cơ nâng cao",
+      "pricePerDay": 2000,
+      "quantity": 1,
+      "rent_days": 2,
+      "subTotal": 4000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1de7"
+      },
+      "bookCode": "00019",
+      "bookName": "Kỹ thuật hóa học",
+      "pricePerDay": 2000,
+      "quantity": 1,
+      "rent_days": 2,
+      "subTotal": 4000
+    }
+  ],
+  "status": "returned",
+  "branch_id": "HN",
+  "synced": false,
+  "created_at": {
+    "$date": "2025-12-27T15:05:12.463Z"
+  },
+  "confirmed_at": {
+    "$date": "2025-12-27T15:05:30.529Z"
+  },
+  "confirmed_by": "adminHN",
+  "returned_at": {
+    "$date": "2025-12-27T15:05:38.034Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ff5eb48b6f0b5630da33e"
+  },
+  "user_id": {
+    "$oid": "694e6adada45830e1800b49a"
+  },
+  "username": "luuanhtu",
+  "total_per_day": 7000,
+  "total_amount": 21000,
+  "total_quantity": 3,
+  "items": [
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1e17"
+      },
+      "bookCode": "00107",
+      "bookName": "Vụ án bí ẩn số 7",
+      "pricePerDay": 2000,
+      "quantity": 1,
+      "rent_days": 3,
+      "subTotal": 6000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e6f"
+      },
+      "bookCode": "378",
+      "bookName": "Chuyến phiêu lưu đến vùng đất xa xôi",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 3,
+      "subTotal": 9000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1e1f"
+      },
+      "bookCode": "00144",
+      "bookName": "Vụ án bí ẩn số 44",
+      "pricePerDay": 2000,
+      "quantity": 1,
+      "rent_days": 3,
+      "subTotal": 6000
+    }
+  ],
+  "status": "success",
+  "branch_id": "HN",
+  "synced": false,
+  "created_at": {
+    "$date": "2025-12-27T15:06:19.379Z"
+  },
+  "confirmed_at": {
+    "$date": "2025-12-27T15:14:54.455Z"
+  },
+  "confirmed_by": "adminHN"
+},
+{
+  "_id": {
+    "$oid": "694ff60248b6f0b5630da33f"
+  },
+  "user_id": {
+    "$oid": "694ec76e371d11a332069884"
+  },
+  "username": "tuannghia",
+  "total_per_day": 9000,
+  "total_amount": 9000,
+  "total_quantity": 3,
+  "items": [
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e76"
+      },
+      "bookCode": "399",
+      "bookName": "Chú khỉ tinh nghịch",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e75"
+      },
+      "bookCode": "396",
+      "bookName": "Chú gấu trúc dũng cảm",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e74"
+      },
+      "bookCode": "393",
+      "bookName": "Những chú vịt phiêu lưu",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    }
+  ],
+  "status": "returned",
+  "branch_id": "HN",
+  "synced": false,
+  "created_at": {
+    "$date": "2025-12-27T15:06:42.042Z"
+  },
+  "confirmed_at": {
+    "$date": "2025-12-27T15:14:57.558Z"
+  },
+  "confirmed_by": "adminHN",
+  "returned_at": {
+    "$date": "2025-12-27T15:15:21.575Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ff63948b6f0b5630da340"
+  },
+  "user_id": {
+    "$oid": "694fad8a67b76c2b6d05650f"
+  },
+  "username": "annv",
+  "total_per_day": 15000,
+  "total_amount": 45000,
+  "total_quantity": 5,
+  "items": [
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e3f"
+      },
+      "bookCode": "00240",
+      "bookName": "Một đời thương nhớ",
+      "pricePerDay": 3000,
+      "quantity": 2,
+      "rent_days": 3,
+      "subTotal": 18000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e3b"
+      },
+      "bookCode": "00226",
+      "bookName": "Vệt nắng cuối chiều",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 3,
+      "subTotal": 9000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e41"
+      },
+      "bookCode": "00242",
+      "bookName": "Dưới bóng chiều tà",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 3,
+      "subTotal": 9000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e43"
+      },
+      "bookCode": "00244",
+      "bookName": "Gió và mây",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 3,
+      "subTotal": 9000
+    }
+  ],
+  "status": "paid",
+  "branch_id": "HN",
+  "synced": false,
+  "created_at": {
+    "$date": "2025-12-27T15:07:37.975Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ff66148b6f0b5630da341"
+  },
+  "user_id": {
+    "$oid": "694fd94f48b6f0b5630da310"
+  },
+  "username": "maidtt",
+  "total_per_day": 6000,
+  "total_amount": 6000,
+  "total_quantity": 2,
+  "items": [
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e51"
+      },
+      "bookCode": "00296",
+      "bookName": "Toán học trong vật lý",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e50"
+      },
+      "bookCode": "00283",
+      "bookName": "Lý thuyết tập hợp",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    }
+  ],
+  "status": "returned",
+  "branch_id": "HN",
+  "synced": false,
+  "created_at": {
+    "$date": "2025-12-27T15:08:17.260Z"
+  },
+  "confirmed_at": {
+    "$date": "2025-12-27T15:14:50.460Z"
+  },
+  "confirmed_by": "adminHN",
+  "returned_at": {
+    "$date": "2025-12-27T15:15:14.063Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ff6a848b6f0b5630da342"
+  },
+  "user_id": {
+    "$oid": "694fda2148b6f0b5630da313"
+  },
+  "username": "huynqc",
+  "total_per_day": 9000,
+  "total_amount": 9000,
+  "total_quantity": 3,
+  "items": [
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1e22"
+      },
+      "bookCode": "00158",
+      "bookName": "Chuyến phiêu lưu của bé số 8",
+      "pricePerDay": 2000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 2000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1e0a"
+      },
+      "bookCode": "00082",
+      "bookName": "Ứng dụng CNTT trong quản lý giáo dục",
+      "pricePerDay": 5000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 5000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1deb"
+      },
+      "bookCode": "00034",
+      "bookName": "Khoa học môi trường",
+      "pricePerDay": 2000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 2000
+    }
+  ],
+  "status": "paid",
+  "branch_id": "HN",
+  "synced": false,
+  "created_at": {
+    "$date": "2025-12-27T15:09:28.026Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ff6d748b6f0b5630da343"
+  },
+  "user_id": {
+    "$oid": "694fce9831f0f2802b0b8ab6"
+  },
+  "username": "ducpm",
+  "total_per_day": 12000,
+  "total_amount": 12000,
+  "total_quantity": 4,
+  "items": [
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e49"
+      },
+      "bookCode": "00266",
+      "bookName": "Lý thuyết trò chơi",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e4a"
+      },
+      "bookCode": "00267",
+      "bookName": "Thống kê toán học",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e4c"
+      },
+      "bookCode": "00279",
+      "bookName": "Toán tài chính",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e4e"
+      },
+      "bookCode": "00281",
+      "bookName": "Toán kinh tế",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    }
+  ],
+  "status": "paid",
+  "branch_id": "HN",
+  "synced": false,
+  "created_at": {
+    "$date": "2025-12-27T15:10:15.428Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ff72148b6f0b5630da344"
+  },
+  "user_id": {
+    "$oid": "694ff0e548b6f0b5630da31e"
+  },
+  "username": "cuonglh",
+  "total_per_day": 14000,
+  "total_amount": 98000,
+  "total_quantity": 7,
+  "items": [
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1dd5"
+      },
+      "bookCode": "00001",
+      "bookName": "Vật lý lượng tử nhập môn",
+      "pricePerDay": 2000,
+      "quantity": 1,
+      "rent_days": 7,
+      "subTotal": 14000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1dd6"
+      },
+      "bookCode": "00002",
+      "bookName": "Cơ học cổ điển và hiện đại",
+      "pricePerDay": 2000,
+      "quantity": 1,
+      "rent_days": 7,
+      "subTotal": 14000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1dd8"
+      },
+      "bookCode": "00004",
+      "bookName": "Quang học và công nghệ ánh sáng",
+      "pricePerDay": 2000,
+      "quantity": 1,
+      "rent_days": 7,
+      "subTotal": 14000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1dd7"
+      },
+      "bookCode": "00003",
+      "bookName": "Điện từ học ứng dụng",
+      "pricePerDay": 2000,
+      "quantity": 1,
+      "rent_days": 7,
+      "subTotal": 14000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1dd9"
+      },
+      "bookCode": "00005",
+      "bookName": "Nhiệt động lực học",
+      "pricePerDay": 2000,
+      "quantity": 1,
+      "rent_days": 7,
+      "subTotal": 14000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1ddc"
+      },
+      "bookCode": "00008",
+      "bookName": "Vật lý hạt cơ bản",
+      "pricePerDay": 2000,
+      "quantity": 1,
+      "rent_days": 7,
+      "subTotal": 14000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1dde"
+      },
+      "bookCode": "00010",
+      "bookName": "Cấu trúc vật chất",
+      "pricePerDay": 2000,
+      "quantity": 1,
+      "rent_days": 7,
+      "subTotal": 14000
+    }
+  ],
+  "status": "success",
+  "branch_id": "HN",
+  "synced": false,
+  "created_at": {
+    "$date": "2025-12-27T15:11:29.735Z"
+  },
+  "confirmed_at": {
+    "$date": "2025-12-27T15:14:52.267Z"
+  },
+  "confirmed_by": "adminHN"
+},
+{
+  "_id": {
+    "$oid": "694ff73548b6f0b5630da345"
+  },
+  "user_id": {
+    "$oid": "694ff0ee48b6f0b5630da31f"
+  },
+  "username": "binhtt",
+  "total_per_day": 4000,
+  "total_amount": 4000,
+  "total_quantity": 2,
+  "items": [
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1e16"
+      },
+      "bookCode": "00106",
+      "bookName": "Vụ án bí ẩn số 6",
+      "pricePerDay": 2000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 2000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e33"
+      },
+      "bookCode": "00198",
+      "bookName": "Chuyến phiêu lưu của bé số 48",
+      "pricePerDay": 2000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 2000
+    }
+  ],
+  "status": "returned",
+  "branch_id": "HN",
+  "synced": false,
+  "created_at": {
+    "$date": "2025-12-27T15:11:49.257Z"
+  },
+  "confirmed_at": {
+    "$date": "2025-12-27T15:14:55.828Z"
+  },
+  "confirmed_by": "adminHN",
+  "returned_at": {
+    "$date": "2025-12-27T15:15:16.934Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ff74a48b6f0b5630da346"
+  },
+  "user_id": {
+    "$oid": "694ff0f948b6f0b5630da320"
+  },
+  "username": "emvt",
+  "total_per_day": 9000,
+  "total_amount": 9000,
+  "total_quantity": 3,
+  "items": [
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e47"
+      },
+      "bookCode": "00264",
+      "bookName": "Quy hoạch tuyến tính",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e6e"
+      },
+      "bookCode": "375",
+      "bookName": "Chú hươu biết bay",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e73"
+      },
+      "bookCode": "390",
+      "bookName": "Chú cừu tinh nghịch",
+      "pricePerDay": 3000,
+      "quantity": 1,
+      "rent_days": 1,
+      "subTotal": 3000
+    }
+  ],
+  "status": "returned",
+  "branch_id": "HN",
+  "synced": false,
+  "created_at": {
+    "$date": "2025-12-27T15:12:10.436Z"
+  },
+  "confirmed_at": {
+    "$date": "2025-12-27T15:14:48.438Z"
+  },
+  "confirmed_by": "adminHN",
+  "returned_at": {
+    "$date": "2025-12-27T15:15:09.775Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ff77248b6f0b5630da347"
+  },
+  "user_id": {
+    "$oid": "694ff10148b6f0b5630da321"
+  },
+  "username": "huynq",
+  "total_per_day": 20000,
+  "total_amount": 40000,
+  "total_quantity": 4,
+  "items": [
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1e0e"
+      },
+      "bookCode": "00098",
+      "bookName": "Công nghệ phần mềm và ứng dụng",
+      "pricePerDay": 5000,
+      "quantity": 1,
+      "rent_days": 2,
+      "subTotal": 10000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1e0d"
+      },
+      "bookCode": "00085",
+      "bookName": "Hệ thống quản lý học tập trực tuyến",
+      "pricePerDay": 5000,
+      "quantity": 1,
+      "rent_days": 2,
+      "subTotal": 10000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1e0b"
+      },
+      "bookCode": "00083",
+      "bookName": "Phát triển ứng dụng di động",
+      "pricePerDay": 5000,
+      "quantity": 1,
+      "rent_days": 2,
+      "subTotal": 10000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1e09"
+      },
+      "bookCode": "00081",
+      "bookName": "Mô hình mạng máy tính hiện đại",
+      "pricePerDay": 5000,
+      "quantity": 1,
+      "rent_days": 2,
+      "subTotal": 10000
+    }
+  ],
+  "status": "success",
+  "branch_id": "HN",
+  "synced": false,
+  "created_at": {
+    "$date": "2025-12-27T15:12:50.861Z"
+  },
+  "confirmed_at": {
+    "$date": "2025-12-27T15:14:46.965Z"
+  },
+  "confirmed_by": "adminHN"
+},
+{
+  "_id": {
+    "$oid": "694ff79d48b6f0b5630da348"
+  },
+  "user_id": {
+    "$oid": "694ff10948b6f0b5630da322"
+  },
+  "username": "hatt",
+  "total_per_day": 16000,
+  "total_amount": 48000,
+  "total_quantity": 5,
+  "items": [
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1e20"
+      },
+      "bookCode": "00145",
+      "bookName": "Vụ án bí ẩn số 45",
+      "pricePerDay": 2000,
+      "quantity": 1,
+      "rent_days": 3,
+      "subTotal": 6000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1e1e"
+      },
+      "bookCode": "00143",
+      "bookName": "Vụ án bí ẩn số 43",
+      "pricePerDay": 2000,
+      "quantity": 1,
+      "rent_days": 3,
+      "subTotal": 6000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1df7"
+      },
+      "bookCode": "00046",
+      "bookName": "Công nghệ nano",
+      "pricePerDay": 2000,
+      "quantity": 1,
+      "rent_days": 3,
+      "subTotal": 6000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1e01"
+      },
+      "bookCode": "00073",
+      "bookName": "Mô hình dự báo bằng học sâu",
+      "pricePerDay": 5000,
+      "quantity": 1,
+      "rent_days": 3,
+      "subTotal": 15000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1dfd"
+      },
+      "bookCode": "00069",
+      "bookName": "Ứng dụng dữ liệu lớn trong doanh nghiệp",
+      "pricePerDay": 5000,
+      "quantity": 1,
+      "rent_days": 3,
+      "subTotal": 15000
+    }
+  ],
+  "status": "success",
+  "branch_id": "HN",
+  "synced": false,
+  "created_at": {
+    "$date": "2025-12-27T15:13:33.125Z"
+  },
+  "confirmed_at": {
+    "$date": "2025-12-27T15:14:45.357Z"
+  },
+  "confirmed_by": "adminHN"
+},
+{
+  "_id": {
+    "$oid": "694ff7c148b6f0b5630da349"
+  },
+  "user_id": {
+    "$oid": "694ff11348b6f0b5630da323"
+  },
+  "username": "longbd",
+  "total_per_day": 4000,
+  "total_amount": 36000,
+  "total_quantity": 2,
+  "items": [
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1dd6"
+      },
+      "bookCode": "00002",
+      "bookName": "Cơ học cổ điển và hiện đại",
+      "pricePerDay": 2000,
+      "quantity": 1,
+      "rent_days": 9,
+      "subTotal": 18000
+    },
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1dd5"
+      },
+      "bookCode": "00001",
+      "bookName": "Vật lý lượng tử nhập môn",
+      "pricePerDay": 2000,
+      "quantity": 1,
+      "rent_days": 9,
+      "subTotal": 18000
+    }
+  ],
+  "status": "success",
+  "branch_id": "HN",
+  "synced": false,
+  "created_at": {
+    "$date": "2025-12-27T15:14:09.492Z"
+  },
+  "confirmed_at": {
+    "$date": "2025-12-27T15:14:43.933Z"
+  },
+  "confirmed_by": "adminHN"
+}]

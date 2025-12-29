@@ -306,7 +306,7 @@ foreach ($cartNow as $it) {
                         'total_quantity' => $totalQuantity,      // ⭐ tổng số sách
                         'items'          => $orderItems,
                         'status'         => 'paid',
-                        'branch_id'      => 'HCM',       // 🔹 chi nhánh Hà Nội
+                        'branch_id'      => 'HN',       // 🔹 chi nhánh Hà Nội
                         'synced'         => false,    
                         'created_at'     => new UTCDateTime()
                     ];
@@ -563,6 +563,132 @@ document.addEventListener('DOMContentLoaded', function () {
         if (e.target === modal) {
             modal.style.display = 'none';
         }
+    });
+
+    // ============================================================
+    // DYNAMIC CALCULATION UPDATE
+    // Updates totals when quantity or rent_days inputs change
+    // ============================================================
+    function formatCurrency(num) {
+        return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " đ";
+    }
+
+    function recalculateAll() {
+        var rows = document.querySelectorAll('tbody tr');
+        var grandTotal = 0;
+        var totalQty = 0;
+        var balance = <?= (int)$balance ?>;
+
+        rows.forEach(function(row) {
+            var priceCell = row.querySelector('td:nth-child(3)');
+            var qtyInput = row.querySelector('input[name^="quantity"]');
+            var daysInput = row.querySelector('input[name^="rent_days"]');
+            var subtotalCell = row.querySelector('td:nth-child(6)');
+
+            if (priceCell && qtyInput && daysInput && subtotalCell) {
+                // Parse price from text (e.g., "2.000 đ" -> 2000)
+                var priceText = priceCell.textContent.replace(/[^\d]/g, '');
+                var price = parseInt(priceText) || 0;
+                var qty = parseInt(qtyInput.value) || 1;
+                var days = parseInt(daysInput.value) || 1;
+
+                if (qty < 1) qty = 1;
+                if (days < 1) days = 1;
+
+                var subtotal = price * qty * days;
+                subtotalCell.textContent = formatCurrency(subtotal);
+
+                grandTotal += subtotal;
+                totalQty += qty;
+            }
+        });
+
+        // Update all total displays
+        var totalDisplays = document.querySelectorAll('.total-box strong, .confirm-box p strong, .modal-box p strong');
+
+        // Update "Tổng thanh toán" in total-box
+        var totalBox = document.querySelector('.total-box strong');
+        if (totalBox) {
+            totalBox.textContent = formatCurrency(grandTotal);
+        }
+
+        // Update in confirm-box
+        var confirmBoxTotals = document.querySelectorAll('.confirm-box p');
+        confirmBoxTotals.forEach(function(p) {
+            if (p.textContent.includes('Tổng thanh toán')) {
+                var strong = p.querySelector('strong');
+                if (strong) strong.textContent = formatCurrency(grandTotal);
+            }
+            if (p.textContent.includes('Tổng số sách')) {
+                var strong = p.querySelector('strong');
+                if (strong) strong.textContent = totalQty + '/10';
+            }
+        });
+
+        // Update modal
+        var modalTotals = document.querySelectorAll('.modal-box p');
+        modalTotals.forEach(function(p) {
+            if (p.textContent.includes('Tổng thanh toán')) {
+                var strong = p.querySelector('strong');
+                if (strong) strong.textContent = formatCurrency(grandTotal);
+            }
+            if (p.textContent.includes('Số dư sau thanh toán')) {
+                var strong = p.querySelector('strong');
+                if (strong) strong.textContent = formatCurrency(Math.max(balance - grandTotal, 0));
+            }
+            if (p.textContent.includes('Tổng số sách trong đơn')) {
+                var strong = p.querySelector('strong');
+                if (strong) strong.textContent = totalQty + '/10';
+            }
+        });
+
+        // Update button state
+        var withinLimit = (totalQty > 0 && totalQty <= 10);
+        var enoughBalance = (grandTotal > 0 && balance >= grandTotal);
+        var hasUnreturned = <?= $hasUnreturned ? 'true' : 'false' ?>;
+        var canConfirm = grandTotal > 0 && enoughBalance && withinLimit && !hasUnreturned;
+
+        if (btnOpen) {
+            btnOpen.disabled = !canConfirm;
+            btnOpen.style.opacity = canConfirm ? '1' : '0.6';
+            btnOpen.style.cursor = canConfirm ? 'pointer' : 'not-allowed';
+        }
+
+        // Update warning messages
+        var confirmStatus = document.querySelector('.confirm-status');
+        if (confirmStatus) {
+            if (grandTotal <= 0) {
+                confirmStatus.className = 'confirm-status warning';
+                confirmStatus.textContent = 'Giỏ hàng hiện không có sản phẩm hợp lệ để thanh toán.';
+            } else if (hasUnreturned) {
+                confirmStatus.className = 'confirm-status warning';
+                confirmStatus.innerHTML = '⚠ Bạn đang có đơn mượn <strong>chưa kết thúc</strong>. Vui lòng trả sách / chờ admin xử lý xong trước khi tạo đơn mới.';
+            } else if (!withinLimit) {
+                confirmStatus.className = 'confirm-status warning';
+                confirmStatus.innerHTML = '⚠ Bạn đang chọn <strong>' + totalQty + '</strong> cuốn. Vui lòng giảm xuống còn tối đa <strong>10</strong> cuốn trước khi thanh toán.';
+            } else if (enoughBalance) {
+                confirmStatus.className = 'confirm-status success';
+                confirmStatus.textContent = '✅ Bạn đủ số dư để thanh toán đơn mượn này.';
+            } else {
+                var needMore = grandTotal - balance;
+                confirmStatus.className = 'confirm-status warning';
+                confirmStatus.innerHTML = '⚠ Bạn còn thiếu <strong>' + formatCurrency(needMore) + '</strong> để thanh toán. Vui lòng nạp thêm.';
+            }
+        }
+    }
+
+    // Attach event listeners to all quantity and rent_days inputs
+    var qtyInputs = document.querySelectorAll('input[name^="quantity"]');
+    var daysInputs = document.querySelectorAll('input[name^="rent_days"]');
+
+    qtyInputs.forEach(function(input) {
+        input.addEventListener('input', recalculateAll);
+        input.addEventListener('change', recalculateAll);
+    });
+
+    daysInputs.forEach(function(input) {
+        input.addEventListener('input', recalculateAll);
+        input.addEventListener('change', recalculateAll);
     });
 });
 </script>

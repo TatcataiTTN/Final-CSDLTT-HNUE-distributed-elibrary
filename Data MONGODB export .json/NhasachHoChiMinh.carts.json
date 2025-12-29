@@ -1,0 +1,120 @@
+[{
+  "_id": {
+    "$oid": "694ffbdf2e25f8c3fb0012fd"
+  },
+  "user_id": {
+    "$oid": "694fab0567b76c2b6d0564f8"
+  },
+  "items": [],
+  "updated_at": {
+    "$date": "2025-12-27T15:37:15.107Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ffbfc2e25f8c3fb0012ff"
+  },
+  "user_id": {
+    "$oid": "694fab3467b76c2b6d0564f9"
+  },
+  "items": [],
+  "updated_at": {
+    "$date": "2025-12-27T15:37:31.524Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ffc1a2e25f8c3fb001301"
+  },
+  "user_id": {
+    "$oid": "694fab4167b76c2b6d0564fa"
+  },
+  "items": [],
+  "updated_at": {
+    "$date": "2025-12-27T15:37:46.158Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ffc5e2e25f8c3fb001303"
+  },
+  "user_id": {
+    "$oid": "694fab4a67b76c2b6d0564fb"
+  },
+  "items": [],
+  "updated_at": {
+    "$date": "2025-12-27T15:33:53.421Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ffc722e25f8c3fb001305"
+  },
+  "user_id": {
+    "$oid": "694fab5467b76c2b6d0564fc"
+  },
+  "items": [],
+  "updated_at": {
+    "$date": "2025-12-27T15:34:14.732Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ffc822e25f8c3fb001307"
+  },
+  "user_id": {
+    "$oid": "694fab5d67b76c2b6d0564fd"
+  },
+  "items": [],
+  "updated_at": {
+    "$date": "2025-12-27T15:34:33.028Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ffc9a2e25f8c3fb001309"
+  },
+  "user_id": {
+    "$oid": "694fab6667b76c2b6d0564fe"
+  },
+  "items": [],
+  "updated_at": {
+    "$date": "2025-12-27T15:34:56.628Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ffcad2e25f8c3fb00130b"
+  },
+  "user_id": {
+    "$oid": "694fab7467b76c2b6d0564ff"
+  },
+  "items": [],
+  "updated_at": {
+    "$date": "2025-12-27T15:35:16.240Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ffcc22e25f8c3fb00130d"
+  },
+  "user_id": {
+    "$oid": "694fab7e67b76c2b6d056500"
+  },
+  "items": [],
+  "updated_at": {
+    "$date": "2025-12-27T15:35:35.709Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ffcdd2e25f8c3fb00130f"
+  },
+  "user_id": {
+    "$oid": "694fab8567b76c2b6d056501"
+  },
+  "items": [],
+  "updated_at": {
+    "$date": "2025-12-27T15:36:02.862Z"
+  }
+}]

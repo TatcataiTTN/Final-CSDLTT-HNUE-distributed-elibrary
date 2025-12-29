@@ -1,0 +1,339 @@
+[{
+  "_id": {
+    "$oid": "694fd55848b6f0b5630da304"
+  },
+  "user_id": {
+    "$oid": "694e6adada45830e1800b49a"
+  },
+  "items": [],
+  "updated_at": {
+    "$date": "2025-12-27T15:06:19.380Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694fd67d48b6f0b5630da306"
+  },
+  "user_id": {
+    "$oid": "694ec76e371d11a332069884"
+  },
+  "items": [
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e6f"
+      },
+      "bookCode": "378",
+      "bookName": "Chuyến phiêu lưu đến vùng đất xa xôi",
+      "pricePerDay": 3000,
+      "quantity": 1
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e6e"
+      },
+      "bookCode": "375",
+      "bookName": "Chú hươu biết bay",
+      "pricePerDay": 3000,
+      "quantity": 1
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e51"
+      },
+      "bookCode": "00296",
+      "bookName": "Toán học trong vật lý",
+      "pricePerDay": 3000,
+      "quantity": 1
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e71"
+      },
+      "bookCode": "384",
+      "bookName": "Những chú gà con dũng cảm",
+      "pricePerDay": 3000,
+      "quantity": 1
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e73"
+      },
+      "bookCode": "390",
+      "bookName": "Chú cừu tinh nghịch",
+      "pricePerDay": 3000,
+      "quantity": 1
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e74"
+      },
+      "bookCode": "393",
+      "bookName": "Những chú vịt phiêu lưu",
+      "pricePerDay": 3000,
+      "quantity": 1
+    }
+  ],
+  "updated_at": {
+    "$date": "2025-12-27T15:06:56.308Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694fd70c48b6f0b5630da308"
+  },
+  "user_id": {
+    "$oid": "694fce9831f0f2802b0b8ab6"
+  },
+  "items": [
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e54"
+      },
+      "bookCode": "00299",
+      "bookName": "Hình học topo",
+      "pricePerDay": 3000,
+      "quantity": 1
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e4e"
+      },
+      "bookCode": "00281",
+      "bookName": "Toán kinh tế",
+      "pricePerDay": 3000,
+      "quantity": 1
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e47"
+      },
+      "bookCode": "00264",
+      "bookName": "Quy hoạch tuyến tính",
+      "pricePerDay": 3000,
+      "quantity": 1
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e45"
+      },
+      "bookCode": "00262",
+      "bookName": "Toán tối ưu",
+      "pricePerDay": 3000,
+      "quantity": 1
+    }
+  ],
+  "updated_at": {
+    "$date": "2025-12-27T15:10:36.115Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694fd7c548b6f0b5630da30a"
+  },
+  "user_id": {
+    "$oid": "694fad8a67b76c2b6d05650f"
+  },
+  "items": [
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1e01"
+      },
+      "bookCode": "00073",
+      "bookName": "Mô hình dự báo bằng học sâu",
+      "pricePerDay": 5000,
+      "quantity": 2
+    },
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1e0a"
+      },
+      "bookCode": "00082",
+      "bookName": "Ứng dụng CNTT trong quản lý giáo dục",
+      "pricePerDay": 5000,
+      "quantity": 1
+    }
+  ],
+  "updated_at": {
+    "$date": "2025-12-27T15:07:50.245Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694fd96948b6f0b5630da311"
+  },
+  "user_id": {
+    "$oid": "694fd94f48b6f0b5630da310"
+  },
+  "items": [
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e48"
+      },
+      "bookCode": "00265",
+      "bookName": "Xác suất thống kê",
+      "pricePerDay": 3000,
+      "quantity": 1
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e49"
+      },
+      "bookCode": "00266",
+      "bookName": "Lý thuyết trò chơi",
+      "pricePerDay": 3000,
+      "quantity": 1
+    },
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1e2a"
+      },
+      "bookCode": "00179",
+      "bookName": "Chuyến phiêu lưu của bé số 29",
+      "pricePerDay": 2000,
+      "quantity": 1
+    },
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1e29"
+      },
+      "bookCode": "00178",
+      "bookName": "Chuyến phiêu lưu của bé số 28",
+      "pricePerDay": 2000,
+      "quantity": 1
+    },
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1e27"
+      },
+      "bookCode": "00163",
+      "bookName": "Chuyến phiêu lưu của bé số 13",
+      "pricePerDay": 2000,
+      "quantity": 1
+    }
+  ],
+  "updated_at": {
+    "$date": "2025-12-27T15:08:54.157Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694fda6148b6f0b5630da314"
+  },
+  "user_id": {
+    "$oid": "694fda2148b6f0b5630da313"
+  },
+  "items": [
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e6d"
+      },
+      "bookCode": "372",
+      "bookName": "Chú ếch phiêu lưu ký",
+      "pricePerDay": 3000,
+      "quantity": 1
+    },
+    {
+      "book_id": {
+        "$oid": "694faa05d4871065baed1e09"
+      },
+      "bookCode": "00081",
+      "bookName": "Mô hình mạng máy tính hiện đại",
+      "pricePerDay": 5000,
+      "quantity": 1
+    }
+  ],
+  "updated_at": {
+    "$date": "2025-12-27T15:09:36.052Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ff15e48b6f0b5630da326"
+  },
+  "user_id": {
+    "$oid": "694ff0e548b6f0b5630da31e"
+  },
+  "items": [],
+  "updated_at": {
+    "$date": "2025-12-27T15:11:29.738Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ff2e948b6f0b5630da328"
+  },
+  "user_id": {
+    "$oid": "694ff0f948b6f0b5630da320"
+  },
+  "items": [],
+  "updated_at": {
+    "$date": "2025-12-27T15:12:10.437Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ff31548b6f0b5630da32a"
+  },
+  "user_id": {
+    "$oid": "694ff10148b6f0b5630da321"
+  },
+  "items": [],
+  "updated_at": {
+    "$date": "2025-12-27T15:12:50.862Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ff34c48b6f0b5630da32c"
+  },
+  "user_id": {
+    "$oid": "694ff10948b6f0b5630da322"
+  },
+  "items": [
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e6f"
+      },
+      "bookCode": "378",
+      "bookName": "Chuyến phiêu lưu đến vùng đất xa xôi",
+      "pricePerDay": 3000,
+      "quantity": 1
+    },
+    {
+      "book_id": {
+        "$oid": "694faa06d4871065baed1e70"
+      },
+      "bookCode": "381",
+      "bookName": "Chú cáo và những người bạn",
+      "pricePerDay": 3000,
+      "quantity": 1
+    }
+  ],
+  "updated_at": {
+    "$date": "2025-12-27T15:13:37.077Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ff36548b6f0b5630da32e"
+  },
+  "user_id": {
+    "$oid": "694ff11348b6f0b5630da323"
+  },
+  "items": [],
+  "updated_at": {
+    "$date": "2025-12-27T15:14:09.493Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ff39548b6f0b5630da330"
+  },
+  "user_id": {
+    "$oid": "694ff0ee48b6f0b5630da31f"
+  },
+  "items": [],
+  "updated_at": {
+    "$date": "2025-12-27T15:11:49.259Z"
+  }
+}]

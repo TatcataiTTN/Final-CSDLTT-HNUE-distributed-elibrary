@@ -1,0 +1,3163 @@
+[{
+  "_id": {
+    "$oid": "694faa05d4871065baed1dd5"
+  },
+  "bookCode": "00001",
+  "bookGroup": "Khoa học",
+  "bookName": "Vật lý lượng tử nhập môn",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.753Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 48,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:14:09.491Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1dd6"
+  },
+  "bookCode": "00002",
+  "bookGroup": "Khoa học",
+  "bookName": "Cơ học cổ điển và hiện đại",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.879Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 48,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:14:09.491Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1dd7"
+  },
+  "bookCode": "00003",
+  "bookGroup": "Khoa học",
+  "bookName": "Điện từ học ứng dụng",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.881Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 49,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:11:29.733Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1dd8"
+  },
+  "bookCode": "00004",
+  "bookGroup": "Khoa học",
+  "bookName": "Quang học và công nghệ ánh sáng",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.882Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 49,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:11:29.733Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1dd9"
+  },
+  "bookCode": "00005",
+  "bookGroup": "Khoa học",
+  "bookName": "Nhiệt động lực học",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.883Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 49,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:11:29.733Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1dda"
+  },
+  "bookCode": "00006",
+  "bookGroup": "Khoa học",
+  "bookName": "Vũ trụ và các thiên hà",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.884Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:05:38.032Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1ddb"
+  },
+  "bookCode": "00007",
+  "bookGroup": "Khoa học",
+  "bookName": "Thiên văn học hiện đại",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.885Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.724Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1ddc"
+  },
+  "bookCode": "00008",
+  "bookGroup": "Khoa học",
+  "bookName": "Vật lý hạt cơ bản",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.886Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 49,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:11:29.734Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1ddd"
+  },
+  "bookCode": "00009",
+  "bookGroup": "Khoa học",
+  "bookName": "Thuyết tương đối",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.888Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.727Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1dde"
+  },
+  "bookCode": "00010",
+  "bookGroup": "Khoa học",
+  "bookName": "Cấu trúc vật chất",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.889Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 49,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:11:29.734Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1ddf"
+  },
+  "bookCode": "00011",
+  "bookGroup": "Khoa học",
+  "bookName": "Hóa học đại cương",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.890Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.730Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1de0"
+  },
+  "bookCode": "00012",
+  "bookGroup": "Khoa học",
+  "bookName": "Hóa hữu cơ cơ bản",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.892Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.731Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1de1"
+  },
+  "bookCode": "00013",
+  "bookGroup": "Khoa học",
+  "bookName": "Hóa vô cơ nâng cao",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.893Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:05:38.033Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1de2"
+  },
+  "bookCode": "00014",
+  "bookGroup": "Khoa học",
+  "bookName": "Hóa học phân tích",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.895Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:05:38.033Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1de3"
+  },
+  "bookCode": "00015",
+  "bookGroup": "Khoa học",
+  "bookName": "Hóa học môi trường",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.896Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.735Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1de4"
+  },
+  "bookCode": "00016",
+  "bookGroup": "Khoa học",
+  "bookName": "Công nghệ hóa học",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.898Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.736Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1de5"
+  },
+  "bookCode": "00017",
+  "bookGroup": "Khoa học",
+  "bookName": "Hóa sinh học",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.899Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.737Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1de6"
+  },
+  "bookCode": "00018",
+  "bookGroup": "Khoa học",
+  "bookName": "Hóa học polymer",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.901Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:05:38.032Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1de7"
+  },
+  "bookCode": "00019",
+  "bookGroup": "Khoa học",
+  "bookName": "Kỹ thuật hóa học",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.903Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:05:38.033Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1de8"
+  },
+  "bookCode": "00025",
+  "bookGroup": "Khoa học",
+  "bookName": "Sinh học tiến hóa",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.904Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.740Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1de9"
+  },
+  "bookCode": "00026",
+  "bookGroup": "Khoa học",
+  "bookName": "Sinh thái học",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.905Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.741Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1dea"
+  },
+  "bookCode": "00027",
+  "bookGroup": "Khoa học",
+  "bookName": "Công nghệ sinh học",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.906Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.742Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1deb"
+  },
+  "bookCode": "00034",
+  "bookGroup": "Khoa học",
+  "bookName": "Khoa học môi trường",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.908Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 49,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:09:28.026Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1dec"
+  },
+  "bookCode": "00035",
+  "bookGroup": "Khoa học",
+  "bookName": "Biến đổi khí hậu",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.909Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:05:39.889Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1ded"
+  },
+  "bookCode": "00036",
+  "bookGroup": "Khoa học",
+  "bookName": "Địa lý tự nhiên",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.910Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.746Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1dee"
+  },
+  "bookCode": "00037",
+  "bookGroup": "Khoa học",
+  "bookName": "Tài nguyên thiên nhiên",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.911Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.747Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1def"
+  },
+  "bookCode": "00038",
+  "bookGroup": "Khoa học",
+  "bookName": "Khoa học đất",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.913Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.748Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1df0"
+  },
+  "bookCode": "00039",
+  "bookGroup": "Khoa học",
+  "bookName": "Thủy văn học",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.914Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T13:10:35.108Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1df1"
+  },
+  "bookCode": "00040",
+  "bookGroup": "Khoa học",
+  "bookName": "Thiên tai và phòng chống",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.916Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.750Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1df2"
+  },
+  "bookCode": "00041",
+  "bookGroup": "Khoa học",
+  "bookName": "Trí tuệ nhân tạo",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.917Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.751Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1df3"
+  },
+  "bookCode": "00042",
+  "bookGroup": "Khoa học",
+  "bookName": "Khoa học dữ liệu",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.918Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.753Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1df4"
+  },
+  "bookCode": "00043",
+  "bookGroup": "Khoa học",
+  "bookName": "Máy học cơ bản",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.919Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.754Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1df5"
+  },
+  "bookCode": "00044",
+  "bookGroup": "Khoa học",
+  "bookName": "Internet vạn vật (IoT)",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.920Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T14:57:16.713Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1df6"
+  },
+  "bookCode": "00045",
+  "bookGroup": "Khoa học",
+  "bookName": "Robot học",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.922Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.756Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1df7"
+  },
+  "bookCode": "00046",
+  "bookGroup": "Khoa học",
+  "bookName": "Công nghệ nano",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.924Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 49,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:13:33.124Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1df8"
+  },
+  "bookCode": "00047",
+  "bookGroup": "Khoa học",
+  "bookName": "Vật liệu thông minh",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.925Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T14:57:16.712Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1df9"
+  },
+  "bookCode": "00048",
+  "bookGroup": "Khoa học",
+  "bookName": "Năng lượng tái tạo",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.926Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.759Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1dfa"
+  },
+  "bookCode": "00049",
+  "bookGroup": "Khoa học",
+  "bookName": "Công nghệ sinh học ứng dụng",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.927Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T14:57:16.710Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1dfb"
+  },
+  "bookCode": "00050",
+  "bookGroup": "Khoa học",
+  "bookName": "Khoa học không gian",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.929Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.762Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1dfc"
+  },
+  "bookCode": "00068",
+  "bookGroup": "Công nghệ",
+  "bookName": "Xử lý ngôn ngữ tự nhiên",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.930Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 5000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.763Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1dfd"
+  },
+  "bookCode": "00069",
+  "bookGroup": "Công nghệ",
+  "bookName": "Ứng dụng dữ liệu lớn trong doanh nghiệp",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.931Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 5000,
+  "quantity": 49,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:13:33.125Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1dfe"
+  },
+  "bookCode": "00070",
+  "bookGroup": "Công nghệ",
+  "bookName": "Phát triển ứng dụng web hiện đại",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.932Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 5000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.764Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1dff"
+  },
+  "bookCode": "00071",
+  "bookGroup": "Công nghệ",
+  "bookName": "Trí tuệ nhân tạo trong chẩn đoán y khoa",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.934Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 5000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T14:57:15.526Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1e00"
+  },
+  "bookCode": "00072",
+  "bookGroup": "Công nghệ",
+  "bookName": "Phân tích hành vi người dùng trên mạng xã hội",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.935Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 5000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.765Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1e01"
+  },
+  "bookCode": "00073",
+  "bookGroup": "Công nghệ",
+  "bookName": "Mô hình dự báo bằng học sâu",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.936Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 5000,
+  "quantity": 49,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:13:33.125Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1e02"
+  },
+  "bookCode": "00074",
+  "bookGroup": "Công nghệ",
+  "bookName": "Phát triển hệ thống nhúng",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.938Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 5000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:05:39.887Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1e03"
+  },
+  "bookCode": "00075",
+  "bookGroup": "Công nghệ",
+  "bookName": "Hệ thống thông tin quản lý doanh nghiệp",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.938Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 5000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.768Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1e04"
+  },
+  "bookCode": "00076",
+  "bookGroup": "Công nghệ",
+  "bookName": "Công nghệ học máy trong phân tích ảnh",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.940Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 5000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:05:43.606Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1e05"
+  },
+  "bookCode": "00077",
+  "bookGroup": "Công nghệ",
+  "bookName": "Ứng dụng AI trong thương mại điện tử",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.943Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 5000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.771Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1e06"
+  },
+  "bookCode": "00078",
+  "bookGroup": "Công nghệ",
+  "bookName": "Nghiên cứu bảo mật mạng",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.944Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 5000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.772Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1e07"
+  },
+  "bookCode": "00079",
+  "bookGroup": "Công nghệ",
+  "bookName": "Khóa luận về an toàn thông tin",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.946Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 5000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T14:57:15.527Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1e08"
+  },
+  "bookCode": "00080",
+  "bookGroup": "Công nghệ",
+  "bookName": "Phân tích và xử lý Big Data",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.946Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 5000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.774Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1e09"
+  },
+  "bookCode": "00081",
+  "bookGroup": "Công nghệ",
+  "bookName": "Mô hình mạng máy tính hiện đại",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.947Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 5000,
+  "quantity": 49,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:12:50.861Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1e0a"
+  },
+  "bookCode": "00082",
+  "bookGroup": "Công nghệ",
+  "bookName": "Ứng dụng CNTT trong quản lý giáo dục",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.949Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 5000,
+  "quantity": 49,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:09:28.026Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1e0b"
+  },
+  "bookCode": "00083",
+  "bookGroup": "Công nghệ",
+  "bookName": "Phát triển ứng dụng di động",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.950Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 5000,
+  "quantity": 49,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:12:50.861Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1e0c"
+  },
+  "bookCode": "00084",
+  "bookGroup": "Công nghệ",
+  "bookName": "Mô hình dữ liệu NoSQL",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.951Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 5000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.778Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1e0d"
+  },
+  "bookCode": "00085",
+  "bookGroup": "Công nghệ",
+  "bookName": "Hệ thống quản lý học tập trực tuyến",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.952Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 5000,
+  "quantity": 49,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:12:50.860Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1e0e"
+  },
+  "bookCode": "00098",
+  "bookGroup": "Công nghệ",
+  "bookName": "Công nghệ phần mềm và ứng dụng",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.955Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 5000,
+  "quantity": 49,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:12:50.860Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1e0f"
+  },
+  "bookCode": "00099",
+  "bookGroup": "Công nghệ",
+  "bookName": "Khai phá dữ liệu web",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.956Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 5000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T13:00:34.649Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1e10"
+  },
+  "bookCode": "00100",
+  "bookGroup": "Công nghệ",
+  "bookName": "Ứng dụng trí tuệ nhân tạo trong Robotics",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.957Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.782Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1e11"
+  },
+  "bookCode": "00101",
+  "bookGroup": "Trinh thám",
+  "bookName": "Vụ án bí ẩn số 1",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.959Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T14:57:22.456Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1e12"
+  },
+  "bookCode": "00102",
+  "bookGroup": "Trinh thám",
+  "bookName": "Vụ án bí ẩn số 2",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.960Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.784Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1e13"
+  },
+  "bookCode": "00103",
+  "bookGroup": "Trinh thám",
+  "bookName": "Vụ án bí ẩn số 3",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.961Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:05:39.252Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1e14"
+  },
+  "bookCode": "00104",
+  "bookGroup": "Trinh thám",
+  "bookName": "Vụ án bí ẩn số 4",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.962Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T14:57:22.456Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1e15"
+  },
+  "bookCode": "00105",
+  "bookGroup": "Trinh thám",
+  "bookName": "Vụ án bí ẩn số 5",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.963Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.788Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1e16"
+  },
+  "bookCode": "00106",
+  "bookGroup": "Trinh thám",
+  "bookName": "Vụ án bí ẩn số 6",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.964Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:15:16.932Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1e17"
+  },
+  "bookCode": "00107",
+  "bookGroup": "Trinh thám",
+  "bookName": "Vụ án bí ẩn số 7",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.966Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 49,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:06:19.378Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1e18"
+  },
+  "bookCode": "00137",
+  "bookGroup": "Trinh thám",
+  "bookName": "Vụ án bí ẩn số 37",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.968Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:05:43.605Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1e19"
+  },
+  "bookCode": "00138",
+  "bookGroup": "Trinh thám",
+  "bookName": "Vụ án bí ẩn số 38",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.969Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T14:57:22.454Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1e1a"
+  },
+  "bookCode": "00139",
+  "bookGroup": "Trinh thám",
+  "bookName": "Vụ án bí ẩn số 39",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.970Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.793Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1e1b"
+  },
+  "bookCode": "00140",
+  "bookGroup": "Trinh thám",
+  "bookName": "Vụ án bí ẩn số 40",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.972Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.794Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1e1c"
+  },
+  "bookCode": "00141",
+  "bookGroup": "Trinh thám",
+  "bookName": "Vụ án bí ẩn số 41",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.973Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T14:57:19.421Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1e1d"
+  },
+  "bookCode": "00142",
+  "bookGroup": "Trinh thám",
+  "bookName": "Vụ án bí ẩn số 42",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.974Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.796Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1e1e"
+  },
+  "bookCode": "00143",
+  "bookGroup": "Trinh thám",
+  "bookName": "Vụ án bí ẩn số 43",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.975Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 49,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:13:33.124Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1e1f"
+  },
+  "bookCode": "00144",
+  "bookGroup": "Trinh thám",
+  "bookName": "Vụ án bí ẩn số 44",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.977Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 49,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:06:19.379Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1e20"
+  },
+  "bookCode": "00145",
+  "bookGroup": "Trinh thám",
+  "bookName": "Vụ án bí ẩn số 45",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.977Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 49,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:13:33.124Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1e21"
+  },
+  "bookCode": "00146",
+  "bookGroup": "Trinh thám",
+  "bookName": "Vụ án bí ẩn số 46",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.979Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:05:44.609Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1e22"
+  },
+  "bookCode": "00158",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Chuyến phiêu lưu của bé số 8",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.980Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 49,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:09:28.025Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1e23"
+  },
+  "bookCode": "00159",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Chuyến phiêu lưu của bé số 9",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.982Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.803Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1e24"
+  },
+  "bookCode": "00160",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Chuyến phiêu lưu của bé số 10",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.983Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.804Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1e25"
+  },
+  "bookCode": "00161",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Chuyến phiêu lưu của bé số 11",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.984Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.805Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1e26"
+  },
+  "bookCode": "00162",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Chuyến phiêu lưu của bé số 12",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.985Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.807Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1e27"
+  },
+  "bookCode": "00163",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Chuyến phiêu lưu của bé số 13",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.986Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.807Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1e28"
+  },
+  "bookCode": "00177",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Chuyến phiêu lưu của bé số 27",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.987Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:05:39.252Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1e29"
+  },
+  "bookCode": "00178",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Chuyến phiêu lưu của bé số 28",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.989Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.809Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1e2a"
+  },
+  "bookCode": "00179",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Chuyến phiêu lưu của bé số 29",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.991Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.810Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1e2b"
+  },
+  "bookCode": "00180",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Chuyến phiêu lưu của bé số 30",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.992Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:05:44.609Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1e2c"
+  },
+  "bookCode": "00181",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Chuyến phiêu lưu của bé số 31",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.994Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T13:10:35.106Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1e2d"
+  },
+  "bookCode": "00182",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Chuyến phiêu lưu của bé số 32",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.995Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:05:44.607Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1e2e"
+  },
+  "bookCode": "00188",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Chuyến phiêu lưu của bé số 38",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.997Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.815Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa05d4871065baed1e2f"
+  },
+  "bookCode": "00189",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Chuyến phiêu lưu của bé số 39",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.998Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.816Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e30"
+  },
+  "bookCode": "00190",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Chuyến phiêu lưu của bé số 40",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:29.999Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.816Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e31"
+  },
+  "bookCode": "00191",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Chuyến phiêu lưu của bé số 41",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.000Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.816Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e32"
+  },
+  "bookCode": "00197",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Chuyến phiêu lưu của bé số 47",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.002Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.818Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e33"
+  },
+  "bookCode": "00198",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Chuyến phiêu lưu của bé số 48",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.004Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:15:16.934Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e34"
+  },
+  "bookCode": "00199",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Chuyến phiêu lưu của bé số 49",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.005Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.820Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e35"
+  },
+  "bookCode": "00200",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Chuyến phiêu lưu của bé số 50",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.006Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 2000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:05:44.608Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e36"
+  },
+  "bookCode": "00201",
+  "bookGroup": "Tiểu thuyết",
+  "bookName": "Dưới bầu trời Paris",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.007Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:05:39.250Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e37"
+  },
+  "bookCode": "00202",
+  "bookGroup": "Tiểu thuyết",
+  "bookName": "Con đường mùa hạ",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.008Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.824Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e38"
+  },
+  "bookCode": "00208",
+  "bookGroup": "Tiểu thuyết",
+  "bookName": "Mùa yêu đầu tiên",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.011Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e39"
+  },
+  "bookCode": "00224",
+  "bookGroup": "Tiểu thuyết",
+  "bookName": "Gửi tuổi trẻ đã qua",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.012Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e3a"
+  },
+  "bookCode": "00225",
+  "bookGroup": "Tiểu thuyết",
+  "bookName": "Dưới ánh đèn vàng",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.013Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.827Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e3b"
+  },
+  "bookCode": "00226",
+  "bookGroup": "Tiểu thuyết",
+  "bookName": "Vệt nắng cuối chiều",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.014Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 3000,
+  "quantity": 49,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:07:37.974Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e3c"
+  },
+  "bookCode": "00227",
+  "bookGroup": "Tiểu thuyết",
+  "bookName": "Bên kia giấc mơ",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.015Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.830Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e3d"
+  },
+  "bookCode": "00228",
+  "bookGroup": "Tiểu thuyết",
+  "bookName": "Dòng sông tuổi thơ",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.016Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:05:40.393Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e3e"
+  },
+  "bookCode": "00229",
+  "bookGroup": "Tiểu thuyết",
+  "bookName": "Lạc giữa mùa thu",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.018Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.832Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e3f"
+  },
+  "bookCode": "00240",
+  "bookGroup": "Tiểu thuyết",
+  "bookName": "Một đời thương nhớ",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.019Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 3000,
+  "quantity": 48,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:07:37.973Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e40"
+  },
+  "bookCode": "00241",
+  "bookGroup": "Tiểu thuyết",
+  "bookName": "Trái tim không ngủ",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.020Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.833Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e41"
+  },
+  "bookCode": "00242",
+  "bookGroup": "Tiểu thuyết",
+  "bookName": "Dưới bóng chiều tà",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.021Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 3000,
+  "quantity": 49,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:07:37.974Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e42"
+  },
+  "bookCode": "00243",
+  "bookGroup": "Tiểu thuyết",
+  "bookName": "Con đường không tên",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.022Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:05:40.391Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e43"
+  },
+  "bookCode": "00244",
+  "bookGroup": "Tiểu thuyết",
+  "bookName": "Gió và mây",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.023Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 3000,
+  "quantity": 49,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:07:37.974Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e44"
+  },
+  "bookCode": "00245",
+  "bookGroup": "Tiểu thuyết",
+  "bookName": "Nơi ký ức bắt đầu",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.025Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.837Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e45"
+  },
+  "bookCode": "00262",
+  "bookGroup": "Khoa học",
+  "bookName": "Toán tối ưu",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.026Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.838Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e46"
+  },
+  "bookCode": "00263",
+  "bookGroup": "Khoa học",
+  "bookName": "Lý thuyết đồ thị",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.028Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T14:57:14.030Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e47"
+  },
+  "bookCode": "00264",
+  "bookGroup": "Khoa học",
+  "bookName": "Quy hoạch tuyến tính",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.029Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:15:09.772Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e48"
+  },
+  "bookCode": "00265",
+  "bookGroup": "Khoa học",
+  "bookName": "Xác suất thống kê",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.030Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.841Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e49"
+  },
+  "bookCode": "00266",
+  "bookGroup": "Khoa học",
+  "bookName": "Lý thuyết trò chơi",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.032Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 3000,
+  "quantity": 49,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:10:15.426Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e4a"
+  },
+  "bookCode": "00267",
+  "bookGroup": "Khoa học",
+  "bookName": "Thống kê toán học",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.033Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 3000,
+  "quantity": 49,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:10:15.426Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e4b"
+  },
+  "bookCode": "00278",
+  "bookGroup": "Khoa học",
+  "bookName": "Phương trình đạo hàm riêng",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.034Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:05:40.998Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e4c"
+  },
+  "bookCode": "00279",
+  "bookGroup": "Khoa học",
+  "bookName": "Toán tài chính",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.035Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 3000,
+  "quantity": 49,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:10:15.427Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e4d"
+  },
+  "bookCode": "00280",
+  "bookGroup": "Khoa học",
+  "bookName": "Phương trình tích phân",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.037Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.847Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e4e"
+  },
+  "bookCode": "00281",
+  "bookGroup": "Khoa học",
+  "bookName": "Toán kinh tế",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.038Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 3000,
+  "quantity": 49,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:10:15.427Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e4f"
+  },
+  "bookCode": "00282",
+  "bookGroup": "Khoa học",
+  "bookName": "Toán học trong khoa học dữ liệu",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.041Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.849Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e50"
+  },
+  "bookCode": "00283",
+  "bookGroup": "Khoa học",
+  "bookName": "Lý thuyết tập hợp",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.042Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:15:14.062Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e51"
+  },
+  "bookCode": "00296",
+  "bookGroup": "Khoa học",
+  "bookName": "Toán học trong vật lý",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.043Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:15:14.060Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e52"
+  },
+  "bookCode": "00297",
+  "bookGroup": "Khoa học",
+  "bookName": "Hình học xạ ảnh",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.044Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.852Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e53"
+  },
+  "bookCode": "00298",
+  "bookGroup": "Khoa học",
+  "bookName": "Lý thuyết tối ưu nâng cao",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.045Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T14:57:12.685Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e54"
+  },
+  "bookCode": "00299",
+  "bookGroup": "Khoa học",
+  "bookName": "Hình học topo",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.046Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.854Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e55"
+  },
+  "bookCode": "00300",
+  "bookGroup": "Khoa học",
+  "bookName": "Các chuyên đề toán hiện đại",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.046Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 3000,
+  "quantity": 50,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.855Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e56"
+  },
+  "bookCode": "302",
+  "bookGroup": "Khoa học",
+  "bookName": "Sinh học phân tử: Cánh cửa đến sự sống",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.047Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 5000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.856Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e57"
+  },
+  "bookCode": "305",
+  "bookGroup": "Khoa học",
+  "bookName": "Trí tuệ nhân tạo và tương lai nhân loại",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.049Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 5000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.857Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e58"
+  },
+  "bookCode": "308",
+  "bookGroup": "Khoa học",
+  "bookName": "Thiên văn học: Khám phá các vì sao",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.050Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 5000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.859Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e59"
+  },
+  "bookCode": "311",
+  "bookGroup": "Khoa học",
+  "bookName": "Hóa học môi trường và bảo vệ hành tinh",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.050Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 5000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.860Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e5a"
+  },
+  "bookCode": "314",
+  "bookGroup": "Khoa học",
+  "bookName": "Vũ trụ học: Khám phá các thiên hà",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.051Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 4000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.861Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e5b"
+  },
+  "bookCode": "317",
+  "bookGroup": "Khoa học",
+  "bookName": "Sinh thái và bảo tồn thiên nhiên",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.052Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 4000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.862Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e5c"
+  },
+  "bookCode": "320",
+  "bookGroup": "Khoa học",
+  "bookName": "Thiên văn học cho người mới bắt đầu",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.054Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 4000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.863Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e5d"
+  },
+  "bookCode": "323",
+  "bookGroup": "Khoa học",
+  "bookName": "Khoa học vật liệu nano",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.055Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 4000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.864Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e5e"
+  },
+  "bookCode": "327",
+  "bookGroup": "Khoa học",
+  "bookName": "Sinh học môi trường",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.056Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 4000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.865Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e5f"
+  },
+  "bookCode": "330",
+  "bookGroup": "Khoa học",
+  "bookName": "Thiên văn vật lý hiện đại",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.057Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 4000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.866Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e60"
+  },
+  "bookCode": "333",
+  "bookGroup": "Khoa học",
+  "bookName": "Khoa học biển và hải dương học",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.058Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 4000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.867Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e61"
+  },
+  "bookCode": "336",
+  "bookGroup": "Khoa học",
+  "bookName": "Vật lý thiên văn",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.060Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 4000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T14:57:02.494Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e62"
+  },
+  "bookCode": "339",
+  "bookGroup": "Khoa học",
+  "bookName": "Khoa học máy tính và AI",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.061Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 4000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.869Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e63"
+  },
+  "bookCode": "342",
+  "bookGroup": "Khoa học",
+  "bookName": "Khoa học dữ liệu sinh học",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.062Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 4000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T13:10:27.639Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e64"
+  },
+  "bookCode": "345",
+  "bookGroup": "Khoa học",
+  "bookName": "Khoa học hải dương học hiện đại",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.064Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 4000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.871Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e65"
+  },
+  "bookCode": "348",
+  "bookGroup": "Khoa học",
+  "bookName": "Khoa học dữ liệu nâng cao",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.065Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 4000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T14:57:02.493Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e66"
+  },
+  "bookCode": "351",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Chuyện cổ tích rừng xanh",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.066Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 3000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T13:10:27.638Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e67"
+  },
+  "bookCode": "354",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Vương quốc đồ chơi",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.068Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 3000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e68"
+  },
+  "bookCode": "357",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Cuộc phiêu lưu trên vũ trụ",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.069Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 3000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T13:10:27.637Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e69"
+  },
+  "bookCode": "360",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Ngôi nhà trong mây",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.071Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 3000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T12:44:53.875Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e6a"
+  },
+  "bookCode": "363",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Những người bạn rừng xanh",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.072Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 3000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T13:10:27.637Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e6b"
+  },
+  "bookCode": "366",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Chú gấu biết hát",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.073Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 3000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T13:10:27.634Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e6c"
+  },
+  "bookCode": "369",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Những bông hoa biết nói",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.075Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 3000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:05:41.742Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e6d"
+  },
+  "bookCode": "372",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Chú ếch phiêu lưu ký",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.076Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 3000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:05:41.742Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e6e"
+  },
+  "bookCode": "375",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Chú hươu biết bay",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.078Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 3000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:15:09.774Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e6f"
+  },
+  "bookCode": "378",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Chuyến phiêu lưu đến vùng đất xa xôi",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.078Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 3000,
+  "quantity": 29,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:06:19.379Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e70"
+  },
+  "bookCode": "381",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Chú cáo và những người bạn",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.080Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 3000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T13:10:36.722Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e71"
+  },
+  "bookCode": "384",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Những chú gà con dũng cảm",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.081Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 3000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:05:41.376Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e72"
+  },
+  "bookCode": "387",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Ngôi làng dưới biển",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.082Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 3000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:05:41.377Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e73"
+  },
+  "bookCode": "390",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Chú cừu tinh nghịch",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.083Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 3000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:15:09.775Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e74"
+  },
+  "bookCode": "393",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Những chú vịt phiêu lưu",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.085Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 3000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:15:21.575Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e75"
+  },
+  "bookCode": "396",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Chú gấu trúc dũng cảm",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.086Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 3000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:15:21.574Z"
+  },
+  "synced": false
+},
+{
+  "_id": {
+    "$oid": "694faa06d4871065baed1e76"
+  },
+  "bookCode": "399",
+  "bookGroup": "Thiếu nhi",
+  "bookName": "Chú khỉ tinh nghịch",
+  "borrowCount": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:42:30.087Z"
+  },
+  "location": "Hà Nội",
+  "pricePerDay": 3000,
+  "quantity": 30,
+  "status": "active",
+  "updated_at": {
+    "$date": "2025-12-27T15:15:21.573Z"
+  },
+  "synced": false
+}]

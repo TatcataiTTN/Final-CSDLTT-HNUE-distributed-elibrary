@@ -1,0 +1,168 @@
+[{
+  "_id": {
+    "$oid": "694fa95567b76c2b6d0564f4"
+  },
+  "username": "adminDN",
+  "display_name": "adminDN",
+  "password": "$2y$10$VB7ve5ZVHYPJo8ciowiOcOHdcgiRr5TotlevXSNKyW65S4xd4n/De",
+  "role": "admin",
+  "balance": 0,
+  "created_at": {
+    "$date": "2025-12-27T09:39:33.695Z"
+  },
+  "branch_id": "Đà Nẵng"
+},
+{
+  "_id": {
+    "$oid": "694fd288749704794c09dba4"
+  },
+  "username": "hoantt",
+  "display_name": "hoantt",
+  "password": "$2y$10$o.3ZFAPcv6ls/VDqXCpW0OD/SAcv32y0FDwwkpmQfpt0qoEbTDajm",
+  "role": "customer",
+  "balance": 186000,
+  "branch_id": "Đà Nẵng",
+  "created_at": {
+    "$date": "1999-12-31T17:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694fd29a749704794c09dba6"
+  },
+  "username": "namtv",
+  "display_name": "namtv",
+  "password": "$2y$10$p8yDbHNxIkqWRabzAOIo9OJObuKWAqjLUiLB7n6pn.SnjE0rnf9lq",
+  "role": "customer",
+  "balance": 168000,
+  "branch_id": "Đà Nẵng",
+  "created_at": {
+    "$date": "1999-12-31T17:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694fd2a5749704794c09dba7"
+  },
+  "username": "ngoclvv",
+  "display_name": "ngoclvv",
+  "password": "$2y$10$CulYxlVce.6xCoflDw6diue8VeUQH3M3EjlnccbUsrOJiJsYBh4eW",
+  "role": "customer",
+  "balance": 200000,
+  "branch_id": "Đà Nẵng",
+  "created_at": {
+    "$date": "1999-12-31T17:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694fd2b1749704794c09dba8"
+  },
+  "username": "baopq",
+  "display_name": "baopq",
+  "password": "$2y$10$WM8k2L5Cri.7P7v4iUc1CeJtvf84PTiNbcDSXovXW4lChDR6nwVcy",
+  "role": "customer",
+  "balance": 200000,
+  "branch_id": "Đà Nẵng",
+  "created_at": {
+    "$date": "1999-12-31T17:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694fd2be749704794c09dba9"
+  },
+  "username": "chaulv",
+  "display_name": "chaulv",
+  "password": "$2y$10$iRoq/8oc3SOlWGMbl/LFO./C10ROzmH.T9Du4K9rPybrfl7kMZljy",
+  "role": "customer",
+  "balance": 179000,
+  "branch_id": "Đà Nẵng",
+  "created_at": {
+    "$date": "1999-12-31T17:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694fd2cb749704794c09dbaa"
+  },
+  "username": "linhtv",
+  "display_name": "linhtv",
+  "password": "$2y$10$nGCSlb4w0DfY9hPt99WHGO3lEIaQbs8z6tFpPaQUiBJieEvIw5Eau",
+  "role": "customer",
+  "balance": 160000,
+  "branch_id": "Đà Nẵng",
+  "created_at": {
+    "$date": "1999-12-31T17:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694fd2da749704794c09dbab"
+  },
+  "username": "phuongltt",
+  "display_name": "phuongltt",
+  "password": "$2y$10$Sc3V1A5Sj5Rw1ECV1m2SQOkETWwX83MT.lL1QRBpfGgW34RCP.jx6",
+  "role": "customer",
+  "balance": 1977000,
+  "branch_id": "Đà Nẵng",
+  "created_at": {
+    "$date": "1999-12-31T17:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694fd2e5749704794c09dbac"
+  },
+  "username": "dongtv",
+  "display_name": "dongtv",
+  "password": "$2y$10$3reIHhdt6mFLRYg.mO1myO4MZnAqp/BC0tiXS0SDf3vr3fDlAU8V.",
+  "role": "customer",
+  "balance": 1982000,
+  "branch_id": "Đà Nẵng",
+  "created_at": {
+    "$date": "1999-12-31T17:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694fd2ee749704794c09dbad"
+  },
+  "username": "linhhtt",
+  "display_name": "linhhtt",
+  "password": "$2y$10$48x4v.ltwDk5FrP5q8VfdOyWcn6TeBfC6SuRYxClRseOwZN3kNmK6",
+  "role": "customer",
+  "balance": 1940000,
+  "branch_id": "Đà Nẵng",
+  "created_at": {
+    "$date": "1999-12-31T17:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694fd2f6749704794c09dbae"
+  },
+  "username": "khanhdn",
+  "display_name": "khanhdn",
+  "password": "$2y$10$.3zNFtugvvs.EE8WnSrBm.QxCENVl3b0ZfVPE4AFE0duQfTu8WXAG",
+  "role": "customer",
+  "balance": 5000,
+  "branch_id": "Đà Nẵng",
+  "created_at": {
+    "$date": "1999-12-31T17:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694fd2ff749704794c09dbaf"
+  },
+  "username": "thutt",
+  "display_name": "thutt",
+  "password": "$2y$10$hSSZhKae7vZKgo0FYBCH6Oif65DiFYa7G1mcA3dLzoGP.zsWkvCHq",
+  "role": "customer",
+  "balance": 163000,
+  "branch_id": "Đà Nẵng",
+  "created_at": {
+    "$date": "1999-12-31T17:00:00.000Z"
+  }
+}]

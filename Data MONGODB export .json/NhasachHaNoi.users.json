@@ -1,0 +1,182 @@
+[{
+  "_id": {
+    "$oid": "694e69a6da45830e1800b497"
+  },
+  "username": "adminHN",
+  "display_name": "adminHN",
+  "password": "$2y$10$Wj7wGbXekLGZnIqW6FW/luaWPN2VN.A2U63iSzSLjH0t0/zu1w7Ta",
+  "role": "admin",
+  "balance": 0,
+  "created_at": {
+    "$date": "2025-12-26T10:55:34.333Z"
+  },
+  "branch_id": "Hà Nội"
+},
+{
+  "_id": {
+    "$oid": "694e6adada45830e1800b49a"
+  },
+  "username": "luuanhtu",
+  "display_name": "luuanhtu",
+  "password": "$2y$10$IrZyZn9FYC2MSnlREv1A1O5OV6QYcjRDF18G8DL3/yIt/fMjGaLmq",
+  "role": "customer",
+  "balance": 311000,
+  "branch_id": "Hà Nội",
+  "created_at": {
+    "$date": "1999-12-31T17:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ec76e371d11a332069884"
+  },
+  "username": "tuannghia",
+  "display_name": "tuannghia",
+  "password": "$2y$10$y01p4d.aRKZeszhpYQHeau2KqfJRxXSoT5yMKrNbmN./GZaKz1eTS",
+  "role": "customer",
+  "balance": 113000,
+  "branch_id": "Hà Nội",
+  "created_at": {
+    "$date": "1999-12-31T17:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694fad8a67b76c2b6d05650f"
+  },
+  "username": "annv",
+  "display_name": "annv",
+  "password": "$2y$10$LBOKey4iJWRXq4PgxxtmbeFcvMFkFedEMky/sa99BHbRZbNGD8Iie",
+  "role": "customer",
+  "balance": 212000,
+  "branch_id": "Hà Nội",
+  "created_at": {
+    "$date": "1999-12-31T17:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694fce9831f0f2802b0b8ab6"
+  },
+  "username": "ducpm",
+  "display_name": "ducpm",
+  "password": "$2y$10$wlA81rf1NQvS6TFaNtMMseDa3ml5CnyqnYIGCkgFQqjnGCgoSXB/y",
+  "role": "customer",
+  "balance": 232000,
+  "branch_id": "Hà Nội",
+  "created_at": {
+    "$date": "1999-12-31T17:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694fd94f48b6f0b5630da310"
+  },
+  "username": "maidtt",
+  "display_name": "maidtt",
+  "password": "$2y$10$Dbp/uCQHsOamRupe79gdPuWyfHmgfQurjx93kOX3EW8qZHwEaX3vW",
+  "role": "customer",
+  "balance": 263000,
+  "branch_id": "Hà Nội",
+  "created_at": {
+    "$date": "1999-12-31T17:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694fda2148b6f0b5630da313"
+  },
+  "username": "huynqc",
+  "display_name": "huynqc",
+  "password": "$2y$10$oPmSUAw/AFmh5gMb78XZiugsq12aTmJZBWmhm/6z1tDyTtlK.oLku",
+  "role": "customer",
+  "balance": 154000,
+  "branch_id": "Hà Nội",
+  "created_at": {
+    "$date": "1999-12-31T17:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ff0e548b6f0b5630da31e"
+  },
+  "username": "cuonglh",
+  "display_name": "cuonglh",
+  "password": "$2y$10$fyT60ajHd7Xee9s3x19WburX7k9rgyMZ.RgbLpm0p5YHZbadhptNm",
+  "role": "customer",
+  "balance": 87000,
+  "branch_id": "Hà Nội",
+  "created_at": {
+    "$date": "1999-12-31T17:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ff0ee48b6f0b5630da31f"
+  },
+  "username": "binhtt",
+  "display_name": "binhtt",
+  "password": "$2y$10$R/agIKWVpEgNpm7Hv/SvL.P5fVPfCLD/GEBsaJV9CmSPL5EBAMKFG",
+  "role": "customer",
+  "balance": 364000,
+  "branch_id": "Hà Nội",
+  "created_at": {
+    "$date": "1999-12-31T17:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ff0f948b6f0b5630da320"
+  },
+  "username": "emvt",
+  "display_name": "emvt",
+  "password": "$2y$10$yy3LSAyLNgzPbic4nao8AuXbIhEoFpDV43jXPR/k6ignxPq4rZS/a",
+  "role": "customer",
+  "balance": 176000,
+  "branch_id": "Hà Nội",
+  "created_at": {
+    "$date": "1999-12-31T17:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ff10148b6f0b5630da321"
+  },
+  "username": "huynq",
+  "display_name": "huynq",
+  "password": "$2y$10$YZ9JIRu0/jD3cahhjT6p3uJrh6/TaoKkyF4iF.veP4seUXtJ/y5pe",
+  "role": "customer",
+  "balance": 83000,
+  "branch_id": "Hà Nội",
+  "created_at": {
+    "$date": "1999-12-31T17:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ff10948b6f0b5630da322"
+  },
+  "username": "hatt",
+  "display_name": "hatt",
+  "password": "$2y$10$roLJurS0RpdK1AM76Nxdh.Uey3kF87coh0mt0/H1SPyPVAJV85Vta",
+  "role": "customer",
+  "balance": 124000,
+  "branch_id": "Hà Nội",
+  "created_at": {
+    "$date": "1999-12-31T17:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "694ff11348b6f0b5630da323"
+  },
+  "username": "longbd",
+  "display_name": "longbd",
+  "password": "$2y$10$9K8Ax58XjKpOrV8ttrY5wObKS1m0jSl6LePFM76sHWsHwBeB4plOW",
+  "role": "customer",
+  "balance": 220000,
+  "branch_id": "Hà Nội",
+  "created_at": {
+    "$date": "1999-12-31T17:00:00.000Z"
+  }
+}]
