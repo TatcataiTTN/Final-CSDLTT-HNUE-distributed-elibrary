@@ -1,5 +1,7 @@
 <?php
 session_start();
+require '../connection.php';
+require_once '../ActivityLogger.php'; // Activity logging
 
 // Ngăn cache trình duyệt
 header("Expires: Tue, 03 Jul 2001 06:00:00 GMT");
@@ -17,11 +19,17 @@ if (empty($_SESSION['user_id'])) {
 
 // Xử lý logout
 if (isset($_GET['action']) && $_GET['action'] === 'logout') {
+    // Log logout activity before destroying session
+    ActivityLogger::logLogout($_SESSION['user_id'], $_SESSION['username'] ?? 'unknown');
+
     session_unset();
     session_destroy();
     header("Location: dangnhap.php");
     exit();
 }
+
+// Log page view
+ActivityLogger::logPageView('trangchu');
 
 // Lấy thông tin user
 $username = $_SESSION['username'] ?? "Khách";
@@ -60,8 +68,7 @@ $role     = $_SESSION['role'] ?? "customer";
         <!-- Menu cho admin -->
         <a href="quanlysach.php">Quản lý sách</a>
         <a href="quanlynguoidung.php">Quản lý người dùng</a>
-      <!--  <a href="donhangmoi.php">Đơn hàng mới</a> -->
-        <!-- <a href="quanlytrasach.php">Quản lý trả sách</a> -->
+        <a href="dashboard.php">Dashboard</a>
     <?php endif; ?>
 </div>
         <div class="nav-user">

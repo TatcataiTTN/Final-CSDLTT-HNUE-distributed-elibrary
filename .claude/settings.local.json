@@ -21,7 +21,21 @@
       "Bash(fi)",
       "Bash(done)",
       "Bash(git init:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nInitial commit: Distributed e-Library System with JWT Authentication\n\nFeatures:\n- 4-node distributed architecture \\(Central Hub + 3 branches\\)\n- MongoDB Replica Set with Docker deployment\n- JWT authentication for API security\n- Full CRUD operations for users, books, carts, orders\n- Inter-node synchronization with REST APIs\n- Role-based access control \\(admin/customer\\)\n- Password hashing with bcrypt\n- Text search with MongoDB indexes\n\n🤖 Generated with [Claude Code]\\(https://claude.com/claude-code\\)\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git branch:*)",
+      "Bash(git remote add:*)",
+      "Bash(cd /Users/tuannghiat/Downloads/Final\\\\ CSDLTT && git commit:*)",
+      "Bash(tree:*)",
+      "Bash(python3:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(xargs:*)",
+      "Bash(php:*)",
+      "Bash(for f in *.books.json)",
+      "Bash(for f in *.users.json)",
+      "Bash(for f in *.orders.json)",
+      "Bash(for f in *.carts.json)"
     ]
   }
 }

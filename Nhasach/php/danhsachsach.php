@@ -1,6 +1,7 @@
 <?php
 session_start();
 require '../connection.php';
+require_once '../ActivityLogger.php'; // Activity logging
 
 use MongoDB\BSON\ObjectId;
 use MongoDB\BSON\UTCDateTime;
@@ -103,6 +104,9 @@ if (isset($_GET['add'])) {
                     );
                 }
 
+                // Log add to cart activity
+                ActivityLogger::logAddToCart((string)$book['_id'], $book['bookName'], 1);
+
                 $_SESSION['cart_message'] = "✅ Đã thêm '{$book['bookName']}' vào giỏ mượn.";
             }
         } else {
@@ -183,9 +187,15 @@ $options = [
 if ($searchName !== '') {
     $options['projection'] = ['score' => ['$meta' => 'textScore']];
     $options['sort']       = ['score' => ['$meta' => 'textScore']];
+
+    // Log search activity
+    ActivityLogger::logSearch($searchName, $totalBooks);
 } else {
     $options['sort'] = ['created_at' => -1];
 }
+
+// Log page view
+ActivityLogger::logPageView('danhsachsach');
 
 $booksCursor = $booksCol->find($filter, $options);
 $books       = $booksCursor->toArray();

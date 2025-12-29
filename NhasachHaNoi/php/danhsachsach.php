@@ -1,6 +1,7 @@
 <?php
 session_start();
 require '../connection.php';
+require_once '../ActivityLogger.php'; // Activity logging
 
 use MongoDB\BSON\ObjectId;
 use MongoDB\BSON\UTCDateTime;
@@ -23,7 +24,7 @@ $cartsCol = $db->carts;
 
 $message = "";
 
-// Lấy user hiện tại TRONG DB chi nhánh Hà Nội
+// Lấy user hiện tại
 $user = $usersCol->findOne(['username' => $currentUsername]);
 if (!$user) {
     die("Không tìm thấy tài khoản người dùng.");
@@ -31,112 +32,91 @@ if (!$user) {
 
 // Các giá trị dùng chung
 $BOOK_GROUPS = ["Kinh dị", "Trinh thám", "Khoa học", "Tình cảm", "Thiếu nhi"];
-
-// Site chi nhánh Hà Nội -> chỉ Hà Nội
-$LOCATIONS   = ["Hà Nội"];
-
+$LOCATIONS   = ["Hà Nội", "Đà Nẵng", "Hải Phòng"];
 $STATUS_LIST = [
     'active'       => 'Hoạt động',
     'out_of_stock' => 'Hết hàng'
 ];
 
-// ================== XỬ LÝ THÊM SÁCH VÀO CART ==================
+// ================== XỬ LÝ THÊM SÁCH VÀO CART (CART TRONG DB) ==================
 if (isset($_GET['add'])) {
     $id = $_GET['add'];
 
     try {
-        // ❗ KHÔNG LỌC THEO status NỮA, CHỈ CẦN ĐÚNG _id + HÀ NỘI
         $book = $booksCol->findOne([
-            '_id'      => new ObjectId($id),
-            'location' => 'Hà Nội',
+            '_id'    => new ObjectId($id),
+            'status' => 'active'
         ]);
 
         if ($book) {
-            $quantityDb = (int)($book['quantity'] ?? 0); // tồn kho hiện tại
-
+            $quantityDb = (int)($book['quantity'] ?? 0);
             if ($quantityDb <= 0) {
-                $_SESSION['cart_message'] = "⚠ Sách này hiện đã hết hàng, không thể thêm vào giỏ.";
+                $message = "⚠ Sách này hiện đã hết hàng, không thể thêm vào giỏ.";
             } else {
-                // Lấy giỏ hiện tại
+                // Tìm giỏ của user
                 $cartDoc = $cartsCol->findOne(['user_id' => $user['_id']]);
-                $items   = $cartDoc['items'] ?? [];
 
-                // 👉 TÍNH SỐ LƯỢNG CUỐN NÀY ĐÃ CÓ TRONG GIỎ
-                $currentQtyInCart = 0;
-                foreach ($items as $it) {
-                    if ((string)$it['book_id'] === (string)$book['_id']) {
-                        $currentQtyInCart = (int)($it['quantity'] ?? 0);
-                        break;
-                    }
-                }
+                if (!$cartDoc) {
+                    // Tạo giỏ mới
+                    $items = [[
+                        'book_id'     => $book['_id'],
+                        'bookCode'    => $book['bookCode'] ?? '',
+                        'bookName'    => $book['bookName'] ?? '',
+                        'pricePerDay' => (int)($book['pricePerDay'] ?? 0),
+                        'quantity'    => 1
+                    ]];
 
-                // 👉 NẾU TRONG GIỎ ĐÃ ĐỦ SỐ LƯỢNG TỒN KHO → KHÔNG CHO THÊM
-                if ($currentQtyInCart >= $quantityDb) {
-                    $_SESSION['cart_message'] =
-                        "⚠ Bạn đã chọn tối đa {$quantityDb} cuốn cho sách này (bằng số lượng còn trong kho).";
+                    $cartsCol->insertOne([
+                        'user_id'    => $user['_id'],
+                        'items'      => $items,
+                        'updated_at' => new UTCDateTime()
+                    ]);
                 } else {
-                    // VẪN CÒN CHỖ ĐỂ THÊM
-                    if (!$cartDoc) {
-                        // Chưa có giỏ → tạo mới
-                        $items = [[
+                    // Cập nhật giỏ hiện có
+                    $items = $cartDoc['items'] ?? [];
+                    $found = false;
+
+                    foreach ($items as &$item) {
+                        if ((string)$item['book_id'] === (string)$book['_id']) {
+                            // ĐÃ có sách này trong giỏ → không tăng thêm, để user chỉnh bên giohang
+                            $found = true;
+                            break;
+                        }
+                    }
+                    unset($item);
+
+                    if (!$found) {
+                        $items[] = [
                             'book_id'     => $book['_id'],
                             'bookCode'    => $book['bookCode'] ?? '',
                             'bookName'    => $book['bookName'] ?? '',
                             'pricePerDay' => (int)($book['pricePerDay'] ?? 0),
                             'quantity'    => 1
-                        ]];
-
-                        $cartsCol->insertOne([
-                            'user_id'    => $user['_id'],
-                            'items'      => $items,
-                            'updated_at' => new UTCDateTime()
-                        ]);
-                    } else {
-                        $items = $cartDoc['items'] ?? [];
-                        $found = false;
-
-                        foreach ($items as &$item) {
-                            if ((string)$item['book_id'] === (string)$book['_id']) {
-                                // ĐANG CHẮC CHẮN currentQtyInCart < quantityDb
-                                $itemQty          = (int)($item['quantity'] ?? 0);
-                                $item['quantity'] = $itemQty + 1; // +1 nhưng không thể vượt quantityDb
-                                $found            = true;
-                                break;
-                            }
-                        }
-                        unset($item);
-
-                        if (!$found) {
-                            $items[] = [
-                                'book_id'     => $book['_id'],
-                                'bookCode'    => $book['bookCode'] ?? '',
-                                'bookName'    => $book['bookName'] ?? '',
-                                'pricePerDay' => (int)($book['pricePerDay'] ?? 0),
-                                'quantity'    => 1
-                            ];
-                        }
-
-                        $cartsCol->updateOne(
-                            ['_id' => $cartDoc['_id']],
-                            ['$set' => [
-                                'items'      => $items,
-                                'updated_at' => new UTCDateTime()
-                            ]]
-                        );
+                        ];
                     }
 
-                    $_SESSION['cart_message'] =
-                        "✅ Đã thêm '{$book['bookName']}' vào giỏ mượn (tổng trong giỏ: " . ($currentQtyInCart + 1) . " cuốn).";
+                    $cartsCol->updateOne(
+                        ['_id' => $cartDoc['_id']],
+                        ['$set' => [
+                            'items'      => $items,
+                            'updated_at' => new UTCDateTime()
+                        ]]
+                    );
                 }
+
+                // Log add to cart activity
+                ActivityLogger::logAddToCart((string)$book['_id'], $book['bookName'], 1);
+
+                $_SESSION['cart_message'] = "✅ Đã thêm '{$book['bookName']}' vào giỏ mượn.";
             }
         } else {
-            $_SESSION['cart_message'] = "⚠ Sách không tồn tại hoặc không thuộc chi nhánh Hà Nội.";
+            $message = "⚠ Sách không tồn tại hoặc không còn hoạt động.";
         }
     } catch (Exception $e) {
-        $_SESSION['cart_message'] = "❌ Có lỗi xảy ra khi thêm vào giỏ.";
+        $message = "Có lỗi xảy ra khi thêm vào giỏ.";
     }
 
-    // Redirect lại trang hiện tại (loại bỏ tham số add)
+    // Redirect lại trang hiện tại (loại bỏ tham số add để tránh F5 thêm lại)
     $q = $_GET;
     unset($q['add']);
     $redirectUrl = "danhsachsach.php";
@@ -147,16 +127,17 @@ if (isset($_GET['add'])) {
     exit();
 }
 
-// Lấy giỏ hiện tại từ DB chi nhánh Hà Nội
-$cartDoc   = $cartsCol->findOne(['user_id' => $user['_id']]);
+// Lấy giỏ hiện tại từ DB
+$cartDoc  = $cartsCol->findOne(['user_id' => $user['_id']]);
 $cartItems = $cartDoc['items'] ?? [];
 
+// Đếm số lượng sách trong giỏ
 $cartCount = 0;
 foreach ($cartItems as $it) {
     $cartCount += (int)($it['quantity'] ?? 1);
 }
 
-// Flash message
+// Flash message từ cập nhật giỏ
 $flashMsg = $_SESSION['cart_message'] ?? "";
 if ($flashMsg !== "") {
     unset($_SESSION['cart_message']);
@@ -168,10 +149,9 @@ $searchGroup  = trim($_GET['searchGroup']  ?? '');
 $searchLoc    = trim($_GET['searchLoc']    ?? '');
 $searchStatus = trim($_GET['searchStatus'] ?? '');
 
-// Base filter: chỉ lấy sách của Hà Nội + status hợp lệ
+// Luôn loại bỏ sách deleted
 $filter = [
-    'status'   => ['$in' => ['active', 'out_of_stock']],
-    'location' => 'Hà Nội'
+    'status' => ['$in' => ['active', 'out_of_stock']]
 ];
 
 if ($searchName !== '') {
@@ -181,11 +161,9 @@ if ($searchName !== '') {
 if ($searchGroup !== '' && $searchGroup !== 'all') {
     $filter['bookGroup'] = $searchGroup;
 }
-
 if ($searchLoc !== '' && $searchLoc !== 'all') {
     $filter['location'] = $searchLoc;
 }
-
 if ($searchStatus !== '' && $searchStatus !== 'all') {
     if (in_array($searchStatus, ['active', 'out_of_stock'], true)) {
         $filter['status'] = $searchStatus;
@@ -197,7 +175,7 @@ $perPage = 10;
 $page    = isset($_GET['page']) ? max(1, (int)$_GET['page']) : 1;
 $skip    = ($page - 1) * $perPage;
 
-// Dùng count (driver cũ)
+// Dùng count() theo driver bạn đang xài
 $totalBooks = $booksCol->count($filter);
 $totalPages = max(1, ceil($totalBooks / $perPage));
 
@@ -209,9 +187,15 @@ $options = [
 if ($searchName !== '') {
     $options['projection'] = ['score' => ['$meta' => 'textScore']];
     $options['sort']       = ['score' => ['$meta' => 'textScore']];
+
+    // Log search activity
+    ActivityLogger::logSearch($searchName, $totalBooks);
 } else {
     $options['sort'] = ['created_at' => -1];
 }
+
+// Log page view
+ActivityLogger::logPageView('danhsachsach');
 
 $booksCursor = $booksCol->find($filter, $options);
 $books       = $booksCursor->toArray();
@@ -220,7 +204,7 @@ $books       = $booksCursor->toArray();
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Danh sách sách - Chi nhánh Hà Nội</title>
+    <title>Danh sách sách</title>
     <link rel="stylesheet" href="../css/danhsachsach.css">
 </head>
 <body>
@@ -232,7 +216,7 @@ $books       = $booksCursor->toArray();
             🛒 Giỏ mượn (<?= $cartCount; ?>)
         </a>
 
-        <h2>📚 Danh sách sách - Chi nhánh Hà Nội</h2>
+        <h2>📚 Danh sách sách</h2>
 
         <?php if ($flashMsg !== ""): ?>
             <p class="msg"><?= htmlspecialchars($flashMsg, ENT_QUOTES | ENT_HTML5, 'UTF-8'); ?></p>
@@ -282,7 +266,7 @@ $books       = $booksCursor->toArray();
 
         <!-- DANH SÁCH SÁCH -->
         <div class="table-wrapper">
-            <h3>Tất cả sách đang có tại Chi nhánh Hà Nội</h3>
+            <h3>Tất cả sách đang có trong hệ thống</h3>
             <table>
                 <thead>
                 <tr>
@@ -302,21 +286,12 @@ $books       = $booksCursor->toArray();
                 <?php else: ?>
                     <?php foreach ($books as $b): ?>
                         <?php
-                        $quantity   = (int)($b['quantity'] ?? 0);
-                        $rawStatus  = $b['status'] ?? 'active';
-
-                        // ✅ TỰ ĐỘNG SUY RA TRẠNG THÁI THEO TỒN KHO
-                        if ($quantity <= 0) {
-                            $statusKey = 'out_of_stock';
-                        } else {
-                            $statusKey = 'active';
-                        }
-
+                        $statusKey   = $b['status'] ?? 'active';
                         $statusLabel = $STATUS_LIST[$statusKey] ?? 'Hoạt động';
                         $statusClass = ($statusKey === 'out_of_stock') ? 'status-out' : 'status-active';
 
-                        // Chỉ cần statusKey = active là cho đặt mượn
-                        $canOrder = ($statusKey === 'active');
+                        $quantity = (int)($b['quantity'] ?? 0);
+                        $canOrder = ($statusKey === 'active' && $quantity > 0);
                         ?>
                         <tr>
                             <td><?= htmlspecialchars($b['bookCode'] ?? '', ENT_QUOTES | ENT_HTML5, 'UTF-8'); ?></td>

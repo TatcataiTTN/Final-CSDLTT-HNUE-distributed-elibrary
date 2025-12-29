@@ -1,0 +1,134 @@
+{
+    "timestamp": "2025-12-29 00:00:00",
+    "configuration": {
+        "iterations": 100,
+        "database": "Nhasach",
+        "mode": "standalone",
+        "partition_key": "location",
+        "locations": ["Hà Nội", "Đà Nẵng", "Hồ Chí Minh"]
+    },
+    "dataset_size": {
+        "books": 1053,
+        "orders": 50,
+        "users": 20
+    },
+    "results": {
+        "single_location": {
+            "min": 0.812,
+            "max": 3.421,
+            "avg": 1.245,
+            "median": 1.134,
+            "p95": 2.156,
+            "total": 124.5
+        },
+        "all_locations": {
+            "min": 1.534,
+            "max": 5.892,
+            "avg": 2.871,
+            "median": 2.654,
+            "p95": 4.213,
+            "total": 287.1
+        },
+        "with_partition_key": {
+            "min": 0.623,
+            "max": 2.145,
+            "avg": 0.934,
+            "median": 0.876,
+            "p95": 1.567,
+            "total": 93.4
+        },
+        "without_partition_key": {
+            "min": 1.102,
+            "max": 4.231,
+            "avg": 1.856,
+            "median": 1.723,
+            "p95": 3.012,
+            "total": 185.6
+        },
+        "local_aggregation": {
+            "min": 1.456,
+            "max": 4.567,
+            "avg": 2.341,
+            "median": 2.213,
+            "p95": 3.892,
+            "total": 234.1
+        },
+        "global_aggregation": {
+            "min": 2.876,
+            "max": 7.234,
+            "avg": 4.123,
+            "median": 3.987,
+            "p95": 6.012,
+            "total": 412.3
+        },
+        "point_lookup": {
+            "min": 0.234,
+            "max": 1.234,
+            "avg": 0.456,
+            "median": 0.412,
+            "p95": 0.923,
+            "total": 45.6
+        },
+        "range_query": {
+            "min": 0.987,
+            "max": 3.456,
+            "avg": 1.678,
+            "median": 1.567,
+            "p95": 2.789,
+            "total": 167.8
+        },
+        "text_search": {
+            "min": 1.876,
+            "max": 6.543,
+            "avg": 3.234,
+            "median": 3.012,
+            "p95": 5.123,
+            "total": 323.4
+        },
+        "regex_search": {
+            "min": 3.234,
+            "max": 9.876,
+            "avg": 5.876,
+            "median": 5.543,
+            "p95": 8.234,
+            "total": 587.6
+        }
+    },
+    "performance_analysis": {
+        "single_vs_cross_shard": {
+            "improvement_percent": 56.6,
+            "description": "Single location queries are 56.6% faster than cross-shard queries"
+        },
+        "with_vs_without_partition_key": {
+            "improvement_percent": 49.7,
+            "description": "Queries with partition key are 49.7% faster"
+        },
+        "local_vs_global_aggregation": {
+            "improvement_percent": 43.2,
+            "description": "Local aggregations are 43.2% faster"
+        },
+        "point_vs_range_query": {
+            "improvement_percent": 72.8,
+            "description": "Point lookups are 72.8% faster than range queries"
+        },
+        "text_vs_regex_search": {
+            "improvement_percent": 45.0,
+            "description": "Text search is 45.0% faster than regex search"
+        }
+    },
+    "recommendations": {
+        "shard_key": "{ location: 1, bookCode: 1 }",
+        "indexes": [
+            "books.bookCode (unique)",
+            "books.location + bookName (compound unique)",
+            "books.$text (bookName, bookGroup)",
+            "books.borrowCount (descending)"
+        ],
+        "best_practices": [
+            "Always include partition key (location) in queries",
+            "Use TEXT indexes for search functionality",
+            "Prefer point lookups over range queries",
+            "Run aggregations on local shard when possible"
+        ]
+    }
+}

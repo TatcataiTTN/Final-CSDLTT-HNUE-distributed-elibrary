@@ -3,6 +3,7 @@ session_start();
 require '../connection.php'; // file kết nối MongoDB
 require_once '../JWTHelper.php'; // JWT authentication helper
 require_once '../SecurityHelper.php'; // Security utilities (rate limiting, CSRF)
+require_once '../ActivityLogger.php'; // Activity logging for analytics
 
 $message = "";
 $messageType = "error"; // 'error' or 'warning'
@@ -81,6 +82,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 );
                 $_SESSION['jwt_token'] = $jwtToken;
 
+                // Log successful login to activities collection
+                ActivityLogger::logLogin((string)$user['_id'], $user['username'], true);
+
                 // Nếu bạn muốn admin vào trang quản trị → check tại đây
                 // if ($user['role'] === 'admin') header("Location: admin/home.php");
 
@@ -95,6 +99,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     false,
                     $_SERVER['HTTP_USER_AGENT'] ?? ''
                 );
+
+                // Log failed login to activities collection
+                ActivityLogger::logLogin(null, $username, false);
 
                 // Get updated rate limit info
                 $rateLimitCheck = SecurityHelper::checkRateLimit($clientIP, $username);
