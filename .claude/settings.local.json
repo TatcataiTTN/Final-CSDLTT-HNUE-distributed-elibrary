@@ -44,7 +44,12 @@
       "Bash(pecl list:*)",
       "Bash(# Create directory and copy mongodb.so mkdir -p /opt/homebrew/lib/php/pecl/20240924/ cp /private/tmp/pear/temp/pear-build-tuannghiatb40e3cm719osfbOrWHh/install-mongodb-2.1.4/opt/homebrew/Cellar/php/8.4.14/pecl/20240924/mongodb.so /opt/homebrew/lib/php/pecl/20240924/ || echo \"\"Trying alternative...\"\" # Find the built file find /private/tmp -name \"\"mongodb.so\"\" -newer /tmp)",
       "Bash(git reset:*)",
-      "Bash( file *.sh)"
+      "Bash( file *.sh)",
+      "Bash(docker ps:*)",
+      "Bash(file:*)",
+      "Bash(curl:*)",
+      "Bash(docker logs:*)",
+      "Bash(lsof:*)"
     ]
   }
 }
