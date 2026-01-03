@@ -6,12 +6,14 @@
  * for advanced querying and data analysis in the e-Library system.
  *
  * Endpoints (via ?action= parameter):
- * - books_by_location: Group books by location with counts
- * - popular_books: Top borrowed books with $sort and $limit
- * - revenue_by_date: Daily revenue aggregation
- * - user_statistics: User borrowing statistics with $lookup
- * - order_status_summary: Order counts by status
- * - monthly_trends: Monthly borrowing trends
+ * - books_by_location: Group books by location with counts ($match, $group, $sort, $project)
+ * - popular_books: Top borrowed books ($match, $sort, $limit, $project)
+ * - revenue_by_date: Daily revenue aggregation ($match, $addFields, $group, $sort, $project)
+ * - user_statistics: User borrowing statistics ($match, $group, $sort, $limit, $addFields, $project)
+ * - user_details: User details with $lookup JOIN ($match, $lookup, $unwind, $group, $sort, $limit)
+ * - order_status_summary: Order counts by status ($group, $sort, $project)
+ * - monthly_trends: Monthly borrowing trends ($match, $addFields, $group, $sort, $project)
+ * - book_group_stats: Multi-faceted statistics ($match, $facet, $bucket)
  */
 
 header('Content-Type: application/json; charset=utf-8');
@@ -192,7 +194,7 @@ try {
 
         // =====================================================================
         // 4. AGGREGATION: User borrowing statistics
-        // Uses: $group, $sort, $limit, $lookup (join with users collection)
+        // Uses: $match, $group, $sort, $limit, $addFields, $project
         // =====================================================================
         case 'user_statistics':
             $limit = (int)($_GET['limit'] ?? 10);
@@ -257,8 +259,103 @@ try {
             break;
 
         // =====================================================================
-        // 5. AGGREGATION: Order status summary
-        // Uses: $group, $sort
+        // 5. AGGREGATION: User details with $lookup JOIN
+        // Uses: $match, $lookup, $unwind, $group, $sort, $limit
+        // This demonstrates MongoDB's LEFT OUTER JOIN capability
+        // =====================================================================
+        case 'user_details':
+            $limit = (int)($_GET['limit'] ?? 20);
+
+            $pipeline = [
+                // Stage 1: Match completed orders only
+                ['$match' => [
+                    'status' => ['$in' => ['paid', 'success', 'returned']]
+                ]],
+
+                // Stage 2: $lookup - JOIN with users collection
+                // This is the key aggregation stage for cross-collection queries
+                ['$lookup' => [
+                    'from' => 'users',           // Target collection
+                    'localField' => 'user_id',   // Field in orders
+                    'foreignField' => '_id',     // Field in users
+                    'as' => 'user_info'          // Output array field
+                ]],
+
+                // Stage 3: $unwind - Flatten the user_info array
+                // preserveNullAndEmptyArrays keeps orders even if user not found
+                ['$unwind' => [
+                    'path' => '$user_info',
+                    'preserveNullAndEmptyArrays' => true
+                ]],
+
+                // Stage 4: Group by user_id with joined user info
+                ['$group' => [
+                    '_id' => '$user_id',
+                    'username' => ['$first' => '$username'],
+                    'email' => ['$first' => '$user_info.email'],
+                    'fullname' => ['$first' => '$user_info.fullname'],
+                    'role' => ['$first' => '$user_info.role'],
+                    'balance' => ['$first' => '$user_info.balance'],
+                    'totalOrders' => ['$sum' => 1],
+                    'totalSpent' => ['$sum' => '$total_amount'],
+                    'totalItems' => ['$sum' => '$total_quantity'],
+                    'firstOrder' => ['$min' => '$created_at'],
+                    'lastOrder' => ['$max' => '$created_at']
+                ]],
+
+                // Stage 5: Sort by total spent descending
+                ['$sort' => ['totalSpent' => -1]],
+
+                // Stage 6: Limit results
+                ['$limit' => $limit],
+
+                // Stage 7: Project final output with computed fields
+                ['$project' => [
+                    '_id' => 0,
+                    'user_id' => '$_id',
+                    'username' => 1,
+                    'email' => ['$ifNull' => ['$email', 'N/A']],
+                    'fullname' => ['$ifNull' => ['$fullname', 'N/A']],
+                    'role' => ['$ifNull' => ['$role', 'customer']],
+                    'currentBalance' => ['$ifNull' => ['$balance', 0]],
+                    'totalOrders' => 1,
+                    'totalSpent' => 1,
+                    'totalItems' => 1,
+                    'avgOrderValue' => [
+                        '$round' => [
+                            ['$cond' => [
+                                'if' => ['$gt' => ['$totalOrders', 0]],
+                                'then' => ['$divide' => ['$totalSpent', '$totalOrders']],
+                                'else' => 0
+                            ]],
+                            0
+                        ]
+                    ],
+                    'firstOrder' => 1,
+                    'lastOrder' => 1
+                ]]
+            ];
+
+            $result = $db->orders->aggregate($pipeline)->toArray();
+
+            echo json_encode([
+                'success' => true,
+                'action' => 'user_details',
+                'description' => 'User details with $lookup JOIN from users collection',
+                'pipeline_stages' => ['$match', '$lookup', '$unwind', '$group', '$sort', '$limit', '$project'],
+                'lookup_info' => [
+                    'from_collection' => 'orders',
+                    'joined_collection' => 'users',
+                    'join_type' => 'LEFT OUTER JOIN'
+                ],
+                'data' => $result,
+                'total_users' => count($result)
+            ], JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+            break;
+
+        // =====================================================================
+        // 6. AGGREGATION: Order status summary
+        // Uses: $group, $sort, $project
         // =====================================================================
         case 'order_status_summary':
             $pipeline = [
@@ -307,8 +404,8 @@ try {
             break;
 
         // =====================================================================
-        // 6. AGGREGATION: Monthly borrowing trends
-        // Uses: $match, $addFields, $group, $sort
+        // 7. AGGREGATION: Monthly borrowing trends
+        // Uses: $match, $addFields, $group, $addFields, $sort, $project
         // =====================================================================
         case 'monthly_trends':
             $months = (int)($_GET['months'] ?? 12);
@@ -370,8 +467,8 @@ try {
             break;
 
         // =====================================================================
-        // 7. AGGREGATION: Book group statistics with $facet
-        // Uses: $match, $facet (multiple pipelines in one)
+        // 8. AGGREGATION: Book group statistics with $facet
+        // Uses: $match, $facet, $group, $bucket (multiple pipelines in one)
         // =====================================================================
         case 'book_group_stats':
             $pipeline = [
@@ -429,13 +526,18 @@ try {
                 'success' => false,
                 'error' => 'Unknown action',
                 'available_actions' => [
-                    'books_by_location',
-                    'popular_books',
-                    'revenue_by_date',
-                    'user_statistics',
-                    'order_status_summary',
-                    'monthly_trends',
-                    'book_group_stats'
+                    'books_by_location' => 'Group books by location ($match, $group, $sort, $project)',
+                    'popular_books' => 'Top borrowed books ($match, $sort, $limit, $project)',
+                    'revenue_by_date' => 'Daily revenue ($match, $addFields, $group, $sort, $project)',
+                    'user_statistics' => 'User stats ($match, $group, $sort, $limit, $addFields, $project)',
+                    'user_details' => 'User details with $lookup JOIN ($match, $lookup, $unwind, $group, $sort, $limit)',
+                    'order_status_summary' => 'Order counts ($group, $sort, $project)',
+                    'monthly_trends' => 'Monthly trends ($match, $addFields, $group, $sort, $project)',
+                    'book_group_stats' => 'Multi-faceted stats ($match, $facet, $bucket)'
+                ],
+                'aggregation_stages_used' => [
+                    '$match', '$group', '$sort', '$project', '$limit',
+                    '$addFields', '$lookup', '$unwind', '$facet', '$bucket'
                 ]
             ], JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
     }
