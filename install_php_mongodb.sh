@@ -1,115 +1,63 @@
 #!/usr/bin/env bash
-# ============================================================================
-# PHP MongoDB Extension Installation Script
-# ============================================================================
-# Mục đích: Cài đặt PHP MongoDB extension cho macOS (Homebrew)
-# ============================================================================
-
-set -e
-
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
-BLUE='\033[0;34m'
-NC='\033[0m'
-
-echo ""
-echo -e "${BLUE}╔════════════════════════════════════════════════════════════════╗${NC}"
-echo -e "${BLUE}║        CÀI ĐẶT PHP MONGODB EXTENSION                           ║${NC}"
-echo -e "${BLUE}╚════════════════════════════════════════════════════════════════╝${NC}"
+echo "=== CAI DAT PHP MONGODB EXTENSION ==="
 echo ""
 
-# Check PHP version
-PHP_VERSION=$(php -v | head -1 | cut -d' ' -f2 | cut -d'.' -f1,2)
-echo -e "${YELLOW}PHP Version: ${PHP_VERSION}${NC}"
-
-# Check if mongodb extension is already installed
-if php -m | grep -q mongodb; then
-    echo -e "${GREEN}✓ PHP MongoDB extension đã được cài đặt!${NC}"
-    php -i | grep -i "mongodb version"
+# Check if already installed
+if php -m 2>/dev/null | grep -q mongodb; then
+    echo "PHP MongoDB extension da duoc cai dat!"
+    php -i | grep "mongodb version" | head -1
     exit 0
 fi
 
-echo -e "${YELLOW}MongoDB extension chưa được cài đặt. Bắt đầu cài đặt...${NC}"
+echo "Dang cai dat MongoDB extension..."
 echo ""
 
-# Method 1: Try PECL
-echo -e "${BLUE}[Phương pháp 1] Cài đặt qua PECL...${NC}"
+# Install via PECL
+echo "Chay: pecl install mongodb"
+echo "(Co the mat 2-3 phut, vui long cho...)"
+echo ""
 
-# Create extension directory if it doesn't exist
-EXT_DIR=$(php -i | grep "extension_dir" | head -1 | awk -F' => ' '{print $2}')
-echo "Extension directory: $EXT_DIR"
+echo "" | pecl install mongodb 2>&1 | tail -10
 
-if [ ! -d "$EXT_DIR" ]; then
-    echo "Creating extension directory..."
-    sudo mkdir -p "$EXT_DIR"
-fi
-
-# Install mongodb via pecl
-echo "Running: pecl install mongodb"
-echo "" | sudo pecl install mongodb 2>&1 | tail -20
-
-# Check if installation was successful
-if php -m | grep -q mongodb; then
-    echo -e "${GREEN}✓ MongoDB extension đã được cài đặt thành công!${NC}"
+# Check result
+if php -m 2>/dev/null | grep -q mongodb; then
+    echo ""
+    echo "=== CAI DAT THANH CONG! ==="
     exit 0
 fi
 
-# Method 2: Manual configuration
+# Manual fix
 echo ""
-echo -e "${BLUE}[Phương pháp 2] Cấu hình thủ công...${NC}"
+echo "Dang thu cau hinh thu cong..."
 
-# Find mongodb.so
-MONGODB_SO=$(find /opt/homebrew -name "mongodb.so" 2>/dev/null | head -1)
-if [ -z "$MONGODB_SO" ]; then
-    MONGODB_SO=$(find /private/tmp -name "mongodb.so" 2>/dev/null | head -1)
+# Find active php.ini
+PHP_INI=$(php --ini | grep "Loaded Configuration File" | awk -F: '{print $2}' | xargs)
+
+if [ -z "$PHP_INI" ]; then
+    echo "Khong tim thay file php.ini!"
+    echo "Vui long cai dat thu cong."
+    exit 1
 fi
 
-if [ -n "$MONGODB_SO" ]; then
-    echo "Found mongodb.so at: $MONGODB_SO"
+echo "Tim thay php.ini tai: $PHP_INI"
 
-    # Copy to extension directory
-    sudo cp "$MONGODB_SO" "$EXT_DIR/"
-    echo "Copied to: $EXT_DIR/mongodb.so"
-
-    # Add to php.ini
-    PHP_INI=$(php --ini | grep "Loaded Configuration" | awk -F': ' '{print $2}')
-    echo "PHP.ini: $PHP_INI"
-
+if [ -f "$PHP_INI" ]; then
     if ! grep -q "extension=mongodb" "$PHP_INI" 2>/dev/null; then
-        echo 'extension=mongodb' | sudo tee -a "$PHP_INI" > /dev/null
-        echo "Added 'extension=mongodb' to php.ini"
+        echo "extension=mongodb" | sudo tee -a "$PHP_INI"
+        echo "Da them extension=mongodb vao php.ini"
     fi
 fi
 
-# Verify installation
-echo ""
-echo -e "${YELLOW}Kiểm tra kết quả...${NC}"
-
-if php -m | grep -q mongodb; then
-    echo -e "${GREEN}╔════════════════════════════════════════════════════════════════╗${NC}"
-    echo -e "${GREEN}║  ✓ PHP MongoDB extension đã được cài đặt thành công!          ║${NC}"
-    echo -e "${GREEN}╚════════════════════════════════════════════════════════════════╝${NC}"
-    php -i | grep -i "mongodb version"
+# Final check
+if php -m 2>/dev/null | grep -q mongodb; then
+    echo ""
+    echo "=== CAI DAT THANH CONG! ==="
 else
-    echo -e "${RED}╔════════════════════════════════════════════════════════════════╗${NC}"
-    echo -e "${RED}║  ✗ Cài đặt chưa thành công. Vui lòng thử cách thủ công:        ║${NC}"
-    echo -e "${RED}╚════════════════════════════════════════════════════════════════╝${NC}"
     echo ""
-    echo -e "${YELLOW}HƯỚNG DẪN THỦ CÔNG:${NC}"
+    echo "=== CAN CAI THU CONG ==="
     echo ""
-    echo "1. Cài đặt qua Homebrew (khuyến nghị):"
-    echo "   brew tap shivammathur/php"
-    echo "   brew install shivammathur/php/php@8.3"
-    echo "   pecl install mongodb"
-    echo ""
-    echo "2. Thêm vào php.ini:"
-    echo "   echo 'extension=mongodb' >> $(php --ini | grep 'Loaded Configuration' | awk -F': ' '{print \$2}')"
-    echo ""
-    echo "3. Kiểm tra:"
-    echo "   php -m | grep mongodb"
-    echo ""
-    echo -e "${YELLOW}Hoặc hệ thống vẫn có thể chạy mà không cần PHP extension:${NC}"
-    echo "  - Sử dụng mongosh để quản lý database"
-    echo "  - Web interface sẽ hiển thị nhưng không kết nối được MongoDB"
+    echo "Chay cac lenh sau:"
+    echo "  sudo pecl install mongodb"
+    echo "  echo 'extension=mongodb' | sudo tee -a /opt/homebrew/etc/php/8.4/php.ini"
+    echo "  php -m | grep mongodb"
 fi
