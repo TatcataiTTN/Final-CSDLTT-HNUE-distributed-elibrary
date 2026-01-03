@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # ============================================================================
 # Screenshot Helper Script for e-Library Report
 # ============================================================================
@@ -14,7 +14,9 @@ YELLOW='\033[1;33m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
-PROJECT_DIR="/Users/tuannghiat/Downloads/Final CSDLTT"
+# Get the directory where this script is located
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+PROJECT_DIR="$SCRIPT_DIR"
 SCREENSHOTS_DIR="$PROJECT_DIR/screenshots"
 
 echo ""

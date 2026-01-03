@@ -53,7 +53,20 @@ git clone https://github.com/TatcataiTTN/Final-CSDLTT-HNUE-distributed-elibrary.
 cd Final-CSDLTT-HNUE-distributed-elibrary
 ```
 
-### Bước 2: Cài đặt PHP dependencies (cho mỗi node)
+### Bước 2: Cài đặt PHP MongoDB Extension (BẮT BUỘC)
+```bash
+# Chạy script cài đặt tự động
+./install_php_mongodb.sh
+
+# Hoặc cài thủ công
+sudo pecl install mongodb
+echo "extension=mongodb" | sudo tee -a /opt/homebrew/etc/php/8.4/php.ini
+
+# Kiểm tra đã cài thành công
+php -m | grep mongodb
+```
+
+### Bước 3: Cài đặt PHP dependencies (cho mỗi node)
 ```bash
 # Central Hub
 cd Nhasach && composer install && cd ..
@@ -68,7 +81,13 @@ cd NhasachDaNang && composer install && cd ..
 cd NhasachHoChiMinh && composer install && cd ..
 ```
 
-### Bước 3: Cấu hình hosts file (cho Replica Set)
+**Nếu gặp lỗi "ext-mongodb is missing":**
+```bash
+# Tạm thời bỏ qua requirement
+composer install --ignore-platform-req=ext-mongodb
+```
+
+### Bước 4: Cấu hình hosts file (cho Replica Set)
 ```bash
 # Thêm vào /etc/hosts (cần sudo)
 sudo nano /etc/hosts
@@ -323,17 +342,39 @@ lsof -i :8000
 kill -9 <PID>
 ```
 
-### Lỗi: "Class MongoDB\Driver\Manager not found"
+### Lỗi: "Class MongoDB\Driver\Manager not found" hoặc "ext-mongodb is missing"
+
+**Giải pháp 1: Chạy script tự động**
 ```bash
-# Cài đặt PHP MongoDB extension
-pecl install mongodb
+./install_php_mongodb.sh
+```
 
-# Hoặc dùng Homebrew (macOS)
-brew install php@8.1
-pecl install mongodb
+**Giải pháp 2: Cài thủ công**
+```bash
+# Bước 1: Cài đặt qua PECL
+sudo pecl install mongodb
 
-# Thêm vào php.ini
-echo "extension=mongodb.so" >> $(php -i | grep "php.ini" | head -1 | awk '{print $NF}')
+# Bước 2: Tìm php.ini
+php --ini
+
+# Bước 3: Thêm extension vào php.ini
+echo "extension=mongodb" | sudo tee -a /opt/homebrew/etc/php/8.4/php.ini
+
+# Bước 4: Kiểm tra
+php -m | grep mongodb
+```
+
+**Giải pháp 3: Dùng Homebrew với PHP version cũ hơn**
+```bash
+brew tap shivammathur/php
+brew install shivammathur/php/php@8.3
+brew link php@8.3 --force
+pecl install mongodb
+```
+
+**Giải pháp 4: Bỏ qua tạm thời (chỉ để test)**
+```bash
+cd Nhasach && composer install --ignore-platform-req=ext-mongodb
 ```
 
 ### Lỗi: "Replica Set not initialized"

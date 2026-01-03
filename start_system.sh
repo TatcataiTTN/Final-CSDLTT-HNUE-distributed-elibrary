@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # ============================================================================
 # e-Library Distributed System - Startup Script
 # ============================================================================
@@ -7,6 +7,8 @@
 # Ngày tạo: 2026-01-03
 # ============================================================================
 
+set -e
+
 # Colors
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -14,7 +16,9 @@ YELLOW='\033[1;33m'
 BLUE='\033[0;34m'
 NC='\033[0m'
 
-PROJECT_DIR="/Users/tuannghiat/Downloads/Final CSDLTT"
+# Get the directory where this script is located
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+PROJECT_DIR="$SCRIPT_DIR"
 
 echo ""
 echo -e "${BLUE}╔════════════════════════════════════════════════════════════════╗${NC}"
