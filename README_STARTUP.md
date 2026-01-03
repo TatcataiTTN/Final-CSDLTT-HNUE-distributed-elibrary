@@ -60,7 +60,12 @@ cd Final-CSDLTT-HNUE-distributed-elibrary
 
 # Hoặc cài thủ công
 sudo pecl install mongodb
-echo "extension=mongodb" | sudo tee -a /opt/homebrew/etc/php/8.4/php.ini
+# Tìm file php.ini
+php --ini
+
+# Thêm extension=mongodb vào file php.ini tìm được
+# Ví dụ:
+# echo "extension=mongodb" | sudo tee -a /path/to/your/php.ini
 
 # Kiểm tra đã cài thành công
 php -m | grep mongodb

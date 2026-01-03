@@ -35,7 +35,16 @@
       "Bash(for f in *.books.json)",
       "Bash(for f in *.users.json)",
       "Bash(for f in *.orders.json)",
-      "Bash(for f in *.carts.json)"
+      "Bash(for f in *.carts.json)",
+      "Bash(mongosh:*)",
+      "Bash(mongoimport:*)",
+      "Bash(tee:*)",
+      "Bash(cat:*)",
+      "Bash(pecl install:*)",
+      "Bash(pecl list:*)",
+      "Bash(# Create directory and copy mongodb.so mkdir -p /opt/homebrew/lib/php/pecl/20240924/ cp /private/tmp/pear/temp/pear-build-tuannghiatb40e3cm719osfbOrWHh/install-mongodb-2.1.4/opt/homebrew/Cellar/php/8.4.14/pecl/20240924/mongodb.so /opt/homebrew/lib/php/pecl/20240924/ || echo \"\"Trying alternative...\"\" # Find the built file find /private/tmp -name \"\"mongodb.so\"\" -newer /tmp)",
+      "Bash(git reset:*)",
+      "Bash( file *.sh)"
     ]
   }
 }

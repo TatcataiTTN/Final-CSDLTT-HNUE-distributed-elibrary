@@ -14,7 +14,7 @@ Distributed e-Library Management System (Hệ thống quản lý thư viện ph�
 ## Tech Stack
 
 - PHP 7+ with MongoDB PHP Driver
-- MongoDB 4.x with Replica Sets
+- MongoDB 4.4+ with Replica Sets & Sharded Cluster support
 - HTML5/CSS3/vanilla JavaScript frontend
 
 ## Setup Commands
