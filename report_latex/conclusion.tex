@@ -1,0 +1,383 @@
+% ============================================================================
+% KẾT LUẬN VÀ PHƯƠNG HƯỚNG PHÁT TRIỂN
+% ============================================================================
+\chapter{KẾT LUẬN VÀ PHƯƠNG HƯỚNG PHÁT TRIỂN}
+
+\section{Kết luận}
+
+Qua quá trình nghiên cứu và thực hiện đề tài "Xây dựng hệ thống E-Library Phân tán nhiều cơ sở", nhóm đã đạt được các kết quả sau:
+
+\subsection{Những gì đã làm được}
+
+\begin{enumerate}
+    \item \textbf{Xây dựng thành công hệ thống quản lý thư viện phân tán}:
+    \begin{itemize}
+        \item 4 node (1 Central Hub + 3 chi nhánh)
+        \item MongoDB Replica Set với 3 nodes
+        \item Zone Sharding theo vùng địa lý
+        \item 909 sách, 38 users, 46 orders
+    \end{itemize}
+
+    \item \textbf{Triển khai đầy đủ các chức năng nghiệp vụ}:
+    \begin{itemize}
+        \item Quản lý sách với CRUD operations
+        \item Quản lý người dùng với phân quyền RBAC
+        \item Hệ thống mượn/trả sách với giỏ hàng
+        \item Dashboard thống kê với 6 biểu đồ Chart.js
+    \end{itemize}
+
+    \item \textbf{Cài đặt thành công các kỹ thuật NoSQL nâng cao}:
+    \begin{itemize}
+        \item \textbf{Zone Sharding}: Phân mảnh theo 3 vùng địa lý
+        \item \textbf{Replica Set}: High Availability với automatic failover
+        \item \textbf{Aggregation Pipeline}: 7 endpoints thống kê với \$match, \$group, \$lookup, \$unwind, \$sort, \$limit, \$project
+        \item \textbf{Map-Reduce}: 5 operations phân tích dữ liệu
+        \item \textbf{Full-text Search}: TEXT index với tiếng Việt Unicode
+    \end{itemize}
+
+    \item \textbf{Đảm bảo bảo mật đầy đủ}:
+    \begin{itemize}
+        \item JWT authentication với expiration 24h
+        \item bcrypt password hashing (cost factor 12)
+        \item Role-based Access Control (admin/customer)
+        \item Brute-force protection (lock sau 5 attempts)
+    \end{itemize}
+
+    \item \textbf{Benchmark hiệu năng thực tế}:
+    \begin{itemize}
+        \item 10 test cases với 50 iterations
+        \item Fastest query: 0.300ms (Compound Query)
+        \item Average query: 1.304ms
+        \item Peak throughput: 3,333 ops/sec
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Những điểm còn hạn chế}
+
+\begin{enumerate}
+    \item \textbf{Shard Key cardinality thấp}:
+    \begin{itemize}
+        \item Chỉ có 3 locations có thể gây mất cân bằng khi scale
+        \item Khuyến nghị: Compound shard key \{location: 1, bookCode: 1\}
+    \end{itemize}
+
+    \item \textbf{Chưa triển khai TLS/SSL encryption}:
+    \begin{itemize}
+        \item Kết nối MongoDB chưa được mã hóa
+        \item Cần bổ sung cho production deployment
+    \end{itemize}
+
+    \item \textbf{Dataset thử nghiệm nhỏ}:
+    \begin{itemize}
+        \item 909 sách chưa đủ để stress test sharding
+        \item Cần dataset 100K+ để đánh giá đầy đủ chunk migration
+    \end{itemize}
+
+    \item \textbf{Chưa có cơ chế backup tự động}:
+    \begin{itemize}
+        \item Backup thủ công với mongodump
+        \item Cần scheduled backup và point-in-time recovery
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Kiến thức rút ra được}
+
+\begin{enumerate}
+    \item \textbf{Định lý CAP và trade-off}:
+    \begin{itemize}
+        \item Hiểu sâu về Consistency, Availability, Partition Tolerance
+        \item MongoDB là CP system với tunable consistency
+        \item Trade-off giữa latency và consistency
+    \end{itemize}
+
+    \item \textbf{Kỹ thuật Sharding và Replication}:
+    \begin{itemize}
+        \item Zone-based sharding cho geographic distribution
+        \item Replica Set với automatic failover
+        \item Chunk migration và balancing
+    \end{itemize}
+
+    \item \textbf{Triển khai multi-container với Docker Compose}:
+    \begin{itemize}
+        \item Networking giữa các containers
+        \item Volume persistence cho data
+        \item Health checks và restart policies
+    \end{itemize}
+
+    \item \textbf{Tối ưu query với index và aggregation}:
+    \begin{itemize}
+        \item Index strategy cho different query patterns
+        \item Explain plan analysis
+        \item Pipeline optimization
+    \end{itemize}
+\end{enumerate}
+
+\section{Phương hướng phát triển}
+
+\begin{enumerate}
+    \item \textbf{Cải tiến Shard Key}:
+    \begin{itemize}
+        \item Chuyển sang Compound Shard Key \texttt{\{location: 1, bookCode: 1\}}
+        \item Tăng cardinality để tránh jumbo chunks
+        \item Hỗ trợ range-based splitting tốt hơn
+    \end{itemize}
+
+    \item \textbf{Tích hợp Redis Cache}:
+    \begin{itemize}
+        \item Cache layer cho frequently accessed data
+        \item Giảm tải 70-80\% read operations
+        \item Session storage với Redis
+    \end{itemize}
+
+    \item \textbf{Nâng cấp bảo mật}:
+    \begin{itemize}
+        \item TLS/SSL encryption cho MongoDB connections
+        \item Two-Factor Authentication (2FA)
+        \item OAuth2 integration (Google, Facebook)
+        \item API rate limiting
+    \end{itemize}
+
+    \item \textbf{Mở rộng quy mô với Cloud deployment}:
+    \begin{itemize}
+        \item MongoDB Atlas cho managed cluster
+        \item AWS/GCP auto-scaling
+        \item CDN cho static assets
+        \item Load balancer cho PHP servers
+    \end{itemize}
+
+    \item \textbf{Mobile application}:
+    \begin{itemize}
+        \item iOS/Android app với React Native
+        \item Push notification cho due date reminders
+        \item QR code cho quick book lookup
+        \item Offline mode với local storage
+    \end{itemize}
+
+    \item \textbf{Tích hợp AI/ML}:
+    \begin{itemize}
+        \item Recommendation engine cho book suggestions
+        \item Demand forecasting để optimize inventory
+        \item Chatbot hỗ trợ tra cứu sách
+        \item OCR cho digitization of physical books
+    \end{itemize}
+\end{enumerate}
+
+% ============================================================================
+% TÀI LIỆU THAM KHẢO
+% ============================================================================
+\chapter*{TÀI LIỆU THAM KHẢO}
+\addcontentsline{toc}{chapter}{TÀI LIỆU THAM KHẢO}
+
+\begin{enumerate}[label={[\arabic*]}]
+    \item MongoDB Inc. (2025). \textit{MongoDB Manual - Sharding}.
+    \url{https://www.mongodb.com/docs/manual/sharding/}
+
+    \item MongoDB Inc. (2025). \textit{MongoDB Manual - Replication}.
+    \url{https://www.mongodb.com/docs/manual/replication/}
+
+    \item MongoDB Inc. (2025). \textit{MongoDB Manual - Aggregation Pipeline}.
+    \url{https://www.mongodb.com/docs/manual/aggregation/}
+
+    \item The PHP Group. (2025). \textit{PHP Manual - MongoDB Driver}.
+    \url{https://www.php.net/manual/en/set.mongodb.php}
+
+    \item MongoDB PHP Library. (2025). \textit{mongodb/mongodb Documentation}.
+    \url{https://www.mongodb.com/docs/php-library/current/}
+
+    \item Docker Inc. (2025). \textit{Docker Compose Networking}.
+    \url{https://docs.docker.com/compose/networking/}
+
+    \item Firebase. (2025). \textit{PHP-JWT Library}.
+    \url{https://github.com/firebase/php-jwt}
+
+    \item Chart.js. (2025). \textit{Chart.js Documentation v4.4}.
+    \url{https://www.chartjs.org/docs/latest/}
+
+    \item Nguyễn Duy Hải. (2025). \textit{Bài giảng Cơ sở dữ liệu tiên tiến - NoSQL \& Distributed Systems}. Trường Đại học Sư phạm Hà Nội.
+
+    \item Bradshaw, S., Brazil, E., \& Chodorow, K. (2019). \textit{MongoDB: The Definitive Guide} (3rd ed.). O'Reilly Media.
+
+    \item Kleppmann, M. (2017). \textit{Designing Data-Intensive Applications}. O'Reilly Media.
+
+    \item Gilbert, S., \& Lynch, N. (2002). Brewer's Conjecture and the Feasibility of Consistent, Available, Partition-Tolerant Web Services. \textit{ACM SIGACT News}, 33(2), 51-59.
+
+    \item IETF. (2015). \textit{RFC 7519 - JSON Web Token (JWT)}.
+    \url{https://tools.ietf.org/html/rfc7519}
+\end{enumerate}
+
+% ============================================================================
+% PHỤ LỤC
+% ============================================================================
+\appendix
+\chapter{PHỤ LỤC}
+
+\section{Bảng ký hiệu, chữ viết tắt}
+
+\begin{longtable}{|c|l|l|}
+\caption{Bảng từ viết tắt} \\
+\hline
+\textbf{STT} & \textbf{Từ viết tắt} & \textbf{Ý nghĩa} \\
+\hline
+\endfirsthead
+\hline
+\textbf{STT} & \textbf{Từ viết tắt} & \textbf{Ý nghĩa} \\
+\hline
+\endhead
+1 & CSDL & Cơ sở dữ liệu \\
+2 & JSON & JavaScript Object Notation \\
+3 & BSON & Binary JSON \\
+4 & API & Application Programming Interface \\
+5 & REST & Representational State Transfer \\
+6 & JWT & JSON Web Token \\
+7 & CRUD & Create, Read, Update, Delete \\
+8 & NoSQL & Not Only SQL \\
+9 & RBAC & Role-Based Access Control \\
+10 & CAP & Consistency, Availability, Partition Tolerance \\
+11 & HA & High Availability \\
+12 & PHP & PHP: Hypertext Preprocessor \\
+13 & TLS/SSL & Transport Layer Security / Secure Sockets Layer \\
+14 & GUI & Graphical User Interface \\
+15 & CLI & Command Line Interface \\
+16 & MVC & Model-View-Controller \\
+17 & AJAX & Asynchronous JavaScript and XML \\
+18 & CSS & Cascading Style Sheets \\
+19 & HTML & HyperText Markup Language \\
+20 & URL & Uniform Resource Locator \\
+\hline
+\end{longtable}
+
+\section{Mã nguồn quan trọng}
+
+\subsection{JWTHelper.php - Xác thực JWT}
+
+\begin{lstlisting}[language=PHP, caption=JWTHelper.php]
+<?php
+require_once 'vendor/autoload.php';
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
+
+class JWTHelper {
+    private static $secret = 'elibrary_secret_key_2026';
+    private static $algorithm = 'HS256';
+
+    public static function encode($payload) {
+        $payload['iat'] = time();
+        $payload['exp'] = time() + (24 * 60 * 60); // 24 hours
+        return JWT::encode($payload, self::$secret, self::$algorithm);
+    }
+
+    public static function decode($token) {
+        try {
+            return JWT::decode($token, new Key(self::$secret, self::$algorithm));
+        } catch (Exception $e) {
+            return null;
+        }
+    }
+
+    public static function validate($token) {
+        $decoded = self::decode($token);
+        if (!$decoded) return false;
+        if ($decoded->exp < time()) return false;
+        return true;
+    }
+}
+\end{lstlisting}
+
+\subsection{init-sharding.sh - Khởi tạo Sharded Cluster}
+
+\begin{lstlisting}[language=bash, caption=init-sharding.sh (trích)]
+#!/bin/bash
+echo "=== Initializing MongoDB Sharded Cluster ==="
+
+# Initialize Config Server Replica Set
+docker exec configsvr1 mongosh --port 27019 --eval '
+rs.initiate({
+    _id: "configReplSet",
+    configsvr: true,
+    members: [
+        { _id: 0, host: "configsvr1:27019" },
+        { _id: 1, host: "configsvr2:27020" },
+        { _id: 2, host: "configsvr3:27021" }
+    ]
+})'
+
+# Initialize Shard Replica Sets
+for i in 1 2 3; do
+    docker exec shard$i mongosh --port 2702$((i+1)) --eval "
+    rs.initiate({
+        _id: 'shard${i}ReplSet',
+        members: [{ _id: 0, host: 'shard$i:2702$((i+1))' }]
+    })"
+done
+
+# Add Shards to Cluster
+docker exec mongos mongosh --port 27017 --eval '
+sh.addShard("shard1ReplSet/shard1:27022");
+sh.addShard("shard2ReplSet/shard2:27023");
+sh.addShard("shard3ReplSet/shard3:27024");
+'
+
+# Enable Sharding and Configure Zones
+docker exec mongos mongosh --port 27017 --eval '
+sh.enableSharding("Nhasach");
+sh.shardCollection("Nhasach.books", { "location": 1 });
+
+sh.addShardTag("shard1ReplSet", "HANOI");
+sh.addShardTag("shard2ReplSet", "DANANG");
+sh.addShardTag("shard3ReplSet", "HOCHIMINH");
+
+sh.addTagRange("Nhasach.books",
+    { "location": "Ha Noi" },
+    { "location": "Ha Noi\uffff" },
+    "HANOI");
+'
+
+echo "=== Sharded Cluster Initialized ==="
+\end{lstlisting}
+
+\subsection{benchmark\_real.js - Benchmark Script}
+
+\begin{lstlisting}[language=javascript, caption=benchmark\_real.js (trích)]
+// MongoDB Real Benchmark Script
+// Version: 7.0 - REAL DATA (not simulated)
+
+const iterations = 50;
+
+function benchmark(name, fn) {
+    const start = Date.now();
+    for (let i = 0; i < iterations; i++) {
+        fn();
+    }
+    const total = Date.now() - start;
+    const avg = (total / iterations).toFixed(3);
+    const opsPerSec = Math.round(iterations / (total / 1000));
+    print(`${name}: avg=${avg}ms, total=${total}ms, ops/sec=${opsPerSec}`);
+}
+
+// Test 1: Compound Query
+benchmark("Compound Query", () => {
+    db.books.find({
+        location: "Ha Noi",
+        bookGroup: "Van hoc"
+    }).toArray();
+});
+
+// Test 2: Point Lookup
+benchmark("Point Lookup", () => {
+    db.books.findOne({ bookCode: "00014" });
+});
+
+// Test 3: Aggregation
+benchmark("Aggregation", () => {
+    db.books.aggregate([
+        { $match: { status: { $ne: "deleted" } } },
+        { $group: {
+            _id: "$location",
+            count: { $sum: 1 }
+        }},
+        { $sort: { count: -1 } }
+    ]).toArray();
+});
+
+print("=== Benchmark Complete ===");
+\end{lstlisting}
