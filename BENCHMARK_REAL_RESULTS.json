@@ -1,0 +1,87 @@
+{
+  "benchmark_date": "2026-01-03T07:24:13.946Z",
+  "database": "Nhasach",
+  "mode": "REAL (not simulated)",
+  "mongodb_version": "8.0.16",
+  "total_books": 509,
+  "total_users": 1,
+  "iterations": 50,
+  "tests": {
+    "single_location_query": {
+      "description": "Find books in specific location (uses idx_location)",
+      "query": "{ location: 'Hà Nội', status: { $ne: 'deleted' } }",
+      "total_ms": 99,
+      "avg_ms": "1.980",
+      "ops_per_sec": 505
+    },
+    "cross_shard_query": {
+      "description": "Find all books across all locations (full scan)",
+      "query": "{ status: { $ne: 'deleted' } }",
+      "total_ms": 119,
+      "avg_ms": "2.380",
+      "ops_per_sec": 420
+    },
+    "point_lookup": {
+      "description": "Find single book by bookCode (uses unique idx_bookCode)",
+      "query": "{ bookCode: '00014' }",
+      "total_ms": 21,
+      "avg_ms": "0.420",
+      "ops_per_sec": 2381
+    },
+    "text_search": {
+      "description": "Full-text search (uses idx_text_search)",
+      "query": "{ $text: { $search: 'sách' } }",
+      "total_ms": 32,
+      "avg_ms": "0.640",
+      "ops_per_sec": 1563
+    },
+    "aggregation_group": {
+      "description": "Group books by location with count and sum",
+      "pipeline": "$match -> $group -> $sort",
+      "total_ms": 91,
+      "avg_ms": "1.820",
+      "ops_per_sec": 549
+    },
+    "aggregation_facet": {
+      "description": "Multi-facet aggregation (3 parallel pipelines)",
+      "pipeline": "$match -> $facet (byLocation, byGroup, summary)",
+      "total_ms": 154,
+      "avg_ms": "3.080",
+      "ops_per_sec": 325
+    },
+    "range_query_sort": {
+      "description": "Range query on price with sort by borrowCount",
+      "query": "{ pricePerDay: { $gte: 5000, $lte: 20000 } }",
+      "total_ms": 41,
+      "avg_ms": "0.820",
+      "ops_per_sec": 1220
+    },
+    "write_operation": {
+      "description": "Insert + Delete operation (write concern: majority)",
+      "operation": "insertOne + deleteOne",
+      "total_ms": 56,
+      "avg_ms": "1.120",
+      "ops_per_sec": 893
+    },
+    "update_operation": {
+      "description": "Update single document with $inc and $set",
+      "operation": "updateOne with atomic operators",
+      "total_ms": 24,
+      "avg_ms": "0.480",
+      "ops_per_sec": 2083
+    },
+    "compound_query": {
+      "description": "Query on two fields (location + bookGroup)",
+      "query": "{ location: 'Hà Nội', bookGroup: 'Văn học' }",
+      "total_ms": 15,
+      "avg_ms": "0.300",
+      "ops_per_sec": 3333
+    }
+  },
+  "summary": {
+    "fastest_query_ms": "0.300",
+    "slowest_query_ms": "3.080",
+    "average_query_ms": "1.304",
+    "total_tests": 10
+  }
+}
