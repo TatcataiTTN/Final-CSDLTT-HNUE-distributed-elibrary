@@ -101,3 +101,16 @@ Nhasach/
 - Passwords hashed with `password_hash()` (bcrypt)
 - Role-based access: `admin` can manage books/users/orders, `customer` can browse/rent
 - Default admin credentials: `admin` / `123456`
+
+## Project Status (Jan 2026)
+
+- **System Status:** ✅ Ready for Review
+- **Environment:**
+  - MongoDB 4.4 Sharded Cluster (3 Shards: Hanoi, Danang, HCM)
+  - PHP 7.4+ with `mongodb` extension (v1.15+)
+- **Verification Assets:**
+  - **Screenshots:** All necessary demo screenshots (Dashboard, Failover, Sharding) have been captured.
+  - **Tests:**
+    - Failover Test: `test-failover.sh`
+    - Real Benchmark: `benchmark_real.js`
+  - **Workflows:** System workflows and architecture diagrams are documented in `README_SHARDING.md`.
