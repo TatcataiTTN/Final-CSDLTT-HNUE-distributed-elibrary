@@ -1,0 +1,264 @@
+% ============================================================================
+% CHAPTER 7: COMPARATIVE STUDY
+% ============================================================================
+
+\chapter{Comparative Study}
+\label{chap:comparative}
+
+\begin{quote}
+\textit{This chapter positions the work by Nguyen et al. (2021) within the broader satellite QKD literature, comparing with experimental demonstrations, alternative approaches, and identifying the unique contributions.}
+\end{quote}
+
+% ============================================================================
+% SECTION 7.1: COMPARISON WITH MICIUS
+% ============================================================================
+
+\section{Comparison with Micius Satellite QKD}
+\label{sec:micius_comparison}
+
+\subsection{System Parameters Comparison}
+
+\begin{table}[h]
+\centering
+\caption{Nguyen et al. (2021) vs. Micius Satellite QKD}
+\label{tab:micius_comparison}
+\small
+\begin{tabular}{lcc}
+\toprule
+\textbf{Parameter} & \textbf{Nguyen 2021 (Design)} & \textbf{Micius (Liao 2017)} \\
+\midrule
+\multicolumn{3}{l}{\textit{System Configuration}} \\
+Satellite altitude & 600 km & 500 km \\
+Protocol & QPSK-based (CV-like) & BB84 + Decoy states \\
+Wavelength & 1550 nm & 850 nm \\
+Modulation & Phase (QPSK) & Polarization \\
+Detection & Heterodyne (APD) & Single-photon (Si-APD) \\
+\midrule
+\multicolumn{3}{l}{\textit{Performance}} \\
+Design bit rate & 10 Gbps & -- \\
+Achieved key rate & -- (simulation) & 1.1 kbps (at 1200 km) \\
+QBER target & $< 10^{-3}$ & 1.1\% achieved \\
+Channel loss & $\sim$260 dB (compensated) & 41.5 dB \\
+\midrule
+\multicolumn{3}{l}{\textit{Error Handling}} \\
+Method & ARQ retransmission & FEC (LDPC) \\
+Complexity & Low & High \\
+Adaptability & Channel-adaptive & Fixed rate \\
+\midrule
+\multicolumn{3}{l}{\textit{Validation}} \\
+Type & Numerical simulation & Experimental \\
+Status & Proposed design & Demonstrated \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Key Differences}
+
+\textbf{1. Detection Approach:}
+\begin{itemize}
+    \item \textbf{Micius:} Single-photon detection with Si-APD at 850 nm
+    \item \textbf{Nguyen:} Coherent (heterodyne) detection with InGaAs-APD at 1550 nm
+\end{itemize}
+
+\textbf{2. Protocol Type:}
+\begin{itemize}
+    \item \textbf{Micius:} Discrete-variable (DV-QKD) with decoy states
+    \item \textbf{Nguyen:} Continuous-variable-like with QPSK modulation
+\end{itemize}
+
+\textbf{3. Wavelength Choice:}
+\begin{itemize}
+    \item \textbf{850 nm:} Better single-photon detector efficiency, higher scattering
+    \item \textbf{1550 nm:} Telecom-compatible, lower atmospheric absorption
+\end{itemize}
+
+% ============================================================================
+% SECTION 7.2: COMPARISON WITH CV-QKD
+% ============================================================================
+
+\section{Comparison with CV-QKD Approaches}
+\label{sec:cvqkd_comparison}
+
+\subsection{Gaussian CV-QKD vs. QPSK-Based}
+
+\begin{table}[h]
+\centering
+\caption{Gaussian CV-QKD vs. QPSK-Based QKD}
+\label{tab:cvqkd_comparison}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Aspect} & \textbf{Gaussian CV-QKD} & \textbf{QPSK-Based (Nguyen)} \\
+\midrule
+Modulation & Gaussian amplitude/phase & Discrete 4-phase \\
+Alphabet & Continuous & Discrete (4 symbols) \\
+Security proof & Well-established & Based on BB84 mapping \\
+Detection & Homodyne/Heterodyne & Heterodyne with DT \\
+Key rate (short dist.) & Higher & Moderate \\
+Key rate (long dist.) & Lower & -- \\
+Implementation & More complex & Simpler \\
+Satellite feasibility & Under study & Proposed \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Dequal et al. (2021) Feasibility Study}
+
+Recent work on satellite CV-QKD feasibility \cite{dequal2021cv_qkd_satellite}:
+\begin{itemize}
+    \item Analyzed Gaussian-modulated CV-QKD for satellite
+    \item Found positive key rate possible under certain conditions
+    \item Highlighted excess noise as critical challenge
+\end{itemize}
+
+\textbf{Nguyen's approach differs by:}
+\begin{itemize}
+    \item Using discrete QPSK instead of Gaussian modulation
+    \item Adding retransmission for reliability (not considered in Dequal)
+    \item Focus on reliability metrics (KLR) in addition to key rate
+\end{itemize}
+
+% ============================================================================
+% SECTION 7.3: COMPARISON WITH PTIT PRIOR WORK
+% ============================================================================
+
+\section{Evolution of PTIT Research}
+\label{sec:ptit_evolution}
+
+\subsection{Research Timeline}
+
+\begin{table}[h]
+\centering
+\caption{PTIT Research Evolution in Satellite QKD}
+\label{tab:ptit_evolution}
+\small
+\begin{tabular}{clll}
+\toprule
+\textbf{Year} & \textbf{Authors} & \textbf{Key Contribution} & \textbf{Advancement} \\
+\midrule
+2018 & Trinh et al. & DT/DD for QKD & First DT analysis \\
+2019 & Vu et al. & QPSK + HD receiver & Added heterodyne \\
+\textbf{2021} & \textbf{Nguyen et al.} & \textbf{+ Retransmission + Markov} & \textbf{Link layer reliability} \\
+2023 & Nguyen et al. & CV-QKD optimization & Extended to CV-QKD \\
+2023 & Phan et al. & CDMA-based CV-QKD & Multi-user extension \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Incremental Contributions}
+
+\textbf{Trinh et al. (2018) \cite{trinh2018dualthreshold_ptit}:}
+\begin{itemize}
+    \item Introduced dual-threshold detection for QKD
+    \item Direct detection (DD) receiver
+    \item Security analysis framework
+\end{itemize}
+
+\textbf{Nguyen et al. (2021) --- Current paper:}
+\begin{itemize}
+    \item Upgraded to heterodyne detection (20 dB improvement)
+    \item Added key retransmission scheme (new contribution)
+    \item Developed 3-D Markov chain model (analytical innovation)
+    \item Comprehensive atmospheric channel model
+\end{itemize}
+
+% ============================================================================
+% SECTION 7.4: MODULATION SCHEME COMPARISON
+% ============================================================================
+
+\section{Modulation Scheme Comparison}
+\label{sec:modulation_comparison}
+
+\begin{table}[h]
+\centering
+\caption{Comprehensive Modulation Scheme Comparison}
+\label{tab:modulation_comparison}
+\begin{tabular}{lccccc}
+\toprule
+\textbf{Scheme} & \textbf{States} & \textbf{Detection} & \textbf{Sensitivity} & \textbf{Complexity} & \textbf{Ref.} \\
+\midrule
+Polarization BB84 & 4 & SPD & High & Low & \cite{liao2017micius_qkd} \\
+SIM/BPSK-DT & 2 & DD & Medium & Medium & \cite{trinh2018dualthreshold_ptit} \\
+QPSK-DT/DD & 4 & DD & High & Medium & Vu 2019 \\
+\textbf{QPSK-DT/HD} & \textbf{4} & \textbf{HD} & \textbf{Very High} & \textbf{Medium} & \textbf{Nguyen 2021} \\
+Gaussian CV & $\infty$ & Homo/Hetero & High & High & \cite{grosshans2003cv_qkd} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% ============================================================================
+% SECTION 7.5: ERROR HANDLING COMPARISON
+% ============================================================================
+
+\section{Error Handling Approach Comparison}
+\label{sec:error_comparison}
+
+\begin{table}[h]
+\centering
+\caption{Error Handling Approaches in QKD}
+\label{tab:error_handling}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Method} & \textbf{Overhead} & \textbf{Latency} & \textbf{Adaptability} & \textbf{Used In} \\
+\midrule
+CASCADE & High & High & Low & Traditional QKD \\
+LDPC & Medium & Medium & Low & Micius \\
+Polar codes & Medium & Low & Low & Research \\
+\textbf{ARQ (Nguyen)} & \textbf{Low} & \textbf{Variable} & \textbf{High} & \textbf{Proposed} \\
+Hybrid FEC+ARQ & Medium & Variable & Medium & Future work \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% ============================================================================
+% SECTION 7.6: UNIQUE CONTRIBUTIONS
+% ============================================================================
+
+\section{Unique Contributions of Nguyen et al. (2021)}
+\label{sec:unique_contributions}
+
+\subsection{What's New}
+
+\begin{enumerate}
+    \item \textbf{First ARQ-based reliability scheme for satellite QKD}
+    \begin{itemize}
+        \item Novel application of classical ARQ to quantum system
+        \item Alternative to computationally expensive FEC
+    \end{itemize}
+
+    \item \textbf{3-D Markov chain model for KLR analysis}
+    \begin{itemize}
+        \item New analytical framework
+        \item Enables performance prediction without extensive simulation
+    \end{itemize}
+
+    \item \textbf{Comprehensive integration}
+    \begin{itemize}
+        \item QPSK modulation + DT/HD detection + ARQ
+        \item Physical layer and link layer co-design
+    \end{itemize}
+
+    \item \textbf{Practical parameter optimization}
+    \begin{itemize}
+        \item Clear guidelines for DT coefficient selection
+        \item Optimal retransmission count determination
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Research Gaps Addressed}
+
+\begin{table}[h]
+\centering
+\caption{Research Gaps Addressed by Nguyen et al. (2021)}
+\label{tab:gaps_addressed}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Gap in Literature} & \textbf{Addressed?} & \textbf{How} \\
+\midrule
+Reliability improvement without FEC & \cmark & ARQ scheme \\
+Link layer analysis for satellite QKD & \cmark & 3-D Markov model \\
+QPSK + heterodyne for QKD & \cmark & DT/HD receiver \\
+KLR metric for QKD & \cmark & Analytical derivation \\
+Vietnamese satellite QKD research & \cmark & PTIT contribution \\
+\bottomrule
+\end{tabular}
+\end{table}

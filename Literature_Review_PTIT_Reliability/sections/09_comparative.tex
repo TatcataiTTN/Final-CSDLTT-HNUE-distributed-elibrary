@@ -1,0 +1,323 @@
+% ============================================================================
+% CHAPTER 9: COMPARATIVE ANALYSIS
+% ============================================================================
+
+\chapter{Comparative Analysis}
+\label{chap:comparative}
+
+\begin{quote}
+\textit{This chapter synthesizes the literature reviewed in previous chapters, positioning Nguyen et al. (2021) within the broader context of satellite QKD research and identifying its unique contributions.}
+\end{quote}
+
+% ============================================================================
+% SECTION 9.1: METHODOLOGY COMPARISON
+% ============================================================================
+
+\section{Methodology Comparison}
+\label{sec:methodology_comparison}
+
+\subsection{Detection Approach Comparison}
+
+\begin{table}[h]
+\centering
+\caption{Detection Approaches in Satellite QKD Literature}
+\label{tab:detection_comparison}
+\small
+\begin{tabular}{lcccc}
+\toprule
+\textbf{System} & \textbf{Detection} & \textbf{Wavelength} & \textbf{Sensitivity} & \textbf{Complexity} \\
+\midrule
+Micius (2017) & SPD (Si-APD) & 850 nm & High & High \\
+CV-QKD (Dequal) & Coherent & 1550 nm & Medium & Medium \\
+DT/DD (Trinh) & Direct & 1550 nm & Low & Low \\
+\textbf{DT/HD (Nguyen)} & \textbf{Heterodyne} & \textbf{1550 nm} & \textbf{Very High} & \textbf{Medium} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Protocol Comparison}
+
+\begin{table}[h]
+\centering
+\caption{Protocol Approaches Comparison}
+\label{tab:protocol_comparison}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Approach} & \textbf{Modulation} & \textbf{States} & \textbf{Security Basis} \\
+\midrule
+BB84 (Micius) & Polarization & 4 & BB84 proof \\
+Gaussian CV-QKD & Gaussian & $\infty$ & CV proof \\
+Discrete CV-QKD & QPSK/8PSK & 4/8 & CV proof \\
+\textbf{QPSK-BB84 (Nguyen)} & \textbf{Phase} & \textbf{4} & \textbf{BB84 mapping} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Error Handling Comparison}
+
+\begin{table}[h]
+\centering
+\caption{Error Handling Approaches}
+\label{tab:error_comparison}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Method} & \textbf{Type} & \textbf{Overhead} & \textbf{Adaptivity} & \textbf{Implementation} \\
+\midrule
+CASCADE & Interactive & High & Low & Complex \\
+LDPC & FEC & Medium & Low & Complex \\
+Polar & FEC & Medium & Low & Medium \\
+\textbf{ARQ (Nguyen)} & \textbf{Retransmit} & \textbf{Low} & \textbf{High} & \textbf{Simple} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% ============================================================================
+% SECTION 9.2: PERFORMANCE COMPARISON
+% ============================================================================
+
+\section{Performance Comparison}
+\label{sec:performance_comparison}
+
+\subsection{Power Requirements}
+
+\begin{table}[h]
+\centering
+\caption{Transmitted Power Comparison (QBER $\leq 10^{-3}$)}
+\label{tab:power_comparison}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Scheme} & \textbf{Required $P_T$} & \textbf{Relative Gain} \\
+\midrule
+SIM/BPSK-DT (Baseline) & 45 dBm & 0 dB \\
+QPSK-DT/DD (Trinh 2018) & 35 dBm & 10 dB \\
+\textbf{QPSK-DT/HD (Nguyen 2021)} & \textbf{25 dBm} & \textbf{20 dB} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Key Rate Comparison}
+
+\begin{table}[h]
+\centering
+\caption{Key Rate Performance Comparison}
+\label{tab:key_rate_comparison}
+\small
+\begin{tabular}{lccc}
+\toprule
+\textbf{System} & \textbf{Distance} & \textbf{Key Rate} & \textbf{Status} \\
+\midrule
+Micius (2017) & 530 km & 40.2 kbps sifted & Experimental \\
+Micius (2017) & 1034 km & 1.2 kbps sifted & Experimental \\
+Chen (2021) & 4600 km & 47.8 kbps & Experimental \\
+\textbf{Nguyen (2021)} & \textbf{600 km (LEO)} & \textbf{Simulation} & \textbf{Theoretical} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Reliability Comparison}
+
+\begin{table}[h]
+\centering
+\caption{Reliability Metrics Comparison}
+\label{tab:reliability_comparison}
+\begin{tabular}{lccc}
+\toprule
+\textbf{System} & \textbf{Error Handling} & \textbf{Reliability Metric} & \textbf{Value} \\
+\midrule
+Micius & LDPC FEC & QBER & 1.1--3.2\% \\
+Chen Network & Trusted relays & Network availability & $>$99\% \\
+\textbf{Nguyen} & \textbf{ARQ ($M=4$)} & \textbf{KLR} & $\mathbf{<10^{-4}}$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% ============================================================================
+% SECTION 9.3: UNIQUE CONTRIBUTIONS
+% ============================================================================
+
+\section{Unique Contributions of Nguyen et al.}
+\label{sec:unique_contributions}
+
+\subsection{Novel Elements}
+
+\begin{enumerate}
+    \item \textbf{First ARQ for Satellite QKD}
+    \begin{itemize}
+        \item No prior literature applies retransmission to quantum key distribution
+        \item Paradigm shift from error correction to error avoidance
+        \item Enabled by classical feedback channel availability
+    \end{itemize}
+
+    \item \textbf{3-D Markov Chain Model}
+    \begin{itemize}
+        \item Novel state space: (buffer, channel, retransmission)
+        \item Analytical KLR calculation capability
+        \item Optimization framework without extensive simulation
+    \end{itemize}
+
+    \item \textbf{DT/HD Integration}
+    \begin{itemize}
+        \item First combination of dual-threshold with heterodyne for QKD
+        \item 20 dB improvement over previous PTIT work
+        \item Bridges DV and CV detection paradigms
+    \end{itemize}
+
+    \item \textbf{Cross-Layer Design}
+    \begin{itemize}
+        \item Physical layer: QPSK + DT/HD
+        \item Link layer: ARQ retransmission
+        \item Integrated optimization approach
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Research Gaps Addressed}
+
+\begin{table}[h]
+\centering
+\caption{Research Gaps Addressed}
+\label{tab:gaps_addressed}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Gap in Literature} & \textbf{Addressed?} & \textbf{How} \\
+\midrule
+Reliability without FEC overhead & \cmark & ARQ scheme \\
+Link layer QKD analysis & \cmark & 3-D Markov model \\
+Coherent detection for BB84-like & \cmark & QPSK + heterodyne \\
+KLR metric formalization & \cmark & Analytical derivation \\
+Vietnamese satellite QKD research & \cmark & PTIT contribution \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% ============================================================================
+% SECTION 9.4: PTIT RESEARCH EVOLUTION
+% ============================================================================
+
+\section{PTIT Research Evolution}
+\label{sec:ptit_evolution}
+
+\subsection{Research Timeline}
+
+\begin{table}[h]
+\centering
+\caption{PTIT Satellite QKD Research Timeline}
+\label{tab:ptit_timeline}
+\small
+\begin{tabular}{clll}
+\toprule
+\textbf{Year} & \textbf{Paper} & \textbf{Contribution} & \textbf{Advancement} \\
+\midrule
+2018 & Trinh et al. & DT/DD for QKD & Introduced DT concept \\
+2019 & Vu et al. & HAP-aided relay & Extended to HAP \\
+\textbf{2021} & \textbf{Nguyen et al.} & \textbf{DT/HD + ARQ} & \textbf{+20 dB + reliability} \\
+2023 & Nguyen et al. & CV-QKD extension & Extended to CV-QKD \\
+2023 & Vu et al. & Network coding & Multi-satellite \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Cumulative Contributions}
+
+The PTIT research group has systematically:
+\begin{enumerate}
+    \item Introduced dual-threshold detection for QKD
+    \item Improved sensitivity through heterodyne detection
+    \item Added reliability through retransmission
+    \item Extended to CV-QKD protocols
+    \item Explored network-level optimizations
+\end{enumerate}
+
+% ============================================================================
+% SECTION 9.5: INTERNATIONAL CONTEXT
+% ============================================================================
+
+\section{International Context}
+\label{sec:international_context}
+
+\subsection{Geographic Distribution of Research}
+
+\begin{table}[h]
+\centering
+\caption{Satellite QKD Research by Region}
+\label{tab:geographic}
+\begin{tabular}{lll}
+\toprule
+\textbf{Region} & \textbf{Focus} & \textbf{Key Institutions} \\
+\midrule
+China & Experimental demonstration & USTC, CAS \\
+Europe & Mission planning & ESA, DLR, CNES \\
+Japan & Ground experiments & NICT, JAXA \\
+Canada & LEO development & Waterloo, CSA \\
+Singapore & CubeSat QKD & NUS, CQT \\
+\textbf{Vietnam} & \textbf{Theoretical analysis} & \textbf{PTIT, VAST} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Vietnamese Position}
+
+Vietnam's contribution through PTIT:
+\begin{itemize}
+    \item Theoretical foundations for practical systems
+    \item Novel detection and reliability approaches
+    \item Regional capacity building
+    \item Potential foundation for future missions
+\end{itemize}
+
+% ============================================================================
+% SECTION 9.6: STRENGTHS AND LIMITATIONS
+% ============================================================================
+
+\section{Critical Assessment}
+\label{sec:critical_assessment}
+
+\subsection{Strengths}
+
+\begin{enumerate}
+    \item \textbf{Novel Integration:} First combination of QPSK, DT/HD, and ARQ
+    \item \textbf{Analytical Rigor:} Comprehensive mathematical framework
+    \item \textbf{Practical Focus:} Realistic system parameters
+    \item \textbf{Significant Improvement:} Quantifiable 20 dB and $>$1000$\times$ gains
+    \item \textbf{Regional Contribution:} Advances Vietnamese research capability
+\end{enumerate}
+
+\subsection{Limitations}
+
+\begin{enumerate}
+    \item \textbf{Simulation Only:} No experimental validation
+    \item \textbf{Idealized Assumptions:}
+    \begin{itemize}
+        \item Perfect pointing and tracking
+        \item No phase noise in local oscillator
+        \item Ideal modulator/demodulator
+    \end{itemize}
+    \item \textbf{Security Gaps:}
+    \begin{itemize}
+        \item Asymptotic analysis only
+        \item Limited attack model (URA)
+        \item No composable security proof
+    \end{itemize}
+    \item \textbf{System Gaps:}
+    \begin{itemize}
+        \item Single satellite link
+        \item No handover consideration
+        \item No network integration
+    \end{itemize}
+\end{enumerate}
+
+% ============================================================================
+% SECTION 9.7: CHAPTER SUMMARY
+% ============================================================================
+
+\section{Chapter Summary}
+\label{sec:ch9_summary}
+
+This comparative analysis establishes:
+
+\begin{enumerate}
+    \item \textbf{Unique Position:} Nguyen et al. occupies a unique niche combining coherent detection with retransmission reliability
+    \item \textbf{Performance Gains:} 20 dB power improvement and $>$1000$\times$ KLR reduction are significant
+    \item \textbf{Research Gap Filling:} Addresses previously unexplored link-layer reliability for satellite QKD
+    \item \textbf{Foundation Building:} Provides theoretical foundation for future Vietnamese quantum satellite missions
+    \item \textbf{Remaining Work:} Experimental validation and security analysis extensions needed
+\end{enumerate}

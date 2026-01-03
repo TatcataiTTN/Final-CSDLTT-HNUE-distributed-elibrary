@@ -1,0 +1,239 @@
+% ============================================================================
+% CHAPTER 6: PERFORMANCE ANALYSIS
+% ============================================================================
+
+\chapter{Performance Analysis}
+\label{chap:performance}
+
+\begin{quote}
+\textit{This chapter reviews the numerical results presented by Nguyen et al. (2021), including physical layer performance (QBER, $P_{sift}$), link layer performance (KLR), and security analysis against unauthorized receiver attacks.}
+\end{quote}
+
+% ============================================================================
+% SECTION 6.1: PHYSICAL LAYER RESULTS
+% ============================================================================
+
+\section{Physical Layer Performance}
+\label{sec:physical_performance}
+
+\subsection{QBER and $P_{sift}$ vs. DT Coefficient}
+
+The dual-threshold coefficient $\varsigma$ controls the trade-off between QBER and sifting probability.
+
+\begin{table}[h]
+\centering
+\caption{Optimal DT Coefficient Ranges}
+\label{tab:dt_ranges}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Condition} & \textbf{$\varsigma$ Range} & \textbf{QBER Target} & \textbf{$P_{sift}$ Target} \\
+\midrule
+Weak turbulence & $0.7 \leq \varsigma \leq 2.4$ & $\leq 10^{-3}$ & $\geq 10^{-2}$ \\
+Strong turbulence & $1.4 \leq \varsigma \leq 2.8$ & $\leq 10^{-3}$ & $\geq 10^{-2}$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Key observations:}
+\begin{itemize}
+    \item Increasing $\varsigma$ reduces both QBER and $P_{sift}$
+    \item Wider erasure region ($|d_0 - d_1|$) rejects more uncertain detections
+    \item Trade-off: Lower errors vs. lower key rate
+\end{itemize}
+
+\subsection{Transmitted Power Requirements}
+
+Comparison of modulation/detection schemes for QBER $\leq 10^{-3}$ under weak turbulence:
+
+\begin{table}[h]
+\centering
+\caption{Required Transmitted Power Comparison}
+\label{tab:power_requirements}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Scheme} & \textbf{Min. $P_T$ (dBm)} & \textbf{Gain vs. SIM/BPSK} \\
+\midrule
+SIM/BPSK-DT & 45 & Baseline \\
+QPSK-DT/DD & 35 & 10 dB \\
+\textbf{QPSK-DT/HD} & \textbf{25} & \textbf{20 dB} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Significance:} 20 dB power reduction enables:
+\begin{itemize}
+    \item Smaller satellite transmitter
+    \item Extended operational range
+    \item Better margin for adverse conditions
+\end{itemize}
+
+\subsection{Weather Impact}
+
+QBER performance under different attenuation coefficients (strong turbulence, $\varsigma = 1.4$):
+
+\begin{table}[h]
+\centering
+\caption{Weather Impact on QBER}
+\label{tab:weather_impact}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Condition} & \textbf{$\gamma$ (dB/km)} & \textbf{$P_T$ for QBER $\leq 10^{-3}$} & \textbf{Feasibility} \\
+\midrule
+Very clear & 0 -- 0.5 & 45 dBm & \cmark \\
+Light rain/mist & 0.5 -- 1.53 & 45 dBm & \cmark \\
+Haze/medium rain & 1.54 -- 2.68 & 50--55 dBm & Marginal \\
+Heavy rain & $>$ 2.68 & $>$ 55 dBm & \xmark \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% ============================================================================
+% SECTION 6.2: LINK LAYER RESULTS
+% ============================================================================
+
+\section{Link Layer Performance}
+\label{sec:link_performance}
+
+\subsection{KLR vs. Transmitted Power}
+
+Under weak turbulence ($C_n^2(0) = 5 \times 10^{-15}$, $\varsigma = 0.7$):
+
+\begin{table}[h]
+\centering
+\caption{KLR Performance with Retransmissions (Weak Turbulence)}
+\label{tab:klr_weak}
+\begin{tabular}{cccc}
+\toprule
+\textbf{Scheme} & \textbf{KLR at $P_T = 30$ dBm} & \textbf{KLR at $P_T = 34$ dBm} & \textbf{Improvement} \\
+\midrule
+No retransmission & $3 \times 10^{-2}$ & $3 \times 10^{-2}$ & Baseline \\
+$M = 1$ & $10^{-3}$ & $10^{-4}$ & 10--100$\times$ \\
+$M = 2$ & $10^{-4}$ & $10^{-5}$ & 100--1000$\times$ \\
+$M = 4$ & $10^{-5}$ & $10^{-6}$ & 1000--10000$\times$ \\
+$M = 7$ & $10^{-6}$ & $< 10^{-6}$ & $>$ 10000$\times$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Key finding:} Without retransmission, KLR floors at $\sim 3\%$ even with high power.
+
+\subsection{KLR vs. Transmitted Power (Strong Turbulence)}
+
+Under strong turbulence ($C_n^2(0) = 7 \times 10^{-12}$, $\varsigma = 1.4$):
+
+\textbf{Observations:}
+\begin{itemize}
+    \item Higher $P_T$ required for same KLR
+    \item At KLR $= 10^{-6}$: 2 dB power gain when $M$ increases from 1 to 4
+    \item Only 0.5 dB additional gain from $M = 4$ to $M = 7$
+\end{itemize}
+
+\textbf{Practical recommendation:} $M = 4$ offers best trade-off between reliability and latency.
+
+\subsection{Diminishing Returns Analysis}
+
+\begin{table}[h]
+\centering
+\caption{Power Gain vs. Retransmission Count at KLR $= 10^{-6}$}
+\label{tab:diminishing_returns}
+\begin{tabular}{ccc}
+\toprule
+\textbf{$M$ Increase} & \textbf{Power Gain (dB)} & \textbf{Latency Impact} \\
+\midrule
+1 $\rightarrow$ 2 & 1.0 & +1 slot max \\
+2 $\rightarrow$ 3 & 0.7 & +1 slot max \\
+3 $\rightarrow$ 4 & 0.5 & +1 slot max \\
+4 $\rightarrow$ 5 & 0.3 & +1 slot max \\
+5 $\rightarrow$ 7 & 0.2 & +2 slots max \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% ============================================================================
+% SECTION 6.3: SECURITY ANALYSIS
+% ============================================================================
+
+\section{Security Analysis}
+\label{sec:security_analysis}
+
+\subsection{Unauthorized Receiver Attack (URA) Model}
+
+\textbf{Scenario:}
+\begin{itemize}
+    \item Eve places unauthorized receiver near Bob (within beam footprint)
+    \item Bob at beam center ($r = 0$)
+    \item Eve at distance $D_{E-B}$ from Bob
+\end{itemize}
+
+\textbf{Eve's received power:}
+\begin{equation}
+P_{R,Eve} \propto h_l(D_{E-B}; D_{SG}) = A_0 \exp\left(-\frac{2D_{E-B}^2}{\omega_{Deq}^2}\right)
+\label{eq:eve_power}
+\end{equation}
+
+\subsection{Eve's QBER vs. Distance}
+
+As Eve moves away from Bob:
+\begin{itemize}
+    \item Received power decreases exponentially
+    \item SNR degrades
+    \item Eve's QBER increases
+\end{itemize}
+
+\begin{table}[h]
+\centering
+\caption{Eve's Performance vs. Distance from Bob}
+\label{tab:eve_performance}
+\begin{tabular}{lccc}
+\toprule
+\textbf{$D_{E-B}$ (m)} & \textbf{Eve's QBER (Weak)} & \textbf{Eve's QBER (Strong)} & \textbf{Security} \\
+\midrule
+0 & Same as Bob & Same as Bob & \xmark Compromised \\
+10 & $\sim 10^{-3}$ & $\sim 10^{-2}$ & \xmark Marginal \\
+20 & $\sim 10^{-2}$ & $\sim 10^{-2}$ & Marginal \\
+\textbf{30} & $\mathbf{> 10^{-2}}$ & $\mathbf{> 10^{-2}}$ & \cmark \textbf{Secure} \\
+50 & $\sim 10^{-1}$ & $\sim 10^{-1}$ & \cmark Secure \\
+100 & $> 10^{-1}$ & $> 10^{-1}$ & \cmark Secure \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Security Boundary}
+
+\textbf{Requirement:} Eve's QBER $> 10^{-2}$ (cannot correct errors even with FEC)
+
+\textbf{Result:} Minimum secure distance $D_{E-B} > 30$ m for both weak and strong turbulence.
+
+\subsection{Eve's Trade-off}
+
+If Eve increases her DT coefficient to reduce QBER:
+\begin{itemize}
+    \item Her $P_{sift}$ decreases correspondingly
+    \item Less information obtained from Alice
+    \item Cannot simultaneously achieve low QBER and high $P_{sift}$ at distance
+\end{itemize}
+
+% ============================================================================
+% SECTION 6.4: SUMMARY
+% ============================================================================
+
+\section{Performance Summary}
+\label{sec:performance_summary}
+
+\begin{table}[h]
+\centering
+\caption{Overall Performance Summary}
+\label{tab:performance_summary}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Metric} & \textbf{Conventional} & \textbf{Proposed (QPSK-DT/HD + ARQ)} \\
+\midrule
+Required $P_T$ (QBER $\leq 10^{-3}$) & 45 dBm & 25 dBm \\
+KLR (without retx) & $3 \times 10^{-2}$ & -- \\
+KLR (with $M = 4$) & -- & $< 10^{-4}$ \\
+Power gain & Baseline & 20 dB \\
+Reliability improvement & Baseline & $>$ 1000$\times$ \\
+Security distance & -- & 30 m \\
+\bottomrule
+\end{tabular}
+\end{table}

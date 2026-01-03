@@ -1,0 +1,310 @@
+% ============================================================================
+% CHAPTER 8: SECURITY ANALYSIS LITERATURE
+% ============================================================================
+
+\chapter{Security Analysis Literature}
+\label{chap:security_literature}
+
+\begin{quote}
+\textit{This chapter reviews the security analysis literature for practical QKD systems, covering attack models, security proofs, finite-key analysis, and device imperfections.}
+\end{quote}
+
+% ============================================================================
+% SECTION 8.1: SECURITY FRAMEWORK
+% ============================================================================
+
+\section{QKD Security Framework}
+\label{sec:security_framework}
+
+\subsection{Information-Theoretic Security}
+
+QKD provides security based on physical laws rather than computational assumptions:
+
+\begin{itemize}
+    \item \textbf{No-Cloning:} Quantum states cannot be perfectly copied
+    \item \textbf{Measurement Disturbance:} Eavesdropping creates detectable errors
+    \item \textbf{Unconditional Security:} Secure against unlimited computational power
+\end{itemize}
+
+\subsection{Security Hierarchy}
+
+\begin{table}[h]
+\centering
+\caption{Attack Classification Hierarchy}
+\label{tab:attack_hierarchy}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Attack Type} & \textbf{Power} & \textbf{QBER Threshold} \\
+\midrule
+Individual attacks & Weakest & 14.6\% \\
+Collective attacks & Medium & 11.0\% \\
+Coherent attacks & Strongest & 7.1\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% ============================================================================
+% SECTION 8.2: SCARANI ET AL. (2009)
+% ============================================================================
+
+\section{Practical Security Framework}
+\label{sec:scarani}
+
+\subsection{Scarani et al. (2009)}
+
+``The Security of Practical Quantum Key Distribution'' \cite{scarani2009security} established the definitive framework for analyzing practical QKD security:
+
+\textbf{Key Contributions:}
+\begin{enumerate}
+    \item \textbf{Device Imperfection Modeling:}
+    \begin{itemize}
+        \item Non-ideal single-photon sources
+        \item Detector inefficiencies and dark counts
+        \item Channel losses and noise
+    \end{itemize}
+
+    \item \textbf{Attack Analysis:}
+    \begin{itemize}
+        \item Photon-number-splitting attacks
+        \item Intercept-resend strategies
+        \item Trojan horse attacks
+    \end{itemize}
+
+    \item \textbf{Security Parameter Calculation:}
+    \begin{itemize}
+        \item QBER threshold derivation
+        \item Privacy amplification requirements
+        \item Finite-key corrections
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Relevance to Nguyen et al.}
+
+Scarani's framework provides:
+\begin{itemize}
+    \item QBER threshold ($10^{-3}$) justification
+    \item Security analysis methodology
+    \item Foundation for URA attack analysis
+\end{itemize}
+
+% ============================================================================
+% SECTION 8.3: FINITE-KEY ANALYSIS
+% ============================================================================
+
+\section{Finite-Key Security}
+\label{sec:finite_key}
+
+\subsection{The Finite-Key Challenge}
+
+Asymptotic security proofs assume infinite key length. Practical systems require finite-key analysis:
+
+\begin{equation}
+l_{secure} = l_{sifted} - \text{leak}_{EC} - \text{leak}_{PE} - \text{PA}
+\label{eq:finite_key}
+\end{equation}
+
+where:
+\begin{itemize}
+    \item $\text{leak}_{EC}$: Information leaked during error correction
+    \item $\text{leak}_{PE}$: Information leaked during parameter estimation
+    \item $\text{PA}$: Privacy amplification compression
+\end{itemize}
+
+\subsection{Tomamichel et al. (2012)}
+
+``Tight Finite-Key Analysis for Quantum Cryptography'' \cite{tomamichel2012finite_resources} in Nature Communications:
+
+\textbf{Key Contributions:}
+\begin{itemize}
+    \item Composable security definitions
+    \item Tight bounds on finite-size effects
+    \item Practical parameter optimization
+\end{itemize}
+
+\subsection{Impact on Key Rate}
+
+Finite-key effects become significant for:
+\begin{itemize}
+    \item Short satellite passes (limited transmission time)
+    \item Low repetition rate systems
+    \item High-loss channels
+\end{itemize}
+
+\textbf{Gap in Nguyen et al.:} The paper uses asymptotic analysis; finite-key effects not incorporated.
+
+% ============================================================================
+% SECTION 8.4: DEVICE SECURITY
+% ============================================================================
+
+\section{Realistic Device Security}
+\label{sec:device_security}
+
+\subsection{Xu et al. (2020)}
+
+``Secure Quantum Key Distribution with Realistic Devices'' \cite{xu2020realistic_devices} in Reviews of Modern Physics:
+
+\textbf{Coverage:}
+\begin{enumerate}
+    \item \textbf{Source Imperfections:}
+    \begin{itemize}
+        \item Multi-photon emission
+        \item State preparation flaws
+        \item Side-channel leakage
+    \end{itemize}
+
+    \item \textbf{Detector Vulnerabilities:}
+    \begin{itemize}
+        \item Blinding attacks
+        \item Time-shift attacks
+        \item Efficiency mismatch
+    \end{itemize}
+
+    \item \textbf{Countermeasures:}
+    \begin{itemize}
+        \item Decoy states for source issues
+        \item MDI-QKD for detector immunity
+        \item Device characterization protocols
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Measurement-Device-Independent QKD}
+
+MDI-QKD removes all detector side-channel attacks:
+\begin{itemize}
+    \item Bell state measurement at untrusted node
+    \item Security independent of detector imperfections
+    \item Demonstrated over 500 km fiber
+\end{itemize}
+
+% ============================================================================
+% SECTION 8.5: CV-QKD SECURITY
+% ============================================================================
+
+\section{CV-QKD Security}
+\label{sec:cvqkd_security}
+
+\subsection{Leverrier (2015)}
+
+``Composable Security Proof for CV-QKD'' \cite{leverrier2015cv_security}:
+
+\textbf{Contribution:} First composable security proof for Gaussian-modulated CV-QKD with coherent states against collective attacks.
+
+\subsection{Discrete Modulation Security}
+
+For QPSK-like discrete modulation:
+\begin{itemize}
+    \item Security proofs developed post-2018
+    \item No longer requires linear channel assumption
+    \item Bounded via uncertainty principle methods
+\end{itemize}
+
+\textbf{Relevance:} Nguyen et al.'s QPSK approach benefits from these developments.
+
+% ============================================================================
+% SECTION 8.6: NGUYEN ET AL. SECURITY ANALYSIS
+% ============================================================================
+
+\section{Security Analysis in Nguyen et al.}
+\label{sec:nguyen_security}
+
+\subsection{Unauthorized Receiver Attack (URA)}
+
+Nguyen et al. analyzes security against an eavesdropper (Eve) positioned near Bob:
+
+\textbf{Attack Model:}
+\begin{itemize}
+    \item Eve places receiver within satellite beam footprint
+    \item Bob at beam center ($r = 0$)
+    \item Eve at distance $D_{E-B}$ from Bob
+\end{itemize}
+
+\subsection{Eve's Received Power}
+
+Eve's power decreases with distance from beam center:
+
+\begin{equation}
+P_{R,Eve} \propto A_0 \exp\left(-\frac{2D_{E-B}^2}{\omega_{Deq}^2}\right)
+\label{eq:eve_power}
+\end{equation}
+
+\subsection{Security Boundary}
+
+\begin{table}[h]
+\centering
+\caption{Eve's QBER vs. Distance}
+\label{tab:eve_qber}
+\begin{tabular}{lccc}
+\toprule
+\textbf{$D_{E-B}$ (m)} & \textbf{Weak Turb.} & \textbf{Strong Turb.} & \textbf{Security} \\
+\midrule
+0 & Same as Bob & Same as Bob & Compromised \\
+10 & $\sim 10^{-3}$ & $\sim 10^{-2}$ & Marginal \\
+20 & $\sim 10^{-2}$ & $\sim 10^{-2}$ & Marginal \\
+\textbf{30} & $\mathbf{> 10^{-2}}$ & $\mathbf{> 10^{-2}}$ & \textbf{Secure} \\
+50+ & $> 10^{-1}$ & $> 10^{-1}$ & Secure \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Conclusion:} $D_{E-B} > 30$ m ensures Eve cannot obtain usable key.
+
+\subsection{Limitations of Analysis}
+
+\begin{enumerate}
+    \item \textbf{URA Only:} Does not consider intercept-resend or other attacks
+    \item \textbf{Asymptotic:} Finite-key effects not analyzed
+    \item \textbf{Collective Attacks:} General attack security not proven
+\end{enumerate}
+
+% ============================================================================
+% SECTION 8.7: RECENT DEVELOPMENTS
+% ============================================================================
+
+\section{Recent Security Developments (2022-2025)}
+\label{sec:recent_security}
+
+\subsection{Numerical Security Proofs}
+
+Physical Review Research (2022) presents numerical security proofs for:
+\begin{itemize}
+    \item Decoy-state BB84 with basis misalignment
+    \item MDI-QKD practical implementations
+    \item Fine-grained statistics utilization
+\end{itemize}
+
+\subsection{Finite-Key for Heterodyne (2025)}
+
+arXiv:2501.10278 addresses:
+\begin{itemize}
+    \item Phase imbalance in heterodyne detection
+    \item Practical finite-key bounds
+    \item System optimization under realistic conditions
+\end{itemize}
+
+\subsection{Post-Quantum Considerations}
+
+While QKD is quantum-safe, practical considerations include:
+\begin{itemize}
+    \item Authentication channel security
+    \item Key management infrastructure
+    \item Hybrid classical-quantum systems
+\end{itemize}
+
+% ============================================================================
+% SECTION 8.8: CHAPTER SUMMARY
+% ============================================================================
+
+\section{Chapter Summary}
+\label{sec:ch8_summary}
+
+This chapter reviewed security analysis literature:
+
+\begin{enumerate}
+    \item \textbf{Foundational Framework:} Scarani et al. established practical security analysis
+    \item \textbf{Finite-Key:} Tomamichel et al. provided composable security with finite resources
+    \item \textbf{Device Security:} Xu et al. addressed realistic device imperfections
+    \item \textbf{CV-QKD:} Leverrier proved composable security for coherent detection
+    \item \textbf{Nguyen et al.:} Analyzed URA scenario; gaps remain in finite-key and general attacks
+\end{enumerate}
+
+\textbf{Key Gap:} Nguyen et al. provides important URA analysis but would benefit from finite-key analysis and security proof against general attacks.

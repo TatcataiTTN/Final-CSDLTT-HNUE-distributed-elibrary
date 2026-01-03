@@ -1,0 +1,258 @@
+% ============================================================================
+% CHAPTER 4: CHANNEL MODEL
+% ============================================================================
+
+\chapter{Atmospheric Channel Model}
+\label{chap:channel_model}
+
+\begin{quote}
+\textit{This chapter provides detailed analysis of the FSO channel model used by Nguyen et al. (2021), including free-space loss, atmospheric attenuation, beam spreading, and atmospheric turbulence-induced fading based on the Gamma-Gamma distribution.}
+\end{quote}
+
+% ============================================================================
+% SECTION 4.1: CHANNEL OVERVIEW
+% ============================================================================
+
+\section{Channel Model Overview}
+\label{sec:channel_overview}
+
+\subsection{Loss Components}
+
+The received power at Bob's receiver:
+\begin{equation}
+P_R = \frac{G_T P_T h_a h_l h_f(t) G_R}{L_{FS}}
+\label{eq:received_power}
+\end{equation}
+
+\begin{table}[h]
+\centering
+\caption{FSO Channel Loss Components}
+\label{tab:loss_components}
+\begin{tabular}{lll}
+\toprule
+\textbf{Component} & \textbf{Symbol} & \textbf{Physical Mechanism} \\
+\midrule
+Free-space loss & $L_{FS}$ & Beam divergence over distance \\
+Atmospheric attenuation & $h_a$ & Absorption and scattering \\
+Beam spreading loss & $h_l$ & Gaussian beam profile \\
+Turbulence fading & $h_f(t)$ & Refractive index fluctuations \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Altitude Threshold}
+
+The paper uses $H_\beta = 20$ km as the threshold separating:
+\begin{itemize}
+    \item \textbf{Above $H_\beta$:} Primarily free-space loss (negligible turbulence)
+    \item \textbf{Below $H_\beta$:} Atmospheric effects (attenuation + turbulence)
+\end{itemize}
+
+% ============================================================================
+% SECTION 4.2: FREE-SPACE LOSS
+% ============================================================================
+
+\section{Free-Space Loss}
+\label{sec:freespace_loss}
+
+\subsection{Mathematical Expression}
+
+For propagation from satellite altitude $H_S$ to atmospheric boundary $H_\beta$:
+\begin{equation}
+L_{FS} = \left(\frac{4\pi D_S}{\lambda}\right)^2
+\label{eq:freespace_loss}
+\end{equation}
+
+where the free-space propagation distance:
+\begin{equation}
+D_S = \frac{H_S - H_\beta}{\cos(\zeta)}
+\label{eq:freespace_distance}
+\end{equation}
+
+\subsection{Numerical Example}
+
+With $H_S = 600$ km, $H_\beta = 20$ km, $\zeta = 50°$, $\lambda = 1550$ nm:
+\begin{align}
+D_S &= \frac{600 - 20}{\cos(50°)} = \frac{580}{0.643} \approx 902 \text{ km} \\
+L_{FS} &= \left(\frac{4\pi \times 902 \times 10^3}{1550 \times 10^{-9}}\right)^2 \approx 2.1 \times 10^{26} \approx 263 \text{ dB}
+\end{align}
+
+\textbf{Note:} This large loss is compensated by telescope gains ($G_T + G_R \approx 241$ dB).
+
+% ============================================================================
+% SECTION 4.3: ATMOSPHERIC ATTENUATION
+% ============================================================================
+
+\section{Atmospheric Attenuation}
+\label{sec:atmospheric_attenuation}
+
+\subsection{Beer-Lambert Law}
+
+Atmospheric attenuation follows exponential Beer-Lambert law:
+\begin{equation}
+h_a = \exp(-\gamma D_\beta)
+\label{eq:beer_lambert}
+\end{equation}
+
+where:
+\begin{itemize}
+    \item $\gamma$: Weather-dependent attenuation coefficient (dB/km)
+    \item $D_\beta = \frac{H_\beta - H_G}{\cos(\zeta)}$: Atmospheric propagation distance
+\end{itemize}
+
+\subsection{Weather Conditions}
+
+\begin{table}[h]
+\centering
+\caption{Attenuation Coefficients for Different Weather Conditions}
+\label{tab:weather_attenuation}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Weather Condition} & \textbf{$\gamma$ (dB/km)} & \textbf{Impact on QKD} \\
+\midrule
+Very clear & 0 -- 0.5 & Minimal \\
+Clear & 0.5 -- 1.0 & Low \\
+Very light rain/mist & 1.0 -- 1.53 & Moderate \\
+Haze/medium rain & 1.54 -- 2.68 & Significant \\
+Thin fog/heavy rain & 2.68 -- 3.0 & Severe \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% ============================================================================
+% SECTION 4.4: BEAM SPREADING LOSS
+% ============================================================================
+
+\section{Beam Spreading Loss}
+\label{sec:beam_spreading}
+
+\subsection{Gaussian Beam Profile}
+
+At distance $D_{SG} = (H_S - H_G)/\cos(\zeta)$ from Alice to Bob, the normalized spatial intensity distribution:
+\begin{equation}
+I_{beam}(\boldsymbol{\rho}; D_{SG}) = \frac{2}{\pi\omega_D^2} \exp\left(-\frac{2||\boldsymbol{\rho}||^2}{\omega_D^2}\right)
+\label{eq:beam_profile}
+\end{equation}
+
+where $\omega_D$ is the beam waist at ground station.
+
+\subsection{Collected Power Fraction}
+
+The fraction of power collected by aperture of radius $a$ at pointing error $r$:
+\begin{equation}
+h_l(r; D_{SG}) \approx A_0 \exp\left(-\frac{2r^2}{\omega_{Deq}^2}\right)
+\label{eq:beam_spreading_loss}
+\end{equation}
+
+where:
+\begin{itemize}
+    \item $A_0 = [\text{erf}(v)]^2$: Fraction at $r = 0$
+    \item $v = \frac{\sqrt{\pi}a}{\sqrt{2}\omega_D}$
+    \item $\omega_{Deq}^2 = \omega_D^2 \frac{\sqrt{\pi}\text{erf}(v)}{2v\exp(-v^2)}$: Equivalent beam width
+\end{itemize}
+
+\subsection{Security Implication}
+
+For eavesdropper (Eve) at distance $D_{E-B}$ from Bob:
+\begin{itemize}
+    \item Bob (at beam center): $h_l(0; D_{SG})$
+    \item Eve (offset by $D_{E-B}$): $h_l(D_{E-B}; D_{SG})$
+\end{itemize}
+
+Eve receives less power as $D_{E-B}$ increases, providing spatial security.
+
+% ============================================================================
+% SECTION 4.5: ATMOSPHERIC TURBULENCE
+% ============================================================================
+
+\section{Atmospheric Turbulence-Induced Fading}
+\label{sec:turbulence}
+
+\subsection{Physical Mechanism}
+
+Atmospheric turbulence arises from random variations in refractive index due to:
+\begin{itemize}
+    \item Temperature fluctuations
+    \item Wind-induced mixing
+    \item Pressure variations
+\end{itemize}
+
+Effects on optical beam:
+\begin{enumerate}
+    \item \textbf{Scintillation:} Intensity fluctuations
+    \item \textbf{Beam wander:} Random displacement of beam centroid
+    \item \textbf{Beam spreading:} Additional divergence beyond diffraction
+    \item \textbf{Angle-of-arrival fluctuations:} Phase front distortion
+\end{enumerate}
+
+\subsection{Gamma-Gamma Distribution}
+
+For weak to strong turbulence, the Gamma-Gamma distribution models intensity fading:
+\begin{equation}
+f_{h_f}(h_f) = \frac{2K_{\alpha-\beta}\left(2\sqrt{\alpha\beta h_f}\right)(\alpha\beta)^{\frac{\alpha+\beta}{2}}}{\Gamma(\alpha)\Gamma(\beta)} h_f^{\frac{\alpha+\beta}{2}-1}
+\label{eq:gamma_gamma}
+\end{equation}
+
+where:
+\begin{itemize}
+    \item $K_{\alpha-\beta}(\cdot)$: Modified Bessel function of second kind
+    \item $\Gamma(\cdot)$: Gamma function
+    \item $\alpha, \beta$: Parameters for large-scale and small-scale turbulent eddies
+\end{itemize}
+
+\subsection{Turbulence Parameters}
+
+Assuming plane wave propagation:
+\begin{align}
+\alpha &\cong \left[\exp\left(\frac{0.49\sigma_R^2}{(1+1.11\sigma_R^{12/5})^{7/6}}\right) - 1\right]^{-1} \label{eq:alpha} \\
+\beta &\cong \left[\exp\left(\frac{0.51\sigma_R^2}{(1+0.69\sigma_R^{12/5})^{5/6}}\right) - 1\right]^{-1} \label{eq:beta}
+\end{align}
+
+\subsection{Rytov Variance}
+
+The Rytov variance characterizes turbulence strength:
+\begin{equation}
+\sigma_R^2 = 2.25 k^{7/6} \sec(\zeta)^{11/6} \int_{H_G}^{H_\beta} C_n^2(h)(h - H_G)^{5/6} dh
+\label{eq:rytov}
+\end{equation}
+
+where $k = 2\pi/\lambda$ is the wave number.
+
+\subsection{Hufnagel-Valley Model}
+
+The altitude-dependent refractive index structure parameter:
+\begin{equation}
+C_n^2(h) = 0.00594\left(\frac{w}{27}\right)^2 (10^{-5}h)^{10} \exp\left(-\frac{h}{1000}\right) + 2.7 \times 10^{-16} \exp\left(-\frac{h}{1500}\right) + C_n^2(0) \exp\left(-\frac{h}{100}\right)
+\label{eq:hufnagel_valley}
+\end{equation}
+
+\textbf{Turbulence conditions used in paper:}
+\begin{itemize}
+    \item Weak turbulence: $C_n^2(0) = 5 \times 10^{-15}$ m$^{-2/3}$
+    \item Strong turbulence: $C_n^2(0) = 7 \times 10^{-12}$ m$^{-2/3}$
+\end{itemize}
+
+% ============================================================================
+% SECTION 4.6: COMPLETE CHANNEL MODEL
+% ============================================================================
+
+\section{Complete Channel Model Summary}
+\label{sec:channel_summary}
+
+\begin{table}[h]
+\centering
+\caption{Channel Model Equations Summary}
+\label{tab:channel_summary}
+\begin{tabular}{lll}
+\toprule
+\textbf{Component} & \textbf{Equation} & \textbf{Key Parameters} \\
+\midrule
+Free-space loss & $L_{FS} = (4\pi D_S/\lambda)^2$ & $D_S$, $\lambda$ \\
+Atm. attenuation & $h_a = \exp(-\gamma D_\beta)$ & $\gamma$, $D_\beta$ \\
+Beam spreading & $h_l = A_0 \exp(-2r^2/\omega_{Deq}^2)$ & $\omega_D$, $a$ \\
+Turbulence & Gamma-Gamma PDF & $\alpha$, $\beta$, $\sigma_R^2$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Key insight:} Turbulence effects are concentrated below 20 km altitude, where the Hufnagel-Valley profile predicts the highest $C_n^2$ values near ground level.

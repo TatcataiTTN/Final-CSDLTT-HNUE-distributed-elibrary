@@ -1,0 +1,300 @@
+% ============================================================================
+% CHAPTER 3: QKD PROTOCOL DESIGN
+% ============================================================================
+
+\chapter{QKD Protocol Design}
+\label{chap:qkd_protocol}
+
+\begin{quote}
+\textit{This chapter examines the QPSK-based QKD protocol proposed by Nguyen et al. (2021), its relationship to the foundational BB84 protocol, and the dual-threshold/heterodyne detection scheme that enables improved performance.}
+\end{quote}
+
+% ============================================================================
+% SECTION 3.1: FOUNDATIONAL CONTEXT
+% ============================================================================
+
+\section{Foundational Context: BB84 Protocol}
+\label{sec:bb84}
+
+\subsection{Original BB84 Protocol}
+
+The BB84 protocol, proposed by Bennett and Brassard in 1984 \cite{bennett1984bb84}, established the foundation for QKD using four non-orthogonal quantum states:
+
+\textbf{Two conjugate bases:}
+\begin{itemize}
+    \item Rectilinear basis ($+$): $\ket{H}$ (0), $\ket{V}$ (1)
+    \item Diagonal basis ($\times$): $\ket{+45^\circ}$ (0), $\ket{-45^\circ}$ (1)
+\end{itemize}
+
+\textbf{Security foundation:}
+\begin{enumerate}
+    \item No-cloning theorem: Quantum states cannot be perfectly copied
+    \item Measurement disturbance: Any measurement on unknown quantum state causes detectable change
+    \item Basis mismatch: When Alice and Bob use different bases, result is random
+\end{enumerate}
+
+\subsection{Mapping to QPSK}
+
+Nguyen et al. (2021) maps the BB84 four-state structure to QPSK phase states:
+
+\begin{table}[h]
+\centering
+\caption{BB84 to QPSK State Mapping}
+\label{tab:bb84_qpsk_mapping}
+\begin{tabular}{cccc}
+\toprule
+\textbf{BB84 State} & \textbf{Polarization} & \textbf{QPSK Phase ($\phi_A$)} & \textbf{Bit} \\
+\midrule
+$\ket{H}$ & Horizontal & $\pi/4$ & 0 \\
+$\ket{V}$ & Vertical & $5\pi/4$ & 1 \\
+$\ket{+45^\circ}$ & Diagonal & $-\pi/4$ & 0 \\
+$\ket{-45^\circ}$ & Anti-diagonal & $3\pi/4$ & 1 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% ============================================================================
+% SECTION 3.2: QPSK PROTOCOL
+% ============================================================================
+
+\section{QPSK-Based QKD Protocol}
+\label{sec:qpsk_protocol}
+
+\subsection{Protocol Overview}
+
+The QPSK-based protocol operates in four steps, analogous to BB84:
+
+\textbf{Step 1: Key Encoding (Alice)}
+\begin{itemize}
+    \item Alice randomly selects base $A_1$ or $A_2$
+    \item For each binary bit, encodes into phase state $\phi_A$
+    \item Phase formed by MZM: $\phi_A = (\phi_1 + \phi_2)/2$
+\end{itemize}
+
+\textbf{Step 2: Transmission and Detection (Bob)}
+\begin{itemize}
+    \item Bob randomly selects base $B_1$ ($\phi_B = \pi/4$) or $B_2$ ($\phi_B = -\pi/4$)
+    \item Heterodyne detection produces current proportional to $\cos(\phi_A - \phi_B)$
+    \item Dual-threshold decision: output $\in \{0, X, 1\}$
+\end{itemize}
+
+\textbf{Step 3: Sifting}
+\begin{itemize}
+    \item Bob announces times when he detected ``0'' or ``1'' (not the values)
+    \item Alice discards bits where Bob detected ``X''
+    \item Remaining bits form \textbf{sifted key}
+\end{itemize}
+
+\textbf{Step 4: Error Correction}
+\begin{itemize}
+    \item Instead of FEC, use \textbf{key retransmission scheme}
+    \item Failed sequences are retransmitted up to $M$ times
+\end{itemize}
+
+\subsection{Complete Phase Encoding Table}
+
+\begin{table}[h]
+\centering
+\caption{Complete QPSK-Based QKD Encoding}
+\label{tab:encoding_table}
+\small
+\begin{tabular}{ccccc|ccc|cc}
+\toprule
+\textbf{Alice} & \textbf{Bit} & $\phi_1$ & $\phi_2$ & $\phi_A$ & \textbf{Bob} & $\phi_B$ & $\phi_A - \phi_B$ & \textbf{I} & \textbf{Result} \\
+\midrule
+$A_1$ & 0 & 0 & $\pi/2$ & $\pi/4$ & $B_1$ & $\pi/4$ & 0 & $I_0$ & 0 \\
+$A_1$ & 0 & 0 & $\pi/2$ & $\pi/4$ & $B_2$ & $-\pi/4$ & $\pi/2$ & 0 & X \\
+$A_1$ & 1 & $\pi$ & $3\pi/2$ & $5\pi/4$ & $B_1$ & $\pi/4$ & $\pi$ & $I_1$ & 1 \\
+$A_1$ & 1 & $\pi$ & $3\pi/2$ & $5\pi/4$ & $B_2$ & $-\pi/4$ & $-\pi/2$ & 0 & X \\
+\midrule
+$A_2$ & 0 & 0 & $-\pi/2$ & $-\pi/4$ & $B_1$ & $\pi/4$ & $-\pi/2$ & 0 & X \\
+$A_2$ & 0 & 0 & $-\pi/2$ & $-\pi/4$ & $B_2$ & $-\pi/4$ & 0 & $I_0$ & 0 \\
+$A_2$ & 1 & $\pi$ & $\pi/2$ & $3\pi/4$ & $B_1$ & $\pi/4$ & $\pi/2$ & 0 & X \\
+$A_2$ & 1 & $\pi$ & $\pi/2$ & $3\pi/4$ & $B_2$ & $-\pi/4$ & $\pi$ & $I_1$ & 1 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Key observation:} When Alice uses $A_i$ and Bob uses $B_i$ (same basis index), the correct bit is detected. Otherwise, result is ``X'' (erasure).
+
+% ============================================================================
+% SECTION 3.3: TRANSMITTER DESIGN
+% ============================================================================
+
+\section{Transmitter Design}
+\label{sec:transmitter}
+
+\subsection{QPSK Modulator Architecture}
+
+The transmitter uses dual Mach-Zehnder modulators (MZMs):
+
+\textbf{Components:}
+\begin{enumerate}
+    \item \textbf{Key Generator:} Produces random bit sequence $d(t)$
+    \item \textbf{Buffer:} Stores bit sequences for potential retransmission
+    \item \textbf{Electronic Controller:} Generates control signals based on bit values
+    \item \textbf{Random Base Module:} Selects between $A_1$ and $A_2$
+    \item \textbf{CW Laser:} Provides optical carrier
+    \item \textbf{Dual MZM:} Encodes phase information
+\end{enumerate}
+
+\subsection{Optical Signal Formation}
+
+The transmitted optical field:
+\begin{equation}
+E_T = \sqrt{P_T G_T} \exp\left[-i(2\pi f_c t + \phi_A)\right]
+\label{eq:transmitted_field}
+\end{equation}
+
+where:
+\begin{itemize}
+    \item $P_T$: Peak transmitted power
+    \item $G_T$: Transmitter telescope gain (120 dB)
+    \item $f_c$: Optical carrier frequency
+    \item $\phi_A$: Alice's phase encoding
+\end{itemize}
+
+% ============================================================================
+% SECTION 3.4: RECEIVER DESIGN
+% ============================================================================
+
+\section{Dual-Threshold/Heterodyne Detection Receiver}
+\label{sec:receiver}
+
+\subsection{Heterodyne Detection Principle}
+
+The received signal is mixed with a local oscillator (LO):
+\begin{equation}
+E_{LO} = \sqrt{P_{LO}} \exp\left[-i(2\pi f_{LO} t)\right]
+\label{eq:lo_field}
+\end{equation}
+
+After photodetection and filtering:
+\begin{equation}
+I_{dec} = \bar{g}\Re\sqrt{P_R P_{LO}} \cos(\phi_A - \phi_B) + n(t)
+\label{eq:decoded_current}
+\end{equation}
+
+where:
+\begin{itemize}
+    \item $\bar{g}$: Avalanche multiplication factor
+    \item $\Re$: APD responsivity
+    \item $P_R$: Received optical power
+    \item $P_{LO}$: Local oscillator power
+    \item $n(t)$: Noise current
+\end{itemize}
+
+\subsection{Dual-Threshold Decision}
+
+After low-pass filtering, the signal $i(t)$ takes one of three forms:
+
+\begin{equation}
+i(t) = \begin{cases}
+i_0 = \bar{g}\Re\sqrt{P_R P_{LO}} + n(t) & \text{for bit ``0''} \\
+0 + n(t) & \text{for basis mismatch} \\
+i_1 = -\bar{g}\Re\sqrt{P_R P_{LO}} + n(t) & \text{for bit ``1''}
+\end{cases}
+\label{eq:signal_cases}
+\end{equation}
+
+\textbf{Threshold levels:}
+\begin{align}
+d_0 &= E[i_0] + \varsigma\sqrt{\sigma_n^2} \label{eq:threshold_d0} \\
+d_1 &= E[i_1] - \varsigma\sqrt{\sigma_n^2} \label{eq:threshold_d1}
+\end{align}
+
+where $\varsigma$ is the \textbf{dual-threshold scale coefficient}.
+
+\subsection{Noise Analysis}
+
+Total noise variance:
+\begin{equation}
+\sigma_n^2 = 2q\bar{g}^{2+x}\left[\Re(P_R + P_{LO}) + I_d\right]\Delta f + \frac{4k_B T}{R_L}\Delta f
+\label{eq:noise_variance}
+\end{equation}
+
+\textbf{Noise components:}
+\begin{itemize}
+    \item Shot noise: $2q\bar{g}^{2+x}\Re(P_R + P_{LO})\Delta f$
+    \item Dark current noise: $2q\bar{g}^{2+x}I_d\Delta f$
+    \item Thermal noise: $\frac{4k_B T}{R_L}\Delta f$
+\end{itemize}
+
+where $\Delta f = R_b/2$ is the receiver bandwidth.
+
+\subsection{Advantage of Heterodyne Detection}
+
+\begin{table}[h]
+\centering
+\caption{Comparison of Detection Schemes}
+\label{tab:detection_comparison}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Feature} & \textbf{Direct Detection} & \textbf{Homodyne} & \textbf{Heterodyne} \\
+\midrule
+Sensitivity & Low & High & High \\
+LO required & No & Yes & Yes \\
+Phase locking & N/A & Critical & Less critical \\
+Bandwidth & Signal BW & Signal BW & 2$\times$ Signal BW \\
+Quadratures & Intensity only & One & Both \\
+Implementation & Simple & Moderate & Moderate \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% ============================================================================
+% SECTION 3.5: QBER ANALYSIS
+% ============================================================================
+
+\section{Quantum Bit Error Rate Analysis}
+\label{sec:qber_analysis}
+
+\subsection{QBER Definition}
+
+Following BB84:
+\begin{equation}
+\text{QBER} = \frac{P_{error}}{P_{sift}}
+\label{eq:qber_definition}
+\end{equation}
+
+where:
+\begin{align}
+P_{error} &= P_{A,B}(0,1) + P_{A,B}(1,0) \label{eq:perror} \\
+P_{sift} &= P_{A,B}(0,0) + P_{A,B}(0,1) + P_{A,B}(1,0) + P_{A,B}(1,1) \label{eq:psift}
+\end{align}
+
+\subsection{Joint Probability Calculation}
+
+For joint probability $P_{A,B}(a,b)$ that Alice sends ``$a$'' and Bob detects ``$b$'':
+
+\begin{equation}
+P_{A,B}(a,b) = P_A(a) \cdot P_{B|A}(b|a)
+\label{eq:joint_prob}
+\end{equation}
+
+with $P_A(a) = 1/2$ (equiprobable bits).
+
+Averaged over fading channel:
+\begin{align}
+P_{A,B}(a,0) &= \frac{1}{2}\int_0^\infty Q\left(\frac{d_0 - I_a}{\sigma_n}\right) f_{h_f}(h_f) dh_f \label{eq:pab_0} \\
+P_{A,B}(a,1) &= \frac{1}{2}\int_0^\infty Q\left(\frac{I_a - d_1}{\sigma_n}\right) f_{h_f}(h_f) dh_f \label{eq:pab_1}
+\end{align}
+
+where $Q(\cdot)$ is the Gaussian Q-function and $f_{h_f}(h_f)$ is the Gamma-Gamma PDF.
+
+\subsection{DT Coefficient Optimization}
+
+The dual-threshold coefficient $\varsigma$ controls the trade-off between QBER and $P_{sift}$:
+
+\begin{itemize}
+    \item \textbf{Large $\varsigma$:} Wider erasure region $\rightarrow$ Lower QBER, Lower $P_{sift}$
+    \item \textbf{Small $\varsigma$:} Narrower erasure region $\rightarrow$ Higher QBER, Higher $P_{sift}$
+\end{itemize}
+
+\textbf{Optimal ranges (from numerical results):}
+\begin{itemize}
+    \item Weak turbulence ($C_n^2(0) = 5\times10^{-15}$): $0.7 \leq \varsigma \leq 2.4$
+    \item Strong turbulence ($C_n^2(0) = 7\times10^{-12}$): $1.4 \leq \varsigma \leq 2.8$
+\end{itemize}
+
+These ranges satisfy: QBER $\leq 10^{-3}$ and $P_{sift} \geq 10^{-2}$.
