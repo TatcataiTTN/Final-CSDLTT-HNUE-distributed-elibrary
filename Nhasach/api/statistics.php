@@ -133,6 +133,9 @@ try {
             $startDate = new MongoDB\BSON\UTCDateTime((time() - ($days * 86400)) * 1000);
 
             $pipeline = [
+                // Stage 0: Union with orders_central
+                ['$unionWith' => ['coll' => 'orders_central']],
+
                 // Stage 1: Match orders in date range
                 ['$match' => [
                     'created_at' => ['$gte' => $startDate],
@@ -200,6 +203,9 @@ try {
             $limit = (int)($_GET['limit'] ?? 10);
 
             $pipeline = [
+                // Stage 0: Union with orders_central (Synced Orders)
+                ['$unionWith' => ['coll' => 'orders_central']],
+
                 // Stage 1: Match completed orders
                 ['$match' => [
                     'status' => ['$in' => ['paid', 'success', 'returned']]
@@ -359,6 +365,9 @@ try {
         // =====================================================================
         case 'order_status_summary':
             $pipeline = [
+                // Stage 0: Union with orders_central
+                ['$unionWith' => ['coll' => 'orders_central']],
+
                 // Stage 1: Group by status
                 ['$group' => [
                     '_id' => '$status',
@@ -412,6 +421,9 @@ try {
             $startDate = new MongoDB\BSON\UTCDateTime(strtotime("-$months months") * 1000);
 
             $pipeline = [
+                // Stage 0: Union with orders_central
+                ['$unionWith' => ['coll' => 'orders_central']],
+
                 // Stage 1: Match orders in date range
                 ['$match' => [
                     'created_at' => ['$gte' => $startDate]

@@ -32,7 +32,7 @@ if (!$user) {
 
 // Các giá trị dùng chung
 $BOOK_GROUPS = ["Kinh dị", "Trinh thám", "Khoa học", "Tình cảm", "Thiếu nhi"];
-$LOCATIONS   = ["Hà Nội", "Đà Nẵng", "Hải Phòng"];
+$LOCATIONS   = ["Hà Nội", "Đà Nẵng", "Hồ Chí Minh"];
 $STATUS_LIST = [
     'active'       => 'Hoạt động',
     'out_of_stock' => 'Hết hàng'
@@ -176,7 +176,7 @@ $page    = isset($_GET['page']) ? max(1, (int)$_GET['page']) : 1;
 $skip    = ($page - 1) * $perPage;
 
 // Dùng count() theo driver bạn đang xài
-$totalBooks = $booksCol->count($filter);
+$totalBooks = $booksCol->countDocuments($filter);
 $totalPages = max(1, ceil($totalBooks / $perPage));
 
 $options = [

@@ -120,7 +120,7 @@ $perPage = 10;
 $page    = isset($_GET['page']) ? max(1, (int)$_GET['page']) : 1;
 $skip    = ($page - 1) * $perPage;
 
-$totalOrders = $ordersCol->count($filter);
+$totalOrders = $ordersCol->countDocuments($filter);
 $totalPages  = max(1, ceil($totalOrders / $perPage));
 
 $cursor = $ordersCol->find(

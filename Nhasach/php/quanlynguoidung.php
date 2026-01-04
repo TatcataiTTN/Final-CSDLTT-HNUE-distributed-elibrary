@@ -37,18 +37,57 @@ $perPage = 20;
 $page    = isset($_GET['page']) ? max(1, (int)$_GET['page']) : 1;
 $skip    = ($page - 1) * $perPage;
 
-$totalCustomers = $customersCol->count($filter);
+// ====== AGGREGATION PIPELINE: CUSTOMERS + USERS (Local) ======
+$pipeline = [
+    // 1. Start with customers (synced)
+    // 2. Union with users (local), projecting fields to match
+    ['$unionWith' => [
+        'coll' => 'users',
+        'pipeline' => [
+            ['$addFields' => [
+                'branch_id' => 'Trung Tâm',
+                'display_name' => ['$ifNull' => ['$fullname', '$username']], // users often use fullname
+                'synced' => false
+            ]]
+        ]
+    ]],
+    // 3. Match / Filter
+];
+
+// Add Filters
+$matchStage = [];
+if ($searchText !== '') {
+    $regex = new Regex($searchText, 'i');
+    $matchStage['$or'] = [
+        ['username'     => $regex],
+        ['display_name' => $regex],
+    ];
+}
+if ($searchBranch !== '' && $searchBranch !== 'all') {
+    if ($searchBranch === 'Trung Tâm') {
+        $matchStage['branch_id'] = 'Trung Tâm';
+    } else {
+        $matchStage['branch_id'] = $searchBranch;
+    }
+}
+
+if (!empty($matchStage)) {
+    $pipeline[] = ['$match' => $matchStage];
+}
+
+// 4. Count Total
+// We need to count the results of the pipeline so far
+$countPipeline = array_merge($pipeline, [['$count' => 'total']]);
+$countResult   = $customersCol->aggregate($countPipeline)->toArray();
+$totalCustomers = $countResult[0]['total'] ?? 0;
 $totalPages     = max(1, ceil($totalCustomers / $perPage));
 
-$cursor    = $customersCol->find(
-    $filter,
-    [
-        'sort'  => ['branch_id' => 1, 'username' => 1],
-        'skip'  => $skip,
-        'limit' => $perPage
-    ]
-);
-$customers = $cursor->toArray();
+// 5. Sort & Pagination
+$pipeline[] = ['$sort' => ['branch_id' => 1, 'username' => 1]];
+$pipeline[] = ['$skip' => $skip];
+$pipeline[] = ['$limit' => $perPage];
+
+$customers = $customersCol->aggregate($pipeline)->toArray();
 ?>
 <!DOCTYPE html>
 <html lang="vi">
@@ -89,6 +128,7 @@ $customers = $cursor->toArray();
                 <option value="HN"  <?= $searchBranch === 'HN'  ? 'selected' : ''; ?>>Hà Nội</option>
                 <option value="HCM" <?= $searchBranch === 'HCM' ? 'selected' : ''; ?>>TP. HCM</option>
                 <option value="DN"  <?= $searchBranch === 'DN'  ? 'selected' : ''; ?>>Đà Nẵng</option>
+                <option value="Trung Tâm" <?= $searchBranch === 'Trung Tâm' ? 'selected' : ''; ?>>Trung Tâm (Local)</option>
             </select>
 
             <button type="submit">🔍 Tìm kiếm</button>
@@ -120,15 +160,18 @@ $customers = $cursor->toArray();
                     $branchId    = $c['branch_id']    ?? 'HN';
                     $balance     = (int)($c['balance'] ?? 0);
 
-                    $totalOrders = $ordersCentralCol->count([
+                    $totalOrders = $ordersCentralCol->countDocuments([
                         'username'  => $username,
                         'branch_id' => $branchId,
-                    ]);
+                    ]) + $db->orders->countDocuments(['username' => $username]);
 
-                    $currentBorrow = $ordersCentralCol->count([
+                    $currentBorrow = $ordersCentralCol->countDocuments([
                         'username'  => $username,
                         'branch_id' => $branchId,
                         'status'    => ['$ne' => 'returned'],
+                    ]) + $db->orders->countDocuments([
+                        'username' => $username,
+                        'status'   => ['$in' => ['paid', 'success']] // Local 'paid' or 'success' = active borrow
                     ]);
                     ?>
                     <tr>

@@ -46,7 +46,7 @@ $json_data = json_encode($data, JSON_UNESCAPED_UNICODE);
 
 
 
-$url = "http://localhost/NhasachHoChiMinh/api/receive_books_from_center.php";
+$url = "http://localhost:8004/api/receive_books_from_center.php";
 
 // Get JWT token from session for API authentication
 $jwtToken = $_SESSION['jwt_token'] ?? '';

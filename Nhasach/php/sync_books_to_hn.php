@@ -45,7 +45,7 @@ $json_data = json_encode($data, JSON_UNESCAPED_UNICODE);
 
 // ✅ URL API bên CHI NHÁNH HÀ NỘI
 // NHỚ kiểm tra đúng tên folder project HN
-$url = "http://localhost/NhasachHaNoi/api/receive_books_from_center.php";
+$url = "http://localhost:8002/api/receive_books_from_center.php";
 
 // Get JWT token from session for API authentication
 $jwtToken = $_SESSION['jwt_token'] ?? '';

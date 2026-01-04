@@ -136,7 +136,7 @@ if ($json_data === false) {
 }
 
 // URL API trung tâm (Nhà sách)
-$url = "http://localhost/Nhasach/api/receive_customers.php";
+$url = "http://localhost:8001/api/receive_customers.php";
 
 // Get JWT token from session for API authentication
 $jwtToken = $_SESSION['jwt_token'] ?? '';

@@ -40,7 +40,7 @@ $balance = (int)($user['balance'] ?? 0);
 
 // ⭐ KIỂM TRA CÒN ĐƠN CHƯA KẾT THÚC KHÔNG (paid hoặc success)
 // Nếu còn đơn như vậy → KHÔNG CHO ĐẶT ĐƠN MỚI
-$hasUnreturned = $ordersCol->count([
+$hasUnreturned = $ordersCol->countDocuments([
     'user_id' => $user['_id'],
     'status'  => ['$in' => ['paid', 'success']]
 ]) > 0;

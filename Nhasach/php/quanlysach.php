@@ -208,7 +208,7 @@ $perPage = 10;
 $page    = isset($_GET['page']) ? max(1, (int)$_GET['page']) : 1;
 $skip    = ($page - 1) * $perPage;
 
-$totalBooks = $collection->count($filter);
+$totalBooks = $collection->countDocuments($filter);
 
 $totalPages = max(1, ceil($totalBooks / $perPage));
 

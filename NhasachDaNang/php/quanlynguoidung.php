@@ -37,7 +37,7 @@ $page    = isset($_GET['page']) ? max(1, (int)$_GET['page']) : 1;
 $skip    = ($page - 1) * $perPage;
 
 // Đếm tổng số user theo filter
-$totalUsers = $usersCol->count($filter);
+$totalUsers = $usersCol->countDocuments($filter);
 $totalPages = max(1, ceil($totalUsers / $perPage));
 
 // Lấy danh sách user

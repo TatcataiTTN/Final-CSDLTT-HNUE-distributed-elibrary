@@ -176,7 +176,7 @@ $page    = isset($_GET['page']) ? max(1, (int)$_GET['page']) : 1;
 $skip    = ($page - 1) * $perPage;
 
 // Dùng count() theo driver bạn đang xài
-$totalBooks = $booksCol->count($filter);
+$totalBooks = $booksCol->countDocuments($filter);
 $totalPages = max(1, ceil($totalBooks / $perPage));
 
 $options = [

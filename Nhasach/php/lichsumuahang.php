@@ -191,7 +191,7 @@ $page    = isset($_GET['page']) ? max(1, (int)$_GET['page']) : 1;
 $skip    = ($page - 1) * $perPage;
 
 // Tổng số đơn của user (theo filter)
-$totalOrders = $ordersCol->count($filter);
+$totalOrders = $ordersCol->countDocuments($filter);
 $totalPages  = max(1, ceil($totalOrders / $perPage));
 
 // CHỈ LẤY ĐƠN HÀNG CỦA CHÍNH USER NÀY (có phân trang + filter)

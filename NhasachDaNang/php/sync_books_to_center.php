@@ -14,7 +14,7 @@ $booksCol  = $db->books;
 $ordersCol = $db->orders; // ✅ dùng để check đơn paid
 
 // ====== CHẶN ĐỒNG BỘ NẾU CÒN ĐƠN PAID ======
-$pendingPaid = $ordersCol->count(['status' => 'paid']); // hoặc countDocuments nếu driver mới
+$pendingPaid = $ordersCol->countDocuments(['status' => 'paid']); // hoặc countDocuments nếu driver mới
 
 if ($pendingPaid > 0) {
     echo "<script>
@@ -50,7 +50,7 @@ if (empty($data)) {
 $json_data = json_encode($data, JSON_UNESCAPED_UNICODE);
 
 // 🔗 URL API bên TRUNG TÂM để nhận cập nhật
-$url = "http://localhost/Nhasach/api/receive_books_from_branch.php";
+$url = "http://localhost:8001/api/receive_books_from_branch.php";
 
 // Get JWT token from session for API authentication
 $jwtToken = $_SESSION['jwt_token'] ?? '';
