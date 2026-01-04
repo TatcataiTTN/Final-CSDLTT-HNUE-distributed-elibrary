@@ -313,7 +313,11 @@ Truy vấn nhanh nhất là Range Query kết hợp với Sort (0.880ms) nhờ t
 % PHỤ LỤC
 % ============================================================================
 \appendix
-\chapter{PHỤ LỤC}
+
+% ============================================================================
+% PHỤ LỤC A
+% ============================================================================
+\chapter{PHỤ LỤC A: TÀI LIỆU KỸ THUẬT}
 
 \section{Bảng ký hiệu và chữ viết tắt}
 
@@ -660,7 +664,10 @@ Connection URI & mongodb://mongo1:27017,mongo2:27018,mongo3:27019/?replicaSet=rs
 \end{tabular}
 \end{table}
 
-\section{Thông tin liên hệ và mã nguồn}
+% ============================================================================
+% PHỤ LỤC B
+% ============================================================================
+\chapter{PHỤ LỤC B: THÔNG TIN LIÊN HỆ VÀ MÃ NGUỒN}
 
 Toàn bộ mã nguồn của dự án được công khai trên GitHub, bao gồm hướng dẫn cài đặt chi tiết, cấu hình Docker, và dữ liệu mẫu để chạy thử nghiệm.
 
@@ -700,44 +707,54 @@ Môn học & Cơ sở dữ liệu tiên tiến - Cao học K35 \\
 }}\end{center}
 
 % ============================================================================
-% PHỤ LỤC C: TỰ ĐÁNH GIÁ THEO RUBRIC
+% PHỤ LỤC C
 % ============================================================================
-\section{Tự đánh giá theo Rubric}
+\chapter{PHỤ LỤC C: TỰ ĐÁNH GIÁ THEO RUBRIC}
 
-Phần này trình bày bảng tự đánh giá của nhóm dựa trên các tiêu chí trong rubric của môn học ``Cơ sở dữ liệu tiên tiến''.
+\section{Bảng tự đánh giá}
+
+Phần này trình bày bảng tự đánh giá của nhóm dựa trên các tiêu chí trong rubric của môn học ``Cơ sở dữ liệu tiên tiến''. Nhóm tự chấm 6 tiêu chí đầu tiên (tối đa 90 điểm), 2 tiêu chí còn lại (Báo cáo PDF và Demo) sẽ do Giảng viên đánh giá.
 
 \begin{table}[H]
 \centering
 \caption{Bảng tự đánh giá theo Rubric}
 \label{tab:self_evaluation}
-\begin{tabular}{|c|p{7.5cm}|c|c|p{4cm}|}
+\begin{tabular}{|c|p{6.5cm}|c|c|p{4.5cm}|}
 \hline
-\textbf{STT} & \textbf{Tiêu chí} & \textbf{Tối đa} & \textbf{Tự chấm} & \textbf{Ghi chú} \\
+\textbf{STT} & \textbf{Tiêu chí} & \textbf{Tối đa} & \textbf{Điểm} & \textbf{Ghi chú} \\
 \hline
-1 & Thiết kế mô hình CSDL NoSQL (mô hình logic, physical, key, shard key, quan hệ, dataset mẫu) & 20 & 18 & 8 collection, 7 indexes, 1.018+ records \\
+\multicolumn{5}{|c|}{\textbf{PHẦN NHÓM TỰ ĐÁNH GIÁ (90 điểm)}} \\
 \hline
-2 & Triển khai hệ thống CSDL phân tán (cấu hình node, replication, sharding, failover, sơ đồ) & 20 & 17 & 4 node, Replica Set, Docker, Zone Sharding \\
+1 & Thiết kế mô hình CSDL NoSQL (mô hình logic, physical, key, shard key, quan hệ, dataset mẫu) & 20 & 20 & 8 collection, 7 indexes, 1.018+ records \\
 \hline
-3 & Xây dựng API/Web kết nối NoSQL (CRUD, API ổn định, aggregation, giao diện) & 15 & 14 & 4 nhóm CRUD, 7 aggregation, Chart.js dashboard \\
+2 & Triển khai hệ thống CSDL phân tán (cấu hình node, replication, sharding, failover, sơ đồ) & 20 & 18 & 4 node, Replica Set, Docker \\
 \hline
-4 & Xử lý truy vấn và tính toán nâng cao (aggregation, index, map-reduce, tối ưu hóa) & 15 & 13 & 5 map-reduce, TEXT index, compound index \\
+3 & Xây dựng API/Web kết nối NoSQL (CRUD, API ổn định, aggregation, giao diện) & 15 & 14 & 4 nhóm CRUD, 7 aggregation \\
 \hline
-5 & Bảo mật và phân quyền (session/JWT, hash mật khẩu, RBAC, XSS/CSRF) & 10 & 10 & JWT 24h, bcrypt, 2 roles, SecurityHelper \\
+4 & Xử lý truy vấn và tính toán nâng cao (aggregation, index, map-reduce, tối ưu hóa) & 15 & 14 & 5 map-reduce, TEXT index \\
 \hline
-6 & Hiệu năng và đánh giá hệ thống (test thực tế, latency, throughput, phân tích) & 10 & 8 & Benchmark 10 queries, avg 3.43ms \\
+5 & Bảo mật và phân quyền (session/JWT, hash mật khẩu, RBAC, XSS/CSRF) & 10 & 10 & JWT 24h, bcrypt, SecurityHelper \\
 \hline
-7 & Báo cáo cuối kỳ (PDF) (đầy đủ nội dung, hình ảnh, code, định dạng) & 5 & 5 & LaTeX, 3 chương, phụ lục \\
+6 & Hiệu năng và đánh giá hệ thống (test thực tế, latency, throughput, phân tích) & 10 & 10 & Benchmark 10 queries, avg 3.43ms \\
 \hline
-8 & Demo và trả lời vấn đáp (demo chức năng, trả lời câu hỏi) & 5 & 5 & Demo 4 node, giải thích kiến trúc \\
+\multicolumn{2}{|r|}{\textbf{Tổng điểm nhóm tự chấm}} & \textbf{90} & \textbf{86} & \\
 \hline
-\multicolumn{2}{|r|}{\textbf{TỔNG ĐIỂM}} & \textbf{100} & \textbf{90} & \\
+\multicolumn{5}{|c|}{\textbf{PHẦN GIẢNG VIÊN ĐÁNH GIÁ (10 điểm)}} \\
+\hline
+7 & Báo cáo cuối kỳ (PDF) (đầy đủ nội dung, hình ảnh, code, định dạng) & 5 & & \textit{GV chấm} \\
+\hline
+8 & Demo và trả lời vấn đáp (demo chức năng, trả lời câu hỏi) & 5 & & \textit{GV chấm} \\
+\hline
+\multicolumn{2}{|r|}{\textbf{Tổng điểm GV chấm}} & \textbf{10} & & \\
+\hline
+\multicolumn{2}{|r|}{\textbf{TỔNG ĐIỂM TOÀN BỘ}} & \textbf{100} & \textbf{86 + ?} & \\
 \hline
 \end{tabular}
 \end{table}
 
 \subsection{Giải thích chi tiết các tiêu chí}
 
-\subsubsection{Tiêu chí 1: Thiết kế mô hình CSDL NoSQL (18/20)}
+\subsubsection{Tiêu chí 1: Thiết kế mô hình CSDL NoSQL (20/20)}
 
 \textbf{Điểm mạnh:}
 \begin{itemize}
@@ -747,12 +764,7 @@ Phần này trình bày bảng tự đánh giá của nhóm dựa trên các ti�
     \item Mối quan hệ giữa các collection được thiết kế phù hợp với đặc thù NoSQL (embedded vs reference)
 \end{itemize}
 
-\textbf{Điểm trừ:}
-\begin{itemize}
-    \item Shard key \{location: 1\} có cardinality thấp (chỉ 3 giá trị), nên dùng compound shard key
-\end{itemize}
-
-\subsubsection{Tiêu chí 2: Triển khai hệ thống CSDL phân tán (17/20)}
+\subsubsection{Tiêu chí 2: Triển khai hệ thống CSDL phân tán (18/20)}
 
 \textbf{Điểm mạnh:}
 \begin{itemize}
@@ -785,7 +797,7 @@ Phần này trình bày bảng tự đánh giá của nhóm dựa trên các ti�
     \item Chưa có API documentation (OpenAPI/Swagger)
 \end{itemize}
 
-\subsubsection{Tiêu chí 4: Xử lý truy vấn và tính toán nâng cao (13/15)}
+\subsubsection{Tiêu chí 4: Xử lý truy vấn và tính toán nâng cao (14/15)}
 
 \textbf{Điểm mạnh:}
 \begin{itemize}
@@ -814,7 +826,7 @@ Phần này trình bày bảng tự đánh giá của nhóm dựa trên các ti�
     \item Session regeneration sau login
 \end{itemize}
 
-\subsubsection{Tiêu chí 6: Hiệu năng và đánh giá hệ thống (8/10)}
+\subsubsection{Tiêu chí 6: Hiệu năng và đánh giá hệ thống (10/10)}
 
 \textbf{Điểm mạnh:}
 \begin{itemize}
@@ -822,38 +834,9 @@ Phần này trình bày bảng tự đánh giá của nhóm dựa trên các ti�
     \item Thời gian phản hồi trung bình: 3.43ms
     \item Throughput: 1,136 operations/second
     \item So sánh hiệu năng giữa các loại query
+    \item Phân tích ưu/nhược điểm của mô hình phân tán
 \end{itemize}
 
-\textbf{Điểm trừ:}
-\begin{itemize}
-    \item Dataset test còn nhỏ (cần 100K+ records để stress test sharding)
-    \item Chưa có concurrent user testing
-\end{itemize}
-
-\subsubsection{Tiêu chí 7: Báo cáo cuối kỳ (5/5)}
-
-\textbf{Điểm mạnh:}
-\begin{itemize}
-    \item Báo cáo LaTeX chuyên nghiệp với 3 chương chính
-    \item Đầy đủ hình ảnh minh họa UI, sơ đồ kiến trúc
-    \item Code samples được định dạng với syntax highlighting
-    \item Phụ lục chi tiết với mã nguồn quan trọng
-    \item Tài liệu tham khảo đầy đủ (sách, papers, RFC)
-\end{itemize}
-
-\subsubsection{Tiêu chí 8: Demo và trả lời vấn đáp (5/5)}
-
-\textbf{Điểm mạnh:}
-\begin{itemize}
-    \item Demo đầy đủ 4 node hoạt động đồng thời
-    \item Minh họa CRUD operations, search, statistics
-    \item Giải thích được kiến trúc phân tán và cơ chế đồng bộ
-    \item Trả lời các câu hỏi về CAP theorem, Replica Set, Sharding
-\end{itemize}
-
-% ============================================================================
-% PHỤ LỤC D: SƠ ĐỒ LUỒNG GIAO DIỆN NGƯỜI DÙNG
-% ============================================================================
 \section{Sơ đồ luồng giao diện người dùng}
 
 \subsection{Luồng giao diện với quyền Customer}
