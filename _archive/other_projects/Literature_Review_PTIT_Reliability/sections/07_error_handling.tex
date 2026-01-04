@@ -1,0 +1,340 @@
+% ============================================================================
+% CHAPTER 7: ERROR HANDLING AND RELIABILITY
+% ============================================================================
+
+\chapter{Error Handling and Reliability}
+\label{chap:error_handling}
+
+\begin{quote}
+\textit{This chapter reviews error handling approaches in QKD, comparing Forward Error Correction (FEC), Automatic Repeat reQuest (ARQ), and hybrid methods, with focus on the retransmission scheme proposed by Nguyen et al.}
+\end{quote}
+
+% ============================================================================
+% SECTION 7.1: ERROR CORRECTION OVERVIEW
+% ============================================================================
+
+\section{Error Correction in QKD}
+\label{sec:error_correction_overview}
+
+\subsection{The Reconciliation Problem}
+
+After quantum transmission, Alice and Bob share correlated but not identical bit strings. Error correction (reconciliation) must:
+
+\begin{enumerate}
+    \item Correct errors between Alice's and Bob's strings
+    \item Minimize information leakage to Eve
+    \item Achieve efficiency close to Shannon limit
+\end{enumerate}
+
+\textbf{Efficiency Metric:}
+\begin{equation}
+f = \frac{H(A|B)_{actual}}{H(A|B)_{Shannon}} \geq 1
+\label{eq:efficiency}
+\end{equation}
+
+where $f = 1$ represents Shannon-limited performance.
+
+\subsection{Error Correction Paradigms}
+
+\begin{table}[h]
+\centering
+\caption{Error Correction Paradigms for QKD}
+\label{tab:ec_paradigms}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Paradigm} & \textbf{Direction} & \textbf{Interaction} & \textbf{Example} \\
+\midrule
+FEC & One-way & None & LDPC, Polar \\
+Interactive & Two-way & Multiple rounds & CASCADE, Winnow \\
+Hybrid & Both & Adaptive & LDPC + verification \\
+ARQ & Retransmission & ACK/NACK & Nguyen et al. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% ============================================================================
+% SECTION 7.2: CASCADE PROTOCOL
+% ============================================================================
+
+\section{CASCADE Protocol}
+\label{sec:cascade}
+
+\subsection{Historical Significance}
+
+CASCADE, proposed by Brassard and Salvail (1994), was the first practical error correction protocol for QKD.
+
+\textbf{Algorithm:}
+\begin{enumerate}
+    \item Divide key into blocks of size $k_1$
+    \item Exchange parities for each block
+    \item Binary search to locate errors in mismatched blocks
+    \item Double block size and repeat with shuffling
+    \item Continue for multiple passes
+\end{enumerate}
+
+\subsection{Performance Characteristics}
+
+\begin{itemize}
+    \item \textbf{Efficiency:} $f \approx 1.16$ (practical implementations)
+    \item \textbf{Latency:} High due to interactive nature
+    \item \textbf{Throughput:} Limited by round-trip communication
+\end{itemize}
+
+\subsection{Recent Revival}
+
+Mueller et al. (2025) \cite{mueller2025_ldpc_cascade} demonstrated that optimized CASCADE implementations can achieve:
+\begin{itemize}
+    \item Competitive throughput with modern hardware
+    \item Lower latency than previously assumed
+    \item Robustness across varying QBER
+\end{itemize}
+
+% ============================================================================
+% SECTION 7.3: LDPC CODES
+% ============================================================================
+
+\section{LDPC Codes for QKD}
+\label{sec:ldpc}
+
+\subsection{Low-Density Parity-Check Codes}
+
+LDPC codes offer near-Shannon-limit performance:
+
+\begin{equation}
+\mathbf{H} \cdot \mathbf{c}^T = \mathbf{0}
+\label{eq:ldpc_parity}
+\end{equation}
+
+where $\mathbf{H}$ is a sparse parity-check matrix.
+
+\subsection{Application to QKD}
+
+Milicevic et al. (2018) \cite{milicevic2018_ldpc} developed quasi-cyclic multi-edge LDPC codes for long-distance QKD:
+
+\textbf{Key Results:}
+\begin{itemize}
+    \item 142 km fiber transmission achieved
+    \item Secret key rate: $6.64 \times 10^{-8}$ bits/pulse
+    \item Information throughput: 7.16 kbit/s
+    \item GPU-accelerated decoding
+\end{itemize}
+
+\subsection{Challenges}
+
+\begin{itemize}
+    \item \textbf{Error Floor:} Performance degradation at low QBER
+    \item \textbf{Rate Sensitivity:} Codes optimized for narrow QBER range
+    \item \textbf{Complexity:} Encoding/decoding computational overhead
+\end{itemize}
+
+% ============================================================================
+% SECTION 7.4: POLAR CODES
+% ============================================================================
+
+\section{Polar Codes}
+\label{sec:polar}
+
+\subsection{Channel Polarization}
+
+Polar codes, invented by Arikan (2009), achieve Shannon capacity through channel polarization:
+
+\begin{equation}
+W^{(i)}_N \rightarrow \begin{cases}
+\text{Perfect channel} & \text{as } N \rightarrow \infty \\
+\text{Useless channel} &
+\end{cases}
+\label{eq:polarization}
+\end{equation}
+
+\subsection{Application to QKD}
+
+Polar codes for QKD reconciliation offer:
+\begin{itemize}
+    \item Theoretical capacity achievement
+    \item Successive cancellation decoding
+    \item Lower latency than LDPC in some regimes
+\end{itemize}
+
+\subsection{RC-LDPC-Polar Codes (2024)}
+
+Recent work combines LDPC and polar coding advantages:
+\begin{itemize}
+    \item Rate-compatible design
+    \item Adaptive to varying channel conditions
+    \item Improved performance over pure approaches
+\end{itemize}
+
+% ============================================================================
+% SECTION 7.5: ARQ APPROACH
+% ============================================================================
+
+\section{ARQ-Based Reliability: Nguyen et al.}
+\label{sec:arq}
+
+\subsection{Paradigm Shift}
+
+Nguyen et al. (2021) introduces a fundamentally different approach---using retransmission rather than error correction:
+
+\textbf{Philosophy:}
+\begin{itemize}
+    \item Accept transmission failures as inherent to channel
+    \item Retransmit failed sequences rather than correct errors
+    \item Trade latency for simplicity and reliability
+\end{itemize}
+
+\subsection{Protocol Operation}
+
+\begin{enumerate}
+    \item Alice generates key sequence, stores in buffer
+    \item Transmit sequence via FSO channel
+    \item Bob performs error checking (e.g., CRC or hash)
+    \item \textbf{Success:} Bob sends ACK, Alice discards from buffer
+    \item \textbf{Failure:} Bob sends NACK, Alice retransmits
+    \item After $M$ failures, sequence is discarded (key loss)
+\end{enumerate}
+
+\subsection{Comparison with FEC}
+
+\begin{table}[h]
+\centering
+\caption{ARQ vs. FEC Comparison}
+\label{tab:arq_vs_fec}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Aspect} & \textbf{ARQ (Nguyen)} & \textbf{FEC (LDPC)} \\
+\midrule
+Computational overhead & Low & High \\
+Latency & Variable & Fixed \\
+Adaptability & Channel-adaptive & Rate-fixed \\
+Implementation & Simple & Complex \\
+Reliability & Controllable via $M$ & Fixed by code \\
+Throughput & Reduced & Near-constant \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Advantages}
+
+\begin{enumerate}
+    \item \textbf{Simplicity:} No complex encoder/decoder required
+    \item \textbf{Adaptivity:} Natural adaptation to channel conditions
+    \item \textbf{Flexibility:} Reliability tunable via $M$ parameter
+    \item \textbf{Compatibility:} Works with any modulation scheme
+\end{enumerate}
+
+% ============================================================================
+% SECTION 7.6: 3-D MARKOV MODEL
+% ============================================================================
+
+\section{3-D Markov Chain Analysis}
+\label{sec:markov}
+
+\subsection{State Space Definition}
+
+Nguyen et al. develops a three-dimensional Markov chain model:
+
+\begin{equation}
+\text{State: } (n, s, m)
+\label{eq:state_space}
+\end{equation}
+
+where:
+\begin{itemize}
+    \item $n \in [0, C]$: Buffer queue length ($C$ = capacity)
+    \item $s \in \{B, G\}$: Channel state (Bad, Good)
+    \item $m \in [1, M]$: Retransmission attempt number
+\end{itemize}
+
+\subsection{Transition Probabilities}
+
+Key transition probabilities:
+\begin{itemize}
+    \item $p_{GB}$: Good $\rightarrow$ Bad transition
+    \item $p_{BG}$: Bad $\rightarrow$ Good transition
+    \item $P_{sift}^G$, $P_{sift}^B$: Sifting probabilities in each state
+\end{itemize}
+
+\subsection{Key Loss Rate Derivation}
+
+The KLR is derived from steady-state analysis:
+
+\begin{equation}
+\text{KLR} = \sum_{s \in \{B,G\}} \pi_{C,s,M} \cdot P_{loss}^s
+\label{eq:klr_derivation}
+\end{equation}
+
+where $\pi_{n,s,m}$ is the steady-state probability of state $(n,s,m)$.
+
+\subsection{Novel Contribution}
+
+This 3-D Markov model is a unique contribution:
+\begin{itemize}
+    \item First analytical framework for ARQ in satellite QKD
+    \item Enables closed-form KLR calculation
+    \item Provides optimization insights without extensive simulation
+\end{itemize}
+
+% ============================================================================
+% SECTION 7.7: KLR RESULTS
+% ============================================================================
+
+\section{Key Loss Rate Performance}
+\label{sec:klr_results}
+
+\subsection{KLR vs. Retransmissions}
+
+\begin{table}[h]
+\centering
+\caption{KLR Improvement with Retransmissions}
+\label{tab:klr_improvement}
+\begin{tabular}{cccc}
+\toprule
+\textbf{$M$} & \textbf{KLR (Weak)} & \textbf{KLR (Strong)} & \textbf{Improvement} \\
+\midrule
+0 & $3 \times 10^{-2}$ & $5 \times 10^{-2}$ & Baseline \\
+1 & $10^{-3}$ & $10^{-2}$ & 30$\times$ \\
+2 & $10^{-4}$ & $10^{-3}$ & 300$\times$ \\
+4 & $<10^{-5}$ & $<10^{-4}$ & $>$1000$\times$ \\
+7 & $<10^{-6}$ & $<10^{-5}$ & $>$10000$\times$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Diminishing Returns}
+
+\begin{table}[h]
+\centering
+\caption{Power Gain vs. Retransmission Count}
+\label{tab:diminishing_returns}
+\begin{tabular}{ccc}
+\toprule
+\textbf{$M$ Increase} & \textbf{Power Gain} & \textbf{Recommendation} \\
+\midrule
+$1 \rightarrow 2$ & 1.0 dB & Significant \\
+$2 \rightarrow 3$ & 0.7 dB & Worthwhile \\
+$3 \rightarrow 4$ & 0.5 dB & Marginal \\
+$4 \rightarrow 7$ & 0.5 dB total & Not recommended \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Optimal Choice:} $M = 4$ provides best trade-off between reliability and latency.
+
+% ============================================================================
+% SECTION 7.8: CHAPTER SUMMARY
+% ============================================================================
+
+\section{Chapter Summary}
+\label{sec:ch7_summary}
+
+This chapter reviewed error handling approaches for QKD:
+
+\begin{enumerate}
+    \item \textbf{CASCADE:} Interactive protocol, high efficiency, high latency
+    \item \textbf{LDPC:} Near-Shannon performance, complex, rate-sensitive
+    \item \textbf{Polar Codes:} Capacity-achieving, emerging for QKD
+    \item \textbf{ARQ (Nguyen):} Simple, adaptive, controllable reliability
+    \item \textbf{3-D Markov Model:} Novel analytical framework for KLR
+\end{enumerate}
+
+\textbf{Key Contribution:} Nguyen et al.'s ARQ approach offers a fundamentally different reliability paradigm that trades computational complexity for implementation simplicity and channel adaptivity.

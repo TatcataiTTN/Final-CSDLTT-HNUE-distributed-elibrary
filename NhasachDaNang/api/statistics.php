@@ -417,19 +417,18 @@ try {
                     'created_at' => ['$gte' => $startDate]
                 ]],
 
-                // Stage 2: Extract year-month
+                // Stage 2: Extract year and month separately
                 ['$addFields' => [
-                    'yearMonth' => [
-                        '$dateToString' => [
-                            'format' => '%Y-%m',
-                            'date' => '$created_at'
-                        ]
-                    ]
+                    'orderYear' => ['$year' => '$created_at'],
+                    'orderMonth' => ['$month' => '$created_at']
                 ]],
 
                 // Stage 3: Group by year-month
                 ['$group' => [
-                    '_id' => '$yearMonth',
+                    '_id' => [
+                        'year' => '$orderYear',
+                        'month' => '$orderMonth'
+                    ],
                     'totalOrders' => ['$sum' => 1],
                     'totalRevenue' => ['$sum' => '$total_amount'],
                     'totalItems' => ['$sum' => '$total_quantity'],
@@ -441,13 +440,14 @@ try {
                     'uniqueUserCount' => ['$size' => '$uniqueUsers']
                 ]],
 
-                // Stage 5: Sort by month
-                ['$sort' => ['_id' => 1]],
+                // Stage 5: Sort by year and month
+                ['$sort' => ['_id.year' => 1, '_id.month' => 1]],
 
-                // Stage 6: Project final output
+                // Stage 6: Project final output with year and month separated
                 ['$project' => [
                     '_id' => 0,
-                    'month' => '$_id',
+                    'year' => '$_id.year',
+                    'month' => '$_id.month',
                     'totalOrders' => 1,
                     'totalRevenue' => 1,
                     'totalItems' => 1,

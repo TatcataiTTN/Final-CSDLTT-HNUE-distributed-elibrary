@@ -50,7 +50,17 @@
       "Bash(curl:*)",
       "Bash(docker logs:*)",
       "Bash(lsof:*)",
-      "Bash(ln:*)"
+      "Bash(ln:*)",
+      "Bash(docker exec mongo1 mongosh --quiet --eval '\nuse Nhasach;\nprint\\(\"\"=== NHASACH \\(CENTRAL\\) ===\"\"\\);\nprint\\(\"\"Books: \"\" + db.books.countDocuments\\(\\)\\);\nprint\\(\"\"Users: \"\" + db.users.countDocuments\\(\\)\\);\nprint\\(\"\"Orders: \"\" + db.orders.countDocuments\\(\\)\\);\nprint\\(\"\"Carts: \"\" + db.carts.countDocuments\\(\\)\\);\nprint\\(\"\"\\\\n--- Users ---\"\"\\);\ndb.users.find\\({}, {username: 1, role: 1, balance: 1}\\).forEach\\(doc => printjson\\(doc\\)\\);\nprint\\(\"\"\\\\n--- Sample Books \\(limit 5\\) ---\"\"\\);\ndb.books.find\\({}, {bookCode: 1, bookName: 1, location: 1, pricePerDay: 1, quantity: 1}\\).limit\\(5\\).forEach\\(doc => printjson\\(doc\\)\\);\n')",
+      "Bash(docker exec:*)",
+      "Bash(__NEW_LINE__ echo \"\")",
+      "Bash(# Update Connection.php for all branches to use standalone mode for dir in NhasachHaNoi NhasachDaNang NhasachHoChiMinh; do sed -i '''' \"\"s/\\\\\\\\\\\\$MODE = ''sharded''/\\\\\\\\\\\\$MODE = ''standalone''/\"\" \"\"/Users/tuannghiat/Downloads/Final CSDLTT/$dir/Connection.php\"\" || true sed -i '''' \"\"s/\\\\\\\\\\\\$MODE = ''replicaset''/\\\\\\\\\\\\$MODE = ''standalone''/\"\" \"\"/Users/tuannghiat/Downloads/Final CSDLTT/$dir/Connection.php\"\" || true done # Copy updated statistics.php to all branches for dir in NhasachHaNoi NhasachDaNang NhasachHoChiMinh; do cp \"\"/Users/tuannghiat/Downloads/Final CSDLTT/Nhasach/api/statistics.php\"\" \"\"/Users/tuannghiat/Downloads/Final CSDLTT/$dir/api/statistics.php\"\" done echo \"\"=== Verification ===\"\" for dir in Nhasach NhasachHaNoi NhasachDaNang NhasachHoChiMinh; do echo \"\"$dir Connection mode:\"\" grep \"\"MODE = \"\" \"\"/Users/tuannghiat/Downloads/Final CSDLTT/$dir/Connection.php\"\")",
+      "Bash(# Kill existing PHP servers pkill -f \"\"php -S localhost:800\"\" || true sleep 1 # Start all PHP servers in background cd \"\"/Users/tuannghiat/Downloads/Final CSDLTT\"\" php -S localhost:8001 -t Nhasach 2>&1 & php -S localhost:8002 -t NhasachHaNoi 2>&1 & php -S localhost:8003 -t NhasachDaNang 2>&1 & php -S localhost:8004 -t NhasachHoChiMinh 2>&1 & sleep 2 echo \"\"=== PHP Servers Status ===\"\" ps aux)",
+      "Bash(# Quick test to verify dashboard.php loads curl -s \"\"http://localhost:8001/php/dashboard.php\"\" -b \"\"PHPSESSID=test\"\")",
+      "Bash(__NEW_LINE__ echo \"2. order_status_summary:\")",
+      "Bash(__NEW_LINE__ echo \"3. popular_books:\")",
+      "Bash(__NEW_LINE__ echo \"4. user_statistics:\")",
+      "Bash(__NEW_LINE__ echo \"5. monthly_trends:\")"
     ]
   }
 }

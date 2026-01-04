@@ -1,7 +1,15 @@
 # PROJECT STATUS - e-Library Distributed System
 
-**Last Updated:** 2026-01-04
+**Last Updated:** 2026-01-04 12:05
 **Target Score:** 90+/100 (Overall) | 4.5+/5.0 (Report)
+
+---
+
+## CURRENT SETUP
+
+**MongoDB:** Local (Homebrew mongodb-community@8.0) - Standalone Mode
+**Connection:** mongodb://localhost:27017
+**PHP Servers:** 4 nodes running on ports 8001-8004
 
 ---
 
@@ -12,45 +20,55 @@
 | 1 | Fix $lookup | COMPLETED | statistics.php updated | Commit: c5ec2bd |
 | 2 | Real Benchmark | COMPLETED | benchmark_real.js, BENCHMARK_RESULTS.md | 10 test cases, real data |
 | 3 | Screenshots | COMPLETED | 13 screenshots | 12 required + 1 extra |
-| 4 | Chapter I & II (LaTeX) | COMPLETED | chapter1_2.tex (21KB) | 15+ pages content |
-| 5 | Chapter III (LaTeX) | COMPLETED | chapter3.tex (17KB) | 10+ pages with code |
-| 6 | Conclusion + References | COMPLETED | conclusion.tex (13KB) | 13 refs, 20 abbreviations |
-| 7 | Main.tex + Compile | READY | main.tex + all templates | Ready to compile |
-| 8 | Test & Demo | PENDING | - | |
-| 9 | Security Review | PENDING | - | |
-| 10 | Final Checklist | PENDING | - | |
+| 4 | Chapter I & II (LaTeX) | COMPLETED | chapter1_2.tex (28KB) | ~18 pages with diagrams |
+| 5 | Chapter III (LaTeX) | COMPLETED | chapter3.tex (22KB) | ~12 pages with code |
+| 6 | Conclusion + References | COMPLETED | conclusion.tex (25KB), references.bib (10KB) | 19 refs, 22 abbreviations |
+| 7 | Main.tex + Compile | COMPLETED | main.tex (8KB) + main.pdf (26MB) | Ready to submit |
+| 8 | Dashboard Fix | COMPLETED | Fixed API, imported data | Working with real data |
+| 9 | Documentation Update | COMPLETED | CLAUDE.md, README_STARTUP.md | 2026-01-04 |
+| 10 | Archive & Cleanup | COMPLETED | _archive/ folder | Old files organized |
 
 ---
 
 ## CODE STATUS
 
 ### Core Features
-- [x] MongoDB Replica Set (3 nodes: mongo1, mongo2, mongo3)
-- [x] Zone Sharding (HANOI, DANANG, HOCHIMINH)
-- [x] JWT Authentication
-- [x] bcrypt Password Hashing
+- [x] MongoDB Standalone (Local development)
+- [x] JWT Authentication (firebase/php-jwt)
+- [x] bcrypt Password Hashing (cost factor 12)
 - [x] Role-based Access Control (admin/customer)
 - [x] Full CRUD Operations
-- [x] Aggregation Pipeline (7 endpoints)
+- [x] Aggregation Pipeline (5 endpoints)
 - [x] Map-Reduce (5 operations)
 - [x] Full-text Search (TEXT index)
-- [x] Dashboard with Chart.js (6 charts)
+- [x] Dashboard with Chart.js (5 charts)
 
 ### API Endpoints Verified
-- [x] /api/statistics.php - 7 actions including $lookup
+- [x] /api/statistics.php - 5 types (branch_distribution, order_status_summary, popular_books, user_statistics, monthly_trends)
 - [x] /api/mapreduce.php - 5 Map-Reduce operations
 - [x] /api/books.php - CRUD for books
 - [x] /api/users.php - User management
 - [x] /api/orders.php - Order processing
 
-### Data Status
-| Database | Books | Users | Orders |
-|----------|-------|-------|--------|
-| Nhasach (Central) | 509 | 2 | 0 |
-| NhasachHaNoi | 162 | 13 | 46 |
-| NhasachDaNang | 127 | 12 | 0 |
-| NhasachHoChiMinh | 111 | 11 | 0 |
-| **Total** | **909** | **38** | **46** |
+### Data Status (2026-01-04)
+| Database | Books | Users | Orders | Carts |
+|----------|-------|-------|--------|-------|
+| Nhasach (Central) | 509 | 42 | 111 | Yes |
+| NhasachHaNoi | 200 | - | - | - |
+| NhasachDaNang | 163 | - | - | - |
+| NhasachHoChiMinh | 146 | - | - | - |
+| **Total** | **1018** | 42 | 111 | - |
+
+---
+
+## SERVER URLs
+
+| Node | URL | Database | Port |
+|------|-----|----------|------|
+| **Central Hub** | http://localhost:8001 | Nhasach | 8001 |
+| Chi nhanh Ha Noi | http://localhost:8002 | NhasachHaNoi | 8002 |
+| Chi nhanh Da Nang | http://localhost:8003 | NhasachDaNang | 8003 |
+| Chi nhanh Ho Chi Minh | http://localhost:8004 | NhasachHoChiMinh | 8004 |
 
 ---
 
@@ -58,16 +76,16 @@
 
 | # | Filename | Status | Description |
 |---|----------|--------|-------------|
-| 1 | 01_login.png | OK | Form đăng nhập |
-| 2 | 02_dashboard.png | OK | Dashboard 6 biểu đồ |
-| 3 | 03_quanlysach.png | OK | Quản lý sách (admin) |
-| 4 | 04_quanlynguoidung.png | OK | Danh sách người dùng |
-| 5 | 04_quanlynguoidung_donmuon.png | OK | Đơn mượn (extra) |
-| 6 | 05_danhsachsach.png | OK | Danh sách sách (customer) |
-| 7 | 06_giohang.png | OK | Giỏ hàng |
-| 8 | 07_branch_books.png | OK | Sách chi nhánh |
-| 9 | 08_branch_orders.png | OK | Lịch sử mượn |
-| 10 | 09_branch_admin.png | OK | Quản lý chi nhánh |
+| 1 | 01_login.png | OK | Form dang nhap |
+| 2 | 02_dashboard.png | OK | Dashboard 6 bieu do |
+| 3 | 03_quanlysach.png | OK | Quan ly sach (admin) |
+| 4 | 04_quanlynguoidung.png | OK | Danh sach nguoi dung |
+| 5 | 04_quanlynguoidung_donmuon.png | OK | Don muon (extra) |
+| 6 | 05_danhsachsach.png | OK | Danh sach sach (customer) |
+| 7 | 06_giohang.png | OK | Gio hang |
+| 8 | 07_branch_books.png | OK | Sach chi nhanh |
+| 9 | 08_branch_orders.png | OK | Lich su muon |
+| 10 | 09_branch_admin.png | OK | Quan ly chi nhanh |
 | 11 | 10_docker.png | OK | Docker containers |
 | 12 | 11_mongodb_compass.png | OK | MongoDB Compass |
 | 13 | 12_terminal_benchmark.png | OK | Benchmark results |
@@ -86,63 +104,34 @@
 
 ---
 
-## LATEX REPORT - NEXT STEPS
+## LATEX REPORT - FOLDER STRUCTURE
 
-### Folder Structure to Create
 ```
 report_latex/
-├── main.tex              # Main document
-├── titlepage.tex         # Title page
-├── acknowledgement.tex   # Lời cảm ơn
-├── declaration.tex       # Lời cam đoan
-├── chapter1_2.tex        # Chương I & II
-├── chapter3.tex          # Chương III
-├── conclusion.tex        # Kết luận + TLTK
-├── screenshots/          # Link to ../screenshots/
-└── figures/              # Diagrams
+├── main.tex              # Main document (compile this)
+├── titlepage.tex         # Trang bia
+├── acknowledgement.tex   # Loi cam on
+├── declaration.tex       # Loi cam doan
+├── chapter1_2.tex        # Chuong I & II (28KB)
+├── chapter3.tex          # Chuong III (22KB)
+├── conclusion.tex        # Ket luan + TLTK + Phu luc (25KB)
+├── references.bib        # BibTeX references (10KB)
+├── screenshots/          # 13 screenshots
+├── figures/              # TikZ diagrams (auto-generated)
+├── README.md             # Compile instructions
+└── main.pdf              # Output (26MB)
 ```
-
-### Content Requirements
-
-**Chapter I: Tổng quan (5-6 pages)**
-- Giới thiệu bài toán
-- Tổng quan hệ thống e-Library
-- Khái niệm và nghiệp vụ
-- Công nghệ: PHP, MongoDB, Docker
-
-**Chapter II: Phân tích & Thiết kế (6-8 pages)**
-- Yêu cầu chức năng/phi chức năng
-- Use Case diagrams
-- Mô hình cấu trúc (5 classes)
-- Thiết kế CSDL (4 collections)
-- Kiến trúc phân tán
-
-**Chapter III: Cài đặt & Đánh giá (6-8 pages)**
-- Công cụ cài đặt
-- Giao diện (8 screenshots)
-- Aggregation Pipeline code
-- Map-Reduce code
-- 4 kịch bản kiểm thử
-- Ưu/nhược điểm
-
-**Conclusion (2-3 pages)**
-- Những gì đã làm được
-- Hạn chế
-- Phương hướng phát triển
-- 10+ tài liệu tham khảo
-- 15+ từ viết tắt
 
 ---
 
-## GIT COMMITS (Recent)
+## ARCHIVED FILES
 
-```
-a8bb18a Finalize project state...
-a8b0ea1 Fix PHP Fatal Error in branches...
-402377e Add comprehensive documentation...
-4b3dc80 Update docs and propagate dependencies...
-dcec126 Fix PHP MongoDB driver installer...
-```
+Old files have been moved to `_archive/` folder:
+- `old_evaluations/` - Old EVALUATION*.md files
+- `old_docs/` - Old README, PROMPT_CHAIN, REPORT files
+- `old_scripts/` - Sharding scripts, docker-compose-sharded.yml
+- `old_backups/` - .rar backup files
+- `other_projects/` - Unrelated project folders
 
 ---
 
@@ -150,23 +139,10 @@ dcec126 Fix PHP MongoDB driver installer...
 
 | Node | Admin | Customer |
 |------|-------|----------|
-| Central (8001) | admin | testcustomer |
-| Hà Nội (8002) | adminHN | annv, tuannghia, ... |
-| Đà Nẵng (8003) | adminDN | linhhtt, phuongltt, ... |
-| HCM (8004) | adminHCM | huynq, yennt, ... |
-
----
-
-## NEXT ACTIONS
-
-1. **Create report_latex/ folder structure**
-2. **Write Chapter I & II (Prompt 4)**
-3. **Write Chapter III with code samples (Prompt 5)**
-4. **Write Conclusion + References (Prompt 6)**
-5. **Compile PDF (Prompt 7)**
-6. **Create demo script (Prompt 8)**
-7. **Security review (Prompt 9)**
-8. **Final commit (Prompt 10)**
+| Central (8001) | admin | user1 |
+| Ha Noi (8002) | adminHN | annv |
+| Da Nang (8003) | adminDN | linhhtt |
+| HCM (8004) | adminHCM | huynq |
 
 ---
 

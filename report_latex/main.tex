@@ -1,6 +1,8 @@
 % ============================================================================
 % BÁO CÁO MÔN HỌC: CƠ SỞ DỮ LIỆU TIÊN TIẾN
 % Đề tài: Xây dựng hệ thống e-Library phân tán nhiều cơ sở
+% Nhóm 10 - Cao học K35
+% Trường Đại học Sư phạm Hà Nội
 % ============================================================================
 \documentclass[a4paper,12pt]{report}
 
@@ -26,11 +28,14 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{enumitem}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{multirow}
 
 % ============================================================================
 % TikZ Libraries
 % ============================================================================
-\usetikzlibrary{shapes.geometric, arrows, positioning, fit, backgrounds}
+\usetikzlibrary{shapes.geometric, arrows, positioning, fit, backgrounds, calc}
 
 % ============================================================================
 % Hyperref Configuration
@@ -40,8 +45,10 @@
     linkcolor=blue,
     filecolor=magenta,
     urlcolor=cyan,
-    pdftitle={e-Library Distributed System},
-    pdfauthor={Nhom 10 - Cao hoc K35},
+    pdftitle={e-Library Distributed System - Hệ thống thư viện phân tán},
+    pdfauthor={Nhom 10 - Cao hoc K35 - HNUE},
+    pdfsubject={Cơ sở dữ liệu tiên tiến},
+    pdfkeywords={MongoDB, Distributed Systems, NoSQL, PHP, Docker}
 }
 
 % ============================================================================
@@ -51,13 +58,15 @@
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
 \definecolor{codepurple}{rgb}{0.58,0,0.82}
 \definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\definecolor{keywordcolor}{rgb}{0.0,0.0,0.6}
+\definecolor{stringcolor}{rgb}{0.6,0.1,0.1}
 
 \lstdefinestyle{mystyle}{
     backgroundcolor=\color{backcolour},
     commentstyle=\color{codegreen},
-    keywordstyle=\color{magenta},
+    keywordstyle=\color{keywordcolor}\bfseries,
     numberstyle=\tiny\color{codegray},
-    stringstyle=\color{codepurple},
+    stringstyle=\color{stringcolor},
     basicstyle=\ttfamily\footnotesize,
     breakatwhitespace=false,
     breaklines=true,
@@ -71,13 +80,15 @@
     tabsize=2,
     frame=single,
     framesep=3pt,
+    xleftmargin=15pt,
+    xrightmargin=5pt,
 }
 
 \lstset{style=mystyle}
 
 % Define PHP language for listings
 \lstdefinelanguage{PHP}{
-    keywords={class, function, return, if, else, elseif, foreach, for, while, do, switch, case, break, continue, echo, print, require, require_once, include, include_once, new, public, private, protected, static, const, var, true, false, null, array, try, catch, throw},
+    keywords={class, function, return, if, else, elseif, foreach, for, while, do, switch, case, break, continue, echo, print, require, require_once, include, include_once, new, public, private, protected, static, const, var, true, false, null, array, try, catch, throw, use, namespace},
     sensitive=true,
     morecomment=[l]{//},
     morecomment=[s]{/*}{*/},
@@ -90,22 +101,42 @@
     morestring=[b]",
     morestring=[b]',
     literate=
-     *{0}{{{\color{purple}0}}}{1}
-      {1}{{{\color{purple}1}}}{1}
-      {2}{{{\color{purple}2}}}{1}
-      {3}{{{\color{purple}3}}}{1}
-      {4}{{{\color{purple}4}}}{1}
-      {5}{{{\color{purple}5}}}{1}
-      {6}{{{\color{purple}6}}}{1}
-      {7}{{{\color{purple}7}}}{1}
-      {8}{{{\color{purple}8}}}{1}
-      {9}{{{\color{purple}9}}}{1}
+     *{0}{{{\color{codepurple}0}}}{1}
+      {1}{{{\color{codepurple}1}}}{1}
+      {2}{{{\color{codepurple}2}}}{1}
+      {3}{{{\color{codepurple}3}}}{1}
+      {4}{{{\color{codepurple}4}}}{1}
+      {5}{{{\color{codepurple}5}}}{1}
+      {6}{{{\color{codepurple}6}}}{1}
+      {7}{{{\color{codepurple}7}}}{1}
+      {8}{{{\color{codepurple}8}}}{1}
+      {9}{{{\color{codepurple}9}}}{1}
       {:}{{{\color{red}:}}}{1}
       {,}{{{\color{red},}}}{1}
       {\{}{{{\color{blue}\{}}}{1}
       {\}}{{{\color{blue}\}}}}{1}
       {[}{{{\color{blue}[}}}{1}
       {]}{{{\color{blue}]}}}{1},
+}
+
+% Define YAML language
+\lstdefinelanguage{yaml}{
+    keywords={true, false, null},
+    sensitive=false,
+    morecomment=[l]{\#},
+    morestring=[b]",
+    morestring=[b]',
+}
+
+% Define JavaScript language
+\lstdefinelanguage{javascript}{
+    keywords={break, case, catch, continue, debugger, default, delete, do, else, finally, for, function, if, in, instanceof, new, return, switch, this, throw, try, typeof, var, void, while, with, let, const, class, export, extends, import, super, yield, async, await},
+    sensitive=true,
+    morecomment=[l]{//},
+    morecomment=[s]{/*}{*/},
+    morestring=[b]",
+    morestring=[b]',
+    morestring=[b]`,
 }
 
 % ============================================================================
@@ -119,10 +150,18 @@
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
 
+% Clear header/footer for chapter pages
+\fancypagestyle{plain}{
+    \fancyhf{}
+    \fancyfoot[C]{\thepage}
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrulewidth}{0.4pt}
+}
+
 % ============================================================================
 % Graphics Path
 % ============================================================================
-\graphicspath{{screenshots/}{figures/}}
+\graphicspath{{screenshots/}{figures/}{../screenshots/}}
 
 % ============================================================================
 % Custom Commands
@@ -130,6 +169,28 @@
 \newcommand{\code}[1]{\texttt{#1}}
 \newcommand{\mongodb}{\texttt{MongoDB}}
 \newcommand{\php}{\texttt{PHP}}
+\newcommand{\docker}{\texttt{Docker}}
+
+% Centered table column with fixed width
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}
+
+% ============================================================================
+% Document Information
+% ============================================================================
+\title{
+    \textbf{BÁO CÁO MÔN HỌC} \\
+    \textbf{CƠ SỞ DỮ LIỆU TIÊN TIẾN} \\
+    \vspace{1cm}
+    \large Đề tài: Xây dựng hệ thống e-Library phân tán nhiều cơ sở \\
+    với MongoDB Replica Set
+}
+\author{
+    Nhóm 10 - Cao học K35 \\
+    Trường Đại học Sư phạm Hà Nội
+}
+\date{Tháng 1, 2026}
 
 % ============================================================================
 % DOCUMENT
@@ -154,10 +215,17 @@
 
 % Danh mục hình
 \listoffigures
+\addcontentsline{toc}{chapter}{DANH MỤC HÌNH}
 \newpage
 
 % Danh mục bảng
 \listoftables
+\addcontentsline{toc}{chapter}{DANH MỤC BẢNG}
+\newpage
+
+% Danh mục mã nguồn
+\lstlistoflistings
+\addcontentsline{toc}{chapter}{DANH MỤC MÃ NGUỒN}
 \newpage
 
 % ============================================================================
@@ -171,7 +239,7 @@
 % Chương III: Cài đặt và Đánh giá
 \input{chapter3}
 
-% Kết luận và Tài liệu tham khảo
+% Kết luận, Tài liệu tham khảo và Phụ lục
 \input{conclusion}
 
 \end{document}

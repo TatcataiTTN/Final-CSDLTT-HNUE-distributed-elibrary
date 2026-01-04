@@ -1,0 +1,271 @@
+% ============================================================================
+% CHAPTER 2: DETAILED PAPER ANALYSIS
+% ============================================================================
+
+\chapter{Detailed Paper Analysis}
+\label{chap:paper_analysis}
+
+\begin{quote}
+\textit{This chapter provides a comprehensive technical analysis of Nguyen et al. (2021), examining the system architecture, key innovations, mathematical framework, and main contributions to satellite-based QKD reliability improvement.}
+\end{quote}
+
+% ============================================================================
+% SECTION 2.1: SYSTEM ARCHITECTURE
+% ============================================================================
+
+\section{System Architecture Overview}
+\label{sec:system_architecture}
+
+\subsection{Two-Layer Design}
+
+The proposed system operates across two layers:
+
+\begin{enumerate}
+    \item \textbf{Physical Layer:} Responsible for quantum key transmission over FSO channel
+    \begin{itemize}
+        \item QPSK modulator with Mach-Zehnder modulators (MZMs)
+        \item FSO channel with combined loss mechanisms
+        \item Dual-threshold/heterodyne detection (DT/HD) receiver
+    \end{itemize}
+
+    \item \textbf{Link Layer:} Manages key retransmission for reliability
+    \begin{itemize}
+        \item Buffer management at Alice (satellite)
+        \item ACK/NACK feedback via classical RF channel
+        \item Retransmission protocol with maximum $M$ attempts
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Link Configuration}
+
+\begin{table}[h]
+\centering
+\caption{System Configuration}
+\label{tab:system_config}
+\begin{tabular}{lll}
+\toprule
+\textbf{Component} & \textbf{Location} & \textbf{Function} \\
+\midrule
+Alice (Transmitter) & LEO Satellite (600 km) & Key generation, QPSK modulation \\
+Bob (Receiver) & Ground Station (5 m) & DT/HD detection, key recovery \\
+Forward Channel & FSO (Downlink) & Quantum key transmission \\
+Feedback Channel & RF (Classical) & ACK/NACK signaling \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% ============================================================================
+% SECTION 2.2: KEY INNOVATIONS
+% ============================================================================
+
+\section{Key Innovations}
+\label{sec:innovations}
+
+\subsection{Innovation 1: QPSK-Based QKD Protocol}
+
+The paper adapts Quadrature Phase-Shift Keying (QPSK) for quantum key distribution:
+
+\textbf{Advantages over alternatives:}
+\begin{itemize}
+    \item Compared to SIM/BPSK: No RF subcarrier required, simpler implementation
+    \item Compared to polarization encoding: Compatible with coherent detection
+    \item Direct mapping of BB84 four-state structure to four QPSK phase states
+\end{itemize}
+
+\textbf{Phase State Mapping:}
+\begin{equation}
+\phi_A \in \left\{ \frac{\pi}{4}, \frac{3\pi}{4}, \frac{5\pi}{4}, -\frac{\pi}{4} \right\}
+\label{eq:phase_states}
+\end{equation}
+
+\subsection{Innovation 2: Dual-Threshold/Heterodyne Detection}
+
+The DT/HD receiver combines two techniques:
+
+\textbf{Heterodyne Detection:}
+\begin{itemize}
+    \item Signal mixed with strong local oscillator
+    \item Improved receiver sensitivity compared to direct detection
+    \item Both quadratures accessible (though only one used for key)
+\end{itemize}
+
+\textbf{Dual-Threshold Decision:}
+\begin{equation}
+\text{Decision} = \begin{cases}
+0 & \text{if } i \geq d_0 \\
+1 & \text{if } i \leq d_1 \\
+X & \text{otherwise (erasure)}
+\end{cases}
+\label{eq:dual_threshold}
+\end{equation}
+
+\textbf{Quantified Improvement:} 20 dB reduction in required transmitted power compared to SIM/BPSK-DT.
+
+\subsection{Innovation 3: Key Retransmission Scheme}
+
+The ARQ-based retransmission scheme operates as follows:
+
+\begin{enumerate}
+    \item Alice generates key sequence, stores in buffer
+    \item Transmits via FSO channel to Bob
+    \item Bob checks received sequence for errors
+    \item If successful: Send ACK, Alice removes from buffer
+    \item If failed: Send NACK, Alice retransmits (up to $M$ times)
+    \item After $M$ failures: Discard sequence, count as key loss
+\end{enumerate}
+
+\textbf{Advantage over FEC:}
+\begin{itemize}
+    \item No computational overhead for encoding/decoding
+    \item Adapts naturally to channel variations
+    \item Simple implementation
+\end{itemize}
+
+\subsection{Innovation 4: 3-D Markov Chain Model}
+
+Novel analytical framework with three-dimensional state space:
+
+\begin{equation}
+\text{State: } (n, s, m) \text{ where}
+\begin{cases}
+n \in [0, C] & \text{Buffer queue length} \\
+s \in \{B, G\} & \text{Channel state (Bad/Good)} \\
+m \in [1, M] & \text{Retransmission attempt number}
+\end{cases}
+\label{eq:markov_state}
+\end{equation}
+
+This model enables analytical calculation of Key Loss Rate (KLR).
+
+% ============================================================================
+% SECTION 2.3: MAIN CONTRIBUTIONS
+% ============================================================================
+
+\section{Main Contributions Summary}
+\label{sec:contributions}
+
+\begin{table}[h]
+\centering
+\caption{Paper Contributions and Impact}
+\label{tab:contributions}
+\begin{tabular}{p{3.5cm}p{4cm}p{4cm}}
+\toprule
+\textbf{Contribution} & \textbf{Type} & \textbf{Impact} \\
+\midrule
+QPSK-based QKD with DT/HD & System Design & 20 dB power improvement \\
+Key retransmission scheme & Protocol Innovation & $>$1000$\times$ KLR reduction \\
+3-D Markov chain model & Analytical Framework & Enables KLR prediction \\
+Comprehensive channel model & Mathematical Derivation & Realistic performance analysis \\
+Parameter optimization & Numerical Results & Practical design guidelines \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% ============================================================================
+% SECTION 2.4: KEY RESULTS
+% ============================================================================
+
+\section{Key Results Summary}
+\label{sec:key_results}
+
+\subsection{Physical Layer Results}
+
+\textbf{QBER Performance:}
+\begin{itemize}
+    \item Achieves QBER $< 10^{-3}$ with proper DT coefficient selection
+    \item Optimal $\varsigma$ range: 0.7--2.4 (weak turbulence), 1.4--2.8 (strong turbulence)
+    \item $P_{sift} \geq 10^{-2}$ maintained for sufficient key rate
+\end{itemize}
+
+\textbf{Power Comparison:}
+\begin{table}[h]
+\centering
+\caption{Required Transmitted Power for QBER $\leq 10^{-3}$}
+\label{tab:power_comparison}
+\begin{tabular}{lc}
+\toprule
+\textbf{Scheme} & \textbf{Required $P_T$} \\
+\midrule
+SIM/BPSK-DT & 45 dBm \\
+QPSK-DT/DD & 35 dBm \\
+\textbf{QPSK-DT/HD (Proposed)} & \textbf{25 dBm} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Link Layer Results}
+
+\textbf{KLR Improvement with Retransmissions:}
+\begin{table}[h]
+\centering
+\caption{Key Loss Rate vs. Number of Retransmissions}
+\label{tab:klr_results}
+\begin{tabular}{ccc}
+\toprule
+\textbf{Retransmissions ($M$)} & \textbf{KLR} & \textbf{Improvement} \\
+\midrule
+0 (Conventional) & $3 \times 10^{-2}$ & Baseline \\
+1 & $10^{-3}$ -- $10^{-2}$ & 10$\times$ \\
+2 & $10^{-4}$ -- $10^{-3}$ & 100$\times$ \\
+4 & $<10^{-4}$ & $>$1000$\times$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Key Finding:} Diminishing returns beyond $M=4$; only 0.5 dB additional power gain from $M=4$ to $M=7$.
+
+\subsection{Security Analysis}
+
+\textbf{Unauthorized Receiver Attack (URA):}
+\begin{itemize}
+    \item Eve's QBER increases with distance from Bob
+    \item Minimum secure distance: $D_{E-B} > 30$ m (both weak and strong turbulence)
+    \item Security maintained when Eve's QBER $> 10^{-2}$
+\end{itemize}
+
+% ============================================================================
+% SECTION 2.5: SYSTEM PARAMETERS
+% ============================================================================
+
+\section{System Parameters}
+\label{sec:parameters}
+
+\begin{table}[h]
+\centering
+\caption{Complete System Parameters}
+\label{tab:parameters}
+\small
+\begin{tabular}{llll}
+\toprule
+\textbf{Category} & \textbf{Parameter} & \textbf{Symbol} & \textbf{Value} \\
+\midrule
+\multirow{4}{*}{Physical Constants} & Electron charge & $q$ & $1.6 \times 10^{-19}$ C \\
+& Boltzmann constant & $k_B$ & $1.38 \times 10^{-23}$ W/K/Hz \\
+& Planck's constant & $\tilde{h}$ & $6.63 \times 10^{-34}$ J$\cdot$s \\
+\midrule
+\multirow{7}{*}{Receiver} & Bit rate & $R_b$ & 10 Gbps \\
+& Load resistor & $R_L$ & 50 $\Omega$ \\
+& Excess noise factor & $x$ & 0.8 \\
+& Avalanche multiplication & $\bar{g}$ & 10 \\
+& Responsivity & $\Re$ & 0.8 \\
+& Temperature & $T$ & 298 K \\
+& Dark current & $I_d$ & 3 nA \\
+\midrule
+\multirow{9}{*}{Channel} & Wavelength & $\lambda$ & 1550 nm \\
+& Satellite altitude & $H_S$ & 600 km \\
+& Ground station height & $H_G$ & 5 m \\
+& Atmospheric altitude & $H_\beta$ & 20 km \\
+& Zenith angle & $\zeta$ & 50$^\circ$ \\
+& Wind speed & $w$ & 21 m/s \\
+& Beam width & $\omega_D$ & 50 m \\
+& Detection aperture & $a$ & 0.31 m \\
+& Attenuation coefficient & $\gamma$ & 0.43 dB/km \\
+\midrule
+\multirow{2}{*}{Telescope} & Tx gain & $G_T$ & 120 dB \\
+& Rx gain & $G_R$ & 121 dB \\
+\midrule
+\multirow{2}{*}{Link Layer} & Flow throughput & $H$ & 185 seq/s \\
+& Bit sequence length & $l_{bs}$ & $3 \times 10^6$ bits \\
+\bottomrule
+\end{tabular}
+\end{table}

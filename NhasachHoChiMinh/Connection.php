@@ -12,7 +12,7 @@ use MongoDB\Client;
 //   - 'sharded':    MongoDB Sharded Cluster (horizontal scaling)
 // =============================================================================
 
-$MODE = 'sharded'; // Options: 'standalone', 'replicaset', 'sharded'
+$MODE = 'standalone'; // Options: 'standalone', 'replicaset', 'sharded'
 
 $Database = "NhasachHoChiMinh"; // Ho Chi Minh Branch Database
 

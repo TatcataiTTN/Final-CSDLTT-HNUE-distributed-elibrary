@@ -4,113 +4,211 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Distributed e-Library Management System (Hệ thống quản lý thư viện phân tán) - a multi-branch book rental platform using MongoDB with replica sets. The system has 4 nodes:
+**Distributed e-Library Management System** (Hệ thống quản lý thư viện phân tán) - a multi-branch book rental platform using MongoDB. The system has 4 nodes:
 
-- **Nhasach/** - Central Hub (primary data center)
-- **NhasachHaNoi/** - Hanoi regional branch
-- **NhasachDaNang/** - Da Nang regional branch
-- **NhasachHoChiMinh/** - Ho Chi Minh City regional branch
+- **Nhasach/** - Central Hub (primary data center) - Port 8001
+- **NhasachHaNoi/** - Hanoi regional branch - Port 8002
+- **NhasachDaNang/** - Da Nang regional branch - Port 8003
+- **NhasachHoChiMinh/** - Ho Chi Minh City regional branch - Port 8004
 
 ## Tech Stack
 
-- PHP 7+ with MongoDB PHP Driver
-- MongoDB 4.4+ with Replica Sets & Sharded Cluster support
-- HTML5/CSS3/vanilla JavaScript frontend
+- **Backend:** PHP 8.4 with MongoDB PHP Driver (mongodb/mongodb v2.1)
+- **Database:** MongoDB 8.0 (local via Homebrew) or MongoDB 4.4+ (Docker)
+- **Frontend:** HTML5/CSS3/JavaScript with Chart.js for dashboard
+- **Authentication:** JWT (firebase/php-jwt) + bcrypt password hashing
+- **Containerization:** Docker Compose (optional for Replica Set)
 
-## Setup Commands
+## Quick Start
+
+### Prerequisites
+- PHP 8.x with MongoDB extension (`pecl install mongodb`)
+- MongoDB running on localhost:27017
+- Composer for PHP dependencies
+
+### Setup Commands
 
 ```bash
-# Install dependencies (run in each node directory)
-cd Nhasach && composer install
+# Navigate to project
+cd "/Users/tuannghiat/Downloads/Final CSDLTT"
 
-# Initialize database indexes (run once per node)
-php init_indexes.php
+# Install dependencies for all nodes
+for dir in Nhasach NhasachHaNoi NhasachDaNang NhasachHoChiMinh; do
+    cd "$dir" && composer install && cd ..
+done
 
-# Create default admin user (admin/123456)
-php createadmin.php
+# Import data (if MongoDB is empty)
+cd "Data MONGODB export .json"
+for db in Nhasach NhasachHaNoi NhasachDaNang NhasachHoChiMinh; do
+    for coll in books users orders carts; do
+        [ -f "${db}.${coll}.json" ] && mongoimport --db $db --collection $coll --file "${db}.${coll}.json" --jsonArray --drop
+    done
+done
 
-# Start development server
-php -S localhost:8000
+# Start all PHP servers
+cd ..
+php -S localhost:8001 -t Nhasach &
+php -S localhost:8002 -t NhasachHaNoi &
+php -S localhost:8003 -t NhasachDaNang &
+php -S localhost:8004 -t NhasachHoChiMinh &
 ```
 
-MongoDB must be running on `localhost:27017`.
+### Or use the startup script:
+```bash
+./start_system.sh
+```
 
 ## Architecture
 
 ### Database Structure
 
-Each node connects to its own MongoDB database:
-- Central: `Nhasach`
-- Branches: `NhasachHaNoi`, `NhasachDaNang`, `NhasachHoChiMinh`
+Each node connects to its own MongoDB database via `Connection.php`:
+- Central: `Nhasach` (509 books, 6 users, 35 orders)
+- Ha Noi: `NhasachHaNoi` (162 books, 13 users, 46 orders)
+- Da Nang: `NhasachDaNang` (127 books, 12 users, 16 orders)
+- Ho Chi Minh: `NhasachHoChiMinh` (111 books, 11 users, 14 orders)
 
-Connection pattern in `Connection.php`:
-```php
-$conn = new Client("mongodb://localhost:27017");
-$db = $conn->$Database;
-```
+**Total:** 909 books, 42 users, 111 orders
+
+### Connection Mode
+
+`Connection.php` supports 3 modes:
+- `standalone` (default) - Single MongoDB instance on localhost:27017
+- `replicaset` - MongoDB Replica Set (mongo1, mongo2, mongo3)
+- `sharded` - MongoDB Sharded Cluster via mongos
 
 ### Collections
 
-- **users** - User accounts with roles (admin/customer), balance tracking
-- **books** - Book catalog with `bookCode` (unique globally), `location` (partition key), `quantity`, `pricePerDay`
-- **carts** - Shopping cart items per user
-- **orders** - Rental transactions with status flow: pending → paid → success
+| Collection | Description |
+|------------|-------------|
+| `users` | User accounts with roles (admin/customer), balance |
+| `books` | Book catalog: bookCode, bookName, location, pricePerDay, quantity, borrowCount |
+| `orders` | Rental transactions: status (pending→paid→success→returned) |
+| `carts` | Shopping cart items per user |
 
-### Data Synchronization
+### API Endpoints
 
-Central hub and branches sync via REST APIs:
+**Statistics API** (`/api/statistics.php`):
+- `?action=books_by_location` - Books grouped by branch
+- `?action=popular_books` - Top borrowed books
+- `?action=order_status_summary` - Order counts by status
+- `?action=user_statistics` - User borrowing stats
+- `?action=monthly_trends` - Monthly trends with year/month
+- `?action=user_details` - Users with $lookup JOIN
+- `?action=book_group_stats` - Multi-facet statistics
+- `?action=revenue_by_date` - Daily revenue
 
-**Central receives from branches:**
-- `POST /Nhasach/api/receive_books_from_branch.php`
-- `POST /Nhasach/api/receive_customers.php`
+**Map-Reduce API** (`/api/mapreduce.php`):
+- `?action=borrow_stats` - Borrowing statistics
+- `?action=revenue_by_user` - Revenue per user
+- `?action=books_by_category` - Books by category
+- `?action=daily_activity` - Daily activity
+- `?action=location_performance` - Branch performance
 
-**Branches receive from central:**
-- `POST /Nhasach*/api/receive_books_from_center.php`
-
-Sync triggers are manual via admin UI (`sync_books_to_*.php` pages).
-
-### Key Constraints
-
-- `bookCode` is unique across the entire distributed system
-- `bookName` + `location` is unique per branch
-- Orders block if user has unpaid orders
-- Book sync blocks if branch has pending paid orders
-
-## Directory Structure (per node)
+## Directory Structure
 
 ```
-Nhasach/
-├── Connection.php      # MongoDB connection config
-├── init_indexes.php    # Database index setup
-├── createadmin.php     # Bootstrap admin user
-├── php/                # Main application pages
-│   ├── trangchu.php    # Homepage (entry point)
-│   ├── dangnhap.php    # Login
-│   ├── danhsachsach.php# Book catalog
-│   ├── giohang.php     # Shopping cart
-│   ├── quanlysach.php  # Book management (admin)
-│   └── sync_books_to_*.php # Manual sync triggers
-├── api/                # REST endpoints for inter-node sync
-├── css/                # Stylesheets
-└── js/                 # Client-side scripts
+Final CSDLTT/
+├── CLAUDE.md                # This file
+├── PROJECT_STATUS.md        # Current status
+├── ACCOUNTS.md              # Login credentials
+├── README_STARTUP.md        # Detailed setup guide
+├── docker-compose.yml       # Docker Replica Set config
+├── start_system.sh          # Startup script
+├── benchmark_real.js        # Benchmark script
+├── install_php_mongodb.sh   # PHP driver installer
+│
+├── Nhasach/                 # Central Hub (Port 8001)
+│   ├── Connection.php       # MongoDB connection
+│   ├── JWTHelper.php        # JWT authentication
+│   ├── init_indexes.php     # Database indexes
+│   ├── createadmin.php      # Create admin user
+│   ├── composer.json        # PHP dependencies
+│   ├── php/                 # Web pages
+│   │   ├── trangchu.php     # Homepage
+│   │   ├── dangnhap.php     # Login
+│   │   ├── dashboard.php    # Statistics dashboard
+│   │   ├── danhsachsach.php # Book catalog
+│   │   ├── giohang.php      # Shopping cart
+│   │   ├── quanlysach.php   # Book management
+│   │   └── quanlynguoidung.php # User management
+│   └── api/                 # REST API
+│       ├── statistics.php   # Aggregation Pipeline
+│       ├── mapreduce.php    # Map-Reduce operations
+│       ├── books.php        # Book CRUD
+│       ├── users.php        # User CRUD
+│       └── orders.php       # Order processing
+│
+├── NhasachHaNoi/            # Ha Noi Branch (Port 8002)
+├── NhasachDaNang/           # Da Nang Branch (Port 8003)
+├── NhasachHoChiMinh/        # Ho Chi Minh Branch (Port 8004)
+│
+├── Data MONGODB export .json/ # JSON data exports
+├── screenshots/             # UI screenshots
+├── report_latex/            # LaTeX report
+└── _archive/                # Old/unused files
 ```
 
 ## Authentication
 
-- Session-based PHP authentication
-- Passwords hashed with `password_hash()` (bcrypt)
-- Role-based access: `admin` can manage books/users/orders, `customer` can browse/rent
-- Default admin credentials: `admin` / `123456`
+- **JWT Token:** 24-hour expiration, HS256 algorithm
+- **Password:** bcrypt hash with cost factor 12
+- **Roles:** `admin` (full access), `customer` (browse/rent only)
+
+### Default Credentials
+
+| Node | Port | Admin | Customer | Password |
+|------|------|-------|----------|----------|
+| Central | 8001 | admin | customer1-5 | 123456 |
+| Ha Noi | 8002 | adminHN | annv, tuannghia | 123456 |
+| Da Nang | 8003 | adminDN | linhhtt, phuongltt | 123456 |
+| Ho Chi Minh | 8004 | adminHCM | huynq, yennt | 123456 |
+
+## Key Features
+
+1. **Aggregation Pipeline** - 8 endpoints with $match, $group, $lookup, $facet, $bucket
+2. **Map-Reduce** - 5 operations for data analysis
+3. **Full-text Search** - TEXT index on bookName, author, publisher
+4. **Dashboard** - 6 Chart.js visualizations
+5. **JWT Authentication** - Stateless API authentication
+6. **RBAC** - Role-based access control
+
+## Benchmark Results (Real Data)
+
+| Metric | Value |
+|--------|-------|
+| Fastest Query | 0.300 ms (Compound Query) |
+| Slowest Query | 3.080 ms ($facet Aggregation) |
+| Average Query | 1.304 ms |
+| Peak Throughput | 3,333 ops/sec |
 
 ## Project Status (Jan 2026)
 
 - **System Status:** ✅ Ready for Review
-- **Environment:**
-  - MongoDB 4.4 Sharded Cluster (3 Shards: Hanoi, Danang, HCM)
-  - PHP 7.4+ with `mongodb` extension (v1.15+)
-- **Verification Assets:**
-  - **Screenshots:** All necessary demo screenshots (Dashboard, Failover, Sharding) have been captured.
-  - **Tests:**
-    - Failover Test: `test-failover.sh`
-    - Real Benchmark: `benchmark_real.js`
-  - **Workflows:** System workflows and architecture diagrams are documented in `README_SHARDING.md`.
+- **LaTeX Report:** ✅ Complete (~45-50 pages)
+- **Screenshots:** ✅ 13 screenshots captured
+- **Benchmark:** ✅ Real data, 10 test cases
+
+## Troubleshooting
+
+### MongoDB Connection Error
+```bash
+# Check if MongoDB is running
+brew services list | grep mongodb
+# or
+mongosh --eval "db.runCommand({ping:1})"
+```
+
+### PHP MongoDB Extension
+```bash
+# Install extension
+pecl install mongodb
+# Add to php.ini
+echo "extension=mongodb.so" >> $(php -i | grep "php.ini" | head -1 | awk '{print $NF}')
+```
+
+### Port Already in Use
+```bash
+# Kill existing PHP servers
+pkill -f "php -S localhost:800"
+```

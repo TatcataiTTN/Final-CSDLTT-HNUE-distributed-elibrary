@@ -32,3 +32,17 @@ composer.phar
 # MongoDB data (if local)
 data/
 mongodb_data/
+
+# LaTeX build files
+*.aux
+*.bbl
+*.blg
+*.lof
+*.log
+*.lot
+*.lol
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
