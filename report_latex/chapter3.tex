@@ -478,12 +478,14 @@ case 'borrow_stats':
 \caption{Kết quả kiểm thử hiển thị dữ liệu}
 \begin{tabular}{|l|c|c|c|c|}
 \hline
-\textbf{Chi nhánh} & \textbf{Port} & \textbf{Books} & \textbf{Users} & \textbf{Orders} \\
+\textbf{Chi nhánh} & \textbf{Port} & \textbf{Sách} & \textbf{Người dùng} & \textbf{Đơn mượn} \\
 \hline
-Central Hub & 8001 & 509 & 2 & 0 \\
-Hà Nội & 8002 & 162 & 13 & 46 \\
-Đà Nẵng & 8003 & 127 & 12 & 0 \\
-TP.HCM & 8004 & 111 & 11 & 0 \\
+Central Hub & 8001 & 509 & 42 & 111 \\
+Hà Nội & 8002 & 200 & - & - \\
+Đà Nẵng & 8003 & 163 & - & - \\
+TP.HCM & 8004 & 146 & - & - \\
+\hline
+\textbf{Tổng} & & \textbf{1.018} & 42 & 111 \\
 \hline
 \end{tabular}
 \end{table}
@@ -542,131 +544,99 @@ docker start mongo1
 
 \textbf{Đánh giá:} \textcolor{green}{PASS}
 
-\subsection{Kịch bản 4: Benchmark hiệu năng}
+\subsection{Kịch bản 4: Đo lường hiệu năng truy vấn (Benchmark)}
 
-Benchmark được thực hiện với \textbf{50 iterations} mỗi test case trên MongoDB 8.0.16:
+Để đánh giá hiệu năng thực tế của hệ thống, nhóm đã xây dựng một bộ công cụ benchmark với 10 kịch bản truy vấn khác nhau, bao gồm cả các thao tác đọc và ghi. Mỗi kịch bản được thực hiện lặp lại 50 lần (iterations) trên dữ liệu thực của hệ thống để đảm bảo độ chính xác của kết quả đo.
+
+Môi trường thử nghiệm:
+\begin{itemize}
+    \item \textbf{Phiên bản MongoDB:} 8.0.16 (Community Edition)
+    \item \textbf{Dữ liệu thử nghiệm:} 509 cuốn sách, 42 người dùng trong cơ sở dữ liệu Nhasach
+    \item \textbf{Số lần lặp:} 50 iterations cho mỗi test case
+    \item \textbf{Chế độ kết nối:} Standalone (localhost:27017)
+\end{itemize}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{12_terminal_benchmark.png}
-    \caption{Kết quả benchmark trong Terminal}
+    \caption{Kết quả benchmark trong Terminal - hiển thị thời gian thực thi và throughput của từng loại truy vấn}
     \label{fig:benchmark}
 \end{figure}
 
+Bảng \ref{tab:benchmark} tổng hợp kết quả benchmark với dữ liệu thực, được sắp xếp theo thứ tự từ nhanh nhất đến chậm nhất:
+
 \begin{table}[H]
 \centering
-\caption{Kết quả benchmark hiệu năng (REAL DATA)}
+\caption{Kết quả benchmark hiệu năng (dữ liệu thực)}
 \label{tab:benchmark}
 \begin{tabular}{|l|c|c|c|}
 \hline
-\textbf{Test Case} & \textbf{Avg (ms)} & \textbf{Total (ms)} & \textbf{Ops/Sec} \\
+\textbf{Loại truy vấn} & \textbf{TB (ms)} & \textbf{Tổng (ms)} & \textbf{Ops/giây} \\
 \hline
-Compound Query (location+bookGroup) & \textbf{0.300} & 15 & 3,333 \\
-Point Lookup (bookCode) & 0.420 & 21 & 2,381 \\
-Update Operation (\$inc + \$set) & 0.480 & 24 & 2,083 \\
-Text Search & 0.640 & 32 & 1,563 \\
-Range Query + Sort & 0.820 & 41 & 1,220 \\
-Write (Insert + Delete) & 1.120 & 56 & 893 \\
-Aggregation (\$group) & 1.820 & 91 & 549 \\
-Single Location Query & 1.980 & 99 & 505 \\
-Cross-Shard Query & 2.380 & 119 & 420 \\
-Complex Aggregation (\$facet) & \textbf{3.080} & 154 & 325 \\
+Truy vấn khoảng + Sắp xếp (Range Query + Sort) & \textbf{0.880} & 44 & 1,136 \\
+Truy vấn kết hợp (Compound Query) & 0.980 & 49 & 1,020 \\
+Tra cứu điểm (Point Lookup by bookCode) & 1.040 & 52 & 962 \\
+Truy vấn đa vùng (Cross-Shard Query) & 1.920 & 96 & 521 \\
+Cập nhật (\$inc + \$set) & 2.160 & 108 & 463 \\
+Tìm kiếm toàn văn (Text Search) & 3.200 & 160 & 313 \\
+Ghi dữ liệu (Insert + Delete) & 5.680 & 284 & 176 \\
+Tổng hợp \$facet (3 pipeline song song) & 5.760 & 288 & 174 \\
+Tổng hợp \$group theo vị trí & 6.220 & 311 & 161 \\
+Truy vấn một vùng (Single Location) & \textbf{6.460} & 323 & 155 \\
 \hline
 \end{tabular}
 \end{table}
 
-\textbf{Phân tích:}
-\begin{itemize}
-    \item \textbf{Fastest}: Compound Query 0.300ms - Index prefix matching hiệu quả
-    \item \textbf{Slowest}: \$facet 3.080ms - 3 parallel sub-pipelines
-    \item \textbf{Average}: 1.304ms - Đạt yêu cầu < 3ms
-    \item \textbf{Peak Throughput}: 3,333 ops/sec
-\end{itemize}
+\textbf{Phân tích chi tiết kết quả:}
+
+\textit{Truy vấn nhanh nhất} là Range Query + Sort với thời gian trung bình 0.880ms, đạt throughput 1,136 thao tác mỗi giây. Kết quả này cho thấy index trên trường \texttt{pricePerDay} hoạt động hiệu quả khi kết hợp với sắp xếp theo \texttt{borrowCount}.
+
+\textit{Truy vấn chậm nhất} là Single Location Query với 6.460ms. Điều này có vẻ nghịch lý vì truy vấn theo vị trí đã có index, nhưng nguyên nhân là do truy vấn này trả về nhiều documents (tất cả sách tại một chi nhánh) nên cần nhiều thời gian để serialize kết quả.
+
+\textit{Trung bình tổng thể} của 10 loại truy vấn là 3.430ms, với throughput dao động từ 155 đến 1,136 thao tác/giây. Các thao tác ghi (Insert, Delete, Update) tốn nhiều thời gian hơn do cần đảm bảo tính nhất quán dữ liệu.
+
+\textit{Aggregation Pipeline} với \$facet mất 5.760ms do phải thực thi 3 pipeline con song song, trong khi \$group đơn giản chỉ mất 6.220ms. Đây là mức hiệu năng chấp nhận được cho các báo cáo thống kê không yêu cầu thời gian thực.
 
 \section{Đánh giá hệ thống}
 
+Sau quá trình triển khai và kiểm thử, nhóm đánh giá hệ thống e-Library phân tán dựa trên các tiêu chí về hiệu năng, tính sẵn sàng, bảo mật và khả năng mở rộng.
+
 \subsection{Ưu điểm}
 
-\begin{enumerate}
-    \item \textbf{Tính sẵn sàng cao (High Availability)}:
-    \begin{itemize}
-        \item Replica Set 3 nodes đảm bảo hoạt động khi 1 node gặp sự cố
-        \item Automatic failover trong 10-15 giây
-        \item Read Preference: primaryPreferred cho read availability
-    \end{itemize}
+\textbf{Thứ nhất, về tính sẵn sàng cao:} Hệ thống được thiết kế với kiến trúc Replica Set gồm 3 node MongoDB, đảm bảo rằng ngay cả khi một node gặp sự cố, hệ thống vẫn tiếp tục hoạt động bình thường. Cơ chế tự động chuyển đổi dự phòng (automatic failover) cho phép hệ thống phát hiện và khôi phục trong khoảng 10-15 giây mà không cần can thiệp thủ công từ quản trị viên. Cấu hình Read Preference là primaryPreferred giúp phân tải các thao tác đọc sang các node Secondary khi Primary bận, tăng khả năng phục vụ đồng thời nhiều người dùng.
 
-    \item \textbf{Hiệu năng tốt}:
-    \begin{itemize}
-        \item Query trung bình 1.304ms
-        \item Compound index với partition key cho query < 1ms
-        \item TEXT index cho full-text search 0.640ms
-    \end{itemize}
+\textbf{Thứ hai, về hiệu năng truy vấn:} Kết quả benchmark cho thấy thời gian truy vấn trung bình là 3.430ms với dữ liệu thực, hoàn toàn đáp ứng yêu cầu cho ứng dụng web tương tác. Các truy vấn sử dụng index như Range Query chỉ mất dưới 1ms, trong khi các thao tác phức tạp như Aggregation Pipeline với \$facet cũng chỉ tốn khoảng 5-6ms. Hệ thống index được thiết kế hợp lý với compound index cho các truy vấn kết hợp và TEXT index cho tìm kiếm toàn văn bằng tiếng Việt.
 
-    \item \textbf{Aggregation Pipeline mạnh mẽ}:
-    \begin{itemize}
-        \item 8 endpoints với 10+ operators
-        \item \$lookup cho JOIN giữa collections
-        \item \$facet cho multi-faceted analysis
-    \end{itemize}
+\textbf{Thứ ba, về khả năng tổng hợp dữ liệu:} Aggregation Pipeline của MongoDB thể hiện sức mạnh vượt trội với hơn 10 loại toán tử (operators) khác nhau được sử dụng trong hệ thống. Đặc biệt, toán tử \$lookup cho phép thực hiện phép nối (JOIN) giữa các collections mà không cần định nghĩa quan hệ cứng như trong cơ sở dữ liệu quan hệ. Toán tử \$facet cho phép thực thi nhiều pipeline con song song trong một lần truy vấn, rất hữu ích cho các báo cáo thống kê đa chiều trên Dashboard.
 
-    \item \textbf{Bảo mật đầy đủ}:
-    \begin{itemize}
-        \item JWT authentication với expiration 24h
-        \item bcrypt password hashing (cost 12)
-        \item RBAC: admin vs customer
-    \end{itemize}
-\end{enumerate}
+\textbf{Thứ tư, về bảo mật:} Hệ thống áp dụng các biện pháp bảo mật tiêu chuẩn công nghiệp bao gồm xác thực bằng JWT với thời hạn 24 giờ, mã hóa mật khẩu bằng thuật toán bcrypt với độ phức tạp (cost factor) là 12, và phân quyền theo vai trò (RBAC) với hai nhóm: quản trị viên (admin) có toàn quyền quản lý, và khách hàng (customer) chỉ có quyền mượn sách.
 
-\subsection{Nhược điểm và Hạn chế}
+\subsection{Nhược điểm và hạn chế}
 
-\begin{enumerate}
-    \item \textbf{Shard Key Cardinality thấp}:
-    \begin{itemize}
-        \item location chỉ có 3 giá trị
-        \item Có thể gây jumbo chunks khi scale
-        \item Khuyến nghị: Compound shard key \{location: 1, bookCode: 1\}
-    \end{itemize}
+\textbf{Hạn chế về quy mô dữ liệu thử nghiệm:} Với tổng cộng khoảng 1.000 cuốn sách và 42 người dùng, tập dữ liệu hiện tại chưa đủ lớn để đánh giá chính xác hiệu năng khi hệ thống mở rộng lên hàng triệu bản ghi. Các kịch bản stress test với hàng nghìn người dùng đồng thời chưa được thực hiện. Để có đánh giá toàn diện hơn, cần mở rộng tập dữ liệu lên ít nhất 100.000 bản ghi và mô phỏng tải truy cập thực tế.
 
-    \item \textbf{Dataset thử nghiệm nhỏ}:
-    \begin{itemize}
-        \item 909 sách chưa đủ stress test
-        \item Chunk migration chưa được trigger
-    \end{itemize}
+\textbf{Chưa triển khai mã hóa kết nối:} Hiện tại, kết nối giữa ứng dụng PHP và MongoDB chưa sử dụng TLS/SSL, điều này có thể tạo ra rủi ro bảo mật nếu triển khai trên môi trường mạng không tin cậy. Đối với môi trường production, việc bổ sung mã hóa TLS cho MongoDB là bắt buộc để bảo vệ dữ liệu trong quá trình truyền tải.
 
-    \item \textbf{Chưa có TLS/SSL}:
-    \begin{itemize}
-        \item Kết nối MongoDB chưa mã hóa
-        \item Cần bổ sung cho production
-    \end{itemize}
+\textbf{Đồng bộ dữ liệu thủ công:} Cơ chế đồng bộ dữ liệu giữa Central Hub và các chi nhánh hiện vẫn yêu cầu quản trị viên kích hoạt thủ công. Chưa có giải pháp đồng bộ thời gian thực (real-time synchronization) hoặc xử lý xung đột dữ liệu (conflict resolution) khi cùng một bản ghi được cập nhật đồng thời tại nhiều nơi.
 
-    \item \textbf{Phức tạp vận hành}:
-    \begin{itemize}
-        \item Cần quản lý 3+ Docker containers
-        \item Monitoring đa node
-    \end{itemize}
-\end{enumerate}
+\subsection{So sánh với các hệ thống cơ sở dữ liệu khác}
 
-\subsection{So sánh với các hệ thống khác}
+Để đánh giá sự phù hợp của MongoDB cho hệ thống e-Library, nhóm so sánh với hai hệ thống cơ sở dữ liệu phổ biến khác là Cassandra (NoSQL) và PostgreSQL (quan hệ truyền thống):
 
 \begin{table}[H]
 \centering
-\caption{So sánh MongoDB với các hệ thống phân tán khác}
+\caption{So sánh MongoDB với các hệ thống cơ sở dữ liệu phân tán khác}
 \begin{tabular}{|l|c|c|c|}
 \hline
 \textbf{Tiêu chí} & \textbf{MongoDB} & \textbf{Cassandra} & \textbf{PostgreSQL} \\
 \hline
-CAP Theorem & CP/AP & AP & CP \\
-Consistency & Tunable & Eventual & Strong \\
-Aggregation & Excellent & Limited & Good \\
-Scaling & Horizontal & Horizontal & Vertical \\
-Learning Curve & Medium & High & Low \\
+Định lý CAP & CP/AP (tùy chỉnh) & AP & CP \\
+Tính nhất quán & Tùy chỉnh được & Nhất quán cuối cùng & Nhất quán mạnh \\
+Khả năng tổng hợp & Xuất sắc & Hạn chế & Tốt \\
+Mở rộng & Theo chiều ngang & Theo chiều ngang & Theo chiều dọc \\
+Độ khó học & Trung bình & Cao & Thấp \\
 \hline
 \end{tabular}
 \end{table}
 
-MongoDB được chọn vì:
-\begin{itemize}
-    \item Aggregation Pipeline mạnh mẽ cho Dashboard
-    \item Flexible schema cho rapid development
-    \item Mature PHP driver và ecosystem
-\end{itemize}
+MongoDB được lựa chọn cho hệ thống e-Library vì ba lý do chính: (1) Aggregation Pipeline mạnh mẽ, phù hợp cho các báo cáo thống kê trên Dashboard; (2) Schema linh hoạt cho phép phát triển nhanh mà không cần migration phức tạp; và (3) Hệ sinh thái PHP driver đầy đủ với tài liệu phong phú.

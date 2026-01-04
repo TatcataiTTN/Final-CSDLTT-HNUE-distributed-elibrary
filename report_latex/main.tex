@@ -12,7 +12,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T5]{fontenc}
 \usepackage[vietnamese]{babel}
-\usepackage[top=2.5cm, bottom=2.5cm, left=3cm, right=2cm]{geometry}
+\usepackage[top=2.5cm, bottom=2.5cm, left=3cm, right=2cm, headheight=15pt]{geometry}
 \usepackage{graphicx}
 \usepackage{listings}
 \usepackage{xcolor}
@@ -144,8 +144,8 @@
 % ============================================================================
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{\leftmark}
-\fancyhead[R]{e-Library Distributed System}
+\fancyhead[L]{\nouppercase{\leftmark}}
+\fancyhead[R]{e-Library}
 \fancyfoot[C]{\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}

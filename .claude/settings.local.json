@@ -60,7 +60,8 @@
       "Bash(__NEW_LINE__ echo \"2. order_status_summary:\")",
       "Bash(__NEW_LINE__ echo \"3. popular_books:\")",
       "Bash(__NEW_LINE__ echo \"4. user_statistics:\")",
-      "Bash(__NEW_LINE__ echo \"5. monthly_trends:\")"
+      "Bash(__NEW_LINE__ echo \"5. monthly_trends:\")",
+      "Bash(pdflatex:*)"
     ]
   }
 }

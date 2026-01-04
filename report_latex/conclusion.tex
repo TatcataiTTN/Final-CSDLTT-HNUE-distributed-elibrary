@@ -2,6 +2,7 @@
 % KẾT LUẬN VÀ PHƯƠNG HƯỚNG PHÁT TRIỂN
 % ============================================================================
 \chapter{KẾT LUẬN VÀ PHƯƠNG HƯỚNG PHÁT TRIỂN}
+\chaptermark{KẾT LUẬN}
 
 \section{Kết luận}
 
@@ -11,67 +12,27 @@ Qua quá trình nghiên cứu và thực hiện đề tài ``Xây dựng hệ th
 
 \subsubsection{Về mặt hệ thống}
 
-\begin{enumerate}
-    \item \textbf{Xây dựng thành công kiến trúc phân tán 4 node}:
-    \begin{itemize}
-        \item Central Hub (Nhasach) - Trung tâm điều phối và quản lý dữ liệu tổng
-        \item 3 chi nhánh vùng: NhasachHaNoi, NhasachDaNang, NhasachHoChiMinh
-        \item Mỗi node hoạt động độc lập với database riêng biệt
-        \item Đồng bộ dữ liệu qua REST API
-    \end{itemize}
+Nhóm đã xây dựng thành công một hệ thống thư viện điện tử phân tán với kiến trúc 4 node, bao gồm một Central Hub (Trung tâm điều phối) đặt tại thư mục Nhasach và ba chi nhánh vùng tại Hà Nội, Đà Nẵng và Thành phố Hồ Chí Minh. Mỗi node hoạt động độc lập với cơ sở dữ liệu riêng biệt, đồng thời có khả năng đồng bộ dữ liệu với Central Hub thông qua các API REST được thiết kế đặc biệt cho mục đích này.
 
-    \item \textbf{Triển khai MongoDB Replica Set với Docker}:
-    \begin{itemize}
-        \item 3 MongoDB instances: mongo1:27017, mongo2:27018, mongo3:27019
-        \item Replica Set tên ``rs0'' với automatic failover
-        \item Read Preference: primaryPreferred cho cân bằng tải đọc
-        \item Write Concern: majority đảm bảo consistency
-    \end{itemize}
+Hệ thống cơ sở dữ liệu MongoDB được triển khai theo mô hình Replica Set với Docker, bao gồm 3 instance chạy trên các cổng 27017, 27018 và 27019. Cấu hình này đảm bảo tính sẵn sàng cao nhờ cơ chế tự động chuyển đổi dự phòng (automatic failover) khi node Primary gặp sự cố. Các thông số Read Preference và Write Concern được tối ưu để cân bằng giữa hiệu năng đọc và tính nhất quán dữ liệu.
 
-    \item \textbf{Dữ liệu thực tế đã tích hợp}:
-    \begin{itemize}
-        \item Tổng cộng 909 đầu sách (Central: 509, HN: 162, DN: 127, HCM: 111)
-        \item 38 người dùng đã đăng ký (13 HN, 12 DN, 11 HCM, 2 Central)
-        \item 46 đơn mượn sách đã xử lý
-        \item 10 thể loại sách khác nhau
-    \end{itemize}
-\end{enumerate}
+Về quy mô dữ liệu, hệ thống hiện đang quản lý:
+\begin{itemize}
+    \item \textbf{Tổng số sách:} 1.018 đầu sách (Central: 509, Hà Nội: 200, Đà Nẵng: 163, TP.HCM: 146)
+    \item \textbf{Người dùng:} 42 tài khoản đã đăng ký với đầy đủ thông tin cá nhân
+    \item \textbf{Đơn mượn:} 111 đơn mượn sách đã được xử lý với các trạng thái khác nhau
+    \item \textbf{Phân loại:} Sách được phân thành nhiều thể loại như Văn học, Khoa học, Lịch sử, Kinh tế, v.v.
+\end{itemize}
 
 \subsubsection{Về mặt chức năng nghiệp vụ}
 
-\begin{enumerate}
-    \item \textbf{Hệ thống quản lý sách hoàn chỉnh}:
-    \begin{itemize}
-        \item CRUD operations với validation đầy đủ
-        \item Tìm kiếm Full-text với TEXT index hỗ trợ tiếng Việt
-        \item Phân loại theo thể loại và chi nhánh
-        \item Quản lý số lượng và giá thuê
-    \end{itemize}
+Hệ thống quản lý sách được xây dựng hoàn chỉnh với đầy đủ các thao tác Tạo-Đọc-Sửa-Xóa (CRUD), kèm theo cơ chế kiểm tra dữ liệu đầu vào (validation) để đảm bảo tính toàn vẹn. Chức năng tìm kiếm toàn văn (full-text search) sử dụng TEXT index của MongoDB, hỗ trợ tìm kiếm tiếng Việt có dấu. Sách được phân loại theo thể loại và chi nhánh, với thông tin chi tiết về số lượng tồn kho và giá thuê theo ngày.
 
-    \item \textbf{Hệ thống người dùng và phân quyền}:
-    \begin{itemize}
-        \item Role-Based Access Control: admin và customer
-        \item JWT Authentication với expiration 24 giờ
-        \item bcrypt password hashing (cost factor 12)
-        \item Quản lý số dư tài khoản
-    \end{itemize}
+Hệ thống người dùng triển khai mô hình phân quyền theo vai trò (RBAC) với hai nhóm: quản trị viên có quyền quản lý toàn bộ hệ thống, và khách hàng chỉ có quyền mượn sách và xem thông tin cá nhân. Xác thực người dùng sử dụng chuẩn JWT (JSON Web Token) với thời hạn 24 giờ, mật khẩu được mã hóa bằng thuật toán bcrypt với độ phức tạp 12, đảm bảo an toàn trước các cuộc tấn công brute-force. Mỗi người dùng có một tài khoản số dư để thanh toán phí mượn sách.
 
-    \item \textbf{Quy trình mượn/trả sách}:
-    \begin{itemize}
-        \item Giỏ hàng với session management
-        \item Thanh toán và trừ số dư tự động
-        \item Lịch sử mượn sách chi tiết
-        \item Thống kê theo thời gian thực
-    \end{itemize}
+Quy trình mượn sách được thiết kế trực quan với giỏ hàng lưu trữ trong session, cho phép khách hàng chọn nhiều sách trước khi thanh toán. Khi xác nhận mượn, hệ thống tự động kiểm tra và trừ số dư tài khoản, tạo đơn mượn với thông tin chi tiết về ngày mượn, ngày trả dự kiến và tổng tiền. Lịch sử mượn sách được lưu trữ đầy đủ để khách hàng theo dõi và quản trị viên thống kê.
 
-    \item \textbf{Dashboard thống kê với 6 biểu đồ Chart.js}:
-    \begin{itemize}
-        \item Tổng quan: sách, users, orders, doanh thu
-        \item Biểu đồ tròn: phân bố theo thể loại
-        \item Biểu đồ cột: số sách theo chi nhánh
-        \item Biểu đồ đường: trend mượn sách theo tháng
-    \end{itemize}
-\end{enumerate}
+Trang Dashboard dành cho quản trị viên hiển thị các biểu đồ thống kê trực quan bằng thư viện Chart.js, bao gồm: tổng quan về số sách, người dùng, đơn mượn và doanh thu; biểu đồ tròn thể hiện phân bố sách theo thể loại; biểu đồ cột so sánh số lượng sách giữa các chi nhánh; và biểu đồ đường thể hiện xu hướng mượn sách theo từng tháng.
 
 \subsubsection{Về mặt kỹ thuật NoSQL}
 
@@ -104,22 +65,24 @@ Qua quá trình nghiên cứu và thực hiện đề tài ``Xây dựng hệ th
 
 \subsubsection{Về mặt hiệu năng}
 
-Kết quả benchmark thực tế với 50 iterations cho mỗi test case:
+Nhóm đã thực hiện đo lường hiệu năng (benchmark) với 50 lần lặp cho mỗi kịch bản truy vấn, sử dụng dữ liệu thực của hệ thống trên MongoDB phiên bản 8.0.16. Kết quả cho thấy hệ thống đáp ứng tốt các yêu cầu về tốc độ phản hồi cho ứng dụng web tương tác:
 
 \begin{table}[H]
 \centering
-\caption{Tổng hợp kết quả benchmark}
+\caption{Tổng hợp kết quả đo lường hiệu năng (benchmark)}
 \begin{tabular}{|l|r|r|}
 \hline
 \textbf{Chỉ số} & \textbf{Giá trị} & \textbf{Đánh giá} \\
 \hline
-Query nhanh nhất & 0.300 ms & Xuất sắc \\
-Query chậm nhất & 3.080 ms & Chấp nhận được \\
-Trung bình & 1.304 ms & Tốt \\
-Throughput cao nhất & 3,333 ops/sec & Tốt cho scale nhỏ \\
+Truy vấn nhanh nhất & 0.880 ms & Xuất sắc \\
+Truy vấn chậm nhất & 6.460 ms & Chấp nhận được \\
+Trung bình 10 loại truy vấn & 3.430 ms & Tốt \\
+Throughput cao nhất & 1,136 thao tác/giây & Phù hợp quy mô nhỏ-vừa \\
 \hline
 \end{tabular}
 \end{table}
+
+Truy vấn nhanh nhất là Range Query kết hợp với Sort (0.880ms) nhờ tận dụng tốt index trên trường giá thuê. Truy vấn chậm nhất là Single Location Query (6.460ms) do phải trả về nhiều documents. Mức throughput 1,136 thao tác/giây hoàn toàn đủ cho một hệ thống thư viện quy mô vừa với vài trăm người dùng đồng thời.
 
 \subsection{Những điểm còn hạn chế}
 
@@ -696,3 +659,42 @@ Connection URI & mongodb://mongo1:27017,mongo2:27018,mongo3:27019/?replicaSet=rs
 \hline
 \end{tabular}
 \end{table}
+
+\section{Thông tin liên hệ và mã nguồn}
+
+Toàn bộ mã nguồn của dự án được công khai trên GitHub, bao gồm hướng dẫn cài đặt chi tiết, cấu hình Docker, và dữ liệu mẫu để chạy thử nghiệm.
+
+\begin{table}[H]
+\centering
+\caption{Thông tin liên hệ và tài nguyên dự án}
+\begin{tabular}{|l|p{10cm}|}
+\hline
+\textbf{Thông tin} & \textbf{Chi tiết} \\
+\hline
+GitHub Repository & \url{https://github.com/TatcataiTTN/Final-CSDLTT-HNUE-distributed-elibrary} \\
+\hline
+Email liên hệ & truongtuannghia1248@gmail.com \\
+\hline
+Số điện thoại & 0973 958 574 \\
+\hline
+Trường & Đại học Sư phạm Hà Nội (HNUE) \\
+\hline
+Môn học & Cơ sở dữ liệu tiên tiến - Cao học K35 \\
+\hline
+\end{tabular}
+\end{table}
+
+\vspace{0.5cm}
+\begin{center}
+\fbox{\parbox{0.9\textwidth}{
+\centering
+\textbf{Hướng dẫn cài đặt nhanh}\\[0.3cm]
+\begin{enumerate}[leftmargin=*]
+    \item Clone repository: \texttt{git clone https://github.com/TatcataiTTN/...}
+    \item Cài đặt MongoDB 8.0 và PHP 8.4 với MongoDB extension
+    \item Chạy \texttt{composer install} trong mỗi thư mục node
+    \item Import dữ liệu từ thư mục \texttt{Data MONGODB export .json}
+    \item Khởi động PHP server: \texttt{php -S localhost:8001 -t Nhasach}
+\end{enumerate}
+\textit{Chi tiết đầy đủ có trong file README.md và README\_STARTUP.md của repository.}
+}}\end{center}
