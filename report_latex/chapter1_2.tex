@@ -85,12 +85,12 @@ Tính đến thời điểm hoàn thành đề tài, hệ thống có các số 
 \hline
 \textbf{Chi nhánh} & \textbf{Số sách} & \textbf{Số users} & \textbf{Số orders} \\
 \hline
-Central Hub (Nhasach) & 509 & 2 & 0 \\
-Chi nhánh Hà Nội & 162 & 13 & 46 \\
-Chi nhánh Đà Nẵng & 127 & 12 & 0 \\
-Chi nhánh TP.HCM & 111 & 11 & 0 \\
+Central Hub (Nhasach) & 509 & 42 & 111 \\
+Chi nhánh Hà Nội & 200 & 13 & 46 \\
+Chi nhánh Đà Nẵng & 163 & 12 & 16 \\
+Chi nhánh TP.HCM & 146 & 11 & 14 \\
 \hline
-\textbf{Tổng cộng} & \textbf{909} & \textbf{38} & \textbf{46} \\
+\textbf{Tổng cộng} & \textbf{1.018} & \textbf{78} & \textbf{187} \\
 \hline
 \end{tabular}
 \end{table}
@@ -600,15 +600,44 @@ Từ phân tích yêu cầu, hệ thống bao gồm 5 lớp đối tượng chí
 \hline
 \textbf{STT} & \textbf{Collection} & \textbf{Mô tả} & \textbf{Documents} \\
 \hline
-1 & users & Thông tin người dùng & 38 \\
-2 & books & Danh mục sách & 909 \\
+1 & users & Thông tin người dùng & 78 \\
+2 & books & Danh mục sách & 1.018 \\
 3 & carts & Giỏ hàng & Dynamic \\
-4 & orders & Đơn mượn sách & 46 \\
+4 & orders & Đơn mượn sách & 187 \\
 5 & activities & Log hoạt động & Dynamic \\
-6 & customers & Tổng hợp KH (Central) & 33 \\
+6 & customers & Tổng hợp KH (Central) & 78 \\
 \hline
 \end{tabular}
 \end{table}
+
+\subsection{Mối quan hệ giữa các collection}
+
+Trong MongoDB, các collection không có ràng buộc khóa ngoại như trong cơ sở dữ liệu quan hệ. Tuy nhiên, các mối quan hệ logic vẫn được duy trì thông qua việc lưu trữ tham chiếu (reference) hoặc nhúng dữ liệu (embedded documents). Bảng \ref{tab:collection_relations} mô tả các mối quan hệ giữa các collection trong hệ thống:
+
+\begin{table}[H]
+\centering
+\caption{Mối quan hệ giữa các collection}
+\label{tab:collection_relations}
+\begin{tabular}{|l|c|p{7cm}|}
+\hline
+\textbf{Collection} & \textbf{Quan hệ} & \textbf{Ý nghĩa} \\
+\hline
+users -- carts & 1:1 & Một người dùng chỉ có một giỏ hàng. Giỏ hàng được tạo tự động khi người dùng thêm sách đầu tiên. \\
+\hline
+users -- orders & 1:N & Một người dùng có thể tạo nhiều đơn mượn sách. Mỗi đơn mượn lưu user\_id để truy vấn ngược. \\
+\hline
+carts -- books & N:M & Một giỏ hàng có thể chứa nhiều sách, và một đầu sách có thể xuất hiện trong giỏ hàng của nhiều người dùng cùng lúc (embedded trong items[]). \\
+\hline
+orders -- books & N:M & Một đơn mượn có thể chứa nhiều sách, và một đầu sách có thể xuất hiện trong nhiều đơn mượn khác nhau (embedded trong items[]). \\
+\hline
+\end{tabular}
+\end{table}
+
+\textbf{Chiến lược thiết kế:} Hệ thống sử dụng kết hợp giữa tham chiếu (reference) và nhúng (embedding):
+\begin{itemize}
+    \item \textbf{Tham chiếu (Reference):} user\_id trong carts và orders để liên kết với collection users. Cho phép cập nhật thông tin user mà không cần cập nhật tất cả đơn hàng.
+    \item \textbf{Nhúng (Embedding):} items[] trong carts và orders chứa thông tin sách đã chọn. Đảm bảo tính nhất quán của dữ liệu tại thời điểm tạo đơn (giá thuê, tên sách không thay đổi theo thời gian).
+\end{itemize}
 
 \subsection{Thiết kế bảng dữ liệu vật lý}
 

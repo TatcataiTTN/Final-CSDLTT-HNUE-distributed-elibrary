@@ -46,3 +46,6 @@ mongodb_data/
 *.fls
 *.fdb_latexmk
 *.synctex.gz
+
+# Review folder (internal use only)
+Review*/

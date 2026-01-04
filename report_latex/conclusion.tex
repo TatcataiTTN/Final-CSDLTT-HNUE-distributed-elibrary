@@ -698,3 +698,297 @@ Môn học & Cơ sở dữ liệu tiên tiến - Cao học K35 \\
 \end{enumerate}
 \textit{Chi tiết đầy đủ có trong file README.md và README\_STARTUP.md của repository.}
 }}\end{center}
+
+% ============================================================================
+% PHỤ LỤC C: TỰ ĐÁNH GIÁ THEO RUBRIC
+% ============================================================================
+\section{Tự đánh giá theo Rubric}
+
+Phần này trình bày bảng tự đánh giá của nhóm dựa trên các tiêu chí trong rubric của môn học ``Cơ sở dữ liệu tiên tiến''.
+
+\begin{table}[H]
+\centering
+\caption{Bảng tự đánh giá theo Rubric}
+\label{tab:self_evaluation}
+\begin{tabular}{|c|p{7.5cm}|c|c|p{4cm}|}
+\hline
+\textbf{STT} & \textbf{Tiêu chí} & \textbf{Tối đa} & \textbf{Tự chấm} & \textbf{Ghi chú} \\
+\hline
+1 & Thiết kế mô hình CSDL NoSQL (mô hình logic, physical, key, shard key, quan hệ, dataset mẫu) & 20 & 18 & 8 collection, 7 indexes, 1.018+ records \\
+\hline
+2 & Triển khai hệ thống CSDL phân tán (cấu hình node, replication, sharding, failover, sơ đồ) & 20 & 17 & 4 node, Replica Set, Docker, Zone Sharding \\
+\hline
+3 & Xây dựng API/Web kết nối NoSQL (CRUD, API ổn định, aggregation, giao diện) & 15 & 14 & 4 nhóm CRUD, 7 aggregation, Chart.js dashboard \\
+\hline
+4 & Xử lý truy vấn và tính toán nâng cao (aggregation, index, map-reduce, tối ưu hóa) & 15 & 13 & 5 map-reduce, TEXT index, compound index \\
+\hline
+5 & Bảo mật và phân quyền (session/JWT, hash mật khẩu, RBAC, XSS/CSRF) & 10 & 10 & JWT 24h, bcrypt, 2 roles, SecurityHelper \\
+\hline
+6 & Hiệu năng và đánh giá hệ thống (test thực tế, latency, throughput, phân tích) & 10 & 8 & Benchmark 10 queries, avg 3.43ms \\
+\hline
+7 & Báo cáo cuối kỳ (PDF) (đầy đủ nội dung, hình ảnh, code, định dạng) & 5 & 5 & LaTeX, 3 chương, phụ lục \\
+\hline
+8 & Demo và trả lời vấn đáp (demo chức năng, trả lời câu hỏi) & 5 & 5 & Demo 4 node, giải thích kiến trúc \\
+\hline
+\multicolumn{2}{|r|}{\textbf{TỔNG ĐIỂM}} & \textbf{100} & \textbf{90} & \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Giải thích chi tiết các tiêu chí}
+
+\subsubsection{Tiêu chí 1: Thiết kế mô hình CSDL NoSQL (18/20)}
+
+\textbf{Điểm mạnh:}
+\begin{itemize}
+    \item Thiết kế 8 collection với schema rõ ràng: users, books, carts, orders, activities, login\_attempts, customers, orders\_central
+    \item 7 indexes được tối ưu: unique index (username, bookCode), compound index (location + bookName), TEXT index (bookName + bookGroup)
+    \item Dataset đa dạng với 1.018 sách, 78 users, 187 orders phân bố đều giữa các chi nhánh
+    \item Mối quan hệ giữa các collection được thiết kế phù hợp với đặc thù NoSQL (embedded vs reference)
+\end{itemize}
+
+\textbf{Điểm trừ:}
+\begin{itemize}
+    \item Shard key \{location: 1\} có cardinality thấp (chỉ 3 giá trị), nên dùng compound shard key
+\end{itemize}
+
+\subsubsection{Tiêu chí 2: Triển khai hệ thống CSDL phân tán (17/20)}
+
+\textbf{Điểm mạnh:}
+\begin{itemize}
+    \item Kiến trúc 4 node: Central Hub + 3 chi nhánh vùng
+    \item Replica Set với 3 MongoDB instances (Primary + 2 Secondary)
+    \item Docker Compose cho deployment nhất quán
+    \item Zone-based Sharding cho data locality theo vùng địa lý
+    \item Script tự động khởi tạo và test failover
+\end{itemize}
+
+\textbf{Điểm trừ:}
+\begin{itemize}
+    \item Đồng bộ dữ liệu giữa Central và branches vẫn là thủ công (chưa real-time)
+    \item Chưa có point-in-time recovery
+\end{itemize}
+
+\subsubsection{Tiêu chí 3: Xây dựng API/Web kết nối NoSQL (14/15)}
+
+\textbf{Điểm mạnh:}
+\begin{itemize}
+    \item 4 nhóm CRUD hoàn chỉnh: Books, Carts, Orders, Users
+    \item 7 aggregation pipeline endpoints với operators nâng cao (\$facet, \$bucket, \$lookup)
+    \item Dashboard thống kê với Chart.js: 6 loại biểu đồ
+    \item REST API với CORS, proper HTTP status codes
+    \item Giao diện responsive, hỗ trợ tiếng Việt Unicode
+\end{itemize}
+
+\textbf{Điểm trừ:}
+\begin{itemize}
+    \item Chưa có API documentation (OpenAPI/Swagger)
+\end{itemize}
+
+\subsubsection{Tiêu chí 4: Xử lý truy vấn và tính toán nâng cao (13/15)}
+
+\textbf{Điểm mạnh:}
+\begin{itemize}
+    \item 5 Map-Reduce operations: borrow\_stats, revenue\_by\_user, books\_by\_category, daily\_activity, location\_performance
+    \item TEXT index cho full-text search tiếng Việt
+    \item Compound index cho location-based queries
+    \item Aggregation với \$facet cho multiple sub-pipelines
+\end{itemize}
+
+\textbf{Điểm trừ:}
+\begin{itemize}
+    \item Chưa có query explain() output để chứng minh index usage
+    \item Một số queries có thể tối ưu thêm
+\end{itemize}
+
+\subsubsection{Tiêu chí 5: Bảo mật và phân quyền (10/10)}
+
+\textbf{Điểm mạnh:}
+\begin{itemize}
+    \item JWT authentication với claims đầy đủ (iss, iat, exp, nbf), thời hạn 24 giờ
+    \item Password hashing với bcrypt (PASSWORD\_DEFAULT)
+    \item Role-Based Access Control: admin và customer
+    \item CSRF protection với cryptographic tokens
+    \item Brute-force protection: 5 attempts / 5 minutes, lockout 15 minutes
+    \item XSS prevention với htmlspecialchars()
+    \item Session regeneration sau login
+\end{itemize}
+
+\subsubsection{Tiêu chí 6: Hiệu năng và đánh giá hệ thống (8/10)}
+
+\textbf{Điểm mạnh:}
+\begin{itemize}
+    \item Benchmark với 10 loại truy vấn, 50 iterations mỗi loại
+    \item Thời gian phản hồi trung bình: 3.43ms
+    \item Throughput: 1,136 operations/second
+    \item So sánh hiệu năng giữa các loại query
+\end{itemize}
+
+\textbf{Điểm trừ:}
+\begin{itemize}
+    \item Dataset test còn nhỏ (cần 100K+ records để stress test sharding)
+    \item Chưa có concurrent user testing
+\end{itemize}
+
+\subsubsection{Tiêu chí 7: Báo cáo cuối kỳ (5/5)}
+
+\textbf{Điểm mạnh:}
+\begin{itemize}
+    \item Báo cáo LaTeX chuyên nghiệp với 3 chương chính
+    \item Đầy đủ hình ảnh minh họa UI, sơ đồ kiến trúc
+    \item Code samples được định dạng với syntax highlighting
+    \item Phụ lục chi tiết với mã nguồn quan trọng
+    \item Tài liệu tham khảo đầy đủ (sách, papers, RFC)
+\end{itemize}
+
+\subsubsection{Tiêu chí 8: Demo và trả lời vấn đáp (5/5)}
+
+\textbf{Điểm mạnh:}
+\begin{itemize}
+    \item Demo đầy đủ 4 node hoạt động đồng thời
+    \item Minh họa CRUD operations, search, statistics
+    \item Giải thích được kiến trúc phân tán và cơ chế đồng bộ
+    \item Trả lời các câu hỏi về CAP theorem, Replica Set, Sharding
+\end{itemize}
+
+% ============================================================================
+% PHỤ LỤC D: SƠ ĐỒ LUỒNG GIAO DIỆN NGƯỜI DÙNG
+% ============================================================================
+\section{Sơ đồ luồng giao diện người dùng}
+
+\subsection{Luồng giao diện với quyền Customer}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+    node distance=1.2cm,
+    box/.style={rectangle, draw, rounded corners, minimum width=3cm, minimum height=0.8cm, text centered, font=\small},
+    decision/.style={diamond, draw, aspect=2, minimum width=2.5cm, text centered, font=\small},
+    arrow/.style={->, >=stealth, thick}
+]
+
+% Start
+\node[box, fill=green!20] (login) {Đăng nhập};
+\node[box, fill=blue!10, below=of login] (home) {Trang chủ};
+\node[box, fill=yellow!20, below left=1cm and 2cm of home] (booklist) {Danh sách sách};
+\node[box, fill=yellow!20, below=of home] (cart) {Giỏ hàng};
+\node[box, fill=yellow!20, below right=1cm and 2cm of home] (history) {Lịch sử mượn};
+\node[box, fill=orange!20, below=of booklist] (search) {Tìm kiếm sách};
+\node[box, fill=orange!20, below=of cart] (checkout) {Thanh toán};
+\node[box, fill=cyan!20, below=of history] (profile) {Thông tin cá nhân};
+\node[box, fill=green!30, below=1.5cm of checkout] (success) {Mượn thành công};
+
+% Arrows
+\draw[arrow] (login) -- (home);
+\draw[arrow] (home) -- (booklist);
+\draw[arrow] (home) -- (cart);
+\draw[arrow] (home) -- (history);
+\draw[arrow] (booklist) -- (search);
+\draw[arrow] (search) -- (cart) node[midway, right, font=\scriptsize] {Thêm vào giỏ};
+\draw[arrow] (cart) -- (checkout);
+\draw[arrow] (checkout) -- (success);
+\draw[arrow] (history) -- (profile);
+\draw[arrow] (booklist) -- (cart) node[midway, above, font=\scriptsize] {Chọn sách};
+
+\end{tikzpicture}
+\caption{Sơ đồ luồng giao diện người dùng (Customer)}
+\label{fig:customer_flow}
+\end{figure}
+
+\textbf{Mô tả luồng Customer:}
+\begin{enumerate}
+    \item \textbf{Đăng nhập:} Nhập username/password, hệ thống xác thực và tạo session/JWT
+    \item \textbf{Trang chủ:} Hiển thị menu theo quyền customer, thống kê cá nhân
+    \item \textbf{Danh sách sách:} Xem danh sách sách có sẵn, lọc theo thể loại/chi nhánh
+    \item \textbf{Tìm kiếm:} Tìm kiếm full-text theo tên sách, tác giả, NXB
+    \item \textbf{Giỏ hàng:} Quản lý sách đã chọn, điều chỉnh số lượng/ngày mượn
+    \item \textbf{Thanh toán:} Xác nhận mượn, trừ số dư tài khoản
+    \item \textbf{Lịch sử mượn:} Xem các đơn mượn đã tạo và trạng thái
+    \item \textbf{Thông tin cá nhân:} Xem/cập nhật thông tin, nạp tiền vào tài khoản
+\end{enumerate}
+
+\subsection{Luồng giao diện với quyền Admin}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+    node distance=1cm,
+    box/.style={rectangle, draw, rounded corners, minimum width=2.8cm, minimum height=0.7cm, text centered, font=\small},
+    arrow/.style={->, >=stealth, thick}
+]
+
+% Start
+\node[box, fill=green!20] (login) {Đăng nhập};
+\node[box, fill=blue!10, below=of login] (home) {Trang chủ Admin};
+
+% Row 1 - Main functions
+\node[box, fill=red!20, below left=1cm and 3.5cm of home] (dashboard) {Dashboard};
+\node[box, fill=yellow!20, below left=1cm and 1cm of home] (books) {Quản lý sách};
+\node[box, fill=yellow!20, below right=1cm and 1cm of home] (users) {Quản lý người dùng};
+\node[box, fill=yellow!20, below right=1cm and 3.5cm of home] (orders) {Quản lý đơn mượn};
+
+% Row 2 - Sub functions
+\node[box, fill=orange!15, below=0.8cm of dashboard] (stats) {Thống kê biểu đồ};
+\node[box, fill=orange!15, below=0.8cm of books] (crud_book) {CRUD sách};
+\node[box, fill=orange!15, below=0.8cm of users] (crud_user) {CRUD người dùng};
+\node[box, fill=orange!15, below=0.8cm of orders] (process) {Xử lý đơn};
+
+% Row 3 - Sync
+\node[box, fill=cyan!20, below=2.5cm of home] (sync) {Đồng bộ dữ liệu};
+\node[box, fill=purple!15, below left=0.5cm and 1cm of sync] (sync_book) {Sync sách};
+\node[box, fill=purple!15, below right=0.5cm and 1cm of sync] (sync_user) {Sync khách hàng};
+
+% Arrows from login
+\draw[arrow] (login) -- (home);
+\draw[arrow] (home) -- (dashboard);
+\draw[arrow] (home) -- (books);
+\draw[arrow] (home) -- (users);
+\draw[arrow] (home) -- (orders);
+\draw[arrow] (home) -- (sync);
+
+% Arrows to sub
+\draw[arrow] (dashboard) -- (stats);
+\draw[arrow] (books) -- (crud_book);
+\draw[arrow] (users) -- (crud_user);
+\draw[arrow] (orders) -- (process);
+\draw[arrow] (sync) -- (sync_book);
+\draw[arrow] (sync) -- (sync_user);
+
+\end{tikzpicture}
+\caption{Sơ đồ luồng giao diện người dùng (Admin)}
+\label{fig:admin_flow}
+\end{figure}
+
+\textbf{Mô tả luồng Admin:}
+\begin{enumerate}
+    \item \textbf{Đăng nhập:} Xác thực admin, tạo session với quyền quản trị
+    \item \textbf{Dashboard:} Xem tổng quan hệ thống với các biểu đồ Chart.js
+    \begin{itemize}
+        \item Thống kê sách theo chi nhánh, thể loại
+        \item Biểu đồ doanh thu, xu hướng mượn sách
+        \item Top người dùng, sách phổ biến
+    \end{itemize}
+    \item \textbf{Quản lý sách:} CRUD đầy đủ
+    \begin{itemize}
+        \item Thêm sách mới với mã sách unique
+        \item Sửa thông tin: giá, số lượng, trạng thái
+        \item Soft delete (đánh dấu inactive)
+    \end{itemize}
+    \item \textbf{Quản lý người dùng:}
+    \begin{itemize}
+        \item Xem danh sách người dùng và số dư
+        \item Nạp tiền cho khách hàng
+        \item Phân quyền admin/customer
+    \end{itemize}
+    \item \textbf{Quản lý đơn mượn:}
+    \begin{itemize}
+        \item Xem đơn mới (pending), xác nhận thanh toán
+        \item Cập nhật trạng thái: paid → success → returned
+        \item Xử lý đơn quá hạn
+    \end{itemize}
+    \item \textbf{Đồng bộ dữ liệu:}
+    \begin{itemize}
+        \item Sync sách từ chi nhánh về Central hoặc ngược lại
+        \item Sync thông tin khách hàng giữa các node
+    \end{itemize}
+\end{enumerate}
