@@ -212,6 +212,9 @@ PHP (Hypertext Preprocessor) là ngôn ngữ lập trình kịch bản phía ser
 \end{itemize}
 
 \textbf{Cấu hình kết nối trong Connection.php}:
+
+File \texttt{Connection.php} là điểm trung tâm quản lý kết nối đến MongoDB cho toàn bộ ứng dụng. File này hỗ trợ 3 chế độ kết nối: \textbf{standalone} (một máy chủ đơn), \textbf{replicaset} (cluster 3 nodes với failover tự động), và \textbf{sharded} (phân mảnh dữ liệu theo vùng). Tham số \texttt{readPreference: primaryPreferred} cho phép đọc từ Secondary nếu Primary quá tải, còn \texttt{w: majority} đảm bảo dữ liệu được ghi vào đa số nodes trước khi xác nhận thành công - đây là chiến lược cân bằng giữa hiệu năng và độ tin cậy.
+
 \begin{lstlisting}[language=PHP, caption=Connection.php - Cấu hình kết nối MongoDB]
 <?php
 require 'vendor/autoload.php';
@@ -272,6 +275,8 @@ $db = $conn->$Database;
     \item Volume persistence cho dữ liệu (\texttt{mongo1\_data}, \texttt{mongo2\_data}, \texttt{mongo3\_data})
     \item Dễ dàng tái lập kịch bản Failover testing
 \end{itemize}
+
+Đoạn cấu hình Docker Compose dưới đây định nghĩa một MongoDB Replica Set gồm 3 containers: \texttt{mongo1} (Primary, cổng 27017), \texttt{mongo2} và \texttt{mongo3} (Secondary, cổng 27018 và 27019). Tham số \texttt{--replSet rs0} cho biết cả 3 containers thuộc cùng một replica set tên ``rs0''. Mạng \texttt{mongo-net} với driver \texttt{bridge} cho phép các containers giao tiếp nội bộ. Khi \texttt{mongo1} gặp sự cố, một trong hai Secondary sẽ tự động được bầu làm Primary mới trong vòng 10-12 giây.
 
 \begin{lstlisting}[caption=docker-compose.yml - MongoDB Replica Set]
 version: '3.8'
@@ -633,15 +638,19 @@ orders -- books & N:M & Một đơn mượn có thể chứa nhiều sách, và 
 \end{tabular}
 \end{table}
 
-\textbf{Chiến lược thiết kế:} Hệ thống sử dụng kết hợp giữa tham chiếu (reference) và nhúng (embedding):
+\textbf{Chiến lược thiết kế:} Trong NoSQL, việc thiết kế mối quan hệ khác biệt cơ bản so với SQL truyền thống. Thay vì dùng JOIN, MongoDB cho phép hai cách tiếp cận: \textit{nhúng dữ liệu trực tiếp} (denormalization) hoặc \textit{tham chiếu qua ObjectId} (normalization). Hệ thống e-Library sử dụng kết hợp cả hai để tối ưu hiệu năng:
+
 \begin{itemize}
-    \item \textbf{Tham chiếu (Reference):} user\_id trong carts và orders để liên kết với collection users. Cho phép cập nhật thông tin user mà không cần cập nhật tất cả đơn hàng.
-    \item \textbf{Nhúng (Embedding):} items[] trong carts và orders chứa thông tin sách đã chọn. Đảm bảo tính nhất quán của dữ liệu tại thời điểm tạo đơn (giá thuê, tên sách không thay đổi theo thời gian).
+    \item \textbf{Tham chiếu (Reference):} \texttt{user\_id} trong carts và orders để liên kết với collection users. Khi thông tin user thay đổi (email, số dư), chỉ cần cập nhật một document trong users mà không ảnh hưởng đến các đơn hàng cũ.
+    \item \textbf{Nhúng (Embedding):} \texttt{items[]} trong carts và orders chứa snapshot thông tin sách tại thời điểm mượn (tên, giá). Đây là chiến lược ``snapshot data'' - đảm bảo đơn hàng lưu chính xác giá thuê tại thời điểm giao dịch, ngay cả khi giá sách thay đổi sau đó.
 \end{itemize}
 
 \subsection{Thiết kế bảng dữ liệu vật lý}
 
-\textbf{Collection users:}
+Dưới đây là cấu trúc JSON của các collection chính. Mỗi document trong MongoDB tương đương một bản ghi (row) trong SQL, nhưng linh hoạt hơn vì các trường có thể khác nhau giữa các documents.
+
+\textbf{Collection users:} Lưu thông tin tài khoản với trường \texttt{balance} là số dư ví (đơn vị VND) để thanh toán tiền mượn sách.
+
 \begin{lstlisting}[language=json, caption=Schema collection users]
 {
     "_id": ObjectId("..."),
@@ -657,7 +666,8 @@ orders -- books & N:M & Một đơn mượn có thể chứa nhiều sách, và 
 }
 \end{lstlisting}
 
-\textbf{Collection books:}
+\textbf{Collection books:} Trường \texttt{location} là shard key để phân mảnh dữ liệu theo vùng địa lý. Trường \texttt{borrowCount} được tăng mỗi khi có người mượn, dùng để thống kê sách phổ biến.
+
 \begin{lstlisting}[language=json, caption=Schema collection books]
 {
     "_id": ObjectId("..."),
@@ -674,7 +684,8 @@ orders -- books & N:M & Một đơn mượn có thể chứa nhiều sách, và 
 }
 \end{lstlisting}
 
-\textbf{Collection orders:}
+\textbf{Collection orders:} Mảng \texttt{items[]} chứa chi tiết sách mượn (nhúng để snapshot dữ liệu). Trạng thái \texttt{status} theo quy trình: pending → paid → success → returned.
+
 \begin{lstlisting}[language=json, caption=Schema collection orders]
 {
     "_id": ObjectId("..."),
@@ -700,6 +711,8 @@ orders -- books & N:M & Một đơn mượn có thể chứa nhiều sách, và 
 \end{lstlisting}
 
 \subsection{Thiết kế mô hình phân tán}
+
+MongoDB Replica Set hoạt động theo mô hình Master-Slave với cơ chế bầu cử tự động. Node \textbf{Primary} (mongo1) nhận tất cả các thao tác ghi (insert, update, delete), sau đó đồng bộ dữ liệu sang các node \textbf{Secondary} thông qua oplog (operation log). Các Secondary gửi heartbeat mỗi 2 giây để kiểm tra trạng thái Primary. Chiến lược truy vấn: \textit{Write to Primary, Read from Primary hoặc Secondary} - giúp phân tải đọc và tăng throughput hệ thống.
 
 \begin{figure}[H]
 \centering
@@ -752,6 +765,9 @@ idx\_books\_text\_search & \{bookName: text, bookGroup: text\} & Full-text \\
 \end{table}
 
 \textbf{Full-text Search implementation:}
+
+Đoạn code dưới đây minh họa cách tạo và sử dụng TEXT index trong MongoDB. Bước 1: Tạo index một lần duy nhất trên các trường \texttt{bookName} và \texttt{bookGroup}. Bước 2: Khi người dùng nhập từ khóa tìm kiếm, hệ thống sử dụng operator \texttt{\$text} để thực hiện full-text search. MongoDB tự động tính điểm liên quan (\texttt{textScore}) cho mỗi kết quả dựa trên tần suất xuất hiện từ khóa, sau đó sắp xếp theo điểm cao nhất - giúp kết quả phù hợp nhất hiển thị đầu tiên.
+
 \begin{lstlisting}[language=PHP, caption=Tìm kiếm với TEXT index]
 // Create TEXT index (run once)
 $db->books->createIndex(
