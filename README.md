@@ -1,15 +1,15 @@
-# CLAUDE.md
+# Distributed e-Library Management System
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+**Hệ thống quản lý thư viện phân tán** - A multi-branch book rental platform using MongoDB with hybrid architecture (standalone + replica set).
 
 ## Project Overview
 
-**Distributed e-Library Management System** (Hệ thống quản lý thư viện phân tán) - a multi-branch book rental platform using MongoDB. The system has 4 nodes:
+This system simulates a distributed library network with 4 nodes across Vietnam:
 
-- **Nhasach/** - Central Hub (primary data center) - Port 8001
-- **NhasachHaNoi/** - Hanoi regional branch - Port 8002
-- **NhasachDaNang/** - Da Nang regional branch - Port 8003
-- **NhasachHoChiMinh/** - Ho Chi Minh City regional branch - Port 8004
+- **Nhasach/** - Central Hub (standalone) - Port 8001 → MongoDB localhost:27017
+- **NhasachHaNoi/** - Hanoi Branch (PRIMARY in rs0) - Port 8002 → MongoDB localhost:27018
+- **NhasachDaNang/** - Da Nang Branch (SECONDARY in rs0) - Port 8003 → MongoDB localhost:27019
+- **NhasachHoChiMinh/** - Ho Chi Minh Branch (SECONDARY in rs0) - Port 8004 → MongoDB localhost:27020
 
 ## Tech Stack
 
@@ -37,29 +37,37 @@ for dir in Nhasach NhasachHaNoi NhasachDaNang NhasachHoChiMinh; do
     cd "$dir" && composer install && cd ..
 done
 
-# Start Docker MongoDB containers (4 separate instances)
+# Start Docker MongoDB containers (1 standalone + 3-node replica set)
 docker-compose up -d
 
 # Wait for containers to be healthy
 sleep 10
 
-# Import data to each MongoDB instance
+# Initialize replica set (mongo2, mongo3, mongo4)
+./init-replica-set.sh
+
+# Import data to Central Hub (standalone)
 cd "Data MONGODB export .json"
 mongoimport --host localhost:27017 --db Nhasach --collection books --file Nhasach.books.json --jsonArray --drop
 mongoimport --host localhost:27017 --db Nhasach --collection users --file Nhasach.users.json --jsonArray --drop
+
+# Import data to PRIMARY (mongo2 - will auto-sync to SECONDARY nodes)
 mongoimport --host localhost:27018 --db NhasachHaNoi --collection books --file NhasachHaNoi.books.json --jsonArray --drop
 mongoimport --host localhost:27018 --db NhasachHaNoi --collection users --file NhasachHaNoi.users.json --jsonArray --drop
 mongoimport --host localhost:27018 --db NhasachHaNoi --collection carts --file NhasachHaNoi.carts.json --jsonArray --drop
 mongoimport --host localhost:27018 --db NhasachHaNoi --collection orders --file NhasachHaNoi.orders.json --jsonArray --drop
-mongoimport --host localhost:27019 --db NhasachDaNang --collection books --file NhasachDaNang.books.json --jsonArray --drop
-mongoimport --host localhost:27019 --db NhasachDaNang --collection users --file NhasachDaNang.users.json --jsonArray --drop
-mongoimport --host localhost:27019 --db NhasachDaNang --collection carts --file NhasachDaNang.carts.json --jsonArray --drop
-mongoimport --host localhost:27019 --db NhasachDaNang --collection orders --file NhasachDaNang.orders.json --jsonArray --drop
-mongoimport --host localhost:27020 --db NhasachHoChiMinh --collection books --file NhasachHoChiMinh.books.json --jsonArray --drop
-mongoimport --host localhost:27020 --db NhasachHoChiMinh --collection users --file NhasachHoChiMinh.users.json --jsonArray --drop
-mongoimport --host localhost:27020 --db NhasachHoChiMinh --collection carts --file NhasachHoChiMinh.carts.json --jsonArray --drop
-mongoimport --host localhost:27020 --db NhasachHoChiMinh --collection orders --file NhasachHoChiMinh.orders.json --jsonArray --drop
+mongoimport --host localhost:27018 --db NhasachDaNang --collection books --file NhasachDaNang.books.json --jsonArray --drop
+mongoimport --host localhost:27018 --db NhasachDaNang --collection users --file NhasachDaNang.users.json --jsonArray --drop
+mongoimport --host localhost:27018 --db NhasachDaNang --collection carts --file NhasachDaNang.carts.json --jsonArray --drop
+mongoimport --host localhost:27018 --db NhasachDaNang --collection orders --file NhasachDaNang.orders.json --jsonArray --drop
+mongoimport --host localhost:27018 --db NhasachHoChiMinh --collection books --file NhasachHoChiMinh.books.json --jsonArray --drop
+mongoimport --host localhost:27018 --db NhasachHoChiMinh --collection users --file NhasachHoChiMinh.users.json --jsonArray --drop
+mongoimport --host localhost:27018 --db NhasachHoChiMinh --collection carts --file NhasachHoChiMinh.carts.json --jsonArray --drop
+mongoimport --host localhost:27018 --db NhasachHoChiMinh --collection orders --file NhasachHoChiMinh.orders.json --jsonArray --drop
 cd ..
+
+# Verify replica set status
+docker exec -it mongo2 mongo --eval "rs.status()" | grep -E "(name|stateStr)"
 
 # Start all PHP servers
 php -S localhost:8001 -t Nhasach &
@@ -69,11 +77,36 @@ php -S localhost:8004 -t NhasachHoChiMinh &
 ```
 
 ### Or use the startup script:
+
 ```bash
 ./start_system.sh
 ```
 
 ## Architecture
+
+### Hybrid MongoDB Setup
+
+This system uses a **hybrid architecture** combining standalone and replica set:
+
+**1. Nhasach (Central Hub) - STANDALONE**
+- Port: 27017
+- Independent MongoDB instance
+- Master catalog: 509 books, 1 user
+- Not part of replica set
+
+**2. Branch Replica Set (rs0) - 3 Nodes**
+- **PRIMARY**: mongo2 (NhasachHaNoi) - Port 27018
+- **SECONDARY**: mongo3 (NhasachDaNang) - Port 27019
+- **SECONDARY**: mongo4 (NhasachHoChiMinh) - Port 27020
+- Automatically synchronizes **orders collection** across all branches
+- Books and users remain independent per branch
+
+### Why This Design?
+
+✅ **Central Hub (Standalone)**: Master catalog, no need for replication
+✅ **Branch Replica Set**: Automatic synchronization of rental orders (mượn sách)
+✅ **Books/Users**: Each branch maintains its own inventory and customer base
+✅ **Orders**: Shared across branches via replica set for unified rental tracking
 
 ### Database Structure
 
@@ -88,13 +121,21 @@ Each node connects to its own MongoDB database via `Connection.php`:
 ### Connection Mode
 
 `Connection.php` supports 3 modes:
-- `standalone` (default) - Each node connects to its own MongoDB port
-  - Nhasach → localhost:27017
-  - NhasachHaNoi → localhost:27018
-  - NhasachDaNang → localhost:27019
-  - NhasachHoChiMinh → localhost:27020
-- `replicaset` - MongoDB Replica Set (mongo1, mongo2, mongo3, mongo4)
-- `sharded` - MongoDB Sharded Cluster via mongos
+
+**Standalone Mode (default)**
+- Nhasach → localhost:27017 (always standalone)
+- NhasachHaNoi → localhost:27018
+- NhasachDaNang → localhost:27019
+- NhasachHoChiMinh → localhost:27020
+
+**Replica Set Mode (rs0)**
+- Only for branches: mongo2, mongo3, mongo4
+- Connection string: `mongodb://mongo2:27017,mongo3:27017,mongo4:27017/?replicaSet=rs0`
+- Requires `/etc/hosts` entry: `127.0.0.1 mongo2 mongo3 mongo4`
+- Synchronizes orders across HaNoi, DaNang, HoChiMinh
+
+**Sharded Mode**
+- MongoDB Sharded Cluster via mongos router (advanced setup)
 
 ### Collections
 

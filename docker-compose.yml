@@ -1,27 +1,27 @@
 version: '3.8'
 
 # =============================================================================
-# MongoDB Standalone Instances for Distributed e-Library System
+# MongoDB Hybrid Setup for Distributed e-Library System
 # =============================================================================
 # Architecture:
-#   - mongo1 (port 27017): Nhasach (Central Hub)
-#   - mongo2 (port 27018): NhasachHaNoi (Hanoi Branch)
-#   - mongo3 (port 27019): NhasachDaNang (Da Nang Branch)
-#   - mongo4 (port 27020): NhasachHoChiMinh (Ho Chi Minh Branch)
+#   - mongo1 (port 27017): Nhasach (Central Hub) - STANDALONE
+#   - mongo2 (port 27018): NhasachHaNoi (Hanoi Branch) - PRIMARY in rs0
+#   - mongo3 (port 27019): NhasachDaNang (Da Nang Branch) - SECONDARY in rs0
+#   - mongo4 (port 27020): NhasachHoChiMinh (Ho Chi Minh Branch) - SECONDARY in rs0
 #
-# Each node runs as STANDALONE MongoDB instance with its own database.
-# This allows 4 separate databases without replica set complexity.
+# Replica Set (rs0) synchronizes ORDERS only across branches (HaNoi, DaNang, HCM)
+# Books and Users remain independent per branch
 #
 # Usage:
 #   1. Start:     docker-compose up -d
-#   2. Check:     docker-compose ps
-#   3. Logs:      docker-compose logs -f
+#   2. Init RS:   ./init-replica-set.sh
+#   3. Check RS:  docker exec -it mongo2 mongosh --eval "rs.status()"
 #   4. Stop:      docker-compose down
 #   5. Clean:     docker-compose down -v (removes all data)
 # =============================================================================
 
 services:
-  # Node 1 - Central Hub (Nhasach) - Port 27017
+  # Node 1 - Central Hub (Nhasach) - STANDALONE - Port 27017
   mongo1:
     image: mongo:4.4
     container_name: mongo1
@@ -42,7 +42,7 @@ services:
       timeout: 5s
       retries: 5
 
-  # Node 2 - Hanoi Branch (NhasachHaNoi) - Port 27018
+  # Node 2 - Hanoi Branch (NhasachHaNoi) - PRIMARY - Port 27018
   mongo2:
     image: mongo:4.4
     container_name: mongo2
@@ -54,8 +54,10 @@ services:
     volumes:
       - mongo2_data:/data/db
     networks:
-      - mongo-net
-    command: ["mongod", "--bind_ip_all"]
+      mongo-net:
+        aliases:
+          - mongo2
+    command: ["mongod", "--replSet", "rs0", "--bind_ip_all"]
     restart: unless-stopped
     healthcheck:
       test: echo 'db.runCommand("ping").ok' | mongo localhost:27017/test --quiet
@@ -63,7 +65,7 @@ services:
       timeout: 5s
       retries: 5
 
-  # Node 3 - Da Nang Branch (NhasachDaNang) - Port 27019
+  # Node 3 - Da Nang Branch (NhasachDaNang) - SECONDARY - Port 27019
   mongo3:
     image: mongo:4.4
     container_name: mongo3
@@ -75,16 +77,20 @@ services:
     volumes:
       - mongo3_data:/data/db
     networks:
-      - mongo-net
-    command: ["mongod", "--bind_ip_all"]
+      mongo-net:
+        aliases:
+          - mongo3
+    command: ["mongod", "--replSet", "rs0", "--bind_ip_all"]
     restart: unless-stopped
+    depends_on:
+      - mongo2
     healthcheck:
       test: echo 'db.runCommand("ping").ok' | mongo localhost:27017/test --quiet
       interval: 10s
       timeout: 5s
       retries: 5
 
-  # Node 4 - Ho Chi Minh Branch (NhasachHoChiMinh) - Port 27020
+  # Node 4 - Ho Chi Minh Branch (NhasachHoChiMinh) - SECONDARY - Port 27020
   mongo4:
     image: mongo:4.4
     container_name: mongo4
@@ -96,9 +102,13 @@ services:
     volumes:
       - mongo4_data:/data/db
     networks:
-      - mongo-net
-    command: ["mongod", "--bind_ip_all"]
+      mongo-net:
+        aliases:
+          - mongo4
+    command: ["mongod", "--replSet", "rs0", "--bind_ip_all"]
     restart: unless-stopped
+    depends_on:
+      - mongo2
     healthcheck:
       test: echo 'db.runCommand("ping").ok' | mongo localhost:27017/test --quiet
       interval: 10s

@@ -31,9 +31,9 @@ try {
             break;
 
         case 'replicaset':
-            // Replica Set Connection (requires /etc/hosts entries)
-            // Add to /etc/hosts: 127.0.0.1 mongo1 mongo2 mongo3 mongo4
-            $Servername = "mongodb://mongo1:27017,mongo2:27017,mongo3:27017,mongo4:27017/?replicaSet=rs0";
+            // Replica Set Connection - HaNoi is PRIMARY in rs0
+            // Add to /etc/hosts: 127.0.0.1 mongo2 mongo3 mongo4
+            $Servername = "mongodb://mongo2:27017,mongo3:27017,mongo4:27017/?replicaSet=rs0";
 
             $conn = new Client($Servername, [
                 'readPreference' => 'primaryPreferred',

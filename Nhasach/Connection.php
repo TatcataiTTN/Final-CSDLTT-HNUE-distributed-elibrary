@@ -31,9 +31,9 @@ try {
             break;
 
         case 'replicaset':
-            // Replica Set Connection (requires /etc/hosts entries)
-            // Add to /etc/hosts: 127.0.0.1 mongo1 mongo2 mongo3 mongo4
-            $Servername = "mongodb://mongo1:27017,mongo2:27017,mongo3:27017,mongo4:27017/?replicaSet=rs0";
+            // Replica Set Connection - NOT USED for Central Hub
+            // Central Hub remains STANDALONE, only branches use replica set
+            $Servername = "mongodb://mongo2:27017,mongo3:27017,mongo4:27017/?replicaSet=rs0";
 
             $conn = new Client($Servername, [
                 'readPreference' => 'primaryPreferred',
@@ -43,7 +43,7 @@ try {
             break;
 
         default:
-            // Standalone Connection - Central Hub on port 27017
+            // Standalone Connection - Central Hub on port 27017 (ALWAYS STANDALONE)
             $Servername = "mongodb://localhost:27017";
             $conn = new Client($Servername);
             break;
