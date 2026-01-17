@@ -210,6 +210,27 @@ Dashboard hiển thị:
     \label{fig:quanlysach}
 \end{figure}
 
+\subsection{Quản lý người dùng (Admin)}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{04_quanlynguoidung.png}
+    \caption{Giao diện quản lý người dùng: Danh sách tổng hợp toàn hệ thống}
+    \label{fig:quanlynguoidung}
+\end{figure}
+
+Giao diện quản lý người dùng hiện tại hiển thị đầy đủ 42 tài khoản, bao gồm 9 quản trị viên tại "Trung Tâm" và 33 khách hàng được đồng bộ từ các chi nhánh (Hà Nội, Đà Nẵng, TP.HCM).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{04_quanlynguoidung_donmuon.png}
+    \caption{Chi tiết thống kê đơn mượn: Tổng hợp từ dữ liệu phân tán}
+    \label{fig:quanlynguoidung_donmuon}
+\end{figure}
+
+Hệ thống tự động tính toán và hiển thị chính xác "Tổng đơn mượn" cho từng người dùng bằng cách cộng gộp dữ liệu từ cơ sở dữ liệu trung tâm và các đơn hàng được đồng bộ từ chi nhánh, đảm bảo tính nhất quán của báo cáo.
+
+
 \subsection{Danh sách sách (Customer)}
 
 \begin{figure}[H]
@@ -226,6 +247,22 @@ Dashboard hiển thị:
     \includegraphics[width=\textwidth]{06_giohang.png}
     \caption{Giao diện giỏ hàng mượn sách}
     \label{fig:giohang}
+\end{figure}
+
+\subsection{Dữ liệu Chi nhánh (Mô hình Phân tán)}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{07_branch_books.png}
+    \caption{Danh sách sách tại chi nhánh Hà Nội}
+    \label{fig:branch_books}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{09_branch_admin.png}
+    \caption{Giao diện Admin quản lý tại chi nhánh}
+    \label{fig:branch_admin}
 \end{figure}
 
 \subsection{Docker Containers}
@@ -617,7 +654,8 @@ Sau quá trình triển khai và kiểm thử, nhóm đánh giá hệ thống e-
 
 \textbf{Chưa triển khai mã hóa kết nối:} Hiện tại, kết nối giữa ứng dụng PHP và MongoDB chưa sử dụng TLS/SSL, điều này có thể tạo ra rủi ro bảo mật nếu triển khai trên môi trường mạng không tin cậy. Đối với môi trường production, việc bổ sung mã hóa TLS cho MongoDB là bắt buộc để bảo vệ dữ liệu trong quá trình truyền tải.
 
-\textbf{Đồng bộ dữ liệu thủ công:} Cơ chế đồng bộ dữ liệu giữa Central Hub và các chi nhánh hiện vẫn yêu cầu quản trị viên kích hoạt thủ công. Chưa có giải pháp đồng bộ thời gian thực (real-time synchronization) hoặc xử lý xung đột dữ liệu (conflict resolution) khi cùng một bản ghi được cập nhật đồng thời tại nhiều nơi.
+\textbf{Đồng bộ dữ liệu thủ công:} Cơ chế đồng bộ dữ liệu giữa Central Hub và các chi nhánh hiện vẫn yêu cầu quản trị viên kích hoạt thủ công thông qua các script đồng bộ. Tuy nhiên, hệ thống đã được nâng cấp để hỗ trợ script \texttt{auto\_sync\_loop.sh}, cho phép tự động hóa quy trình này theo chu kỳ, giúp giảm thiểu sai sót và độ trễ dữ liệu.
+
 
 \subsection{So sánh với các hệ thống cơ sở dữ liệu khác}
 
