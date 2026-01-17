@@ -2,14 +2,19 @@
 
 ## Tổng quan
 
-Hệ thống có 4 nodes chạy trên các ports khác nhau:
+Hệ thống có 4 nodes với kiến trúc hybrid MongoDB:
 
-| Node | Database | Port | Mô tả |
-|------|----------|------|-------|
-| Central Hub | Nhasach | 8001 | Trung tâm quản lý |
-| Branch Hà Nội | NhasachHaNoi | 8002 | Chi nhánh Hà Nội |
-| Branch Đà Nẵng | NhasachDaNang | 8003 | Chi nhánh Đà Nẵng |
-| Branch Hồ Chí Minh | NhasachHoChiMinh | 8004 | Chi nhánh HCM |
+| Node | Database | Port | MongoDB Port | Architecture |
+|------|----------|------|--------------|--------------|
+| Central Hub | Nhasach | 8001 | 27017 | Standalone |
+| Branch Hà Nội | NhasachHaNoi | 8002 | 27018 | Replica Set (PRIMARY) |
+| Branch Đà Nẵng | NhasachDaNang | 8003 | 27019 | Replica Set (SECONDARY) |
+| Branch Hồ Chí Minh | NhasachHoChiMinh | 8004 | 27020 | Replica Set (SECONDARY) |
+
+### Đặc điểm kiến trúc:
+- **Central Hub**: Standalone MongoDB, không tham gia replica set
+- **Branches**: 3-node replica set (rs0) tự động đồng bộ **orders collection**
+- **Books & Users**: Độc lập mỗi chi nhánh (không đồng bộ)
 
 ---
 
@@ -70,7 +75,7 @@ Hệ thống có 4 nodes chạy trên các ports khác nhau:
 
 **URL:** http://localhost:8003
 **Database:** NhasachDaNang
-**Dữ liệu:** 127 sách, 12 users, 0 orders
+**Dữ liệu:** 127 sách, 12 users, 16 orders
 
 ### Admin:
 | Username | Password | Role |
@@ -98,7 +103,7 @@ Hệ thống có 4 nodes chạy trên các ports khác nhau:
 
 **URL:** http://localhost:8004
 **Database:** NhasachHoChiMinh
-**Dữ liệu:** 111 sách, 11 users, 0 orders
+**Dữ liệu:** 111 sách, 11 users, 14 orders
 
 ### Admin:
 | Username | Password | Role |
@@ -123,18 +128,40 @@ Hệ thống có 4 nodes chạy trên các ports khác nhau:
 
 ## Lệnh khởi động
 
+### Khởi động tự động (Khuyến nghị)
 ```bash
-# Central Hub
-cd /path/to/Final\ CSDLTT/Nhasach && php -S localhost:8001
+# Khởi động toàn bộ hệ thống (MongoDB + PHP servers)
+./start_system.sh
 
-# Branch Hà Nội
-cd /path/to/Final\ CSDLTT/NhasachHaNoi && php -S localhost:8002
+# Xác minh replica set
+./verify-replica-set.sh
 
-# Branch Đà Nẵng
-cd /path/to/Final\ CSDLTT/NhasachDaNang && php -S localhost:8003
+# Giám sát hệ thống (real-time)
+./monitor_system.sh
 
-# Branch Hồ Chí Minh
-cd /path/to/Final\ CSDLTT/NhasachHoChiMinh && php -S localhost:8004
+# Dừng hệ thống
+./stop_system.sh
+```
+
+### Khởi động thủ công
+```bash
+# 1. Khởi động MongoDB containers
+docker-compose up -d
+
+# 2. Khởi tạo replica set
+./init-replica-set.sh
+
+# 3. Import dữ liệu (nếu cần)
+cd "Data MONGODB export .json"
+mongoimport --host localhost:27017 --db Nhasach --collection books --file Nhasach.books.json --jsonArray --drop
+mongoimport --host localhost:27018 --db NhasachHaNoi --collection orders --file NhasachHaNoi.orders.json --jsonArray --drop
+# ... (xem SETUP_GUIDE.md để biết chi tiết)
+
+# 4. Khởi động PHP servers
+php -S localhost:8001 -t Nhasach &
+php -S localhost:8002 -t NhasachHaNoi &
+php -S localhost:8003 -t NhasachDaNang &
+php -S localhost:8004 -t NhasachHoChiMinh &
 ```
 
 ---
@@ -144,8 +171,9 @@ cd /path/to/Final\ CSDLTT/NhasachHoChiMinh && php -S localhost:8004
 - Tất cả passwords đều là `123456`
 - Central Hub dùng để quản lý tổng thể (admin)
 - Branches dùng để khách hàng mượn/trả sách
-- Data được sync từ branches về central qua script `sync_data.sh`
+- **Orders tự động đồng bộ** qua replica set (rs0) giữa 3 chi nhánh
+- Books và Users độc lập mỗi chi nhánh
 
 ---
 
-*Cập nhật: 2026-01-03*
+*Cập nhật: 2026-01-17*
