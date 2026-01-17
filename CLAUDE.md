@@ -37,16 +37,31 @@ for dir in Nhasach NhasachHaNoi NhasachDaNang NhasachHoChiMinh; do
     cd "$dir" && composer install && cd ..
 done
 
-# Import data (if MongoDB is empty)
+# Start Docker MongoDB containers (4 separate instances)
+docker-compose up -d
+
+# Wait for containers to be healthy
+sleep 10
+
+# Import data to each MongoDB instance
 cd "Data MONGODB export .json"
-for db in Nhasach NhasachHaNoi NhasachDaNang NhasachHoChiMinh; do
-    for coll in books users orders carts; do
-        [ -f "${db}.${coll}.json" ] && mongoimport --db $db --collection $coll --file "${db}.${coll}.json" --jsonArray --drop
-    done
-done
+mongoimport --host localhost:27017 --db Nhasach --collection books --file Nhasach.books.json --jsonArray --drop
+mongoimport --host localhost:27017 --db Nhasach --collection users --file Nhasach.users.json --jsonArray --drop
+mongoimport --host localhost:27018 --db NhasachHaNoi --collection books --file NhasachHaNoi.books.json --jsonArray --drop
+mongoimport --host localhost:27018 --db NhasachHaNoi --collection users --file NhasachHaNoi.users.json --jsonArray --drop
+mongoimport --host localhost:27018 --db NhasachHaNoi --collection carts --file NhasachHaNoi.carts.json --jsonArray --drop
+mongoimport --host localhost:27018 --db NhasachHaNoi --collection orders --file NhasachHaNoi.orders.json --jsonArray --drop
+mongoimport --host localhost:27019 --db NhasachDaNang --collection books --file NhasachDaNang.books.json --jsonArray --drop
+mongoimport --host localhost:27019 --db NhasachDaNang --collection users --file NhasachDaNang.users.json --jsonArray --drop
+mongoimport --host localhost:27019 --db NhasachDaNang --collection carts --file NhasachDaNang.carts.json --jsonArray --drop
+mongoimport --host localhost:27019 --db NhasachDaNang --collection orders --file NhasachDaNang.orders.json --jsonArray --drop
+mongoimport --host localhost:27020 --db NhasachHoChiMinh --collection books --file NhasachHoChiMinh.books.json --jsonArray --drop
+mongoimport --host localhost:27020 --db NhasachHoChiMinh --collection users --file NhasachHoChiMinh.users.json --jsonArray --drop
+mongoimport --host localhost:27020 --db NhasachHoChiMinh --collection carts --file NhasachHoChiMinh.carts.json --jsonArray --drop
+mongoimport --host localhost:27020 --db NhasachHoChiMinh --collection orders --file NhasachHoChiMinh.orders.json --jsonArray --drop
+cd ..
 
 # Start all PHP servers
-cd ..
 php -S localhost:8001 -t Nhasach &
 php -S localhost:8002 -t NhasachHaNoi &
 php -S localhost:8003 -t NhasachDaNang &
@@ -63,18 +78,22 @@ php -S localhost:8004 -t NhasachHoChiMinh &
 ### Database Structure
 
 Each node connects to its own MongoDB database via `Connection.php`:
-- Central: `Nhasach` (509 books, 6 users, 35 orders)
-- Ha Noi: `NhasachHaNoi` (162 books, 13 users, 46 orders)
-- Da Nang: `NhasachDaNang` (127 books, 12 users, 16 orders)
-- Ho Chi Minh: `NhasachHoChiMinh` (111 books, 11 users, 14 orders)
+- Central: `Nhasach` on **localhost:27017** (509 books, 1 user)
+- Ha Noi: `NhasachHaNoi` on **localhost:27018** (162 books, 13 users, 46 orders, 12 carts)
+- Da Nang: `NhasachDaNang` on **localhost:27019** (127 books, 12 users, 16 orders, 9 carts)
+- Ho Chi Minh: `NhasachHoChiMinh` on **localhost:27020** (111 books, 11 users, 14 orders, 10 carts)
 
-**Total:** 909 books, 42 users, 111 orders
+**Total:** 909 books, 37 users, 76 orders, 31 carts
 
 ### Connection Mode
 
 `Connection.php` supports 3 modes:
-- `standalone` (default) - Single MongoDB instance on localhost:27017
-- `replicaset` - MongoDB Replica Set (mongo1, mongo2, mongo3)
+- `standalone` (default) - Each node connects to its own MongoDB port
+  - Nhasach → localhost:27017
+  - NhasachHaNoi → localhost:27018
+  - NhasachDaNang → localhost:27019
+  - NhasachHoChiMinh → localhost:27020
+- `replicaset` - MongoDB Replica Set (mongo1, mongo2, mongo3, mongo4)
 - `sharded` - MongoDB Sharded Cluster via mongos
 
 ### Collections

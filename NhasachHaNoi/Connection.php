@@ -32,8 +32,8 @@ try {
 
         case 'replicaset':
             // Replica Set Connection (requires /etc/hosts entries)
-            // Add to /etc/hosts: 127.0.0.1 mongo1 mongo2 mongo3
-            $Servername = "mongodb://mongo1:27017,mongo2:27017,mongo3:27017/?replicaSet=rs0";
+            // Add to /etc/hosts: 127.0.0.1 mongo1 mongo2 mongo3 mongo4
+            $Servername = "mongodb://mongo1:27017,mongo2:27017,mongo3:27017,mongo4:27017/?replicaSet=rs0";
 
             $conn = new Client($Servername, [
                 'readPreference' => 'primaryPreferred',
@@ -43,8 +43,8 @@ try {
             break;
 
         default:
-            // Standalone Connection (single MongoDB instance)
-            $Servername = "mongodb://localhost:27017";
+            // Standalone Connection - Hanoi Branch on port 27018
+            $Servername = "mongodb://localhost:27018";
             $conn = new Client($Servername);
             break;
     }

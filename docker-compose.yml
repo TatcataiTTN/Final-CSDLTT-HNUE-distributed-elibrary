@@ -1,23 +1,27 @@
 version: '3.8'
 
 # =============================================================================
-# MongoDB Replica Set for Distributed e-Library System
+# MongoDB Standalone Instances for Distributed e-Library System
 # =============================================================================
 # Architecture:
-#   - mongo1 (port 27017): PRIMARY - Central Hub
-#   - mongo2 (port 27018): SECONDARY - Branch Node 1
-#   - mongo3 (port 27019): SECONDARY - Branch Node 2
+#   - mongo1 (port 27017): Nhasach (Central Hub)
+#   - mongo2 (port 27018): NhasachHaNoi (Hanoi Branch)
+#   - mongo3 (port 27019): NhasachDaNang (Da Nang Branch)
+#   - mongo4 (port 27020): NhasachHoChiMinh (Ho Chi Minh Branch)
+#
+# Each node runs as STANDALONE MongoDB instance with its own database.
+# This allows 4 separate databases without replica set complexity.
 #
 # Usage:
 #   1. Start:     docker-compose up -d
-#   2. Init RS:   docker exec -it mongo1 mongo --eval "rs.initiate({...})"
-#   3. Status:    docker exec -it mongo1 mongo --eval "rs.status()"
+#   2. Check:     docker-compose ps
+#   3. Logs:      docker-compose logs -f
 #   4. Stop:      docker-compose down
-#   5. Clean:     docker-compose down -v (removes data)
+#   5. Clean:     docker-compose down -v (removes all data)
 # =============================================================================
 
 services:
-  # Primary Node - Central Hub (Nhasach)
+  # Node 1 - Central Hub (Nhasach) - Port 27017
   mongo1:
     image: mongo:4.4
     container_name: mongo1
@@ -28,15 +32,17 @@ services:
       - MONGO_INITDB_DATABASE=Nhasach
     volumes:
       - mongo1_data:/data/db
-      - ./mongo-init/init-rs.js:/docker-entrypoint-initdb.d/init-rs.js:ro
     networks:
-      mongo-net:
-        aliases:
-          - mongo1
-    command: ["mongod", "--replSet", "rs0", "--bind_ip_all"]
+      - mongo-net
+    command: ["mongod", "--bind_ip_all"]
     restart: unless-stopped
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongo localhost:27017/test --quiet
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
-  # Secondary Node 1 - Branch (NhasachHaNoi, NhasachDaNang)
+  # Node 2 - Hanoi Branch (NhasachHaNoi) - Port 27018
   mongo2:
     image: mongo:4.4
     container_name: mongo2
@@ -48,15 +54,16 @@ services:
     volumes:
       - mongo2_data:/data/db
     networks:
-      mongo-net:
-        aliases:
-          - mongo2
-    command: ["mongod", "--replSet", "rs0", "--bind_ip_all"]
+      - mongo-net
+    command: ["mongod", "--bind_ip_all"]
     restart: unless-stopped
-    depends_on:
-      - mongo1
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongo localhost:27017/test --quiet
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
-  # Secondary Node 2 - Branch (NhasachHoChiMinh)
+  # Node 3 - Da Nang Branch (NhasachDaNang) - Port 27019
   mongo3:
     image: mongo:4.4
     container_name: mongo3
@@ -64,17 +71,39 @@ services:
     ports:
       - "27019:27017"
     environment:
-      - MONGO_INITDB_DATABASE=NhasachHoChiMinh
+      - MONGO_INITDB_DATABASE=NhasachDaNang
     volumes:
       - mongo3_data:/data/db
     networks:
-      mongo-net:
-        aliases:
-          - mongo3
-    command: ["mongod", "--replSet", "rs0", "--bind_ip_all"]
+      - mongo-net
+    command: ["mongod", "--bind_ip_all"]
     restart: unless-stopped
-    depends_on:
-      - mongo1
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongo localhost:27017/test --quiet
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Node 4 - Ho Chi Minh Branch (NhasachHoChiMinh) - Port 27020
+  mongo4:
+    image: mongo:4.4
+    container_name: mongo4
+    hostname: mongo4
+    ports:
+      - "27020:27017"
+    environment:
+      - MONGO_INITDB_DATABASE=NhasachHoChiMinh
+    volumes:
+      - mongo4_data:/data/db
+    networks:
+      - mongo-net
+    command: ["mongod", "--bind_ip_all"]
+    restart: unless-stopped
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongo localhost:27017/test --quiet
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
 networks:
   mongo-net:
@@ -87,3 +116,5 @@ volumes:
     name: elibrary_mongo2_data
   mongo3_data:
     name: elibrary_mongo3_data
+  mongo4_data:
+    name: elibrary_mongo4_data
