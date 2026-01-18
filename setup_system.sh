@@ -95,23 +95,31 @@ print_success "Replica set initialized"
 # =============================================================================
 print_header "STEP 4: Importing sample data"
 
-print_info "Importing data to Central (mongo1)..."
-if [ -f "sample_data/books.json" ]; then
-    docker exec -i mongo1 mongo Nhasach --eval 'db.books.deleteMany({})' 2>/dev/null || true
-    docker exec -i mongo1 mongoimport --db Nhasach --collection books --file /tmp/books.json --jsonArray 2>/dev/null || true
-    print_success "Books imported to Central"
+DATA_DIR="Data MONGODB export .json"
+
+if [ -d "$DATA_DIR" ]; then
+    print_info "Importing data to Central (mongo1)..."
+    cat "$DATA_DIR/Nhasach.books.json" | docker exec -i mongo1 mongoimport --db Nhasach --collection books --drop --jsonArray
+    cat "$DATA_DIR/Nhasach.users.json" | docker exec -i mongo1 mongoimport --db Nhasach --collection users --drop --jsonArray
+    print_success "Central data imported (Books + Users)"
+
+    print_info "Importing data to Hà Nội (mongo2)..."
+    cat "$DATA_DIR/NhasachHaNoi.books.json" | docker exec -i mongo2 mongoimport --db NhasachHaNoi --collection books --drop --jsonArray
+    cat "$DATA_DIR/NhasachHaNoi.users.json" | docker exec -i mongo2 mongoimport --db NhasachHaNoi --collection users --drop --jsonArray
+    cat "$DATA_DIR/NhasachHaNoi.orders.json" | docker exec -i mongo2 mongoimport --db NhasachHaNoi --collection orders --drop --jsonArray
+    cat "$DATA_DIR/NhasachHaNoi.carts.json" | docker exec -i mongo2 mongoimport --db NhasachHaNoi --collection carts --drop --jsonArray
+    print_success "Hà Nội data imported (Books + Users + Orders + Carts)"
+
+    print_info "Verifying imported data..."
+    echo -e "${YELLOW}Central:${NC}"
+    docker exec mongo1 mongo Nhasach --quiet --eval "print('  Books: ' + db.books.countDocuments({})); print('  Users: ' + db.users.countDocuments({}));"
+    echo -e "${YELLOW}Hà Nội:${NC}"
+    docker exec mongo2 mongo NhasachHaNoi --quiet --eval "print('  Books: ' + db.books.countDocuments({})); print('  Users: ' + db.users.countDocuments({})); print('  Orders: ' + db.orders.countDocuments({}));"
+
+    print_success "Data import completed"
 else
-    print_info "No sample data found, skipping..."
+    print_info "No data directory found at '$DATA_DIR', skipping import..."
 fi
-
-print_info "Importing data to Hà Nội (mongo2)..."
-if [ -f "sample_data/orders.json" ]; then
-    docker exec -i mongo2 mongo NhasachHaNoi --eval 'db.orders.deleteMany({})' 2>/dev/null || true
-    docker exec -i mongo2 mongoimport --db NhasachHaNoi --collection orders --file /tmp/orders.json --jsonArray 2>/dev/null || true
-    print_success "Orders imported to Hà Nội"
-fi
-
-print_success "Data import completed"
 
 # =============================================================================
 # STEP 5: Start PHP servers
