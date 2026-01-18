@@ -44,7 +44,8 @@ echo -e "${YELLOW}🗄️  MongoDB Connections:${NC}"
 check_mongo() {
     local port=$1
     local name=$2
-    if docker exec mongo${port: -1} mongo --quiet --eval "db.adminCommand('ping')" >/dev/null 2>&1; then
+    local container_num=${port: -1}
+    if docker exec mongo${container_num} mongo --quiet --eval "db.adminCommand('ping').ok" 2>/dev/null | grep -q "1"; then
         echo -e "${GREEN}✅ $name (port $port) - CONNECTED${NC}"
     else
         echo -e "${RED}❌ $name (port $port) - NOT CONNECTED${NC}"
