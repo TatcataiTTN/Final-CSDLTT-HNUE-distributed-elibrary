@@ -44,18 +44,18 @@ echo -e "${YELLOW}🗄️  MongoDB Connections:${NC}"
 check_mongo() {
     local port=$1
     local name=$2
-    local container_num=${port: -1}
-    if docker exec mongo${container_num} mongo --quiet --eval "db.adminCommand('ping').ok" 2>/dev/null | grep -q "1"; then
+    local container_name=$3
+    if docker exec ${container_name} mongo --quiet --eval "db.adminCommand('ping').ok" 2>/dev/null | grep -q "1"; then
         echo -e "${GREEN}✅ $name (port $port) - CONNECTED${NC}"
     else
         echo -e "${RED}❌ $name (port $port) - NOT CONNECTED${NC}"
     fi
 }
 
-check_mongo 27017 "Central"
-check_mongo 27018 "Hà Nội"
-check_mongo 27019 "Đà Nẵng"
-check_mongo 27020 "TP.HCM"
+check_mongo 27017 "Central" "mongo1"
+check_mongo 27018 "Hà Nội" "mongo2"
+check_mongo 27019 "Đà Nẵng" "mongo3"
+check_mongo 27020 "TP.HCM" "mongo4"
 echo ""
 
 # Check Replica Set status
