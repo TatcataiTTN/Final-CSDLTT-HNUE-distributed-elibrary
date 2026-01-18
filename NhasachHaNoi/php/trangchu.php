@@ -69,6 +69,7 @@ $role     = $_SESSION['role'] ?? "customer";
         <a href="quanlysach.php">Quản lý sách</a>
         <a href="quanlynguoidung.php">Quản lý người dùng</a>
         <a href="dashboard.php">Dashboard</a>
+        <a href="dashboard_datacenter.php" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; font-weight: bold;">🌐 Data Center</a>
     <?php endif; ?>
 </div>
         <div class="nav-user">

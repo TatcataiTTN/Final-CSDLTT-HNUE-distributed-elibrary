@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌐 Data Center API Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+        }
+
+        .token-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .token-section label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .token-section input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .token-section small {
+            display: block;
+            margin-top: 8px;
+            color: #7f8c8d;
+        }
+
+        .endpoints {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .endpoint-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .endpoint-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .endpoint-btn:active {
+            transform: translateY(0);
+        }
+
+        .response-section {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .response-section h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .response-content {
+            background: #2c3e50;
+            color: #00ff00;
+            padding: 20px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            max-height: 500px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .loading {
+            text-align: center;
+            color: #667eea;
+            font-weight: bold;
+            padding: 20px;
+        }
+
+        .error {
+            background: #fee;
+            color: #c00;
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 4px solid #c00;
+        }
+
+        .success {
+            background: #efe;
+            color: #060;
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 4px solid #060;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .stat-card h4 {
+            color: #7f8c8d;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .stat-card .value {
+            font-size: 32px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌐 Data Center API Demo</h1>
+        <p class="subtitle">Test tất cả endpoints của Data Center API</p>
+
+        <!-- Token Input -->
+        <div class="token-section">
+            <label for="jwtToken">🔐 JWT Token (Admin):</label>
+            <input type="text" id="jwtToken" placeholder="Nhập JWT token của bạn...">
+            <small>💡 Lấy token từ browser console sau khi đăng nhập: <code>localStorage.getItem('jwt_token')</code></small>
+        </div>
+
+        <!-- Endpoints -->
+        <h3 style="margin-bottom: 15px; color: #2c3e50;">📡 Available Endpoints:</h3>
+        <div class="endpoints">
+            <button class="endpoint-btn" onclick="callAPI('dashboard_summary')">
+                📊 Dashboard Summary
+            </button>
+            <button class="endpoint-btn" onclick="callAPI('total_books')">
+                📚 Total Books
+            </button>
+            <button class="endpoint-btn" onclick="callAPI('total_users')">
+                👥 Total Users
+            </button>
+            <button class="endpoint-btn" onclick="callAPI('total_orders')">
+                📦 Total Orders
+            </button>
+            <button class="endpoint-btn" onclick="callAPI('orders_by_status')">
+                📊 Orders by Status
+            </button>
+            <button class="endpoint-btn" onclick="callAPI('top_books')">
+                🏆 Top Books
+            </button>
+            <button class="endpoint-btn" onclick="callAPI('revenue_by_branch')">
+                💰 Revenue by Branch
+            </button>
+            <button class="endpoint-btn" onclick="callAPI('search_books', 'harry')">
+                🔍 Search Books (harry)
+            </button>
+        </div>
+
+        <!-- Response Section -->
+        <div class="response-section" id="responseSection" style="display: none;">
+            <h3>📥 Response:</h3>
+            <div id="responseContent" class="response-content"></div>
+        </div>
+    </div>
+
+    <script>
+        const BASE_URL = 'http://localhost:8002/api/datacenter.php';
+
+        async function callAPI(action, keyword = '') {
+            const token = document.getElementById('jwtToken').value.trim();
+            
+            if (!token) {
+                alert('⚠️ Vui lòng nhập JWT token!');
+                return;
+            }
+
+            const responseSection = document.getElementById('responseSection');
+            const responseContent = document.getElementById('responseContent');
+            
+            responseSection.style.display = 'block';
+            responseContent.innerHTML = '<div class="loading">⏳ Loading...</div>';
+
+            let url = `${BASE_URL}?action=${action}`;
+            if (keyword) {
+                url += `&keyword=${keyword}`;
+            }
+
+            try {
+                const response = await fetch(url, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+
+                const data = await response.json();
+                
+                // Pretty print JSON
+                responseContent.innerHTML = JSON.stringify(data, null, 2);
+
+                // Show success/error message
+                if (data.success) {
+                    console.log('✅ Success:', data);
+                } else {
+                    console.error('❌ Error:', data);
+                }
+
+            } catch (error) {
+                responseContent.innerHTML = `<div class="error">❌ Error: ${error.message}</div>`;
+                console.error('Error:', error);
+            }
+        }
+
+        // Auto-load token from localStorage if available
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedToken = localStorage.getItem('jwt_token');
+            if (savedToken) {
+                document.getElementById('jwtToken').value = savedToken;
+                console.log('✅ JWT token loaded from localStorage');
+            }
+        });
+
+        // Save token to localStorage when changed
+        document.getElementById('jwtToken').addEventListener('change', (e) => {
+            const token = e.target.value.trim();
+            if (token) {
+                localStorage.setItem('jwt_token', token);
+                console.log('✅ JWT token saved to localStorage');
+            }
+        });
+    </script>
+</body>
+</html>
+

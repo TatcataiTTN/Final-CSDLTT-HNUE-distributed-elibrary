@@ -333,9 +333,11 @@ $currentLoc    = $isEditing ? ($editingBook['location'] ?? 'Đà Nẵng') : 'Đ�
             <?php endif; ?>
         </div>
 
-        <!-- NÚT ĐỒNG BỘ -->
-       <a href="sync_books_to_center.php" class="btn-sync">⬆ Đồng bộ số lượng lên Trung tâm</a>
-
+        <!-- THÔNG BÁO ĐỒNG BỘ TỰ ĐỘNG -->
+        <div style="background: #e8f5e9; border-left: 4px solid #4caf50; padding: 15px; margin: 20px 0; border-radius: 4px;">
+            <strong>ℹ️ Đồng bộ tự động:</strong> Hệ thống Replica Set tự động đồng bộ dữ liệu giữa các chi nhánh.
+            Mọi thay đổi sẽ được cập nhật tự động trong vòng vài giây.
+        </div>
 
         <!-- DANH SÁCH SÁCH -->
         <div class="table-wrapper">
