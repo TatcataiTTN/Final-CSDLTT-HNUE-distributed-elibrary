@@ -44,7 +44,7 @@ echo -e "${YELLOW}🗄️  MongoDB Connections:${NC}"
 check_mongo() {
     local port=$1
     local name=$2
-    if docker exec mongo${port: -1} mongosh --quiet --eval "db.adminCommand('ping')" >/dev/null 2>&1; then
+    if docker exec mongo${port: -1} mongo --quiet --eval "db.adminCommand('ping')" >/dev/null 2>&1; then
         echo -e "${GREEN}✅ $name (port $port) - CONNECTED${NC}"
     else
         echo -e "${RED}❌ $name (port $port) - NOT CONNECTED${NC}"
@@ -59,7 +59,7 @@ echo ""
 
 # Check Replica Set status
 echo -e "${YELLOW}🔄 Replica Set Status (rs0):${NC}"
-docker exec mongo2 mongosh --quiet --eval '
+docker exec mongo2 mongo --quiet --eval '
 rs.status().members.forEach(function(m) {
     print(m.name + " - " + m.stateStr + " (health: " + m.health + ")");
 })

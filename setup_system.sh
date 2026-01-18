@@ -71,7 +71,7 @@ print_header "STEP 3: Initializing Replica Set (HN, DN, HCM)"
 
 print_info "Configuring replica set rs0..."
 
-docker exec -it mongo2 mongosh --eval '
+docker exec -it mongo2 mongo --eval '
 rs.initiate({
   _id: "rs0",
   members: [
@@ -86,7 +86,7 @@ print_info "Waiting for replica set to stabilize (20 seconds)..."
 sleep 20
 
 print_info "Checking replica set status..."
-docker exec -it mongo2 mongosh --eval 'rs.status()' | grep -E "name|stateStr"
+docker exec -it mongo2 mongo --eval 'rs.status()' | grep -E "name|stateStr"
 
 print_success "Replica set initialized"
 
@@ -97,7 +97,7 @@ print_header "STEP 4: Importing sample data"
 
 print_info "Importing data to Central (mongo1)..."
 if [ -f "sample_data/books.json" ]; then
-    docker exec -i mongo1 mongosh Nhasach --eval 'db.books.deleteMany({})' 2>/dev/null || true
+    docker exec -i mongo1 mongo Nhasach --eval 'db.books.deleteMany({})' 2>/dev/null || true
     docker exec -i mongo1 mongoimport --db Nhasach --collection books --file /tmp/books.json --jsonArray 2>/dev/null || true
     print_success "Books imported to Central"
 else
@@ -106,7 +106,7 @@ fi
 
 print_info "Importing data to Hà Nội (mongo2)..."
 if [ -f "sample_data/orders.json" ]; then
-    docker exec -i mongo2 mongosh NhasachHaNoi --eval 'db.orders.deleteMany({})' 2>/dev/null || true
+    docker exec -i mongo2 mongo NhasachHaNoi --eval 'db.orders.deleteMany({})' 2>/dev/null || true
     docker exec -i mongo2 mongoimport --db NhasachHaNoi --collection orders --file /tmp/orders.json --jsonArray 2>/dev/null || true
     print_success "Orders imported to Hà Nội"
 fi
@@ -160,7 +160,7 @@ print_info "Checking PHP servers..."
 ps aux | grep "php -S" | grep -v grep
 
 print_info "Checking replica set status..."
-docker exec -it mongo2 mongosh --eval 'rs.status().members.forEach(m => print(m.name + " - " + m.stateStr))'
+docker exec -it mongo2 mongo --eval 'rs.status().members.forEach(m => print(m.name + " - " + m.stateStr))'
 
 print_success "System verification completed"
 
