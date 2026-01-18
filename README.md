@@ -1,239 +1,271 @@
-# Distributed e-Library Management System
+# 📚 HỆ THỐNG QUẢN LÝ NHÀ SÁCH PHÂN TÁN
 
-**Hệ thống quản lý thư viện phân tán** - A multi-branch book rental platform using MongoDB with hybrid architecture (standalone + replica set).
+**Distributed e-Library Management System** - Hệ thống quản lý nhà sách đa chi nhánh sử dụng MongoDB với kiến trúc hybrid (standalone + replica set).
 
-## Project Overview
+[![MongoDB](https://img.shields.io/badge/MongoDB-4.4-green.svg)](https://www.mongodb.com/)
+[![PHP](https://img.shields.io/badge/PHP-7.4+-blue.svg)](https://www.php.net/)
+[![Docker](https://img.shields.io/badge/Docker-Compose-blue.svg)](https://www.docker.com/)
+[![License](https://img.shields.io/badge/License-Educational-yellow.svg)](LICENSE)
 
-This system simulates a distributed library network with 4 nodes across Vietnam:
+## 🎯 Tổng quan dự án
 
-- **Nhasach/** - Central Hub (standalone) - Port 8001 → MongoDB localhost:27017
-- **NhasachHaNoi/** - Hanoi Branch (PRIMARY in rs0) - Port 8002 → MongoDB localhost:27018
-- **NhasachDaNang/** - Da Nang Branch (SECONDARY in rs0) - Port 8003 → MongoDB localhost:27019
-- **NhasachHoChiMinh/** - Ho Chi Minh Branch (SECONDARY in rs0) - Port 8004 → MongoDB localhost:27020
+Hệ thống mô phỏng mạng lưới nhà sách phân tán với 4 node trên toàn quốc:
 
-## Tech Stack
+- **Nhasach/** - Central Hub (Standalone) - Port 8001 → MongoDB localhost:27017
+- **NhasachHaNoi/** - Chi nhánh Hà Nội (PRIMARY rs0) - Port 8002 → MongoDB localhost:27018
+- **NhasachDaNang/** - Chi nhánh Đà Nẵng (SECONDARY rs0) - Port 8003 → MongoDB localhost:27019
+- **NhasachHoChiMinh/** - Chi nhánh TP.HCM (SECONDARY rs0) - Port 8004 → MongoDB localhost:27020
 
-- **Backend:** PHP 8.4 with MongoDB PHP Driver (mongodb/mongodb v2.1)
-- **Database:** MongoDB 8.0 (local via Homebrew) or MongoDB 4.4+ (Docker)
-- **Frontend:** HTML5/CSS3/JavaScript with Chart.js for dashboard
+---
+
+## 🔧 Công nghệ sử dụng
+
+- **Backend:** PHP 7.4+ với MongoDB PHP Driver (mongodb/mongodb v1.x)
+- **Database:** MongoDB 4.4 (Docker Compose)
+- **Frontend:** HTML5/CSS3/JavaScript với Chart.js
 - **Authentication:** JWT (firebase/php-jwt) + bcrypt password hashing
-- **Containerization:** Docker Compose (optional for Replica Set)
+- **DevOps:** Docker Compose, Shell Scripts
 
-## Quick Start
+---
 
-### Prerequisites
-- PHP 8.x with MongoDB extension (`pecl install mongodb`)
-- MongoDB running on localhost:27017
-- Composer for PHP dependencies
+## 🚀 Khởi động nhanh
 
-### Setup Commands
+### Yêu cầu hệ thống
+
+- Docker & Docker Compose
+- PHP 7.4+ với MongoDB extension
+- Composer
+- Git
+
+### Cài đặt và khởi động
 
 ```bash
-# Navigate to project
-cd "/Users/tuannghiat/Downloads/Final CSDLTT"
+# Clone repository
+git clone https://github.com/TatcataiTTN/Final-CSDLTT-HNUE-distributed-elibrary.git
+cd Final-CSDLTT-HNUE-distributed-elibrary
 
-# Install dependencies for all nodes
+# Khởi động hệ thống (tự động setup tất cả)
+./start_system.sh
+```
+
+**Hoặc setup thủ công:**
+
+```bash
+# 1. Cài đặt dependencies
 for dir in Nhasach NhasachHaNoi NhasachDaNang NhasachHoChiMinh; do
     cd "$dir" && composer install && cd ..
 done
 
-# Start Docker MongoDB containers (1 standalone + 3-node replica set)
+# 2. Khởi động Docker containers
 docker-compose up -d
 
-# Wait for containers to be healthy
-sleep 10
-
-# Initialize replica set (mongo2, mongo3, mongo4)
+# 3. Khởi tạo Replica Set
 ./init-replica-set.sh
 
-# Import data to Central Hub (standalone)
-cd "Data MONGODB export .json"
-mongoimport --host localhost:27017 --db Nhasach --collection books --file Nhasach.books.json --jsonArray --drop
-mongoimport --host localhost:27017 --db Nhasach --collection users --file Nhasach.users.json --jsonArray --drop
+# 4. Import dữ liệu (xem file import_data.sh)
+./import_data.sh
 
-# Import data to PRIMARY (mongo2 - will auto-sync to SECONDARY nodes)
-mongoimport --host localhost:27018 --db NhasachHaNoi --collection books --file NhasachHaNoi.books.json --jsonArray --drop
-mongoimport --host localhost:27018 --db NhasachHaNoi --collection users --file NhasachHaNoi.users.json --jsonArray --drop
-mongoimport --host localhost:27018 --db NhasachHaNoi --collection carts --file NhasachHaNoi.carts.json --jsonArray --drop
-mongoimport --host localhost:27018 --db NhasachHaNoi --collection orders --file NhasachHaNoi.orders.json --jsonArray --drop
-mongoimport --host localhost:27018 --db NhasachDaNang --collection books --file NhasachDaNang.books.json --jsonArray --drop
-mongoimport --host localhost:27018 --db NhasachDaNang --collection users --file NhasachDaNang.users.json --jsonArray --drop
-mongoimport --host localhost:27018 --db NhasachDaNang --collection carts --file NhasachDaNang.carts.json --jsonArray --drop
-mongoimport --host localhost:27018 --db NhasachDaNang --collection orders --file NhasachDaNang.orders.json --jsonArray --drop
-mongoimport --host localhost:27018 --db NhasachHoChiMinh --collection books --file NhasachHoChiMinh.books.json --jsonArray --drop
-mongoimport --host localhost:27018 --db NhasachHoChiMinh --collection users --file NhasachHoChiMinh.users.json --jsonArray --drop
-mongoimport --host localhost:27018 --db NhasachHoChiMinh --collection carts --file NhasachHoChiMinh.carts.json --jsonArray --drop
-mongoimport --host localhost:27018 --db NhasachHoChiMinh --collection orders --file NhasachHoChiMinh.orders.json --jsonArray --drop
-cd ..
-
-# Verify replica set status
-docker exec -it mongo2 mongo --eval "rs.status()" | grep -E "(name|stateStr)"
-
-# Start all PHP servers
+# 5. Khởi động PHP servers
 php -S localhost:8001 -t Nhasach &
 php -S localhost:8002 -t NhasachHaNoi &
 php -S localhost:8003 -t NhasachDaNang &
 php -S localhost:8004 -t NhasachHoChiMinh &
 ```
 
-### Or use the startup script:
+### Truy cập hệ thống
 
-```bash
-./start_system.sh
+- **Central Hub:** http://localhost:8001
+- **Hà Nội:** http://localhost:8002
+- **Đà Nẵng:** http://localhost:8003
+- **TP.HCM:** http://localhost:8004
+
+### Tài khoản test
+
+```
+Customer: tuannghia / 123456
+Admin: adminHN / 123456
 ```
 
-## Architecture
+---
 
-### Hybrid MongoDB Setup
+## 🏗️ Kiến trúc hệ thống
 
-This system uses a **hybrid architecture** combining standalone and replica set:
+### Kiến trúc Hybrid MongoDB
 
-**1. Nhasach (Central Hub) - STANDALONE**
+Hệ thống sử dụng **kiến trúc hybrid** kết hợp standalone và replica set:
+
+#### 1. Nhasach (Central Hub) - STANDALONE
+
 - Port: 27017
-- Independent MongoDB instance
-- Master catalog: 509 books, 1 user
-- Not part of replica set
+- MongoDB instance độc lập
+- Master catalog: 1,018 sách
+- Không thuộc replica set
 
-**2. Branch Replica Set (rs0) - 3 Nodes**
+#### 2. Branch Replica Set (rs0) - 3 Nodes
+
 - **PRIMARY**: mongo2 (NhasachHaNoi) - Port 27018
 - **SECONDARY**: mongo3 (NhasachDaNang) - Port 27019
 - **SECONDARY**: mongo4 (NhasachHoChiMinh) - Port 27020
-- Automatically synchronizes **orders collection** across all branches
-- Books and users remain independent per branch
+- Tự động đồng bộ **orders collection** giữa các chi nhánh
+- Books và users độc lập theo từng chi nhánh
 
-### Why This Design?
+### Tại sao thiết kế này?
 
-✅ **Central Hub (Standalone)**: Master catalog, no need for replication
-✅ **Branch Replica Set**: Automatic synchronization of rental orders (mượn sách)
-✅ **Books/Users**: Each branch maintains its own inventory and customer base
-✅ **Orders**: Shared across branches via replica set for unified rental tracking
+✅ **Central Hub (Standalone)**: Master catalog, không cần replication
+✅ **Branch Replica Set**: Đồng bộ tự động các đơn mượn sách
+✅ **Books/Users**: Mỗi chi nhánh quản lý riêng kho sách và khách hàng
+✅ **Orders**: Chia sẻ giữa các chi nhánh qua replica set để theo dõi thống nhất
 
-### Database Structure
+### Cấu trúc Database
 
-Each node connects to its own MongoDB database via `Connection.php`:
-- Central: `Nhasach` on **localhost:27017** (509 books, 1 user)
-- Ha Noi: `NhasachHaNoi` on **localhost:27018** (162 books, 13 users, 46 orders, 12 carts)
-- Da Nang: `NhasachDaNang` on **localhost:27019** (127 books, 12 users, 16 orders, 9 carts)
-- Ho Chi Minh: `NhasachHoChiMinh` on **localhost:27020** (111 books, 11 users, 14 orders, 10 carts)
+Mỗi node kết nối đến MongoDB database riêng qua `Connection.php`:
 
-**Total:** 909 books, 37 users, 76 orders, 31 carts
+- **Central**: `Nhasach` trên localhost:27017 (509 sách, 1 user)
+- **Hà Nội**: `NhasachHaNoi` trên localhost:27018 (162 sách, 13 users, 46 orders)
+- **Đà Nẵng**: `NhasachDaNang` trên localhost:27019 (127 sách, 12 users, 16 orders)
+- **TP.HCM**: `NhasachHoChiMinh` trên localhost:27020 (111 sách, 11 users, 14 orders)
 
-### Connection Mode
-
-`Connection.php` supports 3 modes:
-
-**Standalone Mode (default)**
-- Nhasach → localhost:27017 (always standalone)
-- NhasachHaNoi → localhost:27018
-- NhasachDaNang → localhost:27019
-- NhasachHoChiMinh → localhost:27020
-
-**Replica Set Mode (rs0)**
-- Only for branches: mongo2, mongo3, mongo4
-- Connection string: `mongodb://mongo2:27017,mongo3:27017,mongo4:27017/?replicaSet=rs0`
-- Requires `/etc/hosts` entry: `127.0.0.1 mongo2 mongo3 mongo4`
-- Synchronizes orders across HaNoi, DaNang, HoChiMinh
-
-**Sharded Mode**
-- MongoDB Sharded Cluster via mongos router (advanced setup)
+**Tổng cộng:** 1,018 sách, 78 users, 187 orders
 
 ### Collections
 
-| Collection | Description |
-|------------|-------------|
-| `users` | User accounts with roles (admin/customer), balance |
-| `books` | Book catalog: bookCode, bookName, location, pricePerDay, quantity, borrowCount |
-| `orders` | Rental transactions: status (pending→paid→success→returned) |
-| `carts` | Shopping cart items per user |
+| Collection | Mô tả |
+|------------|-------|
+| `users` | Tài khoản người dùng với roles (admin/customer), số dư |
+| `books` | Danh mục sách: mã sách, tên, vị trí, giá/ngày, số lượng |
+| `orders` | Giao dịch mượn: trạng thái (pending→paid→success→returned) |
+| `carts` | Giỏ hàng của từng người dùng |
+
+---
+
+## 📊 Tính năng chính
+
+### Cho khách hàng
+
+- ✅ Đăng ký / Đăng nhập với JWT
+- ✅ Tìm kiếm sách (Full-text search)
+- ✅ Thêm sách vào giỏ hàng
+- ✅ Thanh toán đơn mượn
+- ✅ Xem lịch sử mượn sách
+
+### Cho admin
+
+- ✅ Dashboard với 6 biểu đồ Chart.js
+- ✅ Quản lý sách (CRUD)
+- ✅ Quản lý người dùng
+- ✅ Quản lý đơn mượn
+- ✅ Xác nhận nhận/trả sách
+- ✅ Báo cáo Aggregation Pipeline
 
 ### API Endpoints
 
 **Statistics API** (`/api/statistics.php`):
-- `?action=books_by_location` - Books grouped by branch
-- `?action=popular_books` - Top borrowed books
-- `?action=order_status_summary` - Order counts by status
-- `?action=user_statistics` - User borrowing stats
-- `?action=monthly_trends` - Monthly trends with year/month
-- `?action=user_details` - Users with $lookup JOIN
-- `?action=book_group_stats` - Multi-facet statistics
-- `?action=revenue_by_date` - Daily revenue
+
+- `?action=books_by_location` - Sách theo chi nhánh
+- `?action=popular_books` - Top sách được mượn nhiều
+- `?action=order_status_summary` - Thống kê đơn theo trạng thái
+- `?action=user_statistics` - Thống kê người dùng
+- `?action=monthly_trends` - Xu hướng theo tháng
+- `?action=user_details` - Chi tiết user với $lookup JOIN
+- `?action=book_group_stats` - Thống kê đa chiều với $facet
+- `?action=revenue_by_date` - Doanh thu theo ngày
 
 **Map-Reduce API** (`/api/mapreduce.php`):
-- `?action=borrow_stats` - Borrowing statistics
-- `?action=revenue_by_user` - Revenue per user
-- `?action=books_by_category` - Books by category
-- `?action=daily_activity` - Daily activity
-- `?action=location_performance` - Branch performance
 
-## Directory Structure
+- `?action=borrow_stats` - Thống kê mượn sách
+- `?action=revenue_by_user` - Doanh thu theo user
+- `?action=books_by_category` - Sách theo thể loại
+- `?action=daily_activity` - Hoạt động hàng ngày
+- `?action=location_performance` - Hiệu suất chi nhánh
 
+---
+
+## 📁 Cấu trúc thư mục
+
+```text
+Final-CSDLTT/
+├── README.md                    # File này
+├── PROJECT_OVERVIEW.md          # Tổng quan dự án
+├── PROJECT_STATUS.md            # Trạng thái dự án
+├── ACCOUNTS.md                  # Tài khoản test
+├── SETUP_GUIDE.md               # Hướng dẫn cài đặt
+├── README_STARTUP.md            # Hướng dẫn khởi động
+├── PRESENTATION_SCRIPT_15MIN.md # Kịch bản trình bày
+├── DEMO_READY_CHECKLIST.md      # Checklist demo
+├── docker-compose.yml           # Docker configuration
+├── start_system.sh              # Script khởi động
+├── stop_system.sh               # Script dừng hệ thống
+├── init-replica-set.sh          # Khởi tạo replica set
+├── import_data.sh               # Import dữ liệu
+│
+├── Nhasach/                     # Central Hub (Port 8001)
+│   ├── Connection.php           # MongoDB connection
+│   ├── JWTHelper.php            # JWT authentication
+│   ├── SecurityHelper.php       # Security utilities
+│   ├── ActivityLogger.php       # Activity logging
+│   ├── init_indexes.php         # Database indexes
+│   ├── createadmin.php          # Tạo admin user
+│   ├── composer.json            # PHP dependencies
+│   ├── php/                     # Web pages
+│   │   ├── trangchu.php         # Homepage
+│   │   ├── dangnhap.php         # Login
+│   │   ├── dashboard.php        # Dashboard thống kê
+│   │   ├── danhsachsach.php     # Danh sách sách
+│   │   ├── giohang.php          # Giỏ hàng
+│   │   ├── quanlysach.php       # Quản lý sách
+│   │   └── quanlynguoidung.php  # Quản lý người dùng
+│   └── api/                     # REST API
+│       ├── statistics.php       # Aggregation Pipeline
+│       ├── mapreduce.php        # Map-Reduce operations
+│       ├── books.php            # Book CRUD
+│       ├── users.php            # User CRUD
+│       └── orders.php           # Order processing
+│
+├── NhasachHaNoi/                # Chi nhánh Hà Nội (Port 8002)
+├── NhasachDaNang/               # Chi nhánh Đà Nẵng (Port 8003)
+├── NhasachHoChiMinh/            # Chi nhánh TP.HCM (Port 8004)
+│
+├── tests/                       # Test suite
+│   ├── README.md                # Hướng dẫn testing
+│   ├── TEST_CASES.md            # Test cases
+│   ├── unit/                    # Unit tests
+│   ├── integration/             # Integration tests
+│   ├── e2e/                     # End-to-end tests
+│   └── reports/                 # Test reports
+│
+├── report_latex/                # Báo cáo LaTeX
+│   ├── main.tex                 # File chính
+│   ├── main.pdf                 # PDF output
+│   └── figures/                 # Hình ảnh
+│
+├── screenshots/                 # Screenshots demo
+├── Data MONGODB export .json/   # Dữ liệu mẫu
+└── _archive/                    # Archived files
+    ├── old_tests/               # Test files cũ
+    ├── old_scripts/             # Scripts cũ
+    └── old_docs/                # Documentation cũ
 ```
-Final CSDLTT/
-├── CLAUDE.md                # This file
-├── PROJECT_STATUS.md        # Current status
-├── ACCOUNTS.md              # Login credentials
-├── README_STARTUP.md        # Detailed setup guide
-├── docker-compose.yml       # Docker Replica Set config
-├── start_system.sh          # Startup script
-├── benchmark_real.js        # Benchmark script
-├── install_php_mongodb.sh   # PHP driver installer
-│
-├── Nhasach/                 # Central Hub (Port 8001)
-│   ├── Connection.php       # MongoDB connection
-│   ├── JWTHelper.php        # JWT authentication
-│   ├── init_indexes.php     # Database indexes
-│   ├── createadmin.php      # Create admin user
-│   ├── composer.json        # PHP dependencies
-│   ├── php/                 # Web pages
-│   │   ├── trangchu.php     # Homepage
-│   │   ├── dangnhap.php     # Login
-│   │   ├── dashboard.php    # Statistics dashboard
-│   │   ├── danhsachsach.php # Book catalog
-│   │   ├── giohang.php      # Shopping cart
-│   │   ├── quanlysach.php   # Book management
-│   │   └── quanlynguoidung.php # User management
-│   └── api/                 # REST API
-│       ├── statistics.php   # Aggregation Pipeline
-│       ├── mapreduce.php    # Map-Reduce operations
-│       ├── books.php        # Book CRUD
-│       ├── users.php        # User CRUD
-│       └── orders.php       # Order processing
-│
-├── NhasachHaNoi/            # Ha Noi Branch (Port 8002)
-├── NhasachDaNang/           # Da Nang Branch (Port 8003)
-├── NhasachHoChiMinh/        # Ho Chi Minh Branch (Port 8004)
-│
-├── Data MONGODB export .json/ # JSON data exports
-├── screenshots/             # UI screenshots
-├── report_latex/            # LaTeX report
-└── _archive/                # Old/unused files
-```
 
-## Authentication
+---
 
-- **JWT Token:** 24-hour expiration, HS256 algorithm
-- **Password:** bcrypt hash with cost factor 12
+## 🔐 Authentication & Security
+
+- **JWT Token:** 24 giờ expiration, thuật toán HS256
+- **Password:** bcrypt hash với cost factor 12
 - **Roles:** `admin` (full access), `customer` (browse/rent only)
 
-### Default Credentials
+### Tài khoản mặc định
 
 | Node | Port | Admin | Customer | Password |
 |------|------|-------|----------|----------|
-| Central | 8001 | admin | customer1-5 | 123456 |
-| Ha Noi | 8002 | adminHN | annv, tuannghia | 123456 |
-| Da Nang | 8003 | adminDN | linhhtt, phuongltt | 123456 |
-| Ho Chi Minh | 8004 | adminHCM | huynq, yennt | 123456 |
+| Central | 8001 | admin | testcustomer | 123456 |
+| Hà Nội | 8002 | adminHN | tuannghia, annv | 123456 |
+| Đà Nẵng | 8003 | adminDN | linhhtt, phuongltt | 123456 |
+| TP.HCM | 8004 | adminHCM | huynq, yennt | 123456 |
 
-## Key Features
+---
 
-1. **Aggregation Pipeline** - 8 endpoints with $match, $group, $lookup, $facet, $bucket
-2. **Map-Reduce** - 5 operations for data analysis
-3. **Full-text Search** - TEXT index on bookName, author, publisher
-4. **Dashboard** - 6 Chart.js visualizations
-5. **JWT Authentication** - Stateless API authentication
-6. **RBAC** - Role-based access control
-
-## Benchmark Results (Real Data)
+## 📈 Benchmark Results
 
 | Metric | Value |
 |--------|-------|
@@ -241,34 +273,82 @@ Final CSDLTT/
 | Slowest Query | 3.080 ms ($facet Aggregation) |
 | Average Query | 1.304 ms |
 | Peak Throughput | 3,333 ops/sec |
+| Replication Lag | 50-200 ms |
+| Failover Time | 10-15 seconds |
 
-## Project Status (Jan 2026)
+---
 
-- **System Status:** ✅ Ready for Review
-- **LaTeX Report:** ✅ Complete (~45-50 pages)
-- **Screenshots:** ✅ 13 screenshots captured
-- **Benchmark:** ✅ Real data, 10 test cases
+## 📖 Tài liệu
 
-## Troubleshooting
+- **[PROJECT_OVERVIEW.md](PROJECT_OVERVIEW.md)** - Tổng quan dự án
+- **[SETUP_GUIDE.md](SETUP_GUIDE.md)** - Hướng dẫn cài đặt chi tiết
+- **[README_STARTUP.md](README_STARTUP.md)** - Hướng dẫn khởi động
+- **[PRESENTATION_SCRIPT_15MIN.md](PRESENTATION_SCRIPT_15MIN.md)** - Kịch bản trình bày 15 phút
+- **[DEMO_READY_CHECKLIST.md](DEMO_READY_CHECKLIST.md)** - Checklist chuẩn bị demo
+- **[ACCOUNTS.md](ACCOUNTS.md)** - Danh sách tài khoản đầy đủ
+- **[PROJECT_STATUS.md](PROJECT_STATUS.md)** - Trạng thái dự án hiện tại
+- **[tests/README.md](tests/README.md)** - Hướng dẫn testing
+- **[report_latex/main.pdf](report_latex/main.pdf)** - Báo cáo LaTeX đầy đủ
+
+---
+
+## 🛠️ Troubleshooting
 
 ### MongoDB Connection Error
+
 ```bash
-# Check if MongoDB is running
-brew services list | grep mongodb
-# or
-mongosh --eval "db.runCommand({ping:1})"
+# Kiểm tra Docker containers
+docker ps
+
+# Kiểm tra Replica Set status
+docker exec mongo2 mongosh --eval "rs.status()"
+
+# Test connection
+curl http://localhost:8001/check_connection.php
 ```
 
 ### PHP MongoDB Extension
+
 ```bash
-# Install extension
+# Cài đặt extension
 pecl install mongodb
-# Add to php.ini
-echo "extension=mongodb.so" >> $(php -i | grep "php.ini" | head -1 | awk '{print $NF}')
+
+# Kiểm tra
+php -m | grep mongodb
 ```
 
-### Port Already in Use
+### Port đã được sử dụng
+
 ```bash
-# Kill existing PHP servers
+# Dừng PHP servers
 pkill -f "php -S localhost:800"
+
+# Hoặc dùng script
+./stop_system.sh
 ```
+
+---
+
+## 👥 Nhóm phát triển
+
+**Nhóm 10 - K35-36**
+Đại học Quốc gia Hà Nội
+Môn: Cơ Sở Dữ Liệu Tiên Tiến
+
+---
+
+## 📝 License
+
+Dự án này được phát triển cho mục đích học tập.
+
+---
+
+## 🔗 Links
+
+- **GitHub Repository:** [Final-CSDLTT-HNUE-distributed-elibrary](https://github.com/TatcataiTTN/Final-CSDLTT-HNUE-distributed-elibrary)
+- **Báo cáo PDF:** [report_latex/main.pdf](report_latex/main.pdf)
+- **Slides:** [Slides báo cáo Final.pdf](Slides%20báo%20cáo%20Final.pdf)
+
+---
+
+**🎉 Chúc bạn sử dụng thành công! 🚀**
