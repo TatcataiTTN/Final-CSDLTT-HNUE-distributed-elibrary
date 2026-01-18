@@ -100,35 +100,47 @@ Chi nhánh TP.HCM & 146 & 11 & 14 \\
 \begin{figure}[H]
 \centering
 \begin{tikzpicture}[
-    node distance=2cm,
-    box/.style={rectangle, draw, rounded corners, minimum width=3cm, minimum height=1.2cm, align=center, font=\small},
-    db/.style={cylinder, draw, shape border rotate=90, minimum width=1.5cm, minimum height=1cm, aspect=0.3, font=\small},
+    node distance=1.5cm,
+    box/.style={rectangle, draw, rounded corners, minimum width=3.2cm, minimum height=1.1cm, align=center, font=\small},
+    db/.style={cylinder, draw, shape border rotate=90, minimum width=2cm, minimum height=1.2cm, aspect=0.25, font=\scriptsize, align=center},
     arrow/.style={->, >=stealth, thick}
 ]
     % Client Layer
-    \node[box, fill=blue!10] (client) at (0,4) {Web Browser\\(Admin/Customer)};
+    \node[box, fill=blue!15, drop shadow] (client) at (0,6) {\textbf{Web Browser}\\Admin/Customer};
 
-    % PHP Application Layer
-    \node[box, fill=green!20] (central) at (0,2) {Central Hub\\PHP 8.4\\Port 8001};
-    \node[box, fill=green!15] (hanoi) at (-4,0) {Hà Nội\\Port 8002};
-    \node[box, fill=green!15] (danang) at (0,0) {Đà Nẵng\\Port 8003};
-    \node[box, fill=green!15] (hcm) at (4,0) {TP.HCM\\Port 8004};
+    % PHP Application Layer - Central Hub
+    \node[box, fill=green!25, drop shadow] (central) at (0,4) {\textbf{Central Hub}\\PHP 8.4 | Port 8001\\DB: Nhasach};
 
-    % MongoDB Layer
-    \node[box, fill=orange!20] (mongo) at (0,-2) {MongoDB Replica Set\\(mongo1, mongo2, mongo3)};
+    % PHP Application Layer - Branches
+    \node[box, fill=green!15] (hanoi) at (-5,2) {\textbf{Chi nhánh HN}\\Port 8002\\DB: NhasachHaNoi};
+    \node[box, fill=green!15] (danang) at (0,2) {\textbf{Chi nhánh ĐN}\\Port 8003\\DB: NhasachDaNang};
+    \node[box, fill=green!15] (hcm) at (5,2) {\textbf{Chi nhánh HCM}\\Port 8004\\DB: NhasachHoChiMinh};
 
-    % Connections
-    \draw[arrow] (client) -- (central);
-    \draw[arrow] (central) -- (hanoi);
-    \draw[arrow] (central) -- (danang);
-    \draw[arrow] (central) -- (hcm);
-    \draw[arrow] (hanoi) -- (mongo);
-    \draw[arrow] (danang) -- (mongo);
-    \draw[arrow] (hcm) -- (mongo);
-    \draw[arrow] (central) -- (mongo);
+    % MongoDB Layer - 4 separate databases
+    \node[db, fill=orange!20] (mongo1) at (-5,0) {MongoDB\\mongo1\\:27017\\Nhasach};
+    \node[db, fill=orange!15] (mongo2) at (-1.5,0) {MongoDB\\mongo2\\:27018\\NhasachHaNoi};
+    \node[db, fill=orange!15] (mongo3) at (1.5,0) {MongoDB\\mongo3\\:27019\\NhasachDaNang};
+    \node[db, fill=orange!15] (mongo4) at (5,0) {MongoDB\\mongo4\\:27020\\NhasachHoChiMinh};
+
+    % Connections - Client to Central
+    \draw[arrow, blue, line width=1.2pt] (client) -- (central);
+
+    % Connections - Central to Branches (sync)
+    \draw[arrow, red, dashed, line width=1pt] (central) -- node[left, font=\tiny] {sync} (hanoi);
+    \draw[arrow, red, dashed, line width=1pt] (central) -- node[right, font=\tiny] {sync} (danang);
+    \draw[arrow, red, dashed, line width=1pt] (central) -- node[right, font=\tiny] {sync} (hcm);
+
+    % Connections - PHP to MongoDB
+    \draw[arrow, green!60!black, line width=1pt] (central) -- (mongo1);
+    \draw[arrow, green!60!black, line width=1pt] (hanoi) -- (mongo2);
+    \draw[arrow, green!60!black, line width=1pt] (danang) -- (mongo3);
+    \draw[arrow, green!60!black, line width=1pt] (hcm) -- (mongo4);
+
+    % Labels
+    \node[font=\tiny, text=gray] at (0,-1.2) {Mỗi chi nhánh có database MongoDB riêng biệt};
 
 \end{tikzpicture}
-\caption{Kiến trúc tổng quan hệ thống e-Library phân tán}
+\caption{Kiến trúc tổng quan hệ thống e-Library phân tán 4 cơ sở}
 \label{fig:architecture}
 \end{figure}
 
@@ -712,35 +724,70 @@ Dưới đây là cấu trúc JSON của các collection chính. Mỗi document 
 
 \subsection{Thiết kế mô hình phân tán}
 
-MongoDB Replica Set hoạt động theo mô hình Master-Slave với cơ chế bầu cử tự động. Node \textbf{Primary} (mongo1) nhận tất cả các thao tác ghi (insert, update, delete), sau đó đồng bộ dữ liệu sang các node \textbf{Secondary} thông qua oplog (operation log). Các Secondary gửi heartbeat mỗi 2 giây để kiểm tra trạng thái Primary. Chiến lược truy vấn: \textit{Write to Primary, Read from Primary hoặc Secondary} - giúp phân tải đọc và tăng throughput hệ thống.
+Hệ thống e-Library sử dụng kiến trúc phân tán với 4 MongoDB instances độc lập, mỗi instance phục vụ một chi nhánh riêng biệt. Mô hình này đảm bảo:
+
+\begin{itemize}
+    \item \textbf{Tính độc lập}: Mỗi chi nhánh có database riêng, không phụ thuộc vào các chi nhánh khác
+    \item \textbf{Hiệu năng cao}: Truy vấn trực tiếp vào database local, giảm latency
+    \item \textbf{Khả năng mở rộng}: Dễ dàng thêm chi nhánh mới bằng cách deploy MongoDB instance mới
+    \item \textbf{Đồng bộ dữ liệu}: Central Hub tổng hợp dữ liệu từ các chi nhánh qua REST API
+\end{itemize}
 
 \begin{figure}[H]
 \centering
 \begin{tikzpicture}[
-    container/.style={rectangle, draw, rounded corners, minimum width=2.5cm, minimum height=1cm, align=center, font=\small},
-    node distance=0.8cm
+    container/.style={rectangle, draw, rounded corners, minimum width=2.8cm, minimum height=1.2cm, align=center, font=\small},
+    db/.style={cylinder, draw, shape border rotate=90, minimum width=2.2cm, minimum height=1cm, aspect=0.25, font=\scriptsize, align=center},
+    node distance=1.2cm
 ]
-    % MongoDB Replica Set
-    \node[container, fill=blue!20] (mongo1) at (0,0) {mongo1\\PRIMARY\\:27017};
-    \node[container, fill=green!20] (mongo2) at (-3,-2) {mongo2\\SECONDARY\\:27018};
-    \node[container, fill=green!20] (mongo3) at (3,-2) {mongo3\\SECONDARY\\:27019};
+    % PHP Applications Layer
+    \node[container, fill=green!25, drop shadow] (central) at (0,4) {\textbf{Central Hub}\\Port 8001};
+    \node[container, fill=green!15] (hanoi) at (-5,2) {\textbf{Chi nhánh HN}\\Port 8002};
+    \node[container, fill=green!15] (danang) at (0,2) {\textbf{Chi nhánh ĐN}\\Port 8003};
+    \node[container, fill=green!15] (hcm) at (5,2) {\textbf{Chi nhánh HCM}\\Port 8004};
 
-    % Replication arrows
-    \draw[->, thick, blue] (mongo1) -- node[left, font=\scriptsize] {sync} (mongo2);
-    \draw[->, thick, blue] (mongo1) -- node[right, font=\scriptsize] {sync} (mongo3);
-    \draw[<->, dashed] (mongo2) -- node[below, font=\scriptsize] {heartbeat} (mongo3);
+    % MongoDB Instances
+    \node[db, fill=orange!20] (mongo1) at (-5,0) {mongo1\\:27017\\Nhasach};
+    \node[db, fill=orange!15] (mongo2) at (-1.5,0) {mongo2\\:27018\\NhasachHaNoi};
+    \node[db, fill=orange!15] (mongo3) at (1.5,0) {mongo3\\:27019\\NhasachDaNang};
+    \node[db, fill=orange!15] (mongo4) at (5,0) {mongo4\\:27020\\NhasachHoChiMinh};
 
-    % PHP Applications
-    \node[container, fill=orange!20] (php) at (0,2.5) {PHP Application\\(Central Hub)};
-    \draw[->, thick] (php) -- node[right, font=\scriptsize] {read/write} (mongo1);
+    % Connections - PHP to MongoDB
+    \draw[->, thick, green!60!black] (central) -- (mongo1);
+    \draw[->, thick, green!60!black] (hanoi) -- (mongo2);
+    \draw[->, thick, green!60!black] (danang) -- (mongo3);
+    \draw[->, thick, green!60!black] (hcm) -- (mongo4);
 
-    % Label
-    \node[font=\footnotesize] at (0,-3.5) {MongoDB Replica Set rs0};
+    % Sync connections
+    \draw[->, dashed, red, line width=1pt] (hanoi) -- node[left, font=\tiny, text=red] {sync API} (central);
+    \draw[->, dashed, red, line width=1pt] (danang) -- node[right, font=\tiny, text=red] {sync API} (central);
+    \draw[->, dashed, red, line width=1pt] (hcm) -- node[right, font=\tiny, text=red] {sync API} (central);
+
+    % Labels
+    \node[font=\footnotesize, text=gray] at (0,-1.5) {4 MongoDB instances độc lập - Mỗi chi nhánh 1 database};
 
 \end{tikzpicture}
-\caption{Kiến trúc MongoDB Replica Set}
-\label{fig:replicaset}
+\caption{Kiến trúc phân tán 4 cơ sở với MongoDB độc lập}
+\label{fig:distributed_architecture}
 \end{figure}
+
+\textbf{Giải thích kiến trúc:}
+
+\begin{enumerate}
+    \item \textbf{Central Hub (mongo1:27017)}: Database trung tâm chứa dữ liệu tổng hợp từ tất cả chi nhánh
+    \item \textbf{Chi nhánh Hà Nội (mongo2:27018)}: Database riêng cho chi nhánh miền Bắc
+    \item \textbf{Chi nhánh Đà Nẵng (mongo3:27019)}: Database riêng cho chi nhánh miền Trung
+    \item \textbf{Chi nhánh TP.HCM (mongo4:27020)}: Database riêng cho chi nhánh miền Nam
+\end{enumerate}
+
+\textbf{Quy trình đồng bộ dữ liệu:}
+
+\begin{itemize}
+    \item Mỗi chi nhánh có script \texttt{send\_customers.php} để gửi dữ liệu khách hàng về Central Hub
+    \item Central Hub có API \texttt{receive\_customers.php} để nhận và lưu dữ liệu
+    \item Đồng bộ được thực hiện định kỳ hoặc theo yêu cầu
+    \item Dữ liệu được merge dựa trên \texttt{username} để tránh trùng lặp
+\end{itemize}
 
 \subsection{Thiết kế tìm kiếm và tối ưu truy vấn}
 

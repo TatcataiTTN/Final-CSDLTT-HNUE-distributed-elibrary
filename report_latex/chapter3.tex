@@ -110,14 +110,15 @@ try {
 }
 \end{lstlisting}
 
-\subsection{Docker Compose cho MongoDB Replica Set}
+\subsection{Docker Compose cho MongoDB phân tán}
 
-Cấu hình Docker Compose với 3 MongoDB containers:
+Hệ thống sử dụng 4 MongoDB containers độc lập, mỗi container phục vụ một chi nhánh:
 
-\begin{lstlisting}[caption=docker-compose.yml - MongoDB Replica Set đầy đủ]
+\begin{lstlisting}[caption=docker-compose.yml - 4 MongoDB instances độc lập]
 version: '3.8'
 
 services:
+  # Central Hub MongoDB
   mongo1:
     image: mongo:4.4
     container_name: mongo1
@@ -129,28 +130,57 @@ services:
     volumes:
       - mongo1_data:/data/db
     networks:
-      mongo-net:
-        aliases: [mongo1]
-    command: ["mongod", "--replSet", "rs0", "--bind_ip_all"]
+      - mongo-net
+    command: ["mongod", "--bind_ip_all"]
     restart: unless-stopped
 
+  # Ha Noi Branch MongoDB
   mongo2:
     image: mongo:4.4
     container_name: mongo2
-    ports: ["27018:27017"]
-    volumes: [mongo2_data:/data/db]
-    networks: [mongo-net]
-    command: ["mongod", "--replSet", "rs0", "--bind_ip_all"]
-    depends_on: [mongo1]
+    hostname: mongo2
+    ports:
+      - "27018:27017"
+    environment:
+      - MONGO_INITDB_DATABASE=NhasachHaNoi
+    volumes:
+      - mongo2_data:/data/db
+    networks:
+      - mongo-net
+    command: ["mongod", "--bind_ip_all"]
+    restart: unless-stopped
 
+  # Da Nang Branch MongoDB
   mongo3:
     image: mongo:4.4
     container_name: mongo3
-    ports: ["27019:27017"]
-    volumes: [mongo3_data:/data/db]
-    networks: [mongo-net]
-    command: ["mongod", "--replSet", "rs0", "--bind_ip_all"]
-    depends_on: [mongo1]
+    hostname: mongo3
+    ports:
+      - "27019:27017"
+    environment:
+      - MONGO_INITDB_DATABASE=NhasachDaNang
+    volumes:
+      - mongo3_data:/data/db
+    networks:
+      - mongo-net
+    command: ["mongod", "--bind_ip_all"]
+    restart: unless-stopped
+
+  # Ho Chi Minh Branch MongoDB
+  mongo4:
+    image: mongo:4.4
+    container_name: mongo4
+    hostname: mongo4
+    ports:
+      - "27020:27017"
+    environment:
+      - MONGO_INITDB_DATABASE=NhasachHoChiMinh
+    volumes:
+      - mongo4_data:/data/db
+    networks:
+      - mongo-net
+    command: ["mongod", "--bind_ip_all"]
+    restart: unless-stopped
 
 networks:
   mongo-net:
@@ -163,7 +193,58 @@ volumes:
     name: elibrary_mongo2_data
   mongo3_data:
     name: elibrary_mongo3_data
+  mongo4_data:
+    name: elibrary_mongo4_data
 \end{lstlisting}
+
+\subsection{Sơ đồ triển khai MongoDB phân tán}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+    container/.style={rectangle, draw, rounded corners, minimum width=2.8cm, minimum height=1.3cm, align=center, font=\small, drop shadow},
+    db/.style={cylinder, draw, shape border rotate=90, minimum width=2.5cm, minimum height=1.1cm, aspect=0.25, font=\scriptsize, align=center, drop shadow},
+    node distance=1.5cm
+]
+    % PHP Applications
+    \node[container, fill=green!25] (central) at (0,5) {\textbf{Central Hub}\\PHP 8.4\\Port 8001};
+    \node[container, fill=green!15] (hanoi) at (-6,3) {\textbf{Chi nhánh HN}\\PHP 8.4\\Port 8002};
+    \node[container, fill=green!15] (danang) at (0,3) {\textbf{Chi nhánh ĐN}\\PHP 8.4\\Port 8003};
+    \node[container, fill=green!15] (hcm) at (6,3) {\textbf{Chi nhánh HCM}\\PHP 8.4\\Port 8004};
+
+    % MongoDB Instances
+    \node[db, fill=orange!25] (mongo1) at (0,1) {\textbf{mongo1}\\:27017\\Nhasach\\(509 books)};
+    \node[db, fill=orange!15] (mongo2) at (-6,1) {\textbf{mongo2}\\:27018\\NhasachHaNoi\\(200 books)};
+    \node[db, fill=orange!15] (mongo3) at (0,-1.5) {\textbf{mongo3}\\:27019\\NhasachDaNang\\(163 books)};
+    \node[db, fill=orange!15] (mongo4) at (6,1) {\textbf{mongo4}\\:27020\\NhasachHoChiMinh\\(146 books)};
+
+    % Connections PHP to MongoDB
+    \draw[->, thick, green!60!black, line width=1.2pt] (central) -- (mongo1);
+    \draw[->, thick, green!60!black, line width=1.2pt] (hanoi) -- (mongo2);
+    \draw[->, thick, green!60!black, line width=1.2pt] (danang) -- (mongo3);
+    \draw[->, thick, green!60!black, line width=1.2pt] (hcm) -- (mongo4);
+
+    % Sync connections (dashed red arrows)
+    \draw[->, dashed, red, line width=1pt] (hanoi) -- node[left, font=\tiny, text=red] {sync API} (central);
+    \draw[->, dashed, red, line width=1pt] (danang) -- node[right, font=\tiny, text=red] {sync API} (central);
+    \draw[->, dashed, red, line width=1pt] (hcm) -- node[right, font=\tiny, text=red] {sync API} (central);
+
+    % Docker network box
+    \node[draw, dashed, rounded corners, fit={(mongo1) (mongo2) (mongo3) (mongo4)}, inner sep=0.3cm, label=below:\textit{Docker Network: mongo-net}] {};
+
+\end{tikzpicture}
+\caption{Sơ đồ triển khai 4 MongoDB instances độc lập với Docker}
+\label{fig:mongodb_deployment}
+\end{figure}
+
+\textbf{Đặc điểm kiến trúc:}
+\begin{itemize}
+    \item \textbf{4 MongoDB instances độc lập}: Mỗi chi nhánh có database riêng, không chia sẻ dữ liệu
+    \item \textbf{Kết nối trực tiếp}: PHP application kết nối trực tiếp đến MongoDB local, giảm latency
+    \item \textbf{Docker Network}: Tất cả containers trong cùng network \texttt{mongo-net} để giao tiếp
+    \item \textbf{Port mapping}: Mỗi MongoDB expose port khác nhau (27017-27020) để truy cập từ host
+    \item \textbf{Đồng bộ qua API}: Central Hub nhận dữ liệu từ chi nhánh qua REST API, không dùng replication
+\end{itemize}
 
 \section{Một số giao diện chính của hệ thống}
 

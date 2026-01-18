@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration Test</title>
+    <style>
+        body { font-family: monospace; padding: 20px; background: #1e1e1e; color: #00ff00; }
+        .test { margin: 20px 0; padding: 15px; border: 1px solid #00ff00; }
+        .pass { color: #00ff00; }
+        .fail { color: #ff0000; }
+        button { padding: 10px 20px; background: #00ff00; color: #000; border: none; cursor: pointer; }
+        #results { white-space: pre-wrap; }
+    </style>
+</head>
+<body>
+    <h1>🔍 Registration Test</h1>
+    <button onclick="runTest()">Run Test</button>
+    <div id="results"></div>
+
+    <script>
+    async function runTest() {
+        const results = document.getElementById('results');
+        results.innerHTML = 'Testing...\n\n';
+        
+        const testUsername = 'webtest_' + Date.now();
+        const ports = [
+            {port: 8001, name: 'Central Hub'},
+            {port: 8002, name: 'HaNoi'},
+            {port: 8003, name: 'DaNang'},
+            {port: 8004, name: 'HoChiMinh'}
+        ];
+        
+        for (const site of ports) {
+            results.innerHTML += `Testing ${site.name} (Port ${site.port})...\n`;
+            
+            try {
+                const formData = new FormData();
+                formData.append('username', `${testUsername}_${site.port}`);
+                formData.append('password', 'test123');
+                
+                const response = await fetch(`http://localhost:${site.port}/php/dangky.php`, {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const text = await response.text();
+                const hasSuccess = text.toLowerCase().includes('thành công') || 
+                                 text.toLowerCase().includes('success') || 
+                                 text.toLowerCase().includes('đăng nhập ngay');
+                
+                if (hasSuccess) {
+                    results.innerHTML += `✅ ${site.name}: SUCCESS\n`;
+                } else {
+                    results.innerHTML += `❌ ${site.name}: NO SUCCESS MESSAGE\n`;
+                    results.innerHTML += `Preview: ${text.substring(0, 200).replace(/<[^>]*>/g, '')}...\n`;
+                }
+            } catch (error) {
+                results.innerHTML += `❌ ${site.name}: ERROR - ${error.message}\n`;
+            }
+            
+            results.innerHTML += '\n';
+        }
+        
+        results.innerHTML += 'Test complete!\n';
+    }
+    </script>
+</body>
+</html>
+
